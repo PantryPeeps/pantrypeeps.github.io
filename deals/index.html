@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Weekly Pantry Peeps finds for home pantries, community pantries, and care packs.">
+  <title>Weekly Deals | Pantry Peeps</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#deals">Skip to deals</a>
+  <header class="masthead">
+    <div class="shell mast-inner">
+      <a class="brand" href="#" aria-label="Pantry Peeps, back to top">
+        <span class="brand-mark" aria-hidden="true">PP</span>
+        <span>Pantry Peeps</span>
+      </a>
+      <a class="nav-link" href="#deals">Browse deals <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+  <div class="disclosure"><div class="shell">As an Amazon Associate and Walmart Creator, I earn from qualifying purchases. #ad</div></div>
+  <main class="shell">
+    <section class="intro" aria-labelledby="title">
+      <div>
+        <h1 id="title">Weekly finds.</h1>
+        <p>Pantry Peeps / 716 Little Free Pantry Coalition</p>
+      </div>
+      <div class="intro-tag">Stretch your budget.<br>Fill a pantry.<br>Feed a belly.</div>
+    </section>
+    <section id="deals" class="deals" aria-label="Weekly deals">
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter by store">
+          <button type="button" data-store="all" aria-pressed="true">All Retailers</button>
+          <button type="button" data-store="Amazon" aria-pressed="false">Amazon</button>
+          <button type="button" data-store="Walmart" aria-pressed="false">Walmart</button>
+        </div>
+        <p id="result-count" role="status"></p>
+      </div>
+      <div id="weeks"></div>
+      <noscript>Enable JavaScript to browse weekly deals.</noscript>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell footer-inner">
+    <span class="footer-brand">Pantry Peeps</span>
+    <a href="#">Back to top ↑</a>
+  </div></footer>
+</body>
+</html>
