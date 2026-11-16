@@ -21,19 +21,6 @@ function weekLabel(isoDate) {
   return "Week of " + dateFormat.format(start);
 }
 
-function copyCardLink(deal, button, status) {
-  const cardUrl = new URL("https://pantrypeeps.org/deals/");
-  cardUrl.hash = deal.slug;
-  button.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(cardUrl.href);
-      status.textContent = "Link copied";
-    } catch {
-      window.prompt("Copy this card link", cardUrl.href);
-    }
-  });
-}
-
 function dealCard(deal) {
   const card = element("article", "card");
   card.id = deal.slug;
@@ -69,12 +56,6 @@ function dealCard(deal) {
     action.append(element("span", "pending", "Retailer link pending"));
   }
   body.append(action);
-  const copy = element("button", "copy-link", "Copy Card Link");
-  copy.type = "button";
-  const status = element("span", "copy-status");
-  status.setAttribute("role", "status");
-  copyCardLink(deal, copy, status);
-  body.append(copy, status);
   card.append(body);
   return card;
 }
