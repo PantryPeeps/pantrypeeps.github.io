@@ -7,10 +7,11 @@
     "size": "36 cups · 4.3 oz each",
     "note": "Individually sealed fruit cups for lunches or pantry meal kits.",
     "image": "assets/peaches.webp",
-    "url": null,
+    "url": "https://link.amazon/B0dRaIGZy",
     "slug": "dole-peaches-strawberry-36",
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "affiliate": true
   },
   {
     "week": "2026-11-09",
@@ -83,7 +84,7 @@
     "affiliate": true
   },
   {
-    "week": "2026-11-09",
+    "week": "2026-11-16",
     "retailer": "Walmart",
     "category": "Hygiene",
     "title": "Chap-Lip Lip Balm",
