@@ -5,6 +5,8 @@ const pricingLabel = "Check today’s pricing for the item";
 const weekPanel = document.querySelector("#weeks");
 const count = document.querySelector("#result-count");
 const buttons = [...document.querySelectorAll("[data-store]")];
+const categoryFilter = document.querySelector("#category-filter");
+const toolbar = document.querySelector(".toolbar");
 const dateFormat = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 let store = "all";
 let deals = [];
@@ -61,13 +63,16 @@ function dealCard(deal) {
 }
 
 function render() {
-  const visibleDeals = deals.filter(deal => store === "all" || store === deal.retailer);
+  const visibleDeals = deals.filter(deal =>
+    (store === "all" || store === deal.retailer) &&
+    (!categoryFilter.value || categoryFilter.value === deal.category)
+  );
   const weeks = [...new Set(visibleDeals.map(deal => deal.week))].sort().reverse();
   count.textContent = visibleDeals.length + (visibleDeals.length === 1 ? " deal" : " deals");
   buttons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.store === store)));
   weekPanel.replaceChildren();
   if (weeks.length === 0) {
-    weekPanel.append(element("p", "empty", "No deals for this store yet."));
+    weekPanel.append(element("p", "empty", "No deals match these filters."));
   }
 
   for (const week of weeks) {
@@ -95,8 +100,11 @@ function showLinkedDeal() {
   if (!/^[-a-z0-9]+$/.test(id)) return;
   const deal = deals.find(item => item.slug === id);
   if (!deal) return;
-  if (store !== "all" && store !== deal.retailer) {
-    store = "all";
+  const storeMismatch = store !== "all" && store !== deal.retailer;
+  const categoryMismatch = categoryFilter.value && categoryFilter.value !== deal.category;
+  if (storeMismatch || categoryMismatch) {
+    if (storeMismatch) store = "all";
+    if (categoryMismatch) categoryFilter.value = "";
     render();
   }
   const card = document.getElementById(id);
@@ -125,12 +133,25 @@ async function start() {
   showLinkedDeal();
 }
 
-buttons.forEach(button => button.addEventListener("click", () => {
-  store = button.dataset.store;
+function applyFilters() {
   if (location.hash && !["#deals", "#"].includes(location.hash)) {
     history.replaceState(null, "", "#deals");
   }
   render();
+}
+
+for (const category of categories) {
+  categoryFilter.add(new Option(category, category));
+}
+categoryFilter.addEventListener("change", applyFilters);
+buttons.forEach(button => button.addEventListener("click", () => {
+  store = button.dataset.store;
+  applyFilters();
 }));
+
+// Keep linked cards clear of the sticky controls when they wrap.
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty("--toolbar-height", toolbar.offsetHeight + "px");
+}).observe(toolbar);
 window.addEventListener("hashchange", showLinkedDeal);
 start();

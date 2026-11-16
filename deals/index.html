@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Weekly Pantry Peeps finds for home pantries, community pantries, and care packs.">
   <title>Pantry Peeps Deals | 716 LFPC</title>
-  <link rel="stylesheet" href="style.css?v=pantry-cyan">
-  <script defer src="app.js?v=lfpc-links"></script>
+  <link rel="stylesheet" href="style.css?v=category-filter">
+  <script defer src="app.js?v=category-filter"></script>
 </head>
 <body>
   <a class="skip" href="#deals">Skip to deals</a>
@@ -30,10 +30,18 @@
     </section>
     <section id="deals" class="deals" aria-label="Weekly deals">
       <div class="toolbar">
-        <div class="filters" role="group" aria-label="Filter by store">
-          <button type="button" data-store="all" aria-pressed="true">All Retailers</button>
-          <button type="button" data-store="Amazon" aria-pressed="false">Amazon</button>
-          <button type="button" data-store="Walmart" aria-pressed="false">Walmart</button>
+        <div class="filter-controls">
+          <div class="filters" role="group" aria-label="Filter by store">
+            <button type="button" data-store="all" aria-pressed="true">All Retailers</button>
+            <button type="button" data-store="Amazon" aria-pressed="false">Amazon</button>
+            <button type="button" data-store="Walmart" aria-pressed="false">Walmart</button>
+          </div>
+          <div class="category-filter">
+            <label for="category-filter">Category</label>
+            <select id="category-filter">
+              <option value="">All Categories</option>
+            </select>
+          </div>
         </div>
         <p id="result-count" role="status"></p>
       </div>
