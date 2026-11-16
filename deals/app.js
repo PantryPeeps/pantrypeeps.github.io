@@ -113,7 +113,7 @@ async function start() {
     if (inlineData) {
       deals = JSON.parse(inlineData.textContent);
     } else {
-      const response = await fetch("deals.json");
+      const response = await fetch("deals.json?v=lfpc-links", { cache: "no-cache" });
       if (!response.ok) throw new Error("Deal data could not be downloaded");
       deals = await response.json();
     }
