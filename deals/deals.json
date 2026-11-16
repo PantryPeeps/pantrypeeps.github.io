@@ -684,5 +684,47 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Great Value Pumpkin Spice Pancake & Waffle Mix",
+    "size": "6 boxes · 16 oz each",
+    "note": "",
+    "image": "assets/great-value-pumpkin-spice-pancake-mix-6.webp",
+    "url": "https://walmrt.us/4AqGqSk",
+    "slug": "great-value-pumpkin-spice-pancake-mix-6",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Great Value Apple Cinnamon Pancake & Waffle Mix",
+    "size": "4 boxes · 16 oz each",
+    "note": "",
+    "image": "assets/great-value-apple-cinnamon-pancake-mix-4.webp",
+    "url": "https://walmrt.us/3UFEPJ5",
+    "slug": "great-value-apple-cinnamon-pancake-mix-4",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Great Value Pumpkin Spice Quick Bread & Muffin Mix",
+    "size": "4 boxes · 15 oz each",
+    "note": "",
+    "image": "assets/great-value-pumpkin-spice-muffin-mix-4.webp",
+    "url": "https://walmrt.us/4sQaAvv",
+    "slug": "great-value-pumpkin-spice-muffin-mix-4",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true
   }
 ]
