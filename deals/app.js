@@ -26,7 +26,22 @@ function weekLabel(isoDate) {
 function dealCard(deal) {
   const card = element("article", "card");
   card.id = deal.slug;
-  if (deal.image) {
+  if (Array.isArray(deal.choice_images) && deal.choice_images.length) {
+    const product = element("div", "product choices");
+    const choices = element("div", "choice-grid");
+    for (const item of deal.choice_images) {
+      const choice = element("div", "choice");
+      const img = element("img");
+      img.src = item.image;
+      img.alt = item.alt || "";
+      img.loading = "lazy";
+      choice.append(img);
+      if (item.alt) choice.append(element("span", "", item.alt));
+      choices.append(choice);
+    }
+    product.append(choices);
+    card.append(product);
+  } else if (deal.image) {
     const product = element("div", "product");
     const img = element("img");
     img.src = deal.image;
