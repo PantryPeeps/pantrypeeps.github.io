@@ -5,3 +5,6 @@
 
 /* Keep hub artwork itself visible without extra circular button backplates. */
 .hub-card,.pp-hub{background:transparent!important;box-shadow:none!important}.hub-card img{background:transparent!important;border:0!important;box-shadow:none!important;filter:none!important}.pp-hub img{background:transparent!important;border:0!important;box-shadow:none!important}
+
+/* Use each icon file as provided: no image crop, white backplate, or circular button wrapper. */
+.pp-hub,.pp-hub:hover,.pp-hub[aria-current=page]{background:transparent!important;box-shadow:none!important;border-radius:0!important}.pp-hub img{border-radius:0!important;object-fit:contain!important;background:transparent!important;filter:none!important;box-shadow:none!important}
