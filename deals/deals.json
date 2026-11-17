@@ -1041,5 +1041,22 @@
     "deal_type": "discount",
     "deal_badge": "MULTIPACK DISCOUNT",
     "deal_info": "No coupon required. The discount is on the multipack; check Walmart for current price per tube."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Nestlé Carnation Half & Half Creamer",
+    "size": "240 sticks · 0.304 fl oz each",
+    "note": "Individually wrapped, shelf-stable creamer sticks for coffee stations and winter care packages. No refrigeration needed.",
+    "image": "assets/carnation-half-and-half-240.webp",
+    "url": "https://link.amazon/B0boOuLjz",
+    "slug": "carnation-half-and-half-sticks-240",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown on the listing. Check your account for current price and availability."
   }
 ]
