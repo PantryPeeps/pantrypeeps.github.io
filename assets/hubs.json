@@ -1,62 +1,12 @@
 [
-  {
-    "title": "Deals",
-    "path": "/deals/",
-    "icon": "icon-deals.png",
-    "desc": "Score steep grocery discounts, coupon matchups, and money-maker freebies for your own home or to share with Little Free Pantries."
-  },
-  {
-    "title": "716 Pantry Map",
-    "path": "/map/",
-    "icon": "icon-map.png",
-    "desc": "Find Little Free Pantry locations across Western New York to give what you can or take what you need."
-  },
-  {
-    "title": "How to Give",
-    "path": "/how-to-give/",
-    "icon": "icon-give.png",
-    "desc": "Your complete guide to dignified giving—printable flyers, weather rules, holiday and school-break ideas, care kits, and best practices for stocking outdoor pantries."
-  },
-  {
-    "title": "Recipes",
-    "path": "/recipes/",
-    "icon": "icon-recipes.png",
-    "desc": "Easy, budget-friendly meals and clever kitchen swaps made from everyday shelf-stable pantry staples."
-  },
-  {
-    "title": "The Pantry Playbook",
-    "path": "/playbook/",
-    "icon": "icon-playbook.png",
-    "desc": "Your ultimate pantry survival guide—clever kitchen food hacks (like using mayo when you're out of eggs), rebate app referral codes, and step-by-step tutorials for stretching every grocery dollar."
-  },
-  {
-    "title": "Storefront",
-    "path": "/storefront/",
-    "icon": "icon-storefront.png",
-    "desc": "Browse our curated Amazon, Walmart, and Sam's Club lists for items Little Free Pantries don't house—like budget crockpots, kitchen helpers, steward gear, and seasonal gift ideas for kids and seniors."
-  },
-  {
-    "title": "Community Resources",
-    "path": "/resources/",
-    "icon": "icon-resources.png",
-    "desc": "Local Western New York assistance guides, including NY HEAP utility help and neighborhood support programs."
-  },
-  {
-    "title": "Understanding Food Insecurity",
-    "path": "/food-insecurity/",
-    "icon": "icon-insecurity.png",
-    "desc": "Real facts, research, and honest conversations about hunger, dignified support, and the everyday realities neighbors face."
-  },
-  {
-    "title": "Pantry Builds",
-    "path": "/builds/",
-    "icon": "icon-builds.png",
-    "desc": "Blueprints, weatherproofing tips, and DIY guides for building and maintaining outdoor Little Free Pantries."
-  },
-  {
-    "title": "Steward Stories",
-    "path": "/stories/",
-    "icon": "icon-stories.png",
-    "desc": "Real stories, video tours, and interviews from Little Free Pantry stewards—sharing how their boxes started, stewardship tips, and creative fundraising ideas like bottle and can drives."
-  }
+  {"title":"Deals","path":"/deals/","icon":"icon-deals.png","desc":"Steep grocery & hygiene discounts for your home or Little Free Pantries."},
+  {"title":"716 Pantry Map","path":"/map/","icon":"icon-map.png","desc":"Find Western New York Little Free Pantries to give or take."},
+  {"title":"How to Give","path":"/how-to-give/","icon":"icon-give.png","desc":"Printable flyers, weather rules, care kits & dignified giving tips."},
+  {"title":"Recipes","path":"/recipes/","icon":"icon-recipes.png","desc":"Budget-friendly meals and swaps from shelf-stable pantry staples."},
+  {"title":"The Pantry Playbook","path":"/playbook/","icon":"icon-playbook.png","desc":"Kitchen hacks, rebate codes & step-by-step couponing guides."},
+  {"title":"Storefront","path":"/storefront/","icon":"icon-storefront.png","desc":"Amazon, Walmart & Sam's Club lists for crockpots, gear & gift drives."},
+  {"title":"Community Resources","path":"/resources/","icon":"icon-resources.png","desc":"Local WNY assistance guides, NY HEAP & neighborhood support."},
+  {"title":"Understanding Food Insecurity","path":"/food-insecurity/","icon":"icon-insecurity.png","desc":"Real facts, research & honest talk about hunger and dignity."},
+  {"title":"Pantry Builds","path":"/builds/","icon":"icon-builds.png","desc":"Blueprints, weatherproofing & DIY guides for outdoor pantries."},
+  {"title":"Steward Stories","path":"/stories/","icon":"icon-stories.png","desc":"Steward interviews, pantry tours & creative fundraising ideas."}
 ]
