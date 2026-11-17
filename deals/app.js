@@ -59,6 +59,11 @@ function dealCard(deal) {
     card.append(element("div", "product-empty"));
   }
 
+  const productVisual = card.querySelector(".product, .product-empty");
+  if (productVisual && deal.deal_badge) {
+    productVisual.append(element("span", "deal-badge deal-badge-" + deal.deal_type, deal.deal_badge));
+  }
+
   const body = element("div", "card-content");
   body.append(
     element("span", "store " + deal.retailer.toLowerCase(), deal.retailer),
@@ -66,6 +71,14 @@ function dealCard(deal) {
     element("p", "size", deal.size),
     element("p", "note", deal.note)
   );
+  if (deal.deal_info) {
+    const callout = element("div", "deal-callout deal-callout-" + deal.deal_type);
+    callout.append(
+      element("strong", "deal-callout-title", deal.deal_badge || "Deal info"),
+      element("span", "", deal.deal_info)
+    );
+    body.append(callout);
+  }
   body.append(element("p", "pricing-label", pricingLabel));
   const action = element("div", "card-action");
   if (deal.url) {
