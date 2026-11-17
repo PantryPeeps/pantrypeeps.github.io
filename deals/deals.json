@@ -803,31 +803,13 @@
     "category": "Pantry Food",
     "title": "Campbell’s Stock Up and Save Sale",
     "size": "Select pantry items",
-    "note": "Examples include canned pasta, V8, Swanson chicken, and Campbell’s pork and beans. Check Amazon’s offer page for eligible items.",
+    "note": "Select participating Campbell’s grocery items. The Amazon offer page lists which items qualify.",
     "image": "",
     "url": "https://link.amazon/B0cB4Y0o7",
     "slug": "campbells-chunky-soup-promo-17",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null,
-    "choice_images": [
-      {
-        "image": "https://images.cdn.smartandfinal.com/zoom/39b95003-3720-4569-894a-84a106dc374c.jpeg",
-        "alt": "SpaghettiOs canned pasta"
-      },
-      {
-        "image": "assets/v8-original-24.webp",
-        "alt": "V8 Original vegetable juice"
-      },
-      {
-        "image": "assets/swanson-canned-chicken-4.webp",
-        "alt": "Swanson canned chicken"
-      },
-      {
-        "image": "assets/campbells-pork-and-beans-24.webp",
-        "alt": "Campbell’s Pork and Beans"
-      }
-    ]
+    "price_updated_at": null
   },
   {
     "week": "2026-11-02",
