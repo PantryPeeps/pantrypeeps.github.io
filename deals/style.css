@@ -221,6 +221,7 @@
 .deal-badge-stacked,
 .deal-badge-walmart-rewards,
 .deal-badge-discount,
+.deal-badge-ibotta,
 .deal-badge-promotion {
   background: var(--yellow);
 }
@@ -228,6 +229,7 @@
 .deal-callout-subscribe-save,
 .deal-callout-stacked,
 .deal-callout-walmart-rewards,
-.deal-callout-discount {
+.deal-callout-discount,
+.deal-callout-ibotta {
   background: #fff9b6;
 }
