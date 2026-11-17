@@ -824,5 +824,19 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
+  },
+  {
+    "week": "2026-11-02",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Campbell’s Chunky Soup Promo Items",
+    "size": "17 cans · assorted promo-eligible varieties",
+    "note": "The reel shows 17 cans under $1 each through Amazon’s Spend $25, Save $5 promotion. Check eligible items, coupons, and current prices.",
+    "image": "https://images.cdn.shoprite.com/detail/00051000195708_1",
+    "url": "https://link.amazon/B0cB4Y0o7",
+    "slug": "campbells-chunky-soup-promo-17",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
   }
 ]
