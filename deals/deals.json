@@ -726,5 +726,19 @@
     "live_price": null,
     "price_updated_at": null,
     "affiliate": true
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Campbell’s Condensed Cream of Chicken Soup",
+    "size": "12 cans · 10.5 oz each",
+    "note": "",
+    "image": "",
+    "url": "",
+    "slug": "campbells-cream-chicken-12",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
   }
 ]
