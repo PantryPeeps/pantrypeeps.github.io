@@ -12,9 +12,9 @@
     "live_price": null,
     "price_updated_at": null,
     "affiliate": true,
-    "deal_type": "coupon",
-    "deal_badge": "COUPON • CHECK S&S",
-    "deal_info": "Check the listing for the digital coupon and see whether Subscribe & Save is offered. Confirm which option applies to your account."
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -93,7 +93,10 @@
     "slug": "kocpudu-laundry-packets-60",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown on the listing. Check its current availability and delivery settings."
   },
   {
     "week": "2026-11-16",
@@ -149,7 +152,10 @@
     "slug": "blue-buffalo-stix-beef-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown for this item. Check the product page for current availability."
   },
   {
     "week": "2026-11-09",
@@ -208,7 +214,10 @@
     "slug": "cooplus-quarter-socks-10",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "coupon",
+    "deal_badge": "CLIP COUPON",
+    "deal_info": "Clip the coupon on the product page before checkout."
   },
   {
     "week": "2026-11-09",
@@ -222,7 +231,10 @@
     "slug": "cuffed-knit-beanies-26",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "coupon",
+    "deal_badge": "CLIP COUPON",
+    "deal_info": "Clip the coupon on the product page before checkout."
   },
   {
     "week": "2026-11-09",
@@ -236,7 +248,10 @@
     "slug": "bumble-bee-tuna-lunch-kits-4",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "coupon",
+    "deal_badge": "FIRST-ORDER COUPON",
+    "deal_info": "Check the product page for the first-order coupon."
   },
   {
     "week": "2026-11-09",
@@ -250,7 +265,10 @@
     "slug": "starkist-tuna-salad-kits-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown for this item. Check the product page for current availability."
   },
   {
     "week": "2026-11-09",
@@ -264,7 +282,10 @@
     "slug": "starkist-cracked-pepper-tuna-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown for this item. Check the product page for current availability."
   },
   {
     "week": "2026-11-09",
@@ -278,7 +299,10 @@
     "slug": "meow-mix-seafood-favorites-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -292,7 +316,10 @@
     "slug": "campbells-pork-and-beans-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -306,7 +333,10 @@
     "slug": "v8-low-sodium-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -320,7 +350,10 @@
     "slug": "v8-original-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -334,7 +367,10 @@
     "slug": "jack-links-original-sticks-20",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -348,7 +384,10 @@
     "slug": "swanson-canned-chicken-4",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
