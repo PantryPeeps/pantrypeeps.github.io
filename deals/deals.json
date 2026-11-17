@@ -11,7 +11,10 @@
     "slug": "dole-peaches-strawberry-36",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "coupon",
+    "deal_badge": "10% FIRST-ORDER COUPON",
+    "deal_info": "The posted deal included a 10% first-order coupon. Check whether Subscribe & Save is also offered and whether the coupon applies with it."
   },
   {
     "week": "2026-11-09",
@@ -25,7 +28,10 @@
     "slug": "del-monte-green-beans-12",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "The posted deal combined a first-delivery coupon with Subscribe & Save. Confirm both options appear for your account."
   },
   {
     "week": "2026-11-09",
@@ -39,7 +45,10 @@
     "slug": "rice-a-roni-dinner-classics-10",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "stacked",
+    "deal_badge": "10% COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "The posted deal combined a 10% first-order coupon with Subscribe & Save. Confirm both options appear at checkout."
   },
   {
     "week": "2026-11-09",
@@ -53,7 +62,10 @@
     "slug": "strong-heart-chopped-beef-12",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "The posted deal combined a first-order coupon with Subscribe & Save. Confirm both options appear for your account."
   },
   {
     "week": "2026-11-09",
@@ -151,7 +163,10 @@
     "slug": "campbells-cream-mushroom-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "10% COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "The posted deal combined a 10% first-order coupon with Subscribe & Save. Confirm both options appear for your account."
   },
   {
     "week": "2026-11-09",
@@ -473,7 +488,10 @@
     "slug": "oral-b-essential-clean-soft",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "walmart-rewards",
+    "deal_badge": "BUY 2 • GET $4 REWARDS CASH",
+    "deal_info": "The posted offer was buy 2 Oral-B Essential Clean soft toothbrushes and get $4 Walmart Rewards Cash. Check that the offer is active in your account."
   },
   {
     "week": "2026-11-09",
@@ -585,7 +603,10 @@
     "slug": "campbells-cream-mushroom-12-nov8",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "15% COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "The posted deal combined a 15% coupon with Subscribe & Save. Confirm both options appear for your account."
   },
   {
     "week": "2026-11-02",
@@ -599,7 +620,10 @@
     "slug": "welchs-fruit-snacks-60",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "discount",
+    "deal_badge": "$4 LISTING DISCOUNT",
+    "deal_info": "A $4 Amazon listing discount was shown when this deal was posted. Verify that it still appears before checkout."
   },
   {
     "week": "2026-11-02",
@@ -711,7 +735,10 @@
     "slug": "campbells-cream-chicken-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option; verify both are available before checkout."
   },
   {
     "week": "2026-11-09",
@@ -820,8 +847,8 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "promotion",
-    "deal_badge": "SELECT ITEMS ONLY",
-    "deal_info": "Check the Amazon offer page for eligible items. Look for a coupon and Subscribe & Save if offered."
+    "deal_badge": "STOCK UP & SAVE • 5 OFF 25",
+    "deal_info": "The offer applies to participating items. Check the offer page to confirm which products qualify."
   },
   {
     "week": "2026-11-02",
