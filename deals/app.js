@@ -6,9 +6,11 @@ const weekPanel = document.querySelector("#weeks");
 const count = document.querySelector("#result-count");
 const buttons = [...document.querySelectorAll("[data-store]")];
 const categoryFilter = document.querySelector("#category-filter");
+const searchInput = document.querySelector("#deal-search");
 const toolbar = document.querySelector(".toolbar");
 const dateFormat = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 let store = "all";
+let searchTerm = "";
 let deals = [];
 
 function element(tag, className, content) {
@@ -16,6 +18,10 @@ function element(tag, className, content) {
   if (className) node.className = className;
   if (content) node.textContent = content;
   return node;
+}
+
+function normalizeSearchText(value) {
+  return String(value || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 function weekLabel(isoDate) {
@@ -80,7 +86,8 @@ function dealCard(deal) {
 function render() {
   const visibleDeals = deals.filter(deal =>
     (store === "all" || store === deal.retailer) &&
-    (!categoryFilter.value || categoryFilter.value === deal.category)
+    (!categoryFilter.value || categoryFilter.value === deal.category) &&
+    (!searchTerm || normalizeSearchText([deal.title, deal.retailer, deal.category, deal.note, deal.slug, ...(deal.search_terms || [])].join(" ")).includes(searchTerm))
   );
   const weeks = [...new Set(visibleDeals.map(deal => deal.week))].sort().reverse();
   count.textContent = visibleDeals.length + (visibleDeals.length === 1 ? " deal" : " deals");
@@ -159,6 +166,10 @@ for (const category of categories) {
   categoryFilter.add(new Option(category, category));
 }
 categoryFilter.addEventListener("change", applyFilters);
+searchInput.addEventListener("input", () => {
+  searchTerm = normalizeSearchText(searchInput.value);
+  applyFilters();
+});
 buttons.forEach(button => button.addEventListener("click", () => {
   store = button.dataset.store;
   applyFilters();

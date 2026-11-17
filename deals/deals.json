@@ -728,18 +728,24 @@
     "affiliate": true
   },
   {
-    "week": "2026-11-09",
+    "week": "2026-11-16",
     "retailer": "Sam’s Club",
     "category": "Pantry Food",
     "title": "GoGo squeeZ SlymeZ Halloween Variety Pack",
     "size": "18 pouches · 3.5 oz each",
     "note": "Clearance deal shown in the Facebook post. Check local club stock and current price.",
-    "image": "",
+    "image": "assets/gogo-squeez-slymez-clearance.webp",
     "url": "https://samsclub.co/4iN5CLs",
     "slug": "gogo-squeez-slymez-18",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "search_terms": [
+      "sams",
+      "sam's club",
+      "sam’s club",
+      "clearance"
+    ]
   },
   {
     "week": "2026-11-09",
