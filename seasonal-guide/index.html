@@ -400,78 +400,82 @@
       background: #1e293b;
     }
 
-    /* Mobile Responsive Layout - Keeps Each Banner Above Its Own List */
+    /* Bulletproof Mobile Responsive Layout - Explicit Row Ordering */
     @media (max-width: 780px) {
       .season-section {
-        display: flex;
-        flex-direction: column;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+      }
+
+      .season-title-bar {
+        grid-row: 1;
       }
 
       .split-banner,
       .unified-columns {
-        display: contents;
+        display: contents !important;
       }
 
-      /* Order 1: Skip Banner */
+      /* Row 2: Skip Banner */
       .banner-side.left {
-        order: 1;
-        padding: 0.85rem 1rem;
+        grid-row: 2 !important;
+        padding: 0.9rem 1rem;
         color: #ffffff;
         border-top: 2px solid rgba(255, 255, 255, 0.25);
         border-bottom: 2px solid rgba(255, 255, 255, 0.25);
       }
 
       .freezing-banner .banner-side.left {
-        background: linear-gradient(90deg, #1e3a8a 0%, #991b1b 100%);
+        background: linear-gradient(90deg, #1e3a8a 0%, #991b1b 100%) !important;
       }
 
       .heat-banner .banner-side.left {
-        background: linear-gradient(90deg, #7f1d1d 0%, #b91c1c 100%);
+        background: linear-gradient(90deg, #7f1d1d 0%, #b91c1c 100%) !important;
       }
 
-      /* Order 2: Skip Item List */
+      /* Row 3: Skip Items List */
       .unified-columns > .column-stack:first-child {
-        order: 2;
+        grid-row: 3 !important;
         padding: 1rem;
       }
 
       .freezing-body > .column-stack:first-child {
-        background: linear-gradient(180deg, #1e3a8a 0%, #991b1b 100%);
+        background: linear-gradient(180deg, #1e3a8a 0%, #991b1b 100%) !important;
       }
 
       .heat-body > .column-stack:first-child {
-        background: linear-gradient(180deg, #7f1d1d 0%, #b91c1c 100%);
+        background: linear-gradient(180deg, #7f1d1d 0%, #b91c1c 100%) !important;
       }
 
-      /* Order 3: Give Banner */
+      /* Row 4: Give Banner */
       .banner-side.right {
-        order: 3;
-        padding: 0.85rem 1rem;
+        grid-row: 4 !important;
+        padding: 0.9rem 1rem;
         color: #ffffff;
         border-top: 2px solid rgba(255, 255, 255, 0.35);
         border-bottom: 2px solid rgba(255, 255, 255, 0.25);
       }
 
       .freezing-banner .banner-side.right {
-        background: linear-gradient(90deg, #15803d 0%, #ca8a04 100%);
+        background: linear-gradient(90deg, #15803d 0%, #ca8a04 100%) !important;
       }
 
       .heat-banner .banner-side.right {
-        background: linear-gradient(90deg, #15803d 0%, #eab308 100%);
+        background: linear-gradient(90deg, #15803d 0%, #eab308 100%) !important;
       }
 
-      /* Order 4: Give Item List */
+      /* Row 5: Give Items List */
       .unified-columns > .column-stack:last-child {
-        order: 4;
+        grid-row: 5 !important;
         padding: 1rem;
       }
 
       .freezing-body > .column-stack:last-child {
-        background: linear-gradient(180deg, #15803d 0%, #ca8a04 100%);
+        background: linear-gradient(180deg, #15803d 0%, #ca8a04 100%) !important;
       }
 
       .heat-body > .column-stack:last-child {
-        background: linear-gradient(180deg, #15803d 0%, #eab308 100%);
+        background: linear-gradient(180deg, #15803d 0%, #eab308 100%) !important;
       }
 
       /* Black & White Mode Override on Mobile */
@@ -488,7 +492,7 @@
       }
 
       .rules-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
       }
     }
 
