@@ -782,5 +782,47 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Amazon",
+    "category": "Pets",
+    "title": "A Strong Heart Adult Cat Pâté, Mixed Grill Dinner",
+    "size": "12 cans · 13.2 oz each",
+    "note": "Shown in the Facebook deal graphic. Check current price and availability.",
+    "image": "https://strongheartpetfood.com/cdn/shop/files/Slide1-ASH_13.2ozCatCanLabel_MixedGrillDinner_1520030014_V3_1800x1800.jpg?v=1738167727",
+    "url": "https://link.amazon/B0gMw4rof",
+    "slug": "strong-heart-mixed-grill-pate-12",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Amazon",
+    "category": "Pets",
+    "title": "A Strong Heart Adult Cat Pâté, Special Supper Dinner",
+    "size": "12 cans · 13.2 oz each",
+    "note": "Turkey, ocean whitefish, liver and heart. Check current price and availability.",
+    "image": "https://strongheartpetfood.com/cdn/shop/files/Slide1-ASH_13.2ozCatCanLabel_SpecialSupperDinner_152003012_V4.jpg?v=1738167423&width=1080",
+    "url": "https://link.amazon/B0aYpQLET",
+    "slug": "strong-heart-special-supper-pate-12",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Amazon",
+    "category": "Pets",
+    "title": "A Strong Heart Adult Cat Pâté, Liver & Chicken Dinner",
+    "size": "12 cans · 13.2 oz each",
+    "note": "A separate flavor linked in the Facebook post. Check current price and availability.",
+    "image": "https://strongheartpetfood.com/cdn/shop/files/Slide1-ASH_13.2ozCatCanLabel_LiverandChickenDinner_1520030016_V3_1800x1800.jpg?v=1738167827",
+    "url": "https://link.amazon/B0bDGmvSu",
+    "slug": "strong-heart-liver-chicken-pate-12",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
   }
 ]
