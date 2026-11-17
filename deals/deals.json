@@ -838,5 +838,19 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Amazon Grocery 100% Pumpkin",
+    "size": "15 oz can",
+    "note": "Single can shown in the Facebook deal post. Check current price and availability.",
+    "image": "https://m.media-amazon.com/images/I/419Aek1xFqL.jpg",
+    "url": "https://link.amazon/B02RJfSzX",
+    "slug": "amazon-grocery-pumpkin-15oz",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
   }
 ]
