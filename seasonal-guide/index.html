@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seasonal Giving Guide (Outdoor Pantries) | Pantry Peeps</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K5XGZSQT');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFGDBP6X70"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YFGDBP6X70');
+  </script>
+
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --card-surface: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(15, 23, 42, 0.14);
+      --alert-bg: #fef9c3;
+      --alert-border: #eab308;
+      --alert-text: #713f12;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 1.25rem 1rem 4rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Top Print Controls */
+    .print-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-print {
+      appearance: none;
+      border: 2px solid #0f172a;
+      border-radius: 999px;
+      padding: 0.5rem 1.05rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.14);
+    }
+
+    .btn-color {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .btn-bw {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    /* Header & Intro */
+    .page-header {
+      text-align: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      line-height: 1.15;
+    }
+
+    .intro-text {
+      max-width: 860px;
+      margin: 0.75rem auto 1.25rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Weather Alert Banner */
+    .weather-alert {
+      background: var(--alert-bg);
+      border: 2px solid var(--alert-border);
+      border-left-width: 8px;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+      color: var(--alert-text);
+      font-size: 1.02rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(234, 179, 8, 0.14);
+    }
+
+    .weather-alert strong {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    /* Season Section Wrapper */
+    .season-section {
+      margin-bottom: 2.25rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+      border: 2px solid rgba(15, 23, 42, 0.12);
+    }
+
+    /* Season Title Bar */
+    .season-title-bar {
+      padding: 1rem 1.25rem;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .season-title-bar.freezing-header {
+      background: linear-gradient(90deg, #1e3a8a 0%, #1d4ed8 50%, #0369a1 100%);
+    }
+
+    .season-title-bar.heat-header {
+      background: linear-gradient(90deg, #b45309 0%, #d97706 50%, #ea580c 100%);
+    }
+
+    .season-title-bar h2 {
+      font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+      font-weight: 900;
+      letter-spacing: 0.01em;
+    }
+
+    /* Thin Flush Skip / Give Banner - Centered 50% Gradient */
+    .split-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0.85rem 1.25rem;
+      color: #ffffff;
+      border-top: 2px solid rgba(255, 255, 255, 0.25);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .split-banner.freezing-banner {
+      background: linear-gradient(
+        90deg,
+        #1e3a8a 0%,
+        #991b1b 38%,
+        #991b1b 45%,
+        #15803d 55%,
+        #16a34a 78%,
+        #ca8a04 100%
+      );
+    }
+
+    .split-banner.heat-banner {
+      background: linear-gradient(
+        90deg,
+        #7f1d1d 0%,
+        #b91c1c 38%,
+        #b91c1c 45%,
+        #15803d 55%,
+        #16a34a 78%,
+        #eab308 100%
+      );
+    }
+
+    .banner-side {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .banner-side.left {
+      padding-right: 1.25rem;
+    }
+
+    .banner-side.right {
+      padding-left: 1.25rem;
+    }
+
+    .banner-label {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 900;
+      font-style: italic;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Unified Two-Column Gradient Body - Centered at 50% */
+    .unified-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem;
+    }
+
+    .unified-columns.freezing-body {
+      background: linear-gradient(
+        90deg,
+        #1e3a8a 0%,
+        #991b1b 38%,
+        #991b1b 45%,
+        #15803d 55%,
+        #16a34a 78%,
+        #ca8a04 100%
+      );
+    }
+
+    .unified-columns.heat-body {
+      background: linear-gradient(
+        90deg,
+        #7f1d1d 0%,
+        #b91c1c 38%,
+        #b91c1c 45%,
+        #15803d 55%,
+        #16a34a 78%,
+        #eab308 100%
+      );
+    }
+
+    .column-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .item-card {
+      background: var(--card-surface);
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .item-title {
+      display: block;
+      font-size: 1.03rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.2rem;
+    }
+
+    .item-desc {
+      font-size: 0.96rem;
+      color: #1e293b;
+    }
+
+    .why-card {
+      background: #fff1f2;
+      border: 2px solid #be123c;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      color: #881337;
+      font-size: 0.96rem;
+    }
+
+    .why-card strong {
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    /* Quick Weather Rules */
+    .rules-section {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .rules-heading {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.15rem;
+    }
+
+    .rule-card {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-top: 6px solid #0f172a;
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
+    .rule-card h3 {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: 0.45rem;
+    }
+
+    .rule-card p {
+      font-size: 0.98rem;
+      color: #334155;
+    }
+
+    /* Bottom Steward Callout */
+    .steward-footer {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      border-radius: 14px;
+      margin-top: 1.5rem;
+    }
+
+    .steward-footer p {
+      font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    /* Floating Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      background: #0f172a;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+      border-radius: 999px;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: #1e293b;
+    }
+
+    /* Mobile Responsive Layout */
+    @media (max-width: 780px) {
+      .split-banner {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .banner-side.left,
+      .banner-side.right {
+        padding: 0.25rem 0.25rem;
+      }
+
+      .split-banner.freezing-banner,
+      .unified-columns.freezing-body {
+        background: linear-gradient(
+          180deg,
+          #1e3a8a 0%,
+          #991b1b 45%,
+          #15803d 55%,
+          #ca8a04 100%
+        );
+      }
+
+      .split-banner.heat-banner,
+      .unified-columns.heat-body {
+        background: linear-gradient(
+          180deg,
+          #7f1d1d 0%,
+          #b91c1c 45%,
+          #15803d 55%,
+          #eab308 100%
+        );
+      }
+
+      .unified-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Black & White Print Mode Class */
+    body.bw-print-mode {
+      background: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    body.bw-print-mode .season-section,
+    body.bw-print-mode .weather-alert,
+    body.bw-print-mode .rule-card,
+    body.bw-print-mode .item-card,
+    body.bw-print-mode .why-card,
+    body.bw-print-mode .steward-footer {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #000000 !important;
+      box-shadow: none !important;
+    }
+
+    body.bw-print-mode .season-title-bar,
+    body.bw-print-mode .split-banner {
+      background: #f1f5f9 !important;
+      color: #000000 !important;
+      border-bottom: 2px solid #000000 !important;
+    }
+
+    body.bw-print-mode .banner-label {
+      text-shadow: none !important;
+      color: #000000 !important;
+    }
+
+    body.bw-print-mode .status-pill {
+      background: #000000 !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    body.bw-print-mode .unified-columns {
+      background: #ffffff !important;
+    }
+
+    body.bw-print-mode .item-title,
+    body.bw-print-mode .item-desc,
+    body.bw-print-mode .why-card,
+    body.bw-print-mode .rule-card h3,
+    body.bw-print-mode .rule-card p,
+    body.bw-print-mode .steward-footer p,
+    body.bw-print-mode .intro-text {
+      color: #000000 !important;
+    }
+
+
+    /* Site navigation and footer */
+    .site-masthead,
+    .site-footer {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .site-masthead {
+      max-width: 1080px;
+      margin: 0 auto 1rem;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: #0f172a;
+      color: #ffffff;
+      border-bottom: 4px solid #00c9e8;
+      border-radius: 10px;
+    }
+
+    .site-masthead a,
+    .site-footer a {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .site-footer {
+      max-width: 1080px;
+      margin: 1rem auto 0;
+      padding: 1rem;
+      background: #0f172a;
+      color: #ffffff;
+      text-align: center;
+      border-top: 4px solid #00c9e8;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .site-masthead {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* Print Media Rules */
+    @media print {
+      @page {
+        margin: 0.4in;
+      }
+
+      body {
+        padding: 0;
+        background: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .no-print,
+      .print-toolbar,
+      .back-to-top {
+        display: none !important;
+      }
+
+      .season-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        margin-bottom: 1.25rem;
+      }
+
+      .rules-section,
+      .steward-footer {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5XGZSQT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header class="site-masthead no-print">
+    <a href="/" aria-label="Pantry Peeps home">Pantry Peeps</a>
+    <a href="/deals/">Browse deals</a>
+  </header>
+  <div class="container" id="top">
+    <!-- Top Print Toolbar -->
+    <div class="print-toolbar no-print">
+      <button type="button" class="btn-print btn-color" onclick="printColor()">
+        🖨️ Print Color
+      </button>
+      <button type="button" class="btn-print btn-bw" onclick="printBlackAndWhite()">
+        📄 Print Black &amp; White (Pantry Door)
+      </button>
+    </div>
+
+    <!-- Page Title -->
+    <header class="page-header">
+      <h1>Seasonal Giving Guide (Outdoor Pantries)</h1>
+      <p class="intro-text">
+        Most Little Free Pantries sit outdoors, fully exposed to the elements. This guide is specifically for those outdoor boxes—not climate-controlled indoor 24/7/365 pantries, which can safely hold all shelf-stable items year-round.
+      </p>
+    </header>
+
+    <!-- Weather Check Alert -->
+    <div class="weather-alert" role="alert">
+      <strong>Check the weather in your area before leaving anything.</strong> Do not assume that items will go fast and beat an incoming storm. If freezing temps are happening in the next 24–48 hours, skipping the following items can really help the pantry stewards—less mess is less work and less wasted food.
+    </div>
+
+    <!-- SECTION 1: FREEZING WEATHER -->
+    <section class="season-section" aria-labelledby="freezing-heading">
+      <div class="season-title-bar freezing-header">
+        <h2 id="freezing-heading">❄️ Freezing Weather (Below 32°F)</h2>
+      </div>
+
+      <div class="split-banner freezing-banner">
+        <div class="banner-side left">
+          <span class="banner-label">Please skip the following items:</span>
+          <span class="status-pill">Cold &amp; Stop</span>
+        </div>
+        <div class="banner-side right">
+          <span class="banner-label">Please consider donating these instead:</span>
+          <span class="status-pill">Go &amp; Stock</span>
+        </div>
+      </div>
+
+      <div class="unified-columns freezing-body">
+        <!-- Left Column: Skip -->
+        <div class="column-stack">
+          <div class="item-card">
+            <span class="item-title">Glass Jars:</span>
+            <p class="item-desc">Pasta sauce, salsa, jelly, baby food, peanut butter.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Canned Goods &amp; Liquids:</span>
+            <p class="item-desc">Soups, canned veggies, bottled water, juice boxes, broth.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Wet Squeeze Pouches:</span>
+            <p class="item-desc">Applesauce, fruit, or watery baby food pouches.</p>
+          </div>
+
+          <div class="why-card">
+            <strong>Why:</strong> Glass jars crack and shatter, cans burst, plastic bottles split, and wet pouch seams rupture when frozen—creating dangerous broken glass and spoiled, ruined food inside the box.
+          </div>
+        </div>
+
+        <!-- Right Column: Give -->
+        <div class="column-stack">
+          <div class="item-card">
+            <span class="item-title">Dry Pantry Staples:</span>
+            <p class="item-desc">Pasta, rice, instant mashed potatoes, dry soup mixes, stuffing, dried beans.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Low-Moisture Pouch Foods:</span>
+            <p class="item-desc">Microwave rice pouches, pouch refried beans, seasoned grain pouches, tuna/chicken foil pouches.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Baby &amp; Toddler:</span>
+            <p class="item-desc">Powdered infant formula, dry baby cereal, teething biscuits, puffs.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Breakfast:</span>
+            <p class="item-desc">Oatmeal packets, just-add-water pancake mix, grits, cereal, Pop-Tarts, powdered eggs.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Snacks &amp; Desserts:</span>
+            <p class="item-desc">Crackers, cookies, chips, pretzels, nuts, trail mix, granola bars, dehydrated fruits/vegetables, popcorn, shelf-stable baked goods, Jell-O/pudding packets.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Proteins &amp; Spreads:</span>
+            <p class="item-desc">Peanut butter or sunflower butter in plastic jars, beef jerky, bacon bits, shelf-stable sausage.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Drinks &amp; Mixes:</span>
+            <p class="item-desc">Shelf-stable powdered milk, hot cocoa packets, powdered iced tea, Tang, Kool-Aid, lemonade mix, water enhancer packets.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Winter Warmth:</span>
+            <p class="item-desc">Hand warmers, thermal socks, fleece gloves, hats, lip balm, travel tissues.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: EXTREME SUMMER HEAT -->
+    <section class="season-section" aria-labelledby="heat-heading">
+      <div class="season-title-bar heat-header">
+        <h2 id="heat-heading">☀️ Extreme Heat (85°F+ / Direct Sun)</h2>
+      </div>
+
+      <div class="split-banner heat-banner">
+        <div class="banner-side left">
+          <span class="banner-label">Please skip the following items:</span>
+          <span class="status-pill">Heat &amp; Stop</span>
+        </div>
+        <div class="banner-side right">
+          <span class="banner-label">Please consider donating these instead:</span>
+          <span class="status-pill">Go &amp; Stock</span>
+        </div>
+      </div>
+
+      <div class="unified-columns heat-body">
+        <!-- Left Column: Skip -->
+        <div class="column-stack">
+          <div class="item-card">
+            <span class="item-title">Meltable Treats &amp; Sweets:</span>
+            <p class="item-desc">Chocolate, chocolate chips, gummies, marshmallows, suckers, hard candy, Little Debbie style pastry treats, and frosted bars.</p>
+          </div>
+
+          <div class="why-card">
+            <strong>Why:</strong> Enclosed outdoor pantry boxes trap heat like a parked car—meltables liquefy, stick to neighboring donations, and attract ants and wasps.
+          </div>
+        </div>
+
+        <!-- Right Column: Give -->
+        <div class="column-stack">
+          <div class="item-card">
+            <span class="item-title">Heat-Safe Snacks:</span>
+            <p class="item-desc">Pretzels, Goldfish, crackers, trail mix, nuts, dried fruit, and fruit cups.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Warm-Weather Canned Goods &amp; Liquids:</span>
+            <p class="item-desc">Pop-top soups, canned veggies, pasta sauce in plastic jars, applesauce pouches, and canned meals.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Warm-Weather Drinks:</span>
+            <p class="item-desc">Bottled water, sports drinks, juice boxes, and shelf-stable drink pouches.</p>
+          </div>
+
+          <div class="item-card">
+            <span class="item-title">Warm-Weather Extras:</span>
+            <p class="item-desc">Sunscreen packets, SPF lip balm, bug spray wipes, baseball cap, sun hat, bandana, and sunglasses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Weather Rules -->
+    <section class="rules-section" aria-labelledby="rules-heading">
+      <h2 class="rules-heading" id="rules-heading">Quick Weather Rules</h2>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h3>When in doubt,<br />leave it out:</h3>
+          <p>Factory-sealed, shelf-stable, and unexpired items only—skip anything questionable for the current forecast.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>Plastic, pouches, and cans<br />over glass no matter what month:</h3>
+          <p>Glass shatters in freezing temps and breaks easily if dropped on concrete year-round.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Steward Callout -->
+    <footer class="steward-footer">
+      <p>
+        Following these guides can and will help Pantry Stewards.<br />
+        Less Mess, Less Work, Less Wasted food.
+      </p>
+    </footer>
+  </div>
+
+  <footer class="site-footer no-print">
+    <a href="/privacy/">Privacy Policy</a>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="back-to-top no-print" id="backToTopBtn" onclick="scrollToTop()" aria-label="Back to top">
+    ↑ Top
+  </button>
+
+  <script>
+    function printColor() {
+      document.body.classList.remove("bw-print-mode");
+      window.print();
+    }
+
+    function printBlackAndWhite() {
+      document.body.classList.add("bw-print-mode");
+      window.print();
+    }
+
+    window.addEventListener("afterprint", function () {
+      document.body.classList.remove("bw-print-mode");
+    });
+
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
