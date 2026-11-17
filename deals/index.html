@@ -81,11 +81,11 @@
 <script>
 (()=>{
  const apps=[
-  {name:'Ibotta',code:'jshatux',url:'https://ibotta.onelink.me/iUfE/8cc13c64?friend_code=jshatux',note:'Referral link applies your code.',hasCode:true},
-  {name:'Fetch',code:'J6GNX',url:'https://fetch.com/referral',note:'Enter the code before your first receipt if it is not applied automatically.',hasCode:true},
-  {name:'Receipt Hog',code:'kon91426',url:'https://www.receipthog.com/',note:'Enter the code when joining or in the app referral area.',hasCode:true},
-  {name:'Upside',code:'MJ4484',url:'https://www.upside.com/',note:'Enter the invite code before claiming your first offer.',hasCode:true},
-  {name:'Checkout 51',code:'',url:'https://www.checkout51.com/',note:'No referral code; browse current cash-back offers.',hasCode:false}
+  {name:'Ibotta',code:'jshatux',url:'https://ibotta.onelink.me/iUfE/8cc13c64?friend_code=jshatux',note:'Cash back on everyday grocery & household items.',hasCode:true},
+  {name:'Fetch',code:'J6GNX',url:'https://fetch.com/referral',note:'Snap any receipt from any store for gift card points.',hasCode:true},
+  {name:'Receipt Hog',code:'kon91426',url:'https://www.receipthog.com/',note:'Earn coins and spins from every paper or digital receipt.',hasCode:true},
+  {name:'Upside',code:'MJ4484',url:'https://www.upside.com/',note:'Instant cash back on gas, groceries, and restaurants.',hasCode:true},
+  {name:'Checkout 51',code:'',url:'https://www.checkout51.com/',note:'Weekly cash-back offers on groceries and gas.',hasCode:false}
  ];
  const host=document.querySelector('#referral-apps');
  for(const app of apps){
@@ -94,7 +94,7 @@
   const qrLink=document.createElement('a');qrLink.className='qr-tap';qrLink.href=app.url;qrLink.target='_blank';qrLink.rel='noopener';qrLink.setAttribute('aria-label','Open '+app.name+(app.hasCode?' with referral code '+app.code:''));
   qrLink.innerHTML='<svg class="qr-svg" viewBox="0 0 180 180" role="img" aria-label="QR code for '+app.name+'"><image href="'+qrUrl+'" width="180" height="180"/></svg><span>Tap or scan</span>';
   const copy=app.hasCode?'<button class="copy-referral" type="button" data-copy="'+app.code+'">Copy Code</button>':'';
-  card.innerHTML='<div class="app-copy"><a class="app-details" href="'+app.url+'" target="_blank" rel="noopener"><h3>'+app.name+'</h3><p>'+app.note+'</p>'+(app.hasCode?'<p class="app-code">Code: <strong>'+app.code+'</strong></p>':'<p class="app-code">Cash-back offers</p>')+'</a>'+copy+'</div>';
+  card.innerHTML='<div class="app-copy"><a class="app-details" href="'+app.url+'" target="_blank" rel="noopener"><h3>'+app.name+'</h3><p class="app-description">'+app.note+'</p>'+(app.hasCode?'<p class="app-code">Code: <strong>'+app.code+'</strong></p>':'<p class="app-code">Cash-back offers</p>')+'</a>'+copy+'</div>';
   card.append(qrLink);host.append(card);
  }
  const dlg=document.querySelector('#referral-modal'),opener=document.querySelector('#open-referral-modal'),close=dlg.querySelector('.dialog-close');
