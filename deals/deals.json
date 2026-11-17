@@ -607,7 +607,10 @@
     "slug": "black-knit-winter-gloves-6",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "discount",
+    "deal_badge": "LIMITED-TIME PRICE DROP",
+    "deal_info": "A limited-time listing price was shown when posted. Check the listing for current pricing."
   },
   {
     "week": "2026-11-09",
@@ -635,7 +638,10 @@
     "slug": "jergens-ultra-healing-lotion-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save was shown for this item. Check the product page for current availability."
   },
   {
     "week": "2026-11-09",
@@ -717,7 +723,10 @@
     "slug": "campbells-condensed-tomato-soup-24",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-02",
@@ -873,7 +882,10 @@
     "slug": "campbells-cream-mushroom-2-pack",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is required for the posted offer. Check current availability on the product page."
   },
   {
     "week": "2026-11-09",
