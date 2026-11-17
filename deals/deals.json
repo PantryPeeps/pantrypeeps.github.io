@@ -740,5 +740,33 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Walmart",
+    "category": "Pet Food",
+    "title": "Iams Proactive Health Healthy Weight Chicken Dry Cat Food",
+    "size": "4 bags · 3.5 lb each",
+    "note": "Four-bag bundle shown in the Facebook deal post. Check current price and availability before ordering.",
+    "image": "",
+    "url": "https://walmrt.us/3WF5DK7",
+    "slug": "iams-healthy-weight-cat-food-4",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true
+  },
+  {
+    "week": "2026-11-09",
+    "retailer": "Sam’s Club",
+    "category": "Pantry Food",
+    "title": "GoGo squeeZ SlymeZ Halloween Variety Pack",
+    "size": "18 pouches · 3.5 oz each",
+    "note": "Clearance deal shown in the Facebook post. Check local club stock and current price.",
+    "image": "",
+    "url": "https://samsclub.co/4iN5CLs",
+    "slug": "gogo-squeez-slymez-18",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true
   }
 ]
