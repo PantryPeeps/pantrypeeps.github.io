@@ -742,7 +742,7 @@
     "affiliate": true
   },
   {
-    "week": "2026-11-02",
+    "week": "2026-11-09",
     "retailer": "Amazon",
     "category": "Pantry Food",
     "title": "Campbell’s Condensed Cream of Mushroom Soup, 2-Pack",
@@ -798,12 +798,12 @@
     "price_updated_at": null
   },
   {
-    "week": "2026-11-16",
+    "week": "2026-11-02",
     "retailer": "Amazon",
     "category": "Pantry Food",
     "title": "Campbell’s Stock Up and Save Sale",
-    "size": "Multiple eligible soup varieties",
-    "note": "Browse eligible Campbell’s condensed soups, including Cream of Mushroom, Cream of Chicken, and Tomato. Product selection and offer terms can change; check Amazon for current details.",
+    "size": "Select grocery items",
+    "note": "Examples include soup, canned pasta, V8, and Swanson chicken. Amazon’s offer page shows which items qualify for your account.",
     "image": "",
     "url": "https://link.amazon/B0cB4Y0o7",
     "slug": "campbells-chunky-soup-promo-17",
@@ -812,16 +812,20 @@
     "price_updated_at": null,
     "choice_images": [
       {
-        "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Cream-of-Mushroom-Soup-10-5-Ounce-Cans-Pack-of-12_0bf82359-3eab-44f1-90ab-2dbaceb51861.0fe1865783149ff867e6225b08a67299.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
-        "alt": "Campbell’s Cream of Mushroom Soup, 12 cans"
+        "image": "https://i5.walmartimages.com/seo/Campbell-Condensed-Cream-of-Mushroom-Soup-10-5-oz-Can-2-Pack_2be2e0cd-4a33-45d1-9c2e-f65da665f378.12f9cec6ec69118091b8e2905b70eb5d.png",
+        "alt": "Cream of Mushroom 2-pack"
       },
       {
-        "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Gluten-SCH4-nbsp-Free-Cream-of-Chicken-Soup-10-5-oz-Can-12-Pack_fe61a0e6-cf72-41c8-9e03-ea51627b542b.e08b6e7b447566fa732aea670da773d0.jpeg",
-        "alt": "Campbell’s Cream of Chicken Soup, 12 cans"
+        "image": "https://images.cdn.smartandfinal.com/zoom/39b95003-3720-4569-894a-84a106dc374c.jpeg",
+        "alt": "SpaghettiOs pasta"
       },
       {
-        "image": "https://catalog-assets-us-east4.msg-boxed-prod.e.spresso.com/Y2F0YWxvZy1hc3NldHMtdXMtZWFzdDQubXNnLWJveGVkLXByb2QuZS5zcHJlc3NvLmNvbQ%3D%3D/WTJGMFlXeHZaeTFoYzNObGRITXRkWE10WldGemREUXViWE5uTFdKdmVHVmtMWEJ5YjJRdVpTNXpjSEpsYzNOdkxtTnZiUT09/V1RKR01GbFhlSFphZVRGb1l6Tk9iR1JJVFhSa1dFMTBXbGRHZW1SRVVYVmlXRTV1VEZkS2RtVkhWbXRNV0VKNVlqSlJkVnBUTlhwalNFcHNZek5PZGt4dFRuWmlVVDA5/VjFSS1IwMUdiRmhsU0ZwaFpWUkdiMWw2VGs5aVIxSkpWRmhTYTFkRk1UQlhiR1JIWlcxU1JWVllWbWxYUlRWMVZFWmtTMlJ0VmtoV2JYUk5WMFZLTlZscVNsSmtWbkJVVGxod2FsTkZjSE5aZWs1UFpHdDRkRlJ1V21sVlZEQTU%3D/VmpGamVHUXlWbkpsU0ZaVllsaENhRlp1Y0Zkak1WSjFZWHBHYUdKVmJEVlVWVkYzVUZFOVBRPT0%3D/VjFaYWIxUnNRbEpRVkRBOQ%3D%3D/VjFaYWFtVkhSa2RpTTJ4WFZrUkJPUT09/VmpGamVHUXlWbTVRVkRBOQ%3D%3D/VmtSQ1UxSnJOVlpOVlVwUlZrUkJPUT09",
-        "alt": "Campbell’s Tomato Soup, 12 cans"
+        "image": "https://images.salsify.com/image/upload/s--9FqBdigp--/h_700%2Cw_700%2Cc_fit%2Cfl_keep_iptc.clip%2Cg_center/vmauk6hjq6kitiis9pp5.png",
+        "alt": "V8 Low Sodium"
+      },
+      {
+        "image": "https://i5.walmartimages.com/seo/Swanson-White-Premium-Chunk-Canned-Chicken-Breast-in-Water-Fully-Cooked-Chicken-4-5-oz-Can_ac405599-ae8a-43a4-9dc8-0caab165a22b.c505127b76e16974c9b54b06fb32ec3e.jpeg",
+        "alt": "Swanson canned chicken"
       }
     ]
   },
