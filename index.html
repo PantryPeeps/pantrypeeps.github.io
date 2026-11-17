@@ -1,66 +1,559 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Pantry Peeps: budget grocery deals, pantry resources, recipes, and ways to give across Western New York.">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K5XGZSQT');</script>
-  <!-- End Google Tag Manager -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFGDBP6X70"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YFGDBP6X70');</script>
-  <title>Pantry Peeps | Stretch your budget. Fill a pantry. Feed a community.</title>
-  <link rel="stylesheet" href="/assets/nav.css?v=20261117-6">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pantry Peeps | 716 Little Free Pantry Coalition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/nav.css" />
   <style>
-  :root{--ink:#101e28;--cyan:#00cced;--yellow:#ffeb26;--paper:#f3f7f8;--muted:#425663;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper)}*{box-sizing:border-box}body{margin:0}.home-banner{min-height:178px;background:#00b9c9;display:grid;place-items:center;padding:16px 20px}.pantry-outline{width:min(100%,900px);height:auto;max-height:170px}.pantry-outline path,.pantry-outline rect,.pantry-outline line{fill:none;stroke:#ffeb26;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.pantry-outline text{fill:#ffeb26;font-weight:900;font-family:Inter,system-ui,sans-serif;text-anchor:middle}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.hubs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px 16px;padding:16px 0 24px}.hub-card{position:relative;color:var(--ink);text-decoration:none;text-align:center;display:flex;flex-direction:column;align-items:center;min-width:0;padding:4px 5px 8px;border-radius:12px}.hub-card:focus-visible{outline:3px solid #007f99;outline-offset:2px}.hub-card img{width:clamp(78px,9vw,112px);aspect-ratio:1;object-fit:cover;border-radius:50%;display:block;filter:none}.hub-title{font-size:.95rem;font-weight:850;line-height:1.15;margin:7px 0 0}.hub-description{margin:6px 0 0;color:var(--muted);font-size:.82rem;line-height:1.35}@media(min-width:781px) and (hover:hover){.hub-description{position:absolute;left:50%;top:45%;transform:translate(-50%,0);width:min(260px,90vw);background:var(--ink);color:white;padding:10px 12px;border-radius:9px;opacity:0;visibility:hidden;z-index:2;box-shadow:0 7px 18px #0004}.hub-card:hover .hub-description,.hub-card:focus-visible .hub-description{opacity:1;visibility:visible}.hub-card:hover .hub-title,.hub-card:focus-visible .hub-title{color:#00647a}}@media(max-width:780px){.home-banner{min-height:130px;padding:12px}.pantry-outline{max-height:120px}.hubs{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 12px;padding:14px 0 24px}.hub-card{padding:6px 7px 10px}.hub-card img{width:min(100%,138px)}.hub-title{font-size:.98rem}.hub-description{font-size:.82rem}}@media(max-width:360px){.hub-card img{width:min(100%,120px)}.hub-title{font-size:.91rem}.hub-description{font-size:.76rem}}
-  .home-banner{min-height:190px;padding:10px 16px;background:#00b9c9}.pantry-mark{position:relative;width:min(100%,900px);aspect-ratio:900/240;display:grid;place-items:center}.pantry-outline{position:absolute;inset:0;width:100%;height:100%;max-height:none}.pantry-outline path{fill:none;stroke:#ffeb26;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}.pantry-mark-copy{position:absolute;inset:31% 18% 22%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#ffeb26;font-weight:900;line-height:1.08}.pantry-name{font-size:clamp(1.35rem,3.2vw,2rem)}.pantry-tagline{font-size:clamp(1rem,2.3vw,1.42rem);margin-top:5px}@media(max-width:780px){.home-banner{min-height:140px;padding:8px}.pantry-mark{width:min(100%,560px);aspect-ratio:900/240}.pantry-mark-copy{inset:29% 16% 21%}.pantry-name{font-size:clamp(1.12rem,5vw,1.5rem)}.pantry-tagline{font-size:clamp(.78rem,3.2vw,1rem);margin-top:2px}} .home-banner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:210px;padding:10px 16px}.home-brand{margin:0;color:#ffeb26;font-size:clamp(1.55rem,3.6vw,2.15rem);font-weight:950;line-height:1.05;letter-spacing:-.035em}.pantry-mark{width:min(100%,640px);aspect-ratio:900/260}.pantry-mark-copy{inset:29% 20% 30%}.pantry-tagline{font-size:clamp(.82rem,1.9vw,1.2rem);margin:0;line-height:1.15}.hub-card{background:transparent!important;border:0!important;box-shadow:none!important}.hub-card img{border-radius:0!important;object-fit:contain!important;background:transparent!important;box-shadow:none!important;filter:none!important}@media(max-width:780px){.home-banner{min-height:170px;padding:8px}.home-brand{font-size:clamp(1.3rem,5vw,1.7rem)}.pantry-mark{width:min(100%,520px);aspect-ratio:900/260}.pantry-mark-copy{inset:27% 20% 30%}.pantry-tagline{font-size:clamp(.72rem,2.8vw,.95rem)}.hub-card img{border-radius:0!important;object-fit:contain!important}}@media(max-width:360px){.pantry-tagline{font-size:.68rem}}
-/* Home hero matched to the provided Pantry Peeps banner reference. */
-.home-banner{width:min(1900px,calc(100% - 48px));min-height:clamp(230px,24vw,390px);margin:24px auto 34px;padding:clamp(22px,4.5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);align-items:center;gap:clamp(16px,3vw,48px);background:#00c7de;border:4px solid #101e28;box-shadow:10px 10px 0 #101e28}
-.home-banner-copy{min-width:0}.home-brand{margin:0;color:#101e28;font-size:clamp(2.6rem,7vw,6.8rem);font-weight:1000;line-height:.92;letter-spacing:-.065em}.home-sub{margin:22px 0 0;color:#101e28;font-size:clamp(1.1rem,2.4vw,2rem);font-weight:900;line-height:1}
-.pantry-mark{width:min(100%,500px);aspect-ratio:480/320;display:block}.pantry-outline{display:block;width:100%;height:100%;max-height:none}.pantry-outline .pantry-cabinet,.pantry-outline .pantry-post{fill:#ffeb26!important;stroke:#101e28!important;stroke-width:8;stroke-linejoin:round}.pantry-outline text{fill:#101e28!important;font-family:Inter,system-ui,sans-serif;font-weight:950;font-size:20px}
-.hub-card{background:transparent!important;border:0!important;box-shadow:none!important}.hub-card img{width:clamp(78px,9vw,112px);height:auto;aspect-ratio:1;object-fit:contain!important;border-radius:0!important;background:transparent!important;filter:none!important;box-shadow:none!important}
-@media(max-width:780px){.home-banner{width:calc(100% - 32px);min-height:0;margin:16px auto 24px;padding:22px 20px 26px;grid-template-columns:1fr;gap:18px}.home-brand{font-size:clamp(2.35rem,10.4vw,4.1rem)}.home-sub{margin-top:12px;font-size:1.2rem}.pantry-mark{width:min(100%,390px);justify-self:center}.pantry-outline text{font-size:22px}}
+    :root {
+      --cyan-bright: #00BFE8;
+      --yellow-canary: #FDE02F;
+      --ink-dark: #0B192C;
+      --ink-muted: #334155;
+      --bg-page: #F6F9FB;
+      --white: #FFFFFF;
+      --yt-red: #FF0000;
+      --fb-blue: #1877F2;
+    }
 
-/* Refined solid pantry silhouette and responsive banner proportions. */
-.home-banner{min-height:0;padding:clamp(20px,3.2vw,44px);grid-template-columns:minmax(0,1fr) minmax(290px,.55fr);background:#00c7de}
-.pantry-mark{width:min(100%,410px);aspect-ratio:480/330}.pantry-outline{width:100%;height:100%;display:block;max-height:none}
-.pantry-outline .pantry-cabinet,.pantry-outline .pantry-post{fill:#ffeb26!important;stroke:#101e28!important;stroke-width:8;stroke-linejoin:round}
-.pantry-outline .pantry-door{fill:none;stroke:#101e28;stroke-width:3;stroke-opacity:.25}
-.pantry-outline text{fill:#101e28!important;font-family:Inter,system-ui,sans-serif;font-weight:900;font-size:20px}
-@media(max-width:780px){.home-banner{padding:22px 20px 26px;grid-template-columns:1fr;gap:12px}.pantry-mark{width:min(100%,360px);aspect-ratio:480/330}.pantry-outline text{font-size:22px}}
-</style>
-  <script defer src="/assets/nav.js?v=20261117-4"></script>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--ink-dark);
+      line-height: 1.4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-frame {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--bg-page);
+    }
+
+    /* =========================================
+       BRIGHT NEO-BRUTALIST HERO BANNER
+       ========================================= */
+    .hero-wrap {
+      max-width: 1120px;
+      width: 100%;
+      margin: 16px auto 0;
+      padding: 0 16px;
+    }
+
+    .hero-card {
+      background: var(--cyan-bright);
+      border: 2px solid var(--ink-dark);
+      box-shadow: 6px 6px 0 var(--ink-dark);
+      padding: 20px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.15rem, 4.5vw, 3.35rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+      color: var(--ink-dark);
+    }
+
+    .hero-sub {
+      margin: 0;
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--ink-dark);
+    }
+
+    /* Social Action Row: Red YouTube + Facebook Buttons */
+    .social-row {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 13px;
+      border: 2px solid var(--ink-dark);
+      border-radius: 999px;
+      box-shadow: 3px 3px 0 var(--ink-dark);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--white);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .social-pill:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--ink-dark);
+    }
+
+    .social-pill.yt {
+      background: var(--yt-red);
+    }
+
+    .social-pill.fb {
+      background: var(--fb-blue);
+    }
+
+    .social-pill svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* Tilted Solid Canary Yellow Pantry Box with Peaked Heart Roofline */
+    .pantry-tilted-heart-wrap {
+      flex-shrink: 0;
+      width: 224px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: rotate(-2deg);
+      filter: drop-shadow(6px 6px 0 var(--ink-dark));
+      transition: transform 0.15s ease;
+    }
+
+    .pantry-tilted-heart-wrap:hover {
+      transform: rotate(-1deg) translateY(-1px);
+    }
+
+    .pantry-heart-roof {
+      width: 236px;
+      height: 46px;
+      display: block;
+      margin-bottom: -3px;
+      z-index: 2;
+    }
+
+    .pantry-tilted-cabinet {
+      width: 210px;
+      background: var(--yellow-canary);
+      border: 3.5px solid var(--ink-dark);
+      padding: 13px 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .pantry-tilted-cabinet::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 16px;
+      background: var(--ink-dark);
+      border-radius: 3px;
+    }
+
+    .pantry-tagline {
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.28;
+      color: var(--ink-dark);
+      letter-spacing: -0.01em;
+    }
+
+    @media (max-width: 780px) {
+      .hero-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 18px 16px;
+        gap: 16px;
+      }
+
+      .hero-left {
+        align-items: center;
+      }
+
+      .social-row {
+        justify-content: center;
+      }
+    }
+
+    /* =========================================
+       10-HUB GLOSSY CIRCULAR LAUNCHER GRID
+       ========================================= */
+    .hub-stage {
+      flex: 1;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px 16px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hub-nav {
+      width: 100%;
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px 14px;
+      justify-items: center;
+    }
+
+    .hub-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ink-dark);
+      width: 100%;
+      max-width: 175px;
+      padding: 4px;
+      transition: transform 0.15s ease;
+    }
+
+    .hub-item:hover,
+    .hub-item:focus-visible {
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    .hub-badge-wrap {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hub-badge-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .hub-label {
+      margin-top: 6px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--ink-dark);
+    }
+
+    /* Desktop Hover Tooltip */
+    @media (hover: hover) and (min-width: 781px) {
+      .hub-desc {
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 244px;
+        background: var(--ink-dark);
+        color: var(--white);
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.35;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 2px solid var(--yellow-canary);
+        box-shadow: 4px 4px 0 rgba(11, 25, 44, 0.35);
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.15s ease;
+        z-index: 60;
+      }
+
+      .hub-item:hover .hub-desc,
+      .hub-item:focus-visible .hub-desc {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .desc-divider {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: currentColor;
+      opacity: 0.45;
+      margin: 5px 0;
+      border: 0;
+    }
+
+    .desc-nowrap {
+      display: block;
+      white-space: nowrap;
+      font-weight: 800;
+    }
+
+    /* Mobile Layout (Baked-In Descriptions) */
+    @media (hover: none), (max-width: 780px) {
+      .hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 12px;
+        align-items: start;
+      }
+
+      .hub-item {
+        max-width: 100%;
+        padding: 4px;
+      }
+
+      .hub-badge-wrap {
+        width: 84px;
+        height: 84px;
+      }
+
+      .hub-desc {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        line-height: 1.32;
+        color: var(--ink-muted);
+      }
+    }
+
+    /* =========================================
+       CLEAN LEGAL & COALITION FOOTER
+       ========================================= */
+    .pp-footer {
+      margin-top: 20px;
+      background: var(--white);
+      color: var(--ink-dark);
+      border-top: 2px solid var(--ink-dark);
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pp-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 18px;
+      margin-bottom: 6px;
+    }
+
+    .pp-footer-links a {
+      color: var(--ink-dark);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .pp-footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .pp-top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 950;
+      background: var(--yellow-canary);
+      color: var(--ink-dark);
+      border: 2px solid var(--ink-dark);
+      box-shadow: 3px 3px 0 var(--ink-dark);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media print {
+      .pp-footer,
+      .pp-top-btn {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
-<body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5XGZSQT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <header class="home-banner" aria-label="Pantry Peeps">
-    <div class="home-banner-copy">
-      <h1 class="home-brand">Pantry Peeps</h1>
-      <p class="home-sub">716 LFPC</p>
+<body id="top">
+
+  <div class="site-frame">
+    <!-- BRIGHT NEO-BRUTALIST CYAN HERO BANNER -->
+    <div class="hero-wrap">
+      <header class="hero-card">
+        <div class="hero-left">
+          <h1 class="hero-title">Pantry Peeps</h1>
+          <p class="hero-sub">716 LFPC &bull; Western New York</p>
+
+          <!-- Red YouTube @PantryPeeps & Facebook Buttons -->
+          <div class="social-row">
+            <a class="social-pill yt" href="https://www.youtube.com/@PantryPeeps" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+              </svg>
+              <span>@PantryPeeps</span>
+            </a>
+
+            <a class="social-pill fb" href="https://www.facebook.com/profile.php?id=100069055890254" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tilted Solid Yellow Pantry Box with Peaked Heart Roofline -->
+        <div class="pantry-tilted-heart-wrap" aria-label="Stretch your budget. Fill a pantry. Feed a community.">
+          <svg class="pantry-heart-roof" viewBox="0 0 236 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="118,3 4,43 232,43" fill="#FDE02F" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round" />
+            <path d="M118 22.5 C115.2 19.2 109.8 20.8 109.8 24.8 C109.8 28.6 118 34.2 118 34.2 C118 34.2 126.2 28.6 126.2 24.8 C126.2 20.8 120.8 19.2 118 22.5 Z" fill="#0B192C" />
+          </svg>
+          <div class="pantry-tilted-cabinet">
+            <p class="pantry-tagline">Stretch your budget.<br />Fill a pantry.<br />Feed a community.</p>
+          </div>
+        </div>
+      </header>
     </div>
-    <div class="pantry-mark" role="img" aria-label="Yellow Little Free Pantry. Stretch your budget. Fill a pantry. Feed a community.">
-      <svg class="pantry-outline" viewBox="0 0 480 330" aria-hidden="true">
-        <defs>
-          <filter id="pantry-shadow" x="-20%" y="-20%" width="140%" height="155%">
-            <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#101e28" flood-opacity=".2"/>
-          </filter>
-        </defs>
-        <g filter="url(#pantry-shadow)">
-          <path class="pantry-post" d="M207 248V309Q207 320 218 320H262Q273 320 273 309V248Z"/>
-          <path class="pantry-cabinet" d="M118 86L151 43Q158 34 171 34H309Q322 34 329 43L362 86H382V234Q382 249 367 249H113Q98 249 98 234V86Z"/>
-          <path class="pantry-door" d="M121 105H359V224Q359 232 351 232H129Q121 232 121 224Z"/>
-        </g>
-        <text x="240" y="140" text-anchor="middle">Stretch your budget.</text>
-        <text x="240" y="174" text-anchor="middle">Fill a pantry.</text>
-        <text x="240" y="208" text-anchor="middle">Feed a community.</text>
-      </svg>
-    </div>
-  </header>
-  <main class="wrap">
-    <nav class="hubs" aria-label="Explore all Pantry Peeps hubs" id="hub-grid"></nav>
-  </main>
-  <script>
-  fetch('/assets/hubs.json?v=20261117-4').then(r=>r.json()).then(hubs=>{const grid=document.querySelector('#hub-grid');for(const hub of hubs){const a=document.createElement('a');a.className='hub-card';a.href=hub.path;const img=document.createElement('img');img.src='/assets/icons/'+hub.icon;img.alt='';img.loading='lazy';const title=document.createElement('span');title.className='hub-title';title.textContent=hub.title;const desc=document.createElement('span');desc.className='hub-description';desc.textContent=hub.desc;a.append(img,title,desc);grid.append(a);}});
-  </script>
+
+    <!-- 10-HUB GLOSSY CIRCULAR LAUNCHER GRID -->
+    <main class="hub-stage">
+      <nav class="hub-nav" aria-label="Pantry Peeps Hubs">
+        <div class="hub-grid">
+
+          <a class="hub-item" href="/deals/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-deals.svg" alt="Deals" />
+            </div>
+            <span class="hub-label">Deals</span>
+            <span class="hub-desc">Deals and discounts geared towards pantries.<br /><span class="desc-divider"></span><span class="desc-nowrap">Yours or Little Free Pantries.</span></span>
+          </a>
+
+          <a class="hub-item" href="/map/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-map.svg" alt="716 Pantry Map" />
+            </div>
+            <span class="hub-label">716 Pantry Map</span>
+            <span class="hub-desc">Find Western New York Little Free Pantries to give or take.</span>
+          </a>
+
+          <a class="hub-item" href="/how-to-give/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-give.svg" alt="How to Give" />
+            </div>
+            <span class="hub-label">How to Give</span>
+            <span class="hub-desc">What to give, printable flyers, weather rules, care kits &amp; dignified giving tips.</span>
+          </a>
+
+          <a class="hub-item" href="/recipes/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-recipes.svg" alt="Recipes" />
+            </div>
+            <span class="hub-label">Recipes</span>
+            <span class="hub-desc">Budget-friendly meals made from everyday shelf-stable pantry staples.</span>
+          </a>
+
+          <a class="hub-item" href="/playbook/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-playbook.svg" alt="The Pantry Playbook" />
+            </div>
+            <span class="hub-label">The Pantry Playbook</span>
+            <span class="hub-desc">Kitchen hacks, rebate codes &amp; step-by-step couponing guides.</span>
+          </a>
+
+          <a class="hub-item" href="/storefront/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-storefront.svg" alt="Storefront" />
+            </div>
+            <span class="hub-label">Storefront</span>
+            <span class="hub-desc">Curated Amazon, Walmart &amp; Sam's Club lists for kitchen cooking essentials, steward gear &amp; gift drives.</span>
+          </a>
+
+          <a class="hub-item" href="/resources/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-resources.svg" alt="Community Resources" />
+            </div>
+            <span class="hub-label">Community Resources</span>
+            <span class="hub-desc">Local Western New York assistance guides and neighborhood support programs.</span>
+          </a>
+
+          <a class="hub-item" href="/food-insecurity/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-insecurity.svg" alt="Understanding Food Insecurity" />
+            </div>
+            <span class="hub-label">Understanding Food Insecurity</span>
+            <span class="hub-desc">Real facts, research &amp; honest talk about hunger and dignity.</span>
+          </a>
+
+          <a class="hub-item" href="/builds/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-builds.svg" alt="Pantry Builds" />
+            </div>
+            <span class="hub-label">Pantry Builds</span>
+            <span class="hub-desc">Blueprints, weatherproofing &amp; DIY guides for outdoor pantries.</span>
+          </a>
+
+          <a class="hub-item" href="/stories/">
+            <div class="hub-badge-wrap">
+              <img src="/assets/icons/icon-stories.svg" alt="Steward Stories" />
+            </div>
+            <span class="hub-label">Steward Stories</span>
+            <span class="hub-desc">Steward interviews, pantry tours &amp; creative fundraising ideas.</span>
+          </a>
+
+        </div>
+      </nav>
+    </main>
+
+    <!-- CLEAN LEGAL & COALITION FOOTER -->
+    <footer class="pp-footer">
+      <div class="pp-footer-links">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/privacy/#affiliate-disclosure">Affiliate Disclosure</a>
+      </div>
+      <div>716 Little Free Pantry Coalition &bull; Western New York</div>
+    </footer>
+  </div>
+
+  <a class="pp-top-btn" href="#top">↑ Top</a>
+  <script src="/assets/nav.js"></script>
 </body>
 </html>
