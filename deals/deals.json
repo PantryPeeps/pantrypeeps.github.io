@@ -146,7 +146,7 @@
     "title": "Campbell’s Condensed Cream of Mushroom Soup",
     "size": "12 cans · 10.5 oz each",
     "note": "",
-    "image": "assets/campbells-cream-mushroom-12.webp",
+    "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Cream-of-Mushroom-Soup-10-5-Ounce-Cans-Pack-of-12_0bf82359-3eab-44f1-90ab-2dbaceb51861.0fe1865783149ff867e6225b08a67299.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
     "url": "https://link.amazon/B04oiFhI1",
     "slug": "campbells-cream-mushroom-12",
     "affiliate": true,
@@ -286,7 +286,7 @@
     "title": "V8 Low Sodium Original Vegetable Juice",
     "size": "24 cans · 11.5 fl oz each",
     "note": "",
-    "image": "",
+    "image": "https://i5.walmartimages.com/seo/V8-Low-Sodium-Original-100-Vegetable-Juice-11-5-fl-oz-Can-24-Pack_ed9cda86-5354-407d-8778-e725329126e9.15ded015a769e7e48b2ad3d44fd07caf.jpeg",
     "url": "https://link.amazon/B0dDX6RDk",
     "slug": "v8-low-sodium-24",
     "affiliate": true,
@@ -580,7 +580,7 @@
     "title": "Campbell’s Condensed Cream of Mushroom Soup",
     "size": "12 cans · 10.5 oz each",
     "note": "",
-    "image": "assets/campbells-cream-mushroom-12-nov8.webp",
+    "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Cream-of-Mushroom-Soup-10-5-Ounce-Cans-Pack-of-12_0bf82359-3eab-44f1-90ab-2dbaceb51861.0fe1865783149ff867e6225b08a67299.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
     "url": "https://link.amazon/B0gCvCdmu",
     "slug": "campbells-cream-mushroom-12-nov8",
     "affiliate": true,
@@ -748,7 +748,7 @@
     "title": "Campbell’s Condensed Cream of Mushroom Soup, 2-Pack",
     "size": "2 cans · 10.5 oz each",
     "note": "A small-batch option for green bean casserole.",
-    "image": "",
+    "image": "https://i5.walmartimages.com/seo/Campbell-Condensed-Cream-of-Mushroom-Soup-10-5-oz-Can-2-Pack_2be2e0cd-4a33-45d1-9c2e-f65da665f378.12f9cec6ec69118091b8e2905b70eb5d.png",
     "url": "https://link.amazon/B090qJfxb",
     "slug": "campbells-cream-mushroom-2-pack",
     "affiliate": true,
@@ -798,18 +798,32 @@
     "price_updated_at": null
   },
   {
-    "week": "2026-11-02",
+    "week": "2026-11-16",
     "retailer": "Amazon",
     "category": "Pantry Food",
-    "title": "Campbell’s Chunky Soup Promo Items",
-    "size": "17 cans · assorted promo-eligible varieties",
-    "note": "The reel shows 17 cans under $1 each through Amazon’s Spend $25, Save $5 promotion. Check eligible items, coupons, and current prices.",
-    "image": "https://images.cdn.shoprite.com/detail/00051000195708_1",
+    "title": "Campbell’s Stock Up and Save Sale",
+    "size": "Multiple eligible soup varieties",
+    "note": "Browse eligible Campbell’s condensed soups, including Cream of Mushroom, Cream of Chicken, and Tomato. Product selection and offer terms can change; check Amazon for current details.",
+    "image": "",
     "url": "https://link.amazon/B0cB4Y0o7",
     "slug": "campbells-chunky-soup-promo-17",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "choice_images": [
+      {
+        "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Cream-of-Mushroom-Soup-10-5-Ounce-Cans-Pack-of-12_0bf82359-3eab-44f1-90ab-2dbaceb51861.0fe1865783149ff867e6225b08a67299.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
+        "alt": "Campbell’s Cream of Mushroom Soup, 12 cans"
+      },
+      {
+        "image": "https://i5.walmartimages.com/seo/Campbell-s-Condensed-Gluten-SCH4-nbsp-Free-Cream-of-Chicken-Soup-10-5-oz-Can-12-Pack_fe61a0e6-cf72-41c8-9e03-ea51627b542b.e08b6e7b447566fa732aea670da773d0.jpeg",
+        "alt": "Campbell’s Cream of Chicken Soup, 12 cans"
+      },
+      {
+        "image": "https://catalog-assets-us-east4.msg-boxed-prod.e.spresso.com/Y2F0YWxvZy1hc3NldHMtdXMtZWFzdDQubXNnLWJveGVkLXByb2QuZS5zcHJlc3NvLmNvbQ%3D%3D/WTJGMFlXeHZaeTFoYzNObGRITXRkWE10WldGemREUXViWE5uTFdKdmVHVmtMWEJ5YjJRdVpTNXpjSEpsYzNOdkxtTnZiUT09/V1RKR01GbFhlSFphZVRGb1l6Tk9iR1JJVFhSa1dFMTBXbGRHZW1SRVVYVmlXRTV1VEZkS2RtVkhWbXRNV0VKNVlqSlJkVnBUTlhwalNFcHNZek5PZGt4dFRuWmlVVDA5/VjFSS1IwMUdiRmhsU0ZwaFpWUkdiMWw2VGs5aVIxSkpWRmhTYTFkRk1UQlhiR1JIWlcxU1JWVllWbWxYUlRWMVZFWmtTMlJ0VmtoV2JYUk5WMFZLTlZscVNsSmtWbkJVVGxod2FsTkZjSE5aZWs1UFpHdDRkRlJ1V21sVlZEQTU%3D/VmpGamVHUXlWbkpsU0ZaVllsaENhRlp1Y0Zkak1WSjFZWHBHYUdKVmJEVlVWVkYzVUZFOVBRPT0%3D/VjFaYWIxUnNRbEpRVkRBOQ%3D%3D/VjFaYWFtVkhSa2RpTTJ4WFZrUkJPUT09/VmpGamVHUXlWbTVRVkRBOQ%3D%3D/VmtSQ1UxSnJOVlpOVlVwUlZrUkJPUT09",
+        "alt": "Campbell’s Tomato Soup, 12 cans"
+      }
+    ]
   },
   {
     "week": "2026-11-16",
@@ -821,6 +835,20 @@
     "image": "https://m.media-amazon.com/images/I/419Aek1xFqL.jpg",
     "url": "https://link.amazon/B02RJfSzX",
     "slug": "amazon-grocery-pumpkin-15oz",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Idahoan Roasted Garlic Mashed Potatoes",
+    "size": "1 pouch · 4 oz",
+    "note": "An easy shelf-stable side; just add water.",
+    "image": "https://cdn.shopify.com/s/files/1/0262/9350/2038/files/0029700001476_T1.png?v=1767633875",
+    "url": "https://walmrt.us/4CaG0kG",
+    "slug": "idahoan-roasted-garlic-mashed-potatoes",
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null
