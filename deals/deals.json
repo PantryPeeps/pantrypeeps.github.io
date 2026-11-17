@@ -1024,5 +1024,22 @@
     "deal_type": "discount",
     "deal_badge": "CHECK WALMART FOR AN OFFER",
     "deal_info": "Check the listing and your Walmart account for any current coupon or Rewards Cash offer."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Hygiene",
+    "title": "AIM Cavity Protection Toothpaste, Ultra Mint Gel",
+    "size": "12 tubes · 5.5 oz each",
+    "note": "Multipack discount with no coupon required. Check Walmart for current price per tube.",
+    "image": "assets/aim-cavity-protection-multipack.webp",
+    "url": "https://walmrt.us/4CnqIsW",
+    "slug": "aim-cavity-protection-toothpaste-12-pack",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "deal_type": "discount",
+    "deal_badge": "MULTIPACK DISCOUNT",
+    "deal_info": "No coupon required. The discount is on the multipack; check Walmart for current price per tube."
   }
 ]
