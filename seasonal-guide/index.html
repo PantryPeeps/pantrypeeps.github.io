@@ -634,6 +634,37 @@
         grid-template-columns: 1fr 1fr !important;
       }
 
+      /* Reset phone-only grid placements when printing from a narrow screen */
+      .season-section {
+        display: block !important;
+      }
+
+      .season-title-bar,
+      .split-banner,
+      .unified-columns,
+      .rules-grid {
+        grid-row: auto !important;
+      }
+
+      .banner-side.left,
+      .banner-side.right,
+      .unified-columns > .column-stack:first-child,
+      .unified-columns > .column-stack:last-child {
+        grid-row: auto !important;
+      }
+
+      .banner-side.left,
+      .banner-side.right {
+        padding: 0 0.5rem !important;
+        background: transparent !important;
+      }
+
+      .unified-columns > .column-stack:first-child,
+      .unified-columns > .column-stack:last-child {
+        padding: 0 !important;
+        background: transparent !important;
+      }
+
       .unified-columns {
         gap: 0.6rem;
         padding: 0.65rem;
