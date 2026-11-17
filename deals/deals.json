@@ -768,5 +768,19 @@
     "live_price": null,
     "price_updated_at": null,
     "affiliate": true
+  },
+  {
+    "week": "2026-11-02",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Campbell’s Condensed Cream of Mushroom Soup, 2-Pack",
+    "size": "2 cans · 10.5 oz each",
+    "note": "A small-batch option for green bean casserole.",
+    "image": "",
+    "url": "https://link.amazon/B090qJfxb",
+    "slug": "campbells-cream-mushroom-2-pack",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null
   }
 ]
