@@ -401,7 +401,10 @@
     "slug": "crush-fruit-drink-mix-30",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "ibotta",
+    "deal_badge": "IBOTTA OFFER",
+    "deal_info": "Look for the current Ibotta offer on this item. Check its terms and eligibility in your account."
   },
   {
     "week": "2026-11-09",
@@ -415,7 +418,10 @@
     "slug": "crush-slush-drink-mix-30",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "ibotta",
+    "deal_badge": "IBOTTA OFFER",
+    "deal_info": "Look for the current Ibotta offer on this item. Check its terms and eligibility in your account."
   },
   {
     "week": "2026-11-09",
@@ -499,7 +505,10 @@
     "slug": "pedigree-chopped-ground-dinner-18",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "MANUFACTURER COUPON + WALMART REWARDS CASH",
+    "deal_info": "Look for the manufacturer coupon and Walmart Rewards Cash offer. Confirm both are available in your account before checkout."
   },
   {
     "week": "2026-11-09",
@@ -544,7 +553,10 @@
     "slug": "strong-heart-cat-dinner-variety-32",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the first-order coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -558,7 +570,10 @@
     "slug": "temptations-bites-in-gravy-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "walmart-rewards",
+    "deal_badge": "IBOTTA OR WALMART REWARDS CASH",
+    "deal_info": "These offers are alternatives. Check your account to see whether Ibotta or Walmart Rewards Cash is currently available."
   },
   {
     "week": "2026-11-09",
@@ -572,7 +587,10 @@
     "slug": "pedigree-puppy-morsels-8",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "MANUFACTURER COUPON + WALMART REWARDS CASH",
+    "deal_info": "Look for the manufacturer coupon and Walmart Rewards Cash offer. Confirm both are available in your account before checkout."
   },
   {
     "week": "2026-11-09",
@@ -628,7 +646,10 @@
     "slug": "gold-bond-healing-aloe-55",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "walmart-rewards",
+    "deal_badge": "WALMART REWARDS CASH",
+    "deal_info": "Check your Walmart account for an available Rewards Cash offer on this item."
   },
   {
     "week": "2026-11-02",
@@ -704,7 +725,10 @@
     "slug": "maruchan-instant-lunch-chicken-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Subscribe & Save is shown for this item. Check the product page for current availability."
   },
   {
     "week": "2026-11-02",
@@ -791,7 +815,10 @@
     "slug": "iams-healthy-weight-cat-food-4",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "discount",
+    "deal_badge": "BLACK FRIDAY PRICE DROP",
+    "deal_info": "A Black Friday price drop was shown when posted. Check the listing for current availability and pricing."
   },
   {
     "week": "2026-11-09",
@@ -842,7 +869,10 @@
     "slug": "strong-heart-mixed-grill-pate-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -856,7 +886,10 @@
     "slug": "strong-heart-special-supper-pate-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -870,7 +903,10 @@
     "slug": "strong-heart-liver-chicken-pate-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-02",
