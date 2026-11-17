@@ -116,3 +116,29 @@
     line-height: 1.08;
   }
 }
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .9rem;
+  font-weight: 750;
+}
+.search-filter input {
+  width: min(240px, 54vw);
+  min-height: 36px;
+  padding: 5px 8px;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+}
+.search-filter input:focus-visible {
+  outline: 3px solid #006c91;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .search-filter { flex-basis: 100%; }
+  .search-filter input { width: auto; flex: 1; }
+}

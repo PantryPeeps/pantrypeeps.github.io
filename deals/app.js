@@ -21,7 +21,7 @@ function element(tag, className, content) {
 }
 
 function normalizeSearchText(value) {
-  return String(value || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 function weekLabel(isoDate) {
