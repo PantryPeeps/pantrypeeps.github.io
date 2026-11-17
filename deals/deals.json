@@ -13,8 +13,8 @@
     "price_updated_at": null,
     "affiliate": true,
     "deal_type": "coupon",
-    "deal_badge": "10% FIRST-ORDER COUPON",
-    "deal_info": "The posted deal included a 10% first-order coupon. Check whether Subscribe & Save is also offered and whether the coupon applies with it."
+    "deal_badge": "COUPON • CHECK S&S",
+    "deal_info": "Check the listing for the digital coupon and see whether Subscribe & Save is offered. Confirm which option applies to your account."
   },
   {
     "week": "2026-11-09",
@@ -31,7 +31,7 @@
     "affiliate": true,
     "deal_type": "stacked",
     "deal_badge": "COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "The posted deal combined a first-delivery coupon with Subscribe & Save. Confirm both options appear for your account."
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-09",
@@ -47,8 +47,8 @@
     "price_updated_at": null,
     "affiliate": true,
     "deal_type": "stacked",
-    "deal_badge": "10% COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "The posted deal combined a 10% first-order coupon with Subscribe & Save. Confirm both options appear at checkout."
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-09",
@@ -65,7 +65,7 @@
     "affiliate": true,
     "deal_type": "stacked",
     "deal_badge": "COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "The posted deal combined a first-order coupon with Subscribe & Save. Confirm both options appear for your account."
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-09",
@@ -165,8 +165,8 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "stacked",
-    "deal_badge": "10% COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "The posted deal combined a 10% first-order coupon with Subscribe & Save. Confirm both options appear for your account."
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-09",
@@ -490,8 +490,8 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "walmart-rewards",
-    "deal_badge": "BUY 2 • GET $4 REWARDS CASH",
-    "deal_info": "The posted offer was buy 2 Oral-B Essential Clean soft toothbrushes and get $4 Walmart Rewards Cash. Check that the offer is active in your account."
+    "deal_badge": "WALMART REWARDS CASH",
+    "deal_info": "Check Walmart for an active Rewards Cash offer on this item and confirm the offer details in your account."
   },
   {
     "week": "2026-11-09",
@@ -605,8 +605,8 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "stacked",
-    "deal_badge": "15% COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "The posted deal combined a 15% coupon with Subscribe & Save. Confirm both options appear for your account."
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-02",
@@ -622,8 +622,8 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "discount",
-    "deal_badge": "$4 LISTING DISCOUNT",
-    "deal_info": "A $4 Amazon listing discount was shown when this deal was posted. Verify that it still appears before checkout."
+    "deal_badge": "AMAZON LISTING DISCOUNT",
+    "deal_info": "A listing discount was shown when this deal was posted. Check whether it is still available."
   },
   {
     "week": "2026-11-02",
@@ -738,7 +738,7 @@
     "price_updated_at": null,
     "deal_type": "stacked",
     "deal_badge": "COUPON + SUBSCRIBE & SAVE",
-    "deal_info": "Look for the on-page coupon and Subscribe & Save option; verify both are available before checkout."
+    "deal_info": "Look for the on-page coupon and Subscribe & Save option. Confirm both are available for your account at checkout."
   },
   {
     "week": "2026-11-09",
@@ -847,7 +847,7 @@
     "live_price": null,
     "price_updated_at": null,
     "deal_type": "promotion",
-    "deal_badge": "STOCK UP & SAVE • 5 OFF 25",
+    "deal_badge": "STOCK UP & SAVE",
     "deal_info": "The offer applies to participating items. Check the offer page to confirm which products qualify."
   },
   {
