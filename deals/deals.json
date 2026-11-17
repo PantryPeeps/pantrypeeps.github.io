@@ -1058,5 +1058,29 @@
     "deal_type": "subscribe-save",
     "deal_badge": "SUBSCRIBE & SAVE",
     "deal_info": "Subscribe & Save is shown on the listing. Check your account for current price and availability."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Hygiene",
+    "title": "Coaroly Fine-Tooth Hair Combs",
+    "size": "100 combs · black · fine-tooth",
+    "note": "A 100-pack option for winter kindness bags and care kits.",
+    "image": "assets/coaroly-fine-tooth-combs-100.webp",
+    "url": "https://walmrt.us/4eFgVUT",
+    "slug": "coaroly-fine-tooth-combs-100",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "combs",
+      "fine-tooth combs",
+      "hair combs",
+      "kindness bags",
+      "care kits"
+    ],
+    "deal_type": "discount",
+    "deal_badge": "100-PACK VALUE",
+    "deal_info": "100 combs in one pack. Check Walmart for current price and availability."
   }
 ]
