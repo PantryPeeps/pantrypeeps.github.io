@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/nav.css" />
   <style>
     :root {
       --cyan-bright: #00BFE8;
@@ -39,6 +38,9 @@
       flex-direction: column;
     }
 
+    /* =========================================
+       MAIN SITE FRAME
+       ========================================= */
     .site-frame {
       flex: 1;
       display: flex;
@@ -148,10 +150,16 @@
       transform: rotate(-2deg);
       filter: drop-shadow(6px 6px 0 var(--ink-dark));
       transition: transform 0.15s ease;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      perspective: 700px;
     }
 
     .pantry-tilted-heart-wrap:hover {
-      transform: rotate(-1deg) translateY(-1px);
+      transform: rotate(-1deg) translateY(-2px);
     }
 
     .pantry-heart-roof {
@@ -159,19 +167,158 @@
       height: 46px;
       display: block;
       margin-bottom: -3px;
-      z-index: 2;
+      z-index: 3;
+      pointer-events: none;
     }
 
     .pantry-tilted-cabinet {
       width: 210px;
-      background: var(--yellow-canary);
+      min-height: 92px;
+      background: #FDE68A;
       border: 3.5px solid var(--ink-dark);
-      padding: 13px 16px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    /* Interior Shelf Glow Behind Door */
+    .pantry-interior {
+      padding: 10px 12px;
+      min-height: 85px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      background: radial-gradient(circle at center, #FFFDF5 0%, #FDE68A 100%);
+      color: var(--ink-dark);
       position: relative;
     }
 
-    .pantry-tilted-cabinet::after {
+    .pantry-interior::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      background: rgba(11, 25, 44, 0.12);
+      pointer-events: none;
+    }
+
+    .pantry-interior-heart {
+      width: 24px;
+      height: 24px;
+      color: #D97706;
+      opacity: 0.85;
+    }
+
+    /* Zen Quote Pop-Out Card & Backdrop */
+    .zen-quote-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 25, 44, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 3000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    .zen-quote-overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .zen-quote-card {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      background: #FFFDF9;
+      border: 2.5px solid var(--ink-dark);
+      box-shadow: 8px 8px 0 var(--ink-dark);
+      border-radius: 18px;
+      padding: 36px 34px 30px;
+      text-align: center;
+      transform: scale(0.32) translate(110px, -110px);
+      opacity: 0;
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+    }
+
+    .zen-quote-overlay.is-visible .zen-quote-card {
+      transform: scale(1) translate(0, 0);
+      opacity: 1;
+    }
+
+    .zen-quote-accent {
+      width: 44px;
+      height: 4px;
+      background: var(--cyan-bright);
+      border-radius: 999px;
+      margin: 0 auto 20px;
+    }
+
+    .zen-quote-body {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-weight: 700;
+      line-height: 1.55;
+      color: var(--ink-dark);
+      letter-spacing: -0.015em;
+    }
+
+    .zen-quote-author {
+      margin: 18px 0 0;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #475569;
+    }
+
+    .zen-quote-close {
+      margin-top: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 20px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--ink-dark);
+      background: var(--yellow-canary);
+      border: 2px solid var(--ink-dark);
+      box-shadow: 3px 3px 0 var(--ink-dark);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .zen-quote-close:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--ink-dark);
+    }
+
+    /* Hinged Front Canary-Yellow Door */
+    .pantry-door {
+      position: absolute;
+      inset: 0;
+      background: var(--yellow-canary);
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform-origin: left center;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      backface-visibility: hidden;
+      z-index: 2;
+    }
+
+    .pantry-door::after {
       content: "";
       position: absolute;
       right: 8px;
@@ -181,6 +328,10 @@
       height: 16px;
       background: var(--ink-dark);
       border-radius: 3px;
+    }
+
+    .pantry-tilted-heart-wrap.door-open .pantry-door {
+      transform: rotateY(-108deg);
     }
 
     .pantry-tagline {
@@ -263,13 +414,12 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      filter: drop-shadow(0 6px 10px rgba(11, 25, 44, 0.24));
     }
 
-    .hub-badge-wrap img {
+    .hub-badge-wrap svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
       display: block;
     }
 
@@ -283,7 +433,7 @@
 
     /* Desktop Hover Tooltip */
     @media (hover: hover) and (min-width: 781px) {
-      .hub-desc {
+      body:not(.simulate-mobile) .hub-desc {
         position: absolute;
         bottom: calc(100% + 6px);
         left: 50%;
@@ -305,8 +455,8 @@
         z-index: 60;
       }
 
-      .hub-item:hover .hub-desc,
-      .hub-item:focus-visible .hub-desc {
+      body:not(.simulate-mobile) .hub-item:hover .hub-desc,
+      body:not(.simulate-mobile) .hub-item:focus-visible .hub-desc {
         opacity: 1;
         visibility: visible;
       }
@@ -406,6 +556,7 @@
     }
 
     @media print {
+      .preview-toolbar,
       .pp-footer,
       .pp-top-btn {
         display: none !important;
@@ -414,146 +565,404 @@
   </style>
 </head>
 <body id="top">
+  <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
+    <defs>
+      <linearGradient id="ppOuterRing" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#7ec4e6"></stop>
+        <stop offset="48%" stop-color="#3c88b5"></stop>
+        <stop offset="100%" stop-color="#1e496b"></stop>
+      </linearGradient>
+      <linearGradient id="ppInnerBevel" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#223b52"></stop>
+        <stop offset="50%" stop-color="#b8cad6"></stop>
+        <stop offset="100%" stop-color="#ffffff"></stop>
+      </linearGradient>
+      <radialGradient id="ppCoreGrad" cx="50%" cy="32%" r="68%">
+        <stop offset="0%" stop-color="#5ea9d6"></stop>
+        <stop offset="55%" stop-color="#2d76a6"></stop>
+        <stop offset="100%" stop-color="#18476b"></stop>
+      </radialGradient>
+      <linearGradient id="ppGlossTop" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.62"></stop>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"></stop>
+      </linearGradient>
+      <filter id="ppIconEmbossed" x="-15%" y="-15%" width="130%" height="130%">
+        <feDropShadow dx="0" dy="2" stdDeviation="1.4" flood-color="#0b2236" flood-opacity="0.65"></feDropShadow>
+      </filter>
+    </defs>
+  </svg>
 
   <div class="site-frame">
-    <!-- BRIGHT NEO-BRUTALIST CYAN HERO BANNER -->
     <div class="hero-wrap">
       <header class="hero-card">
         <div class="hero-left">
           <h1 class="hero-title">Pantry Peeps</h1>
-          <p class="hero-sub">716 LFPC &bull; Western New York</p>
+          <p class="hero-sub">716 LFPC • Western New York</p>
 
           <!-- Red YouTube @PantryPeeps & Facebook Buttons -->
           <div class="social-row">
             <a class="social-pill yt" href="https://www.youtube.com/@PantryPeeps" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"></path>
               </svg>
               <span>@PantryPeeps</span>
             </a>
 
             <a class="social-pill fb" href="https://www.facebook.com/profile.php?id=100069055890254" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"></path>
               </svg>
               <span>Facebook</span>
             </a>
           </div>
         </div>
 
-        <!-- Tilted Solid Yellow Pantry Box with Peaked Heart Roofline -->
-        <div class="pantry-tilted-heart-wrap" aria-label="Stretch your budget. Fill a pantry. Feed a community.">
+        <!-- Tilted Solid Yellow Pantry Box with Peaked Heart Roofline (Click to Open Door) -->
+        <button type="button" class="pantry-tilted-heart-wrap" id="pantryEasterEgg" aria-label="Stretch your budget. Fill a pantry. Feed a community.">
           <svg class="pantry-heart-roof" viewBox="0 0 236 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <polygon points="118,3 4,43 232,43" fill="#FDE02F" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round" />
-            <path d="M118 22.5 C115.2 19.2 109.8 20.8 109.8 24.8 C109.8 28.6 118 34.2 118 34.2 C118 34.2 126.2 28.6 126.2 24.8 C126.2 20.8 120.8 19.2 118 22.5 Z" fill="#0B192C" />
+            <polygon points="118,3 4,43 232,43" fill="#FDE02F" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round"></polygon>
+            <path d="M118 22.5 C115.2 19.2 109.8 20.8 109.8 24.8 C109.8 28.6 118 34.2 118 34.2 C118 34.2 126.2 28.6 126.2 24.8 C126.2 20.8 120.8 19.2 118 22.5 Z" fill="#0B192C"></path>
           </svg>
           <div class="pantry-tilted-cabinet">
-            <p class="pantry-tagline">Stretch your budget.<br />Fill a pantry.<br />Feed a community.</p>
+            <div class="pantry-interior" aria-hidden="true">
+              <svg class="pantry-interior-heart" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+              </svg>
+            </div>
+            <div class="pantry-door">
+              <p class="pantry-tagline">Stretch your budget.<br>Fill a pantry.<br>Feed a community.</p>
+            </div>
           </div>
-        </div>
+        </button>
       </header>
     </div>
 
-    <!-- 10-HUB GLOSSY CIRCULAR LAUNCHER GRID -->
+    <div class="zen-quote-overlay" id="zenQuoteOverlay" role="dialog" aria-modal="true" aria-labelledby="zenQuoteBody">
+      <div class="zen-quote-card">
+        <div class="zen-quote-accent" aria-hidden="true"></div>
+        <blockquote class="zen-quote-body" id="zenQuoteBody">“What lies behind us and what lies before us are tiny matters compared to what lies within us.”</blockquote>
+        <p class="zen-quote-author" id="zenQuoteAuthor">— Ralph Waldo Emerson</p>
+        <button type="button" class="zen-quote-close" id="zenQuoteClose">Close</button>
+      </div>
+    </div>
+
     <main class="hub-stage">
       <nav class="hub-nav" aria-label="Pantry Peeps Hubs">
         <div class="hub-grid">
+        <a class="hub-item" href="/deals/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deals">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M29 53 L47 35 L61 35 L61 49 L43 67 Z" />
+            <circle cx="54.5" cy="41.5" r="2.2" fill="#ffffff" stroke="none" />
+            <path d="M48 53 L53 53 L57 69 L75 69 L78 57 L54 57" />
+            <line x1="59" y1="62" x2="75" y2="62" stroke-width="2.4" />
+            <circle cx="60" cy="74" r="2.6" fill="#ffffff" stroke="none" />
+            <circle cx="72" cy="74" r="2.6" fill="#ffffff" stroke="none" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Deals</span>
+          <span class="hub-desc">Deals and discounts geared towards pantries.<br /><span class="desc-divider"></span><span class="desc-nowrap">Yours or Little Free Pantries.</span></span>
+        </a>
 
-          <a class="hub-item" href="/deals/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-deals.png" alt="Deals" />
-            </div>
-            <span class="hub-label">Deals</span>
-            <span class="hub-desc">Deals and discounts geared towards pantries.<br /><span class="desc-divider"></span><span class="desc-nowrap">Yours or Little Free Pantries.</span></span>
-          </a>
+        <a class="hub-item" href="/map/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="716 Pantry Map">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M55 28 C42.5 28 33 37.5 33 49.5 C33 65 55 83 55 83 C55 83 77 65 77 49.5 C77 37.5 67.5 28 55 28 Z" />
+            <circle cx="55" cy="49" r="12" stroke-width="2.6" />
+            <path d="M48 49 L55 43 L62 49" stroke-width="2.6" />
+            <path d="M50 48.5 V55 H60 V48.5" stroke-width="2.6" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">716 Pantry Map</span>
+          <span class="hub-desc">Find Western New York Little Free Pantries to give or take.</span>
+        </a>
 
-          <a class="hub-item" href="/map/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-map.png" alt="716 Pantry Map" />
-            </div>
-            <span class="hub-label">716 Pantry Map</span>
-            <span class="hub-desc">Find Western New York Little Free Pantries to give or take.</span>
-          </a>
+        <a class="hub-item" href="/how-to-give/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How to Give">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M55 30 C51 25.5 43.5 27.5 43.5 33 C43.5 38.2 55 45.5 55 45.5 C55 45.5 66.5 38.2 66.5 33 C66.5 27.5 59 25.5 55 30 Z" />
+            <polygon points="34,58 55,51 76,58 55,65" />
+            <path d="M34 58 V74 L55 81 L76 74 V58" />
+            <line x1="55" y1="65" x2="55" y2="81" />
+            <path d="M34 58 L28 63 L49 70 L55 65" />
+            <path d="M76 58 L82 63 L61 70 L55 65" />
+            <rect x="41" y="47" width="8" height="9" rx="1.5" />
+            <rect x="58" y="45" width="10" height="11" rx="1.5" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">How to Give</span>
+          <span class="hub-desc">What to give, printable flyers, weather rules, care kits &amp; dignified giving tips.</span>
+        </a>
 
-          <a class="hub-item" href="/how-to-give/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-give.png" alt="How to Give" />
-            </div>
-            <span class="hub-label">How to Give</span>
-            <span class="hub-desc">What to give, printable flyers, weather rules, care kits &amp; dignified giving tips.</span>
-          </a>
+        <a class="hub-item" href="/recipes/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recipes">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <circle cx="55" cy="55" r="16" />
+            <circle cx="55" cy="55" r="10.5" stroke-width="2.4" />
+            <path d="M31 35 V47 C31 50 35 50 35 47 V35" />
+            <line x1="33" y1="35" x2="33" y2="75" />
+            <path d="M77 35 C79.5 35 80.5 41 80.5 49 L78.5 52 V75 H76.5 V35 Z" fill="#ffffff" stroke="none" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Recipes</span>
+          <span class="hub-desc">Budget-friendly meals made from everyday shelf-stable pantry staples.</span>
+        </a>
 
-          <a class="hub-item" href="/recipes/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-recipes.png" alt="Recipes" />
-            </div>
-            <span class="hub-label">Recipes</span>
-            <span class="hub-desc">Budget-friendly meals made from everyday shelf-stable pantry staples.</span>
-          </a>
+        <a class="hub-item" href="/playbook/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Pantry Playbook">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <rect x="38" y="32" width="36" height="46" rx="4" />
+            <line x1="34" y1="39" x2="41" y2="39" />
+            <line x1="34" y1="47" x2="41" y2="47" />
+            <line x1="34" y1="55" x2="41" y2="55" />
+            <line x1="34" y1="63" x2="41" y2="63" />
+            <line x1="34" y1="71" x2="41" y2="71" />
+            <line x1="48" y1="64" x2="64" y2="46" />
+            <ellipse cx="64.5" cy="45.5" rx="4" ry="5.5" transform="rotate(42 64.5 45.5)" />
+            <line x1="64" y1="64" x2="50" y2="48" />
+            <circle cx="49" cy="47" r="4.5" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">The Pantry Playbook</span>
+          <span class="hub-desc">Kitchen hacks, rebate codes &amp; step-by-step couponing guides.</span>
+        </a>
 
-          <a class="hub-item" href="/playbook/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-playbook.png" alt="The Pantry Playbook" />
-            </div>
-            <span class="hub-label">The Pantry Playbook</span>
-            <span class="hub-desc">Kitchen hacks, rebate codes &amp; step-by-step couponing guides.</span>
-          </a>
+        <a class="hub-item" href="/storefront/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Storefront">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M35 37 H75 L79 48 H31 Z" />
+            <path d="M31 48 C31 52 39 52 39 48 C39 52 47 52 47 48 C47 52 55 52 55 48 C55 52 63 52 63 48 C63 52 71 52 71 48 C71 52 79 52 79 48" />
+            <path d="M35 51 V73 H75 V51" />
+            <line x1="30" y1="73" x2="80" y2="73" />
+            <rect x="41" y="56" width="12" height="10" rx="1.5" />
+            <rect x="59" y="56" width="10" height="17" rx="1" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Storefront</span>
+          <span class="hub-desc">Curated Amazon, Walmart &amp; Sam's Club lists for kitchen cooking essentials, steward gear &amp; gift drives.</span>
+        </a>
 
-          <a class="hub-item" href="/storefront/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-storefront.png" alt="Storefront" />
-            </div>
-            <span class="hub-label">Storefront</span>
-            <span class="hub-desc">Curated Amazon, Walmart &amp; Sam's Club lists for kitchen cooking essentials, steward gear &amp; gift drives.</span>
-          </a>
+        <a class="hub-item" href="/resources/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Community Resources">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M55 37 C49.5 30.5 39 33 39 41 C39 48.5 55 58.5 55 58.5 C55 58.5 71 48.5 71 41 C71 33 60.5 30.5 55 37 Z" />
+            <path d="M29 55 C29 67 38 75 51 77" />
+            <path d="M81 55 C81 67 72 75 59 77" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Community Resources</span>
+          <span class="hub-desc">Local Western New York assistance guides and neighborhood support programs.</span>
+        </a>
 
-          <a class="hub-item" href="/resources/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-resources.png" alt="Community Resources" />
-            </div>
-            <span class="hub-label">Community Resources</span>
-            <span class="hub-desc">Local Western New York assistance guides and neighborhood support programs.</span>
-          </a>
+        <a class="hub-item" href="/food-insecurity/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Understanding Food Insecurity">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M55 31 C51.5 27 45 29 45 34 C45 38.5 55 45 55 45 C55 45 65 38.5 65 34 C65 29 58.5 27 55 31 Z" />
+            <path d="M40 53 H70 C70 61 63 65 55 65 C47 65 40 61 40 53 Z" />
+            <path d="M43 53 C45 48 65 48 67 53" />
+            <path d="M31 66 H45 L53 71 H69 C72 71 72 75 68 75 H47 L38 72 H31 Z" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Understanding Food Insecurity</span>
+          <span class="hub-desc">Real facts, research &amp; honest talk about hunger and dignity.</span>
+        </a>
 
-          <a class="hub-item" href="/food-insecurity/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-insecurity.png" alt="Understanding Food Insecurity" />
-            </div>
-            <span class="hub-label">Understanding Food Insecurity</span>
-            <span class="hub-desc">Real facts, research &amp; honest talk about hunger and dignity.</span>
-          </a>
+        <a class="hub-item" href="/builds/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pantry Builds">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M32 45 L55 27 L78 45" />
+            <rect x="38" y="45" width="34" height="24" rx="2.5" />
+            <line x1="38" y1="57" x2="72" y2="57" stroke-width="2.8" />
+            <circle cx="66" cy="52" r="1.8" fill="#ffffff" stroke="none" />
+            <line x1="55" y1="69" x2="55" y2="83" />
+            <line x1="46" y1="69" x2="55" y2="76" stroke-width="3" />
+            <line x1="64" y1="69" x2="55" y2="76" stroke-width="3" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Pantry Builds</span>
+          <span class="hub-desc">Blueprints, weatherproofing &amp; DIY guides for outdoor pantries.</span>
+        </a>
 
-          <a class="hub-item" href="/builds/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-builds.png" alt="Pantry Builds" />
-            </div>
-            <span class="hub-label">Pantry Builds</span>
-            <span class="hub-desc">Blueprints, weatherproofing &amp; DIY guides for outdoor pantries.</span>
-          </a>
-
-          <a class="hub-item" href="/stories/">
-            <div class="hub-badge-wrap">
-              <img src="/assets/icons/icon-stories.png" alt="Steward Stories" />
-            </div>
-            <span class="hub-label">Steward Stories</span>
-            <span class="hub-desc">Steward interviews, pantry tours &amp; creative fundraising ideas.</span>
-          </a>
-
+        <a class="hub-item" href="/stories/">
+          <div class="hub-badge-wrap">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Steward Stories">
+          <circle cx="55" cy="55" r="52" fill="url(#ppOuterRing)" stroke="#163a57" stroke-width="2" />
+          <circle cx="55" cy="55" r="44.5" fill="none" stroke="url(#ppInnerBevel)" stroke-width="3.5" />
+          <circle cx="55" cy="55" r="41.5" fill="url(#ppCoreGrad)" />
+          <path d="M18 46 C23 23 87 23 92 46 C77 54 33 54 18 46 Z" fill="url(#ppGlossTop)" />
+          <g filter="url(#ppIconEmbossed)">
+          <g stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M33 35 H77 A6 6 0 0 1 83 41 V61 A6 6 0 0 1 77 67 H51 L39 77 V67 H33 A6 6 0 0 1 27 61 V41 A6 6 0 0 1 33 35 Z" />
+            <polygon points="50,44 64,51 50,58" fill="#ffffff" stroke="none" />
+          </g></g>
+        </svg>
+          </div>
+          <span class="hub-label">Steward Stories</span>
+          <span class="hub-desc">Steward interviews, pantry tours &amp; creative fundraising ideas.</span>
+        </a>
         </div>
       </nav>
     </main>
 
-    <!-- CLEAN LEGAL & COALITION FOOTER -->
     <footer class="pp-footer">
       <div class="pp-footer-links">
-        <a href="/privacy/">Privacy Policy</a>
-        <a href="/privacy/#affiliate-disclosure">Affiliate Disclosure</a>
+        <a href="/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="/privacy/#affiliate-disclosure" target="_blank" rel="noopener noreferrer">Affiliate Disclosure</a>
       </div>
-      <div>716 Little Free Pantry Coalition &bull; Western New York</div>
+      <div>716 Little Free Pantry Coalition • Western New York</div>
     </footer>
   </div>
 
   <a class="pp-top-btn" href="#top">↑ Top</a>
-  <script src="/nav.js"></script>
+  <script>
+    const PANTRY_QUOTES = [
+      {
+            "text": "You may not control all the events that happen to you, but you can decide not to be reduced by them.",
+            "author": "Maya Angelou"
+      },
+      {
+            "text": "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+            "author": "Ralph Waldo Emerson"
+      },
+      {
+            "text": "If you can’t fly then run, if you can’t run then walk, if you can’t walk then crawl, but whatever you do you have to keep moving forward.",
+            "author": "Martin Luther King Jr."
+      },
+      {
+            "text": "Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying, ‘I will try again tomorrow.’",
+            "author": "Mary Anne Radmacher"
+      },
+      {
+            "text": "There is no exercise better for the heart than reaching down and lifting people up.",
+            "author": "John Holmes"
+      },
+      {
+            "text": "Too often we underestimate the power of a touch, a smile, a kind word, a listening ear, an honest compliment, or the smallest act of caring, all of which have the potential to turn a life around.",
+            "author": "Leo Buscaglia"
+      },
+      {
+            "text": "A single act of kindness throws out roots in all directions, and the roots spring up and make new trees.",
+            "author": "Amelia Earhart"
+      },
+      {
+            "text": "To the world you may be one person, but to one person you may be the world.",
+            "author": "Dr. Seuss"
+      },
+      {
+            "text": "When you come to the end of your rope, tie a knot and hold on.",
+            "author": "Franklin D. Roosevelt"
+      },
+      {
+            "text": "Do not judge me by my successes, judge me by how many times I fell down and got back up again.",
+            "author": "Nelson Mandela"
+      },
+      {
+            "text": "You are not a drop in the ocean. You are the entire ocean in a drop.",
+            "author": "Rumi"
+      },
+      {
+            "text": "Be kind whenever possible. It is always possible.",
+            "author": "Dalai Lama"
+      }
+];
+    let quoteIndex = 0;
+    const pantryEgg = document.getElementById("pantryEasterEgg");
+    const zenOverlay = document.getElementById("zenQuoteOverlay");
+    const zenQuoteBody = document.getElementById("zenQuoteBody");
+    const zenQuoteAuthor = document.getElementById("zenQuoteAuthor");
+    const zenQuoteClose = document.getElementById("zenQuoteClose");
+
+    function closeZenQuote() {
+      zenOverlay.classList.remove("is-visible");
+      pantryEgg.classList.remove("door-open");
+    }
+
+    pantryEgg.addEventListener("click", () => {
+      const current = PANTRY_QUOTES[quoteIndex];
+      zenQuoteBody.textContent = `“${current.text}”`;
+      zenQuoteAuthor.textContent = `— ${current.author}`;
+      quoteIndex = (quoteIndex + 1) % PANTRY_QUOTES.length;
+
+      pantryEgg.classList.add("door-open");
+      setTimeout(() => {
+        zenOverlay.classList.add("is-visible");
+      }, 160);
+    });
+
+    zenQuoteClose.addEventListener("click", closeZenQuote);
+    zenOverlay.addEventListener("click", (e) => {
+      if (e.target === zenOverlay) {
+        closeZenQuote();
+      }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && zenOverlay.classList.contains("is-visible")) {
+        closeZenQuote();
+      }
+    });
+  </script>
 </body>
 </html>
