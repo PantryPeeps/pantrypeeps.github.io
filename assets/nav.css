@@ -2,3 +2,6 @@
 
 /* Flat hub links and balanced brand/back row */
 .pp-nav-main{gap:12px}.pp-back{margin-left:auto;min-width:72px}.pp-hubs{gap:2px}.pp-hub{justify-content:flex-start;text-align:left;border-radius:0;border:0;border-bottom:2px solid transparent;background:transparent;padding:4px 3px;font-size:.72rem;line-height:1.15;box-shadow:none}.pp-hub:hover{background:rgba(255,255,255,.06)}.pp-hub[aria-current=page]{background:transparent;color:#fff;box-shadow:none;border-bottom-color:#ffeb26}.pp-hub span{overflow-wrap:normal;word-break:normal}.pp-hub img{width:24px;height:24px}@media(min-width:781px) and (max-width:1100px){.pp-hubs{grid-template-columns:repeat(5,minmax(0,1fr))}.pp-hub{font-size:.78rem}}@media(max-width:780px){.pp-nav-main{justify-content:space-between}.pp-back{margin-left:auto}.pp-hub{min-height:48px;padding:5px 4px;border-bottom-color:transparent}.pp-hub[aria-current=page]{border-bottom-color:#ffeb26}}
+
+/* Keep hub artwork itself visible without extra circular button backplates. */
+.hub-card,.pp-hub{background:transparent!important;box-shadow:none!important}.hub-card img{background:transparent!important;border:0!important;box-shadow:none!important;filter:none!important}.pp-hub img{background:transparent!important;border:0!important;box-shadow:none!important}
