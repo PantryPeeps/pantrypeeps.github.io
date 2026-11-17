@@ -444,8 +444,15 @@
     }
 
     /* Black & White Print Mode Class */
+    body.bw-print-mode,
+    body.bw-print-mode * {
+      background-image: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
     body.bw-print-mode {
-      background: #ffffff !important;
+      background-color: #ffffff !important;
       color: #000000 !important;
     }
 
@@ -455,101 +462,61 @@
     body.bw-print-mode .item-card,
     body.bw-print-mode .why-card,
     body.bw-print-mode .steward-footer {
-      background: #ffffff !important;
+      background-color: #ffffff !important;
       color: #000000 !important;
       border: 2px solid #000000 !important;
-      box-shadow: none !important;
     }
 
     body.bw-print-mode .season-title-bar,
     body.bw-print-mode .split-banner {
-      background: #f1f5f9 !important;
+      background-color: #e2e8f0 !important;
       color: #000000 !important;
       border-bottom: 2px solid #000000 !important;
     }
 
-    body.bw-print-mode .banner-label {
-      text-shadow: none !important;
-      color: #000000 !important;
-    }
-
-    body.bw-print-mode .status-pill {
-      background: #000000 !important;
-      color: #ffffff !important;
-      box-shadow: none !important;
-    }
-
-    body.bw-print-mode .unified-columns {
-      background: #ffffff !important;
-    }
-
+    body.bw-print-mode .banner-label,
     body.bw-print-mode .item-title,
     body.bw-print-mode .item-desc,
     body.bw-print-mode .why-card,
     body.bw-print-mode .rule-card h3,
     body.bw-print-mode .rule-card p,
     body.bw-print-mode .steward-footer p,
-    body.bw-print-mode .intro-text {
+    body.bw-print-mode .intro-text,
+    body.bw-print-mode .page-header h1,
+    body.bw-print-mode .rules-heading {
       color: #000000 !important;
     }
 
-
-    /* Site navigation and footer */
-    .site-masthead,
-    .site-footer {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
+    body.bw-print-mode .status-pill {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      border: 1px solid #000000 !important;
     }
 
-    .site-masthead {
-      max-width: 1080px;
-      margin: 0 auto 1rem;
-      padding: 0.85rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      background: #0f172a;
-      color: #ffffff;
-      border-bottom: 4px solid #00c9e8;
-      border-radius: 10px;
+    body.bw-print-mode .unified-columns {
+      background-color: #ffffff !important;
     }
 
-    .site-masthead a,
-    .site-footer a {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    .site-footer {
-      max-width: 1080px;
-      margin: 1rem auto 0;
-      padding: 1rem;
-      background: #0f172a;
-      color: #ffffff;
-      text-align: center;
-      border-top: 4px solid #00c9e8;
-      border-radius: 10px;
-    }
-
-    @media (max-width: 520px) {
-      .site-masthead {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    /* Print Media Rules */
+    /* Print Media Rules - Compact 2-Page Flow */
     @media print {
       @page {
-        margin: 0.4in;
+        size: letter portrait;
+        margin: 0.35in;
       }
 
       body {
-        padding: 0;
-        background: #ffffff;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 11pt;
+        line-height: 1.32;
+        background-color: #ffffff;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+
+      body.bw-print-mode {
+        -webkit-print-color-adjust: economy;
+        print-color-adjust: economy;
       }
 
       .no-print,
@@ -558,17 +525,114 @@
         display: none !important;
       }
 
-      .season-section {
-        break-inside: avoid;
-        page-break-inside: avoid;
-        box-shadow: none;
-        margin-bottom: 1.25rem;
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
       }
 
-      .rules-section,
+      .page-header {
+        margin-bottom: 0.5rem;
+      }
+
+      .page-header h1 {
+        font-size: 18pt;
+      }
+
+      .intro-text {
+        font-size: 9.5pt;
+        margin: 0.35rem auto 0.6rem;
+      }
+
+      .weather-alert {
+        padding: 0.55rem 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 9.5pt;
+      }
+
+      /* Allow large sections to flow naturally across pages without giant blank gaps */
+      .season-section {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        box-shadow: none !important;
+        margin-bottom: 0.85rem;
+      }
+
+      /* Keep banners glued to the first row of items below them */
+      .season-title-bar,
+      .split-banner {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .season-title-bar h2 {
+        font-size: 13.5pt;
+      }
+
+      .banner-label {
+        font-size: 10.5pt;
+      }
+
+      /* Force side-by-side 2-column layout in print regardless of narrow print width */
+      .split-banner,
+      .unified-columns,
+      .rules-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .unified-columns {
+        gap: 0.6rem;
+        padding: 0.65rem;
+      }
+
+      .column-stack {
+        gap: 0.45rem;
+      }
+
+      /* Prevent individual small cards from splitting in half */
+      .item-card,
+      .why-card,
+      .rule-card,
       .steward-footer {
-        break-inside: avoid;
-        page-break-inside: avoid;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        padding: 0.45rem 0.65rem;
+      }
+
+      .item-title {
+        font-size: 9.5pt;
+        margin-bottom: 0.1rem;
+      }
+
+      .item-desc,
+      .why-card,
+      .rule-card p {
+        font-size: 8.8pt;
+      }
+
+      .rules-section {
+        margin: 0.65rem 0;
+      }
+
+      .rules-heading {
+        font-size: 13pt;
+        margin-bottom: 0.45rem;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      .rule-card h3 {
+        font-size: 10pt;
+      }
+
+      .steward-footer {
+        margin-top: 0.65rem;
+        padding: 0.65rem;
+      }
+
+      .steward-footer p {
+        font-size: 10.5pt;
       }
     }
   </style>
@@ -783,12 +847,20 @@
   <script>
     function printColor() {
       document.body.classList.remove("bw-print-mode");
-      window.print();
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          window.print();
+        }, 60);
+      });
     }
 
     function printBlackAndWhite() {
       document.body.classList.add("bw-print-mode");
-      window.print();
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          window.print();
+        }, 60);
+      });
     }
 
     window.addEventListener("afterprint", function () {
