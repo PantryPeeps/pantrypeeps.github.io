@@ -20,8 +20,10 @@
     gtag('config', 'G-YFGDBP6X70');
   </script>
   <title>Pantry Peeps Deals | 716 LFPC</title>
+  <link rel="stylesheet" href="/assets/nav.css">
   <link rel="stylesheet" href="style.css?v=deal-disclaimer-fit-20261117">
   <script defer src="app.js?v=deal-highlights-20261117"></script>
+  <script defer src="/assets/nav.js"></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -29,16 +31,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <a class="skip" href="#deals">Skip to deals</a>
-  <header class="masthead">
-    <div class="shell mast-inner">
-      <a class="brand" href="#" aria-label="Pantry Peeps, back to top">
-        <span class="brand-mark" aria-hidden="true">PP</span>
-        <span>Pantry Peeps</span>
-      </a>
-      <a class="nav-link" href="#deals">Browse deals <span aria-hidden="true">↓</span></a>
-    </div>
-  </header>
-  <div class="disclosure"><div class="shell">As an Amazon Associate and Walmart Creator, I earn from qualifying purchases. #ad</div></div>
+  <div class="disclosure" id="affiliate-disclosure"><div class="shell">As an Amazon Associate and Walmart Creator, I earn from qualifying purchases. #ad</div></div>
   <main class="shell">
     <section class="intro" aria-labelledby="title">
       <div>
@@ -47,7 +40,13 @@
       </div>
       <div class="intro-tag">Stretch your budget.<br>Fill a pantry.<br>Feed a belly.</div>
     </section>
-    <p class="deal-disclaimer"><em>Prices, coupons, cash back, and rebates can change or expire at any time and may vary by account or location—always verify final pricing at checkout.</em></p>
+    <p class="deal-disclaimer"><em>Retailer prices and benefits—including Walmart Cash, Subscribe &amp; Save, coupons, and rebates—can change or vary by account or location. Verify final pricing and terms before checkout.</em></p>
+    <aside class="rebate-callout" aria-label="Rebate app referrals"><div><strong>Stack more savings on everyday deals</strong><span>See referral codes and QR links for five rebate apps.</span></div><button type="button" class="referral-open" id="open-referral-modal" aria-haspopup="dialog" aria-controls="referral-modal">Get Rebate App Bonuses &amp; QR Codes</button><a class="playbook-inline" href="/playbook/#rebate-referrals">Learn How to Stack All 5 Apps in The Pantry Playbook →</a></aside>
+    <dialog class="referral-dialog" id="referral-modal" aria-labelledby="referral-modal-title" aria-describedby="referral-modal-intro">
+      <div class="dialog-head"><div><p class="dialog-kicker">Pantry Peeps • Save while you shop</p><h2 id="referral-modal-title">Five apps. One grocery trip.</h2><p id="referral-modal-intro">These are my referral codes; I may receive a bonus if you join or complete a qualifying action. Tap the QR to open the app, then enter the displayed code if it is not applied automatically. Offers vary by app and account.</p></div><button type="button" class="dialog-close" aria-label="Close referrals">×</button></div>
+      <div class="referral-apps" id="referral-apps"></div>
+      <a class="dialog-playbook" href="/playbook/#rebate-referrals">Learn How to Stack All 5 Apps in The Pantry Playbook →</a>
+    </dialog>
     <section id="deals" class="deals" aria-label="Weekly deals">
       <div class="toolbar">
         <div class="filter-controls">
@@ -79,5 +78,34 @@
     <a href="/privacy/">Privacy Policy</a>
     <a href="#">Back to top ↑</a>
   </div></footer>
+<script>
+(()=>{
+ const apps=[
+  {name:'Ibotta',code:'jshatux',url:'https://ibotta.onelink.me/iUfE/8cc13c64?friend_code=jshatux',note:'Referral link applies your code.',hasCode:true},
+  {name:'Fetch',code:'J6GNX',url:'https://fetch.com/referral',note:'Enter the code before your first receipt if it is not applied automatically.',hasCode:true},
+  {name:'Receipt Hog',code:'kon91426',url:'https://www.receipthog.com/',note:'Enter the code when joining or in the app referral area.',hasCode:true},
+  {name:'Upside',code:'MJ4484',url:'https://www.upside.com/',note:'Enter the invite code before claiming your first offer.',hasCode:true},
+  {name:'Checkout 51',code:'',url:'https://www.checkout51.com/',note:'No referral code; browse current cash-back offers.',hasCode:false}
+ ];
+ const host=document.querySelector('#referral-apps');
+ for(const app of apps){
+  const card=document.createElement('article');card.className='referral-app';
+  const qrUrl='https://api.qrserver.com/v1/create-qr-code/?format=svg&size=180x180&margin=8&data='+encodeURIComponent(app.url);
+  const qrLink=document.createElement('a');qrLink.className='qr-tap';qrLink.href=app.url;qrLink.target='_blank';qrLink.rel='noopener';qrLink.setAttribute('aria-label','Open '+app.name+(app.hasCode?' with referral code '+app.code:''));
+  qrLink.innerHTML='<svg class="qr-svg" viewBox="0 0 180 180" role="img" aria-label="QR code for '+app.name+'"><image href="'+qrUrl+'" width="180" height="180"/></svg><span>Tap or scan</span>';
+  const copy=app.hasCode?'<button class="copy-referral" type="button" data-copy="'+app.code+'">Copy Code</button>':'';
+  card.innerHTML='<div class="app-copy"><a class="app-details" href="'+app.url+'" target="_blank" rel="noopener"><h3>'+app.name+'</h3><p>'+app.note+'</p>'+(app.hasCode?'<p class="app-code">Code: <strong>'+app.code+'</strong></p>':'<p class="app-code">Cash-back offers</p>')+'</a>'+copy+'</div>';
+  card.append(qrLink);host.append(card);
+ }
+ const dlg=document.querySelector('#referral-modal'),opener=document.querySelector('#open-referral-modal'),close=dlg.querySelector('.dialog-close');
+ const focusable=()=>[...dlg.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(x=>x.getClientRects().length);
+ opener.addEventListener('click',()=>{dlg.showModal();document.body.classList.add('modal-open');close.focus()});
+ const closeDialog=()=>{if(dlg.open)dlg.close();document.body.classList.remove('modal-open')};
+ close.addEventListener('click',closeDialog);dlg.addEventListener('cancel',()=>document.body.classList.remove('modal-open'));
+ dlg.addEventListener('click',e=>{if(e.target===dlg)closeDialog()});dlg.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener.focus()});
+ dlg.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=focusable();if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+ document.addEventListener('click',async e=>{const button=e.target.closest('.copy-referral');if(!button)return;const code=button.dataset.copy;try{await navigator.clipboard.writeText(code)}catch{const field=document.createElement('textarea');field.value=code;field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();document.execCommand('copy');field.remove()}button.textContent='Copied!';setTimeout(()=>button.textContent='Copy Code',1500)});
+})();
+</script>
 </body>
 </html>
