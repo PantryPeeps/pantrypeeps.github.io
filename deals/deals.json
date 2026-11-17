@@ -449,7 +449,10 @@
     "slug": "great-value-kernel-corn-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "discount",
+    "deal_badge": "WALMART ROLLBACK",
+    "deal_info": "A Walmart Rollback price was shown in the Facebook post. Check current pricing and availability."
   },
   {
     "week": "2026-11-09",
@@ -537,9 +540,9 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null,
-    "deal_type": "walmart-rewards",
-    "deal_badge": "WALMART REWARDS CASH",
-    "deal_info": "Check Walmart for an active Rewards Cash offer on this item and confirm the offer details in your account."
+    "deal_type": "stacked",
+    "deal_badge": "CLIP COUPON + WALMART REWARDS CASH",
+    "deal_info": "Clip the product-page coupon and check your account for the Walmart Rewards Cash offer. Confirm both are available before checkout."
   },
   {
     "week": "2026-11-09",
@@ -681,9 +684,9 @@
     "affiliate": true,
     "live_price": null,
     "price_updated_at": null,
-    "deal_type": "discount",
-    "deal_badge": "AMAZON LISTING DISCOUNT",
-    "deal_info": "A listing discount was shown when this deal was posted. Check whether it is still available."
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Look for the coupon and Subscribe & Save option. Confirm both are available for your account."
   },
   {
     "week": "2026-11-02",
@@ -697,7 +700,10 @@
     "slug": "great-value-pure-pumpkin-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "discount",
+    "deal_badge": "BULK PRICE DROP",
+    "deal_info": "A bulk-pack price drop was shown in the Facebook post. Check the listing for current pricing."
   },
   {
     "week": "2026-11-02",
@@ -742,7 +748,10 @@
     "slug": "happy-belly-turkey-gravy-12",
     "affiliate": true,
     "live_price": null,
-    "price_updated_at": null
+    "price_updated_at": null,
+    "deal_type": "stacked",
+    "deal_badge": "SUBSCRIBE & SAVE + FIRST-ORDER DISCOUNT",
+    "deal_info": "Look for Subscribe & Save and the first-order discount. Confirm both are available for your account."
   },
   {
     "week": "2026-11-09",
@@ -756,7 +765,10 @@
     "slug": "great-value-pumpkin-spice-pancake-mix-6",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "discount",
+    "deal_badge": "MULTIPACK DISCOUNT",
+    "deal_info": "A multi-pack discount was shown in the Facebook deal post. Check the listing for current pricing."
   },
   {
     "week": "2026-11-09",
@@ -770,7 +782,10 @@
     "slug": "great-value-apple-cinnamon-pancake-mix-4",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "discount",
+    "deal_badge": "MULTIPACK DISCOUNT",
+    "deal_info": "A multi-pack discount was shown in the Facebook deal post. Check the listing for current pricing."
   },
   {
     "week": "2026-11-09",
@@ -784,7 +799,10 @@
     "slug": "great-value-pumpkin-spice-muffin-mix-4",
     "live_price": null,
     "price_updated_at": null,
-    "affiliate": true
+    "affiliate": true,
+    "deal_type": "discount",
+    "deal_badge": "MULTIPACK DISCOUNT",
+    "deal_info": "A multi-pack discount was shown in the Facebook deal post. Check the listing for current pricing."
   },
   {
     "week": "2026-11-16",
