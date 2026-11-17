@@ -217,6 +217,7 @@
   text-wrap: pretty;
 }
 .deal-badge-coupon,
+.deal-badge-subscribe-save,
 .deal-badge-stacked,
 .deal-badge-walmart-rewards,
 .deal-badge-discount,
@@ -224,6 +225,7 @@
   background: var(--yellow);
 }
 .deal-callout-coupon,
+.deal-callout-subscribe-save,
 .deal-callout-stacked,
 .deal-callout-walmart-rewards,
 .deal-callout-discount {
