@@ -1082,5 +1082,29 @@
     "deal_type": "discount",
     "deal_badge": "100-PACK VALUE",
     "deal_info": "100 combs in one pack. Check Walmart for current price and availability."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Household",
+    "title": "Jumbo Index Playing Cards — Red & Blue",
+    "size": "12 decks · poker size · large-print jumbo index",
+    "note": "Senior-friendly holiday gifting and care-package idea. Twelve individually boxed decks.",
+    "url": "https://walmrt.us/4zOH8IX",
+    "slug": "jumbo-index-playing-cards-12-pack",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "playing cards",
+      "jumbo index",
+      "seniors",
+      "care package",
+      "holiday",
+      "12 pack"
+    ],
+    "deal_type": "discount",
+    "deal_badge": "12-DECK VALUE",
+    "deal_info": "12 decks in one pack. Check Walmart for current price and availability."
   }
 ]
