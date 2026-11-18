@@ -1107,5 +1107,31 @@
     "deal_badge": "12-DECK VALUE",
     "deal_info": "12 decks in one pack. Check Walmart for current price and availability.",
     "image": "https://static.metricool.com/planner/202611/8143535-file-13351374955189493266.png"
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Hygiene",
+    "title": "Equate Maxi Pads with Wings — Regular, 4 Pack",
+    "size": "4 packs · 42 pads each · 168 pads total",
+    "note": "Period-pack supplies for pantries. Approx. 11¢ per pad at the advertised $18.57 total.",
+    "image": "https://static.metricool.com/planner/202611/8143535-file-6054767396354497041.png",
+    "url": "https://walmrt.us/496Obkp",
+    "slug": "equate-maxi-pads-regular-wings-4-pack-42",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "period pack",
+      "maxi pads",
+      "equate",
+      "menstrual",
+      "period care",
+      "4 pack",
+      "42 count"
+    ],
+    "deal_type": "discount",
+    "deal_badge": "ABOUT 11¢ PER PAD",
+    "deal_info": "$18.57 for four 42-count packs (168 pads). Confirm current price at Walmart."
   }
 ]
