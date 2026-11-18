@@ -189,28 +189,38 @@
     }
     @media print {
       @page { margin: 0.25in; }
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+      }
       body * { display: none !important; }
-      .recipe-graphic-card,
-      .recipe-graphic-card .recipe-graphic-slot,
-      .recipe-graphic-card .recipe-graphic-slot img {
+      .recipe-page-wrap,
+      .recipe-page-wrap > .recipe-detail-card,
+      .recipe-page-wrap > .recipe-detail-card > .recipe-graphic-card,
+      .recipe-page-wrap > .recipe-detail-card > .recipe-graphic-card > .recipe-graphic-slot,
+      .recipe-page-wrap > .recipe-detail-card > .recipe-graphic-card > .recipe-graphic-slot > img {
         display: block !important;
       }
+      .recipe-page-wrap,
+      .recipe-detail-card,
       .recipe-graphic-card {
-        position: absolute;
-        inset: 0;
+        position: static;
         width: 100%;
+        max-width: none;
         margin: 0;
         padding: 0;
         border: 0;
+        border-radius: 0;
         box-shadow: none;
         background: transparent;
-        break-inside: avoid;
       }
-      .recipe-graphic-card .recipe-graphic-top,
-      .recipe-graphic-card .recipe-graphic-actions {
+      .recipe-graphic-card .recipe-graphic-top {
         display: none !important;
       }
       .recipe-graphic-card .recipe-graphic-slot {
+        width: 100%;
         border: 0;
         border-radius: 0;
         overflow: visible;
