@@ -142,6 +142,11 @@
       font-size: 1.05rem;
       font-weight: 800;
     }
+    .recipe-graphic-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
     .recipe-graphic-slot {
       width: 100%;
       border: 2px solid #0B192C;
@@ -182,6 +187,42 @@
       font-weight: 800;
       text-decoration: none;
     }
+    @media print {
+      @page { margin: 0.25in; }
+      body * { display: none !important; }
+      .recipe-graphic-card,
+      .recipe-graphic-card .recipe-graphic-slot,
+      .recipe-graphic-card .recipe-graphic-slot img {
+        display: block !important;
+      }
+      .recipe-graphic-card {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+        break-inside: avoid;
+      }
+      .recipe-graphic-card .recipe-graphic-top,
+      .recipe-graphic-card .recipe-graphic-actions {
+        display: none !important;
+      }
+      .recipe-graphic-card .recipe-graphic-slot {
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
+        background: transparent;
+      }
+      .recipe-graphic-card .recipe-graphic-slot img {
+        width: 100%;
+        height: auto;
+        max-height: 10in;
+        object-fit: contain;
+      }
+    }
   </style>
 </head>
 <body id="top">
@@ -191,7 +232,7 @@
     <article class="recipe-detail-card">
       <div class="recipe-detail-header">
         <h1 class="recipe-detail-title">Chicken Potpie Noodles</h1>
-        <button type="button" class="download-card-btn" onclick="window.print()">&#128424; Print Recipe</button>
+        
       </div>
 
       <div class="video-embed-frame">
@@ -205,7 +246,10 @@
       <div class="recipe-graphic-card">
         <div class="recipe-graphic-top">
           <h2>Illustrated Recipe Card (Save or Print)</h2>
-          <a class="download-card-btn" href="/recipes/chicken-potpie-noodles/chicken-pot-pie-rotini-card.png" download="Pantry-Peeps-Chicken-Pot-Pie-Rotini-Recipe.png">&#11015; Download Recipe Card PNG</a>
+          <div class="recipe-graphic-actions">
+            <a class="download-card-btn" href="/recipes/chicken-potpie-noodles/chicken-pot-pie-rotini-card.png" download="Pantry-Peeps-Chicken-Pot-Pie-Rotini-Recipe.png">&#11015; Download Recipe Card PNG</a>
+            <button type="button" class="download-card-btn" onclick="window.print()">&#128424; Print Recipe</button>
+          </div>
         </div>
         <div class="recipe-graphic-slot">
           <img src="/recipes/chicken-potpie-noodles/chicken-pot-pie-rotini-card.png" alt="Pantry Peeps Chicken Pot Pie Rotini Recipe Card" />
