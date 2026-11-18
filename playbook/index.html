@@ -10,6 +10,7 @@
   :root{--ink:#101e28;--cyan:#00cced;--yellow:#ffeb26;--paper:#f3f7f8;--muted:#425663;font-family:Inter,system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);line-height:1.5}.page{width:min(940px,calc(100% - 32px));margin:0 auto;padding:24px 0 54px}h1{margin:0;font-size:clamp(2rem,6vw,3.6rem);line-height:1.04;letter-spacing:-.06em}.feature{margin-top:18px;background:#fff;border:1px solid #c9d5da;border-radius:14px;padding:clamp(17px,3vw,26px)}.feature h2{margin:0 0 12px;line-height:1.15;letter-spacing:-.035em}.feature p{max-width:70ch}.app-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:20px 0}.app-card{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;min-width:0;border:1px solid #bccbd1;border-radius:12px;padding:16px;background:#f7fdfe}.app-card h3{margin:0;font-size:1.1rem}.app-description{margin:6px 0;color:var(--muted);font-size:.88rem;line-height:1.4}.app-code{font-size:.9rem;margin:7px 0;color:var(--ink)}.copy-referral{font:inherit;font-weight:800;border:1px solid var(--ink);border-radius:7px;background:var(--yellow);padding:8px 11px;cursor:pointer}.copy-referral:hover{background:var(--cyan)}.qr-card{display:grid;justify-items:center;gap:4px;padding:7px;background:#fff;border:8px solid white;outline:1px solid #d6e0e4;border-radius:7px;color:var(--ink);font-size:.76rem;font-weight:750;text-decoration:none}.qr-svg{display:block;width:102px;height:102px;background:white}.guide-blank{min-height:30px}.food-hack-image{display:block;width:min(100%,720px);height:auto;margin:8px auto 0}.back-deals{display:inline-flex;margin-top:18px;min-height:46px;align-items:center;justify-content:center;padding:9px 15px;border-radius:9px;border:2px solid var(--ink);background:var(--yellow);color:var(--ink);font-weight:850;text-decoration:none}.back-deals:hover{background:var(--cyan)}@media(hover:hover){.app-description{display:none}.app-card:hover .app-description,.app-card:focus-within .app-description{display:block}}@media(max-width:780px){.app-list{grid-template-columns:1fr;gap:24px}.app-description{display:block}.app-card{gap:16px}.qr-svg{width:106px;height:106px}}@media(max-width:390px){.app-card{grid-template-columns:1fr auto;padding:12px;gap:10px}.qr-svg{width:92px;height:92px}}@media print{.pp-nav,.pp-footer,.pp-top,.copy-referral,.back-deals{display:none!important}.app-description{display:block!important}}
   
 
+  
   /* Single-QR Spotlight Switcher (Only One QR Visible at a Time) */
   .rebate-qr-section {
     max-width: 720px;
@@ -107,6 +108,13 @@
     padding: 2px 8px;
     border-radius: 6px;
     border: 1.5px solid #0B192C;
+  }
+  .qr-app-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.48;
+    color: #334155;
   }
   .qr-copy-pill {
     margin-top: 2px;
@@ -281,8 +289,168 @@
     0% { transform: translateY(0); }
     100% { transform: translateY(-3px); }
   }
+  .food-hacks-section {
+    margin-top: 26px;
+  }
+  .food-hacks-header {
+    margin-bottom: 14px;
+  }
+  .food-hacks-header h2 {
+    margin: 0 0 4px;
+    font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0B192C;
+  }
+  .food-hacks-header p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #334155;
+  }
+  .flyer-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .flyer-thumb-card {
+    background: #FFFFFF;
+    border: 2.5px solid #0B192C;
+    box-shadow: 5px 5px 0 #0B192C;
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .flyer-thumb-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    padding: 0;
+    border: 2px solid #0B192C;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #F8FAFC;
+    cursor: zoom-in;
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+  }
+  .flyer-thumb-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(11, 25, 44, 0.16);
+  }
+  .flyer-thumb-btn img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .flyer-zoom-badge {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 3px 8px;
+    background: rgba(11, 25, 44, 0.86);
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    pointer-events: none;
+  }
+  .flyer-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .flyer-title {
+    margin: 0;
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: #0B192C;
+  }
+  .flyer-discreet-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .discreet-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 9px;
+    background: #F1F5F9;
+    color: #334155;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  }
+  .discreet-action-btn:hover {
+    background: #FDE02F;
+    color: #0B192C;
+    border-color: #0B192C;
+  }
+  .flyer-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 25, 44, 0.78);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 9999;
+  }
+  .flyer-lightbox.is-open {
+    display: flex;
+  }
+  .flyer-lightbox-inner {
+    position: relative;
+    max-width: min(92vw, 640px);
+    max-height: 90vh;
+    background: #FFFFFF;
+    border: 3px solid #0B192C;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 8px 8px 0 #0B192C;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .flyer-lightbox-inner img {
+    max-width: 100%;
+    max-height: 76vh;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: block;
+  }
+  .flyer-lightbox-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .flyer-close-btn {
+    padding: 5px 12px;
+    background: #FDE02F;
+    color: #0B192C;
+    border: 2px solid #0B192C;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
 
-  </style>
+</style>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K5XGZSQT');</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFGDBP6X70"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YFGDBP6X70');</script>
@@ -303,18 +471,21 @@
 
       <!-- App Selector Tabs -->
       <div class="qr-app-tabs" role="tablist" aria-label="Choose a rebate app">
-        <button type="button" class="qr-tab-btn is-active" role="tab" aria-selected="true" data-app-target="qr-ibotta">Ibotta</button>
+        <button type="button" class="qr-tab-btn" role="tab" aria-selected="false" data-app-target="qr-ibotta">Ibotta</button>
         <button type="button" class="qr-tab-btn" role="tab" aria-selected="false" data-app-target="qr-fetch">Fetch</button>
         <button type="button" class="qr-tab-btn" role="tab" aria-selected="false" data-app-target="qr-receipthog">Receipt Hog</button>
         <button type="button" class="qr-tab-btn" role="tab" aria-selected="false" data-app-target="qr-upside">Upside</button>
-        <button type="button" class="qr-tab-btn" role="tab" aria-selected="false" data-app-target="qr-checkout51">Checkout 51</button>
+        <button type="button" class="qr-tab-btn is-active" role="tab" aria-selected="true" data-app-target="qr-checkout51">Checkout 51</button>
       </div>
 
       <!-- 1. Ibotta (Active by Default) -->
-      <article class="qr-spotlight-card is-active" id="qr-ibotta" role="tabpanel">
+      <article class="qr-spotlight-card" id="qr-ibotta" role="tabpanel">
         <div class="qr-app-info">
-          <span class="qr-app-badge">1 of 5 • Grocery Rebates</span>
+          <span class="qr-app-badge">1 of 5 • Real Cash Back on Groceries</span>
           <h3 class="qr-app-title">Ibotta</h3>
+          <p class="qr-app-desc">
+            Unlock real cash rebates on everyday pantry staples, produce, and household items at Walmart, Tops, Wegmans, Target, and more. Clip offers before you shop, scan your receipt, and cash out directly to PayPal, your bank, or gift cards once you hit $20.
+          </p>
           <span class="qr-code-text">Referral Code: <strong>jshatux</strong></span>
           <div class="qr-action-row">
             <button type="button" class="qr-copy-pill" data-copy="jshatux">Copy Code</button>
@@ -330,8 +501,11 @@
       <!-- 2. Fetch -->
       <article class="qr-spotlight-card" id="qr-fetch" role="tabpanel">
         <div class="qr-app-info">
-          <span class="qr-app-badge">2 of 5 • Receipt Points</span>
+          <span class="qr-app-badge">2 of 5 • Easiest Receipt Scanner</span>
           <h3 class="qr-app-title">Fetch</h3>
+          <p class="qr-app-desc">
+            Snap a photo of <em>any</em> grocery, restaurant, or retail receipt—no clipping offers beforehand required. Every receipt earns points automatically, with bonus points on featured pantry brands that redeem for free Walmart, Amazon, Target, or Visa gift cards.
+          </p>
           <span class="qr-code-text">Referral Code: <strong>J6GNX</strong></span>
           <div class="qr-action-row">
             <button type="button" class="qr-copy-pill" data-copy="J6GNX">Copy Code</button>
@@ -347,8 +521,11 @@
       <!-- 3. Receipt Hog -->
       <article class="qr-spotlight-card" id="qr-receipthog" role="tabpanel">
         <div class="qr-app-info">
-          <span class="qr-app-badge">3 of 5 • Any Receipt Rewards</span>
+          <span class="qr-app-badge">3 of 5 • Stackable Receipt Rewards</span>
           <h3 class="qr-app-title">Receipt Hog</h3>
+          <p class="qr-app-desc">
+            Scan the exact same paper or e-receipts you already snapped for Ibotta and Fetch to double-dip on rewards. Every grocery receipt earns coins and Hog Slots spins that trade in for PayPal cash or Amazon gift cards—even on store brands and unbranded items.
+          </p>
           <span class="qr-code-text">Referral Code: <strong>kon91426</strong></span>
           <div class="qr-action-row">
             <button type="button" class="qr-copy-pill" data-copy="kon91426">Copy Code</button>
@@ -366,6 +543,9 @@
         <div class="qr-app-info">
           <span class="qr-app-badge">4 of 5 • Gas &amp; Grocery Cash Back</span>
           <h3 class="qr-app-title">Upside</h3>
+          <p class="qr-app-desc">
+            Save up to 25¢/gal on gas runs and earn extra cash back at participating grocery stores and restaurants. Claim an offer in the app before you fill up or check out, pay normally, and transfer your cash balance straight to your bank, PayPal, or a gift card.
+          </p>
           <span class="qr-code-text">Referral Code: <strong>MJ4484</strong></span>
           <div class="qr-action-row">
             <button type="button" class="qr-copy-pill" data-copy="MJ4484">Copy Code</button>
@@ -379,11 +559,13 @@
       </article>
 
       <!-- 5. Checkout 51 -->
-      <article class="qr-spotlight-card" id="qr-checkout51" role="tabpanel">
+      <article class="qr-spotlight-card is-active" id="qr-checkout51" role="tabpanel">
         <div class="qr-app-info">
           <span class="qr-app-badge">5 of 5 • Weekly Cash-Back Offers</span>
           <h3 class="qr-app-title">Checkout 51</h3>
-          <span class="qr-code-text">Cash-back offers on groceries &amp; gas</span>
+          <p class="qr-app-desc">
+            Browse fresh weekly cash-back offers on everyday groceries, pantry staples, and gas—usable at any store with zero loyalty card linking needed. Snap your receipt before the weekly timer resets and request a check or PayPal payout once you reach $20.
+          </p>
           <div class="qr-action-row">
             <a class="qr-signup-link" href="https://www.checkout51.com/" target="_blank" rel="noopener noreferrer">Open Sign-Up Link ↗</a>
           </div>
@@ -460,16 +642,41 @@
           </svg>
         </div>
       </div>
-      <a class="back-deals" href="/deals/">← Back to Today’s Deals</a>
+
+      <!-- Food Hacks Section Directly Under the Cat (Nothing Else Below) -->
+      <section class="food-hacks-section" aria-labelledby="foodHacksHeading">
+        <div class="food-hacks-header">
+          <h2 id="foodHacksHeading">Food Hacks</h2>
+          <p>Tap any guide to view full-size, or save and print a copy for your kitchen.</p>
+        </div>
+
+        <div class="flyer-cards-grid">
+          <!-- Mayo Hack Flyer Card -->
+          <article class="flyer-thumb-card">
+            <button type="button" class="flyer-thumb-btn" data-zoom-src="/assets/flyers/mayo-packets.svg" data-zoom-title="Homemade &amp; Pantry Mayo Hacks">
+              <img src="/assets/flyers/mayo-packets.svg" alt="Pantry Peeps Mayo Hacks Printable Guide" onerror="this.onerror=null;this.src='/assets/flyers/mayo-packets.svg';">
+              <span class="flyer-zoom-badge">🔍 Tap to enlarge</span>
+            </button>
+            <div class="flyer-meta-row">
+              <h3 class="flyer-title">Mayo Hacks &amp; Swaps</h3>
+              <div class="flyer-discreet-actions">
+                <a class="discreet-action-btn" href="/assets/flyers/mayo-packets.svg" download="Pantry-Peeps-Mayo-Hacks.svg" title="Download PNG">⬇ SVG</a>
+                <button type="button" class="discreet-action-btn" data-print-img="/assets/flyers/mayo-packets.svg" title="Print Flyer">🖨 Print</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
     </section>
-    <section class="feature" id="pantry-stretching-guide">
-      <h2>Pantry Stretching Guide</h2>
-      <div class="guide-blank"></div>
-    </section>
-    <section class="feature" id="food-hacks">
-      <h2>Food Hacks</h2>
-      <img class="food-hack-image" src="/assets/flyers/mayo-packets.svg" alt="Save Those Mayo Packets flyer">
-    </section>
+<div class="flyer-lightbox" id="flyerLightbox" role="dialog" aria-modal="true" aria-labelledby="flyerLightboxTitle">
+    <div class="flyer-lightbox-inner">
+      <div class="flyer-lightbox-bar">
+        <strong id="flyerLightboxTitle" style="font-size:0.95rem;">Food Hack Guide</strong>
+        <button type="button" class="flyer-close-btn" id="flyerLightboxClose">Close ×</button>
+      </div>
+      <img id="flyerLightboxImg" src="" alt="Enlarged Food Hack Flyer">
+    </div>
+  </div>
   </main>
   <script>
   (function () {
@@ -527,6 +734,42 @@
         }
       });
     }
+
+    const lightbox = document.getElementById("flyerLightbox");
+    const lightboxImg = document.getElementById("flyerLightboxImg");
+    const lightboxTitle = document.getElementById("flyerLightboxTitle");
+    const lightboxClose = document.getElementById("flyerLightboxClose");
+
+    document.querySelectorAll("[data-zoom-src]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const imgEl = btn.querySelector("img");
+        lightboxImg.src = imgEl ? imgEl.src : btn.getAttribute("data-zoom-src");
+        lightboxTitle.textContent = btn.getAttribute("data-zoom-title") || "Food Hack Guide";
+        if (lightbox) lightbox.classList.add("is-open");
+      });
+    });
+
+    if (lightboxClose && lightbox) {
+      lightboxClose.addEventListener("click", () => lightbox.classList.remove("is-open"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("is-open");
+      });
+    }
+
+    document.querySelectorAll("[data-print-img]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".flyer-thumb-card");
+        const imgEl = card ? card.querySelector("img") : null;
+        const src = imgEl ? imgEl.src : btn.getAttribute("data-print-img");
+        const win = window.open("", "_blank");
+        if (!win) {
+          window.print();
+          return;
+        }
+        win.document.write('<!DOCTYPE html><html><head><title>Print Food Hack</title><style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;}img{max-width:100%;max-height:100vh;height:auto;}</style></head><body><img src="' + src + '" onload="window.print();window.close();" /></body></html>');
+        win.document.close();
+      });
+    });
   })();
 </script>
 </body>
