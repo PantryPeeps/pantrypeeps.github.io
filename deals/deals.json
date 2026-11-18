@@ -1133,5 +1133,31 @@
     "deal_type": "discount",
     "deal_badge": "ABOUT 11¢ PER PAD",
     "deal_info": "$18.57 for four 42-count packs (168 pads). Confirm current price at Walmart."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Household",
+    "title": "Joyfy Christmas Wind-Up Toys — 24 Pieces",
+    "size": "24 assorted Christmas-themed wind-up toys",
+    "note": "Small holiday gifts, kindness bags, classroom favors, and gifts for kids or seniors.",
+    "image": "https://static.metricool.com/planner/202611/8143535-file-5853704201027633267.png",
+    "url": "https://walmrt.us/4iZ5Sa9",
+    "slug": "joyfy-christmas-wind-up-toys-24",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "joyfy",
+      "christmas toys",
+      "holiday gifts",
+      "wind up toys",
+      "seniors",
+      "kids",
+      "24 pack"
+    ],
+    "deal_type": "discount",
+    "deal_badge": "REDUCED PRICE",
+    "deal_info": "Check Walmart for current pricing and availability."
   }
 ]
