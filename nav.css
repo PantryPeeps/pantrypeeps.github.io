@@ -1,0 +1,316 @@
+/* ==========================================================================
+       PANTRY PEEPS CLEAN SUB-PAGE NAVIGATION & FOOTER (/nav.css)
+       ========================================================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+    :root {
+      --pp-cyan: #00BFE8;
+      --pp-yellow: #FDE02F;
+      --pp-ink: #0B192C;
+      --pp-white: #FFFFFF;
+      --pp-yt: #FF0000;
+      --pp-fb: #1877F2;
+    }
+
+    .pp-sub-header {
+      background: var(--pp-cyan);
+      border-bottom: 3px solid var(--pp-ink);
+      color: var(--pp-ink);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .pp-sub-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Left: Back Button + All Pages Menu */
+    .pp-sub-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .pp-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--pp-ink);
+      border: 1.5px solid var(--pp-ink);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.12s ease, transform 0.12s ease;
+    }
+
+    .pp-back-btn:hover {
+      background: var(--pp-white);
+      transform: translateX(-2px);
+    }
+
+    /* Center: Bold Pantry Peeps Brand */
+    .pp-sub-center {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .pp-brand-link {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--pp-ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* Right: Social Pills */
+    .pp-sub-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .pp-nav-dropdown {
+      position: relative;
+    }
+
+    .pp-menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: var(--pp-yellow);
+      color: var(--pp-ink);
+      border: 2px solid var(--pp-ink);
+      border-radius: 999px;
+      box-shadow: 3px 3px 0 var(--pp-ink);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .pp-menu-toggle:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--pp-ink);
+    }
+
+    .pp-menu-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .pp-menu-caret {
+      font-size: 0.65rem;
+      transition: transform 0.18s ease;
+    }
+
+    .pp-menu-toggle[aria-expanded="true"] .pp-menu-caret {
+      transform: rotate(180deg);
+    }
+
+    /* Clean Crisp Text Popover Menu (Left-Aligned Under Button) */
+    .pp-dropdown-list {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      width: 260px;
+      background: var(--pp-white);
+      border: 2.5px solid var(--pp-ink);
+      border-radius: 14px;
+      box-shadow: 6px 6px 0 var(--pp-ink);
+      padding: 8px;
+      z-index: 1100;
+    }
+
+    .pp-dropdown-list.is-open {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pp-dropdown-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--pp-ink);
+      text-decoration: none;
+      transition: background-color 0.12s ease;
+    }
+
+    .pp-dropdown-link:hover {
+      background: #F1F5F9;
+    }
+
+    .pp-dropdown-link.is-active {
+      background: var(--pp-yellow);
+      border: 1.5px solid var(--pp-ink);
+    }
+
+    /* Social Pills Matching Homepage */
+    .pp-sub-socials {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pp-social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 2px solid var(--pp-ink);
+      border-radius: 999px;
+      box-shadow: 3px 3px 0 var(--pp-ink);
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--pp-white);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .pp-social-pill:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--pp-ink);
+    }
+
+    .pp-social-pill.yt {
+      background: var(--pp-yt);
+    }
+
+    .pp-social-pill.fb {
+      background: var(--pp-fb);
+    }
+
+    .pp-social-pill svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* Clean Sub-Page Footer (Legal Links Only) */
+    .pp-sub-footer {
+      margin-top: 32px;
+      background: var(--pp-white);
+      color: var(--pp-ink);
+      border-top: 2px solid var(--pp-ink);
+      padding: 16px;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pp-sub-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 14px 20px;
+      margin-bottom: 6px;
+    }
+
+    .pp-sub-footer-links a {
+      color: var(--pp-ink);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .pp-sub-footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .pp-sub-top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 950;
+      background: var(--pp-yellow);
+      color: var(--pp-ink);
+      border: 2px solid var(--pp-ink);
+      box-shadow: 3px 3px 0 var(--pp-ink);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .pp-sub-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        gap: 8px;
+      }
+
+      .pp-sub-center {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        padding-bottom: 4px;
+      }
+
+      .pp-sub-left {
+        gap: 6px;
+      }
+
+      .pp-back-btn {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+      }
+
+      .pp-menu-toggle {
+        padding: 6px 11px;
+        font-size: 0.78rem;
+      }
+
+      .pp-dropdown-list {
+        width: min(260px, calc(100vw - 24px));
+      }
+
+      .pp-social-pill span {
+        display: none;
+      }
+
+      .pp-social-pill {
+        padding: 7px;
+      }
+    }
+
+    @media print {
+      .pp-sub-header,
+      .pp-sub-footer,
+      .pp-sub-top-btn {
+        display: none !important;
+      }
+    }
