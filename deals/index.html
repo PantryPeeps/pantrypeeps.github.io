@@ -22,6 +22,75 @@
   <title>Pantry Peeps Deals | 716 LFPC</title>
   <link rel="stylesheet" href="/nav.css?v=20261118-1">
   <link rel="stylesheet" href="style.css?v=deal-disclaimer-fit-20261117">
+  <style>
+  .deals-compact-hero {
+    background: #00BFE8;
+    border: 2px solid #0B192C;
+    box-shadow: 4px 4px 0 #0B192C;
+    padding: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 14px;
+    margin-bottom: 10px;
+  }
+  .deals-compact-title {
+    margin: 0;
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #0B192C;
+    white-space: nowrap;
+  }
+  .deals-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+  .deals-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px 11px;
+    background: #FDE02F;
+    color: #0B192C;
+    border: 2px solid #0B192C;
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 #0B192C;
+    font-size: 0.74rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .deals-hero-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 #0B192C;
+  }
+  @media (max-width: 540px) {
+    .deals-compact-hero {
+      padding: 10px 12px;
+      gap: 8px;
+    }
+    .deals-hero-actions {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+    .deals-hero-btn {
+      width: 100%;
+      padding: 7px 10px;
+      font-size: 0.76rem;
+    }
+  }
+  </style>
   <script defer src="app.js?v=deal-highlights-20261117"></script>
   <script defer src="/nav.js?v=20261118-1"></script>
 </head>
@@ -33,15 +102,14 @@
   <a class="skip" href="#deals">Skip to deals</a>
   <div class="disclosure" id="affiliate-disclosure"><div class="shell">As an Amazon Associate and Walmart Creator, I earn from qualifying purchases. #ad</div></div>
   <main class="shell">
-    <section class="intro" aria-labelledby="title">
-      <div>
-        <h1 id="title">Pantry Peeps Deals</h1>
-        <p>716 LFPC</p>
+    <section class="deals-compact-hero">
+      <h1 class="deals-compact-title">Deals</h1>
+      <div class="deals-hero-actions">
+        <a class="deals-hero-btn" id="open-referral-modal" href="#referral-modal" aria-haspopup="dialog" aria-controls="referral-modal">Get Rebate App Bonuses &amp; QR Codes</a>
+        <a class="deals-hero-btn" href="/playbook/">Learn How to Stack All 5 Apps in The Pantry Playbook &rarr;</a>
       </div>
-      <div class="intro-tag">Stretch your budget.<br>Fill a pantry.<br>Feed a belly.</div>
     </section>
     <p class="deal-disclaimer"><em>Retailer prices and benefits—including Walmart Cash, Subscribe &amp; Save, coupons, and rebates—can change or vary by account or location. Verify final pricing and terms before checkout.</em></p>
-    <aside class="rebate-callout" aria-label="Rebate app referrals"><button type="button" class="referral-open" id="open-referral-modal" aria-haspopup="dialog" aria-controls="referral-modal">Get Rebate App Bonuses &amp; QR Codes</button><a class="playbook-inline" href="/playbook/#rebate-referrals">Learn How to Stack All 5 Apps in The Pantry Playbook →</a></aside>
     <dialog class="referral-dialog" id="referral-modal" aria-labelledby="referral-modal-title" >
       <div class="dialog-head"><div><h2 id="referral-modal-title">Rebate apps, referral codes &amp; QR cards</h2></div><button type="button" class="dialog-close" aria-label="Close referrals">×</button></div>
       <div class="referral-apps" id="referral-apps"></div>
@@ -99,7 +167,7 @@
  }
  const dlg=document.querySelector('#referral-modal'),opener=document.querySelector('#open-referral-modal'),close=dlg.querySelector('.dialog-close');
  const focusable=()=>[...dlg.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(x=>x.getClientRects().length);
- opener.addEventListener('click',()=>{dlg.showModal();document.body.classList.add('modal-open');close.focus()});
+ opener.addEventListener('click',e=>{e.preventDefault();dlg.showModal();document.body.classList.add('modal-open');close.focus()});
  const closeDialog=()=>{if(dlg.open)dlg.close();document.body.classList.remove('modal-open')};
  close.addEventListener('click',closeDialog);dlg.addEventListener('cancel',()=>document.body.classList.remove('modal-open'));
  dlg.addEventListener('click',e=>{if(e.target===dlg)closeDialog()});dlg.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener.focus()});
