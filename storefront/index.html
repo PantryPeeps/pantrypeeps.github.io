@@ -75,28 +75,211 @@
     }
     @media print {
       .action { display: none; }
-      .feature, .intro, .disclosure { box-shadow: none; }
+      .feature, .storefront-hero, .disclosure { box-shadow: none; }
     }
+  </style>
+  <style>
+    .storefront-hero {
+        position: relative;
+        background: #00BFE8;
+        background-image: none !important;
+        border: 2.5px solid #0B192C;
+        box-shadow: 6px 6px 0 #0B192C;
+        border-radius: 16px;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        overflow: hidden;
+        margin-bottom: 18px;
+      }
+      .storefront-hero::before,
+      .storefront-hero::after {
+        display: none !important;
+        content: none !important;
+      }
+      .storefront-hero-copy {
+        flex: 1;
+        min-width: 0;
+      }
+      .storefront-hero-title {
+        margin: 0 0 8px;
+        font-size: clamp(1.75rem, 3.6vw, 2.45rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #0B192C;
+      }
+      .storefront-hero-desc {
+        margin: 0;
+        font-size: 0.96rem;
+        font-weight: 700;
+        line-height: 1.48;
+        color: #0B192C;
+      }
+      .storefront-cat-art {
+        flex-shrink: 0;
+        width: 245px;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .storefront-cat-art svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(3px 3px 0 rgba(11, 25, 44, 0.25));
+      }
+      @media (max-width: 680px) {
+        .storefront-hero {
+          flex-direction: column;
+          text-align: center;
+          padding: 18px 16px 14px;
+          gap: 12px;
+        }
+        .storefront-cat-art {
+          width: 220px;
+        }
+      }
   </style>
   <script defer src="/nav.js?v=20261118-1"></script>
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5XGZSQT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="page">
-    <section class="intro">
-      <img src="/assets/icons/icon-storefront.png" alt="">
-      <div>
-        <div class="kicker">Pantry Peeps • Western New York</div>
-        <h1>Storefront</h1>
-        <p class="lead">Curated lists for pantry helpers, steward gear, and seasonal needs.</p>
-      </div>
-    </section>
+    <section class="storefront-hero" id="storefrontHeroSnippet">
+          <div class="storefront-hero-copy">
+            <h1 class="storefront-hero-title">Pantry Peeps Storefront</h1>
+            <p class="storefront-hero-desc">
+              Browse all of my curated shopping collections in one place. Current lists include <strong>Little Free Pantry Staples</strong>, <strong>Everyday Items Under $1</strong>, <strong>Bulk Finds</strong>, <strong>Kindness Care Packages</strong>, <strong>Pet Supplies</strong>, <strong>Pantry Helpers</strong>, and <strong>one-click Recipe Ingredient Bundles</strong> (like Chicken Potpie Noodles). As I grow my Walmart, Sam’s Club, and upcoming Amazon storefronts, you’ll also find expanding collections for home cookware, pantry steward supplies, essentials for displaced neighbors, and seasonal gift drives for organizations supporting kids and seniors.
+            </p>
+          </div>
+    
+          <!-- Custom Neo-Brutalist SVG: Cat Pushing a Shopping Cart Full of Cats -->
+          <div class="storefront-cat-art" aria-hidden="true">
+            <svg viewBox="0 0 280 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ground Shadow -->
+              <ellipse cx="145" cy="162" rx="115" ry="6" fill="#0B192C" fill-opacity="0.18"></ellipse>
+    
+              <!-- === CATS INSIDE THE SHOPPING CART (BACK LAYER) === -->
+              <!-- Cat 1 (Left in cart: Calico/Cream) -->
+              <g>
+                <!-- Ears -->
+                <polygon points="124,55 129,36 141,49" fill="#FFFDF7" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="158,49 169,36 173,55" fill="#F97316" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <!-- Head -->
+                <ellipse cx="149" cy="63" rx="24" ry="20" fill="#FFFDF7" stroke="#0B192C" stroke-width="3"></ellipse>
+                <!-- Orange patch -->
+                <path d="M156 45 C166 47 172 55 171 64 C163 63 157 56 156 45 Z" fill="#F97316"></path>
+                <!-- Happy closed eyes -->
+                <path d="M138 61 Q142 57 146 61" stroke="#0B192C" stroke-width="2.5" stroke-linecap="round"></path>
+                <path d="M153 61 Q157 57 161 61" stroke="#0B192C" stroke-width="2.5" stroke-linecap="round"></path>
+                <!-- Pink nose & smile -->
+                <polygon points="149.5,65 147,68 152,68" fill="#FB7185"></polygon>
+                <path d="M145 70 Q149.5 74 154 70" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></path>
+              </g>
+    
+              <!-- Cat 2 (Right in cart: Cozy Gray Tabby) -->
+              <g>
+                <polygon points="175,58 180,39 192,52" fill="#94A3B8" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="208,52 220,39 224,58" fill="#94A3B8" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <ellipse cx="200" cy="66" rx="23" ry="19" fill="#CBD5E1" stroke="#0B192C" stroke-width="3"></ellipse>
+                <!-- Forehead stripes -->
+                <line x1="200" y1="48" x2="200" y2="54" stroke="#475569" stroke-width="2.5" stroke-linecap="round"></line>
+                <line x1="194" y1="50" x2="195" y2="55" stroke="#475569" stroke-width="2.2" stroke-linecap="round"></line>
+                <line x1="206" y1="50" x2="205" y2="55" stroke="#475569" stroke-width="2.2" stroke-linecap="round"></line>
+                <!-- Big eyes -->
+                <circle cx="192" cy="64" r="3.2" fill="#0B192C"></circle>
+                <circle cx="191" cy="63" r="1.1" fill="#FFFFFF"></circle>
+                <circle cx="208" cy="64" r="3.2" fill="#0B192C"></circle>
+                <circle cx="207" cy="63" r="1.1" fill="#FFFFFF"></circle>
+                <!-- Nose & mouth -->
+                <polygon points="200,68 197.5,71 202.5,71" fill="#FB7185"></polygon>
+                <path d="M196 73 Q200 76 204 73" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></path>
+              </g>
+    
+              <!-- Cat 3 (Front center peeking over basket: Canary Yellow Kitten) -->
+              <g>
+                <polygon points="154,75 159,59 169,70" fill="#FDE02F" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="183,70 193,59 197,75" fill="#FDE02F" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"></polygon>
+                <ellipse cx="176" cy="81" rx="21" ry="17" fill="#FDE02F" stroke="#0B192C" stroke-width="3"></ellipse>
+                <circle cx="169" cy="79" r="3" fill="#0B192C"></circle>
+                <circle cx="168" cy="78" r="1" fill="#FFFFFF"></circle>
+                <circle cx="183" cy="79" r="3" fill="#0B192C"></circle>
+                <circle cx="182" cy="78" r="1" fill="#FFFFFF"></circle>
+                <polygon points="176,82 173.8,84.8 178.2,84.8" fill="#FB7185"></polygon>
+                <path d="M172 86.5 Q176 89.5 180 86.5" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></path>
+                <!-- Little paws gripping front cart edge -->
+                <ellipse cx="163" cy="86" rx="5.5" ry="4" fill="#FDE02F" stroke="#0B192C" stroke-width="2.5"></ellipse>
+                <ellipse cx="189" cy="86" rx="5.5" ry="4" fill="#FDE02F" stroke="#0B192C" stroke-width="2.5"></ellipse>
+              </g>
+    
+              <!-- === SHOPPING CART === -->
+              <g>
+                <!-- Cart Handle & Frame -->
+                <path d="M96 68 L112 68 L124 126 L228 126" stroke="#0B192C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <!-- Red/Yellow Handle Grip -->
+                <rect x="89" y="63" width="16" height="9" rx="4.5" fill="#FDE02F" stroke="#0B192C" stroke-width="3"></rect>
+                <!-- Cart Basket -->
+                <polygon points="116,84 242,84 230,126 124,126" fill="#FFFFFF" fill-opacity="0.88" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round"></polygon>
+                <!-- Cart Grid Lines -->
+                <line x1="120" y1="98" x2="238" y2="98" stroke="#0B192C" stroke-width="2.2"></line>
+                <line x1="122" y1="112" x2="234" y2="112" stroke="#0B192C" stroke-width="2.2"></line>
+                <line x1="145" y1="84" x2="149" y2="126" stroke="#0B192C" stroke-width="2.2"></line>
+                <line x1="178" y1="84" x2="179" y2="126" stroke="#0B192C" stroke-width="2.2"></line>
+                <line x1="211" y1="84" x2="208" y2="126" stroke="#0B192C" stroke-width="2.2"></line>
+                <!-- Undercarriage & Wheels -->
+                <path d="M132 126 L126 142 L226 142 L220 126" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round"></path>
+                <circle cx="136" cy="150" r="9" fill="#FDE02F" stroke="#0B192C" stroke-width="3.5"></circle>
+                <circle cx="136" cy="150" r="3" fill="#0B192C"></circle>
+                <circle cx="216" cy="150" r="9" fill="#FDE02F" stroke="#0B192C" stroke-width="3.5"></circle>
+                <circle cx="216" cy="150" r="3" fill="#0B192C"></circle>
+              </g>
+    
+              <!-- === SHOPPER CAT PUSHING THE CART (LEFT) === -->
+              <g>
+                <!-- Swishing Tail -->
+                <path d="M35 126 C16 122 12 98 25 90 C32 86 38 92 33 99 C28 106 32 115 41 118" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"></path>
+                <!-- Back & Front Legs Walking -->
+                <path d="M46 134 L40 156 A5 5 0 0 0 50 157 L57 136" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></path>
+                <path d="M68 134 L75 156 A5 5 0 0 0 85 155 L78 134" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></path>
+                <!-- Body -->
+                <ellipse cx="61" cy="114" rx="22" ry="26" transform="rotate(10 61 114)" fill="#F97316" stroke="#0B192C" stroke-width="3.2"></ellipse>
+                <!-- Cream Belly Patch -->
+                <ellipse cx="67" cy="116" rx="12" ry="18" transform="rotate(10 67 116)" fill="#FFFDF7"></ellipse>
+                <!-- Ears -->
+                <polygon points="44,62 46,40 61,54" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></polygon>
+                <polygon points="75,54 89,40 91,62" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></polygon>
+                <!-- Head -->
+                <ellipse cx="68" cy="72" rx="25" ry="21" fill="#F97316" stroke="#0B192C" stroke-width="3.2"></ellipse>
+                <!-- Cheek Whiskers -->
+                <line x1="36" y1="72" x2="47" y2="74" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
+                <line x1="36" y1="79" x2="47" y2="78" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
+                <line x1="89" y1="74" x2="100" y2="72" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
+                <line x1="89" y1="78" x2="100" y2="79" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
+                <!-- Happy Eyes -->
+                <circle cx="60" cy="70" r="3.4" fill="#0B192C"></circle>
+                <circle cx="59" cy="69" r="1.2" fill="#FFFFFF"></circle>
+                <circle cx="78" cy="70" r="3.4" fill="#0B192C"></circle>
+                <circle cx="77" cy="69" r="1.2" fill="#FFFFFF"></circle>
+                <!-- Nose & Happy Smile -->
+                <polygon points="69,74 66.2,77.5 71.8,77.5" fill="#FB7185"></polygon>
+                <path d="M64 79.5 Q69 84 74 79.5" stroke="#0B192C" stroke-width="2.4" stroke-linecap="round"></path>
+                <!-- Arm & Paw Holding Cart Handle -->
+                <path d="M74 96 Q86 84 95 72" stroke="#0B192C" stroke-width="9" stroke-linecap="round"></path>
+                <path d="M74 96 Q86 84 95 72" stroke="#F97316" stroke-width="4.5" stroke-linecap="round"></path>
+                <circle cx="96" cy="69" r="5.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="2.8"></circle>
+              </g>
+            </svg>
+          </div>
+        </section>
 
     <p class="disclosure">As an Amazon Associate and Walmart Creator, I earn from qualifying purchases. #ad</p>
 
-    <section class="feature" aria-labelledby="curated-lists">
-      <h2 id="curated-lists">Curated lists</h2>
-      <p>Practical picks to help neighbors with everyday home cooking, helpful supplies for pantry stewards, expanded essentials for displaced neighbors rebuilding stability, and seasonal gift drive ideas for organizations supporting kids and seniors.</p>
+    <section class="feature" aria-labelledby="storefront-links">
+      <h2 id="storefront-links">Shop the collections</h2>
       <div class="storefront-card">
         <div>
           <h3>Pantry Peeps on Walmart</h3>
