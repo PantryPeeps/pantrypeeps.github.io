@@ -1159,5 +1159,29 @@
     "deal_type": "discount",
     "deal_badge": "REDUCED PRICE",
     "deal_info": "Check Walmart for current pricing and availability."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Birds Eye Steamfresh Whole Green Beans",
+    "size": "Frozen · 10.8 oz bag",
+    "note": "Frozen item — not suitable for unattended little free pantries. For home use or pantries with freezer storage. Check rebate apps for available offers.",
+    "image": "https://static.metricool.com/planner/202611/8143535-file-17375788765791802858.png",
+    "url": "https://walmrt.us/4zr8kwB",
+    "slug": "birds-eye-steamfresh-whole-green-beans-10-8oz",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "birds eye",
+      "steamfresh",
+      "whole green beans",
+      "frozen",
+      "rebate apps"
+    ],
+    "deal_type": "promotion",
+    "deal_badge": "CHECK REBATE APPS",
+    "deal_info": "Check rebate apps for offers and Walmart for current pricing and availability."
   }
 ]
