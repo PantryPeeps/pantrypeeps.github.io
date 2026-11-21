@@ -432,7 +432,7 @@
     }
 
     /* Desktop Hover Tooltip */
-    @media (hover: hover) and (min-width: 781px) {
+    @media (min-width: 781px) {
       body:not(.simulate-mobile) .hub-desc {
         position: absolute;
         bottom: calc(100% + 6px);
@@ -479,7 +479,7 @@
     }
 
     /* Mobile Layout (Baked-In Descriptions) */
-    @media (hover: none), (max-width: 780px) {
+    @media (max-width: 780px) {
       .hub-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px 12px;
