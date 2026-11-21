@@ -1,5 +1,22 @@
 [
   {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Nabisco Cookies Variety Pack",
+    "size": "40 snack packs · 4 cookies per pack",
+    "note": "Individually wrapped cookie snack packs. Check Amazon for current pricing and Subscribe & Save availability.",
+    "image": "assets/nabisco-cookies-variety-40.jpg",
+    "url": "https://link.amazon/B00yVxRCY",
+    "slug": "nabisco-cookies-variety-40",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Check the Amazon listing for Subscribe & Save eligibility and the current first-delivery offer."
+  },
+  {
     "week": "2026-11-09",
     "retailer": "Amazon",
     "category": "Pantry Food",
