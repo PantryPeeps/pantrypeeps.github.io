@@ -3,6 +3,26 @@
     "week": "2026-11-16",
     "retailer": "Amazon",
     "category": "Pantry Food",
+    "title": "Del Monte Stewed Tomatoes, Original Recipe",
+    "size": "12 cans · 14.5 oz each",
+    "note": "Stewed tomatoes with onions, celery and green peppers for soups, stews and pantry cooking.",
+    "image": "assets/del-monte-stewed-tomatoes-12.jpg",
+    "url": "https://link.amazon/B07Y8Ug7L",
+    "slug": "del-monte-stewed-tomatoes-original-12",
+    "affiliate": true,
+    "live_price": null,
+    "price_updated_at": null,
+    "search_terms": [
+      "Del Monte",
+      "Stewed Tomatoes",
+      "original recipe",
+      "12 cans"
+    ]
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
     "title": "Nabisco Cookies Variety Pack",
     "size": "40 snack packs · 4 cookies per pack",
     "note": "Individually wrapped cookie snack packs. Check Amazon for current pricing and Subscribe & Save availability.",
