@@ -2,6 +2,23 @@
   {
     "week": "2026-11-16",
     "retailer": "Amazon",
+    "category": "Hygiene",
+    "title": "Mini Travel Wet Wipes",
+    "size": "96 packs · 8 wipes per pack",
+    "note": "Unscented, alcohol-free water wipes in individual travel-size packs.",
+    "image": "assets/mini-travel-wet-wipes-96.jpg",
+    "url": "https://link.amazon/B0arzNrbZ",
+    "slug": "mini-travel-wet-wipes-96",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Check the Amazon listing for a coupon, Subscribe & Save eligibility, and current pricing."
+  },
+  {
+    "week": "2026-11-16",
+    "retailer": "Amazon",
     "category": "Pantry Food",
     "title": "Nabisco Cookie Snacks Variety Pack",
     "size": "56 snack packs · 2 cookies per pack",
