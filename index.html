@@ -234,6 +234,12 @@
       visibility: visible;
     }
 
+    .zen-quote-overlay.is-closing-instant,
+    .zen-quote-overlay.is-closing-instant .zen-quote-card,
+    .pantry-tilted-heart-wrap.is-closing-instant .pantry-door {
+      transition: none !important;
+    }
+
     .zen-quote-card {
       position: relative;
       width: 100%;
@@ -963,8 +969,17 @@
     const zenQuoteClose = document.getElementById("zenQuoteClose");
 
     function closeZenQuote() {
+      zenOverlay.classList.add("is-closing-instant");
+      pantryEgg.classList.add("is-closing-instant");
       zenOverlay.classList.remove("is-visible");
       pantryEgg.classList.remove("door-open");
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          zenOverlay.classList.remove("is-closing-instant");
+          pantryEgg.classList.remove("is-closing-instant");
+        });
+      });
     }
 
     pantryEgg.addEventListener("click", () => {
