@@ -928,7 +928,34 @@
             "author": "Dalai Lama"
       }
 ];
+    let shuffledQuotes = [];
     let quoteIndex = 0;
+    let lastShownQuote = null;
+
+    function shuffleQuotes() {
+      shuffledQuotes = [...PANTRY_QUOTES];
+      for (let i = shuffledQuotes.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [shuffledQuotes[i], shuffledQuotes[randomIndex]] = [shuffledQuotes[randomIndex], shuffledQuotes[i]];
+      }
+
+      // Keep the next cycle from starting with the quote shown last.
+      if (shuffledQuotes.length > 1 && shuffledQuotes[0] === lastShownQuote) {
+        const swapIndex = 1 + Math.floor(Math.random() * (shuffledQuotes.length - 1));
+        [shuffledQuotes[0], shuffledQuotes[swapIndex]] = [shuffledQuotes[swapIndex], shuffledQuotes[0]];
+      }
+      quoteIndex = 0;
+    }
+
+    function nextRandomQuote() {
+      if (quoteIndex >= shuffledQuotes.length) shuffleQuotes();
+      const quote = shuffledQuotes[quoteIndex++];
+      lastShownQuote = quote;
+      return quote;
+    }
+
+    shuffleQuotes();
+
     const pantryEgg = document.getElementById("pantryEasterEgg");
     const zenOverlay = document.getElementById("zenQuoteOverlay");
     const zenQuoteBody = document.getElementById("zenQuoteBody");
@@ -941,10 +968,9 @@
     }
 
     pantryEgg.addEventListener("click", () => {
-      const current = PANTRY_QUOTES[quoteIndex];
+      const current = nextRandomQuote();
       zenQuoteBody.textContent = `“${current.text}”`;
       zenQuoteAuthor.textContent = `— ${current.author}`;
-      quoteIndex = (quoteIndex + 1) % PANTRY_QUOTES.length;
 
       pantryEgg.classList.add("door-open");
       setTimeout(() => {
