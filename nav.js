@@ -109,8 +109,9 @@
 
       const backBtn = document.getElementById("ppBackBtn");
       backBtn.addEventListener("click", () => {
-        if (document.referrer && document.referrer !== window.location.href) {
-          window.location.assign(document.referrer);
+        const referrer = document.referrer;
+        if (/^https?:\/\//i.test(referrer) && referrer !== window.location.href) {
+          window.location.assign(referrer);
           return;
         }
 
