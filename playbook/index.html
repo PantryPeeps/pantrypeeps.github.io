@@ -476,12 +476,16 @@
     display: block;
     width: 190px;
     max-width: 100%;
+    aspect-ratio: 1122 / 1402;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     padding: 0;
     border: 2px solid #0B192C;
     border-radius: 9px;
     overflow: hidden;
-    background: #F8FAFC;
+    background: #00CFE7;
     cursor: zoom-in;
     transition: transform 0.14s ease, box-shadow 0.14s ease;
   }
@@ -491,7 +495,8 @@
   }
   .flyer-thumb-btn img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
   }
   .flyer-zoom-badge {
