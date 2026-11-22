@@ -57,11 +57,11 @@
   .htg-cat-art:hover {
     transform: translateY(-2px) scale(1.02);
   }
-  .htg-cat-art svg {
+  .htg-cat-art img {
     width: 100%;
     height: auto;
     display: block;
-    filter: drop-shadow(3px 3px 0 rgba(11, 25, 44, 0.25));
+    filter: none;
   }
   .wheel-resting-panels {
     transition: opacity 0.15s ease;
@@ -422,173 +422,7 @@
 
       <!-- Custom Neo-Brutalist SVG: Tabby Cat Spinning a Price-Is-Right Style Pantry Wheel -->
       <div class="htg-cat-art" id="htgWheelEgg" role="button" tabindex="0" aria-label="Tabby cat spinning a Price Is Right style pantry wheel">
-        <svg viewBox="0 0 295 184" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="wheelDrumClip">
-              <rect x="134" y="20" width="102" height="148" rx="10"></rect>
-            </clipPath>
-          </defs>
-
-          <!-- Stage Floor Shadow -->
-          <ellipse cx="152" cy="176" rx="126" ry="6" fill="#0B192C" fill-opacity="0.18"></ellipse>
-
-          <!-- === PRICE IS RIGHT STYLE BIG VERTICAL WHEEL STAND === -->
-          <g>
-            <!-- Stand Base & Side Pillars -->
-            <rect x="122" y="166" width="126" height="10" rx="5" fill="#0B192C"></rect>
-            <rect x="127" y="42" width="8" height="126" rx="3" fill="#475569" stroke="#0B192C" stroke-width="2.5"></rect>
-            <rect x="235" y="42" width="8" height="126" rx="3" fill="#475569" stroke="#0B192C" stroke-width="2.5"></rect>
-
-            <!-- Outer Wheel Frame -->
-            <rect x="132" y="18" width="106" height="152" rx="12" fill="#0B192C" stroke="#0B192C" stroke-width="3.5"></rect>
-
-            <!-- Clipped Drum Interior -->
-            <g clip-path="url(#wheelDrumClip)">
-              <!-- STATE 1: RESTING WHEEL (OPENED, DENTED, CRUSHED ITEMS) -->
-              <g class="wheel-resting-panels">
-                <!-- Top Panel: Crushed/Open Cereal Box -->
-                <rect x="134" y="20" width="102" height="48" fill="#FEE2E2"></rect>
-                <line x1="134" y1="68" x2="236" y2="68" stroke="#0B192C" stroke-width="3"></line>
-                <!-- Crushed Box Icon -->
-                <polygon points="150,30 172,28 175,56 147,58" fill="#FCA5A5" stroke="#0B192C" stroke-width="2.2" stroke-linejoin="round"></polygon>
-                <path d="M150 30 L158 37 L166 29 L172 35" stroke="#0B192C" stroke-width="2" fill="none"></path>
-                <text x="183" y="42" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" fill="#991B1B">OPEN</text>
-                <text x="183" y="53" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="800" fill="#991B1B">BOX</text>
-
-                <!-- Center Highlighted Panel: Dented/Rusty Can -->
-                <rect x="134" y="68" width="102" height="54" fill="#FEF3C7"></rect>
-                <line x1="134" y1="122" x2="236" y2="122" stroke="#0B192C" stroke-width="3"></line>
-                <!-- Dented Can Icon -->
-                <path d="M152 79 H172 L169 94 L173 111 H151 L154 95 Z" fill="#CBD5E1" stroke="#0B192C" stroke-width="2.3" stroke-linejoin="round"></path>
-                <ellipse cx="162" cy="79" rx="10" ry="2.8" fill="#94A3B8" stroke="#0B192C" stroke-width="2"></ellipse>
-                <path d="M156 91 L165 96 L158 102" stroke="#92400E" stroke-width="2" stroke-linecap="round"></path>
-                <text x="180" y="92" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" fill="#92400E">DENTED</text>
-                <text x="180" y="103" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="800" fill="#92400E">CAN</text>
-
-                <!-- Bottom Panel: Expired / Torn Bag -->
-                <rect x="134" y="122" width="102" height="46" fill="#E2E8F0"></rect>
-                <path d="M151 131 H172 L170 158 H152 Z" fill="#94A3B8" stroke="#0B192C" stroke-width="2.2"></path>
-                <line x1="155" y1="139" x2="168" y2="151" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"></line>
-                <line x1="168" y1="139" x2="155" y2="151" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"></line>
-                <text x="179" y="143" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" fill="#334155">PAST</text>
-                <text x="179" y="154" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" fill="#334155">DATE</text>
-              </g>
-
-              <!-- STATE 2: FAST SPINNING MOTION STRIPES -->
-              <g class="wheel-spinning-blur">
-                <rect x="134" y="20" width="102" height="148" fill="#FFFDF7"></rect>
-                <g class="wheel-blur-stripes">
-                  <rect x="134" y="-10" width="102" height="22" fill="#FDE02F"></rect>
-                  <rect x="134" y="34" width="102" height="22" fill="#00BFE8"></rect>
-                  <rect x="134" y="78" width="102" height="22" fill="#FB7185"></rect>
-                  <rect x="134" y="122" width="102" height="22" fill="#34D399"></rect>
-                  <rect x="134" y="166" width="102" height="22" fill="#FDE02F"></rect>
-                </g>
-              </g>
-
-              <!-- STATE 3: WINNER LANDING (GLEAMING BRAND-NEW PANTRY ITEM!) -->
-              <g class="wheel-winner-panel">
-                <rect x="134" y="20" width="102" height="36" fill="#E0F2FE"></rect>
-                <rect x="134" y="132" width="102" height="36" fill="#E0F2FE"></rect>
-                <!-- Center Spotlight Panel -->
-                <rect x="134" y="56" width="102" height="76" fill="#FDE02F"></rect>
-                <line x1="134" y1="56" x2="236" y2="56" stroke="#0B192C" stroke-width="3"></line>
-                <line x1="134" y1="132" x2="236" y2="132" stroke="#0B192C" stroke-width="3"></line>
-
-                <!-- Crisp Brand-New Soup / Pantry Can -->
-                <rect x="147" y="72" width="28" height="42" rx="3" fill="#EF4444" stroke="#0B192C" stroke-width="2.5"></rect>
-                <rect x="148.5" y="83" width="25" height="18" fill="#FFFDF7"></rect>
-                <path d="M161 88 C159 86 156 87 156 89.5 C156 92 161 95.5 161 95.5 C161 95.5 166 92 166 89.5 C166 87 163 86 161 88 Z" fill="#EF4444"></path>
-                <ellipse cx="161" cy="72" rx="14" ry="3.5" fill="#E2E8F0" stroke="#0B192C" stroke-width="2.2"></ellipse>
-
-                <!-- Fresh In-Date Badge Text -->
-                <text x="182" y="86" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="800" fill="#0B192C">FRESH</text>
-                <text x="182" y="98" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="800" fill="#0B192C">IN-DATE</text>
-                <text x="182" y="110" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" fill="#15803D">SEALED!</text>
-              </g>
-
-              <!-- Drum Cylindrical Shading Overlay -->
-              <rect x="134" y="20" width="102" height="24" fill="#0B192C" fill-opacity="0.16"></rect>
-              <rect x="134" y="144" width="102" height="24" fill="#0B192C" fill-opacity="0.16"></rect>
-            </g>
-
-            <!-- Red Pointer Triangle / Flapper on Right Side of Wheel -->
-            <g class="wheel-flapper">
-              <polygon points="228,96 248,86 248,106" fill="#EF4444" stroke="#0B192C" stroke-width="2.8" stroke-linejoin="round"></polygon>
-              <circle cx="247" cy="96" r="4" fill="#FDE02F" stroke="#0B192C" stroke-width="2"></circle>
-            </g>
-
-            <!-- Celebration Sparkles Around Wheel When Winner Hits -->
-            <g class="winner-sparkles">
-              <polygon points="256,34 259,42 267,45 259,48 256,56 253,48 245,45 253,42" fill="#FDE02F" stroke="#0B192C" stroke-width="2" stroke-linejoin="round"></polygon>
-              <polygon points="122,22 124,28 130,30 124,32 122,38 120,32 114,30 120,28" fill="#FFFDF7" stroke="#0B192C" stroke-width="1.8" stroke-linejoin="round"></polygon>
-              <rect x="150" y="2" width="70" height="17" rx="8.5" fill="#FDE02F" stroke="#0B192C" stroke-width="2.2"></rect>
-              <text x="185" y="13.5" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" fill="#0B192C">WINNER!</text>
-            </g>
-          </g>
-
-          <!-- === TABBY CAT CONTESTANT ON LEFT === -->
-          <g class="tabby-cheer-group">
-            <!-- Swishing Striped Tail -->
-            <path d="M40 144 C20 140 16 116 28 108 C35 104 40 110 35 117 C31 123 34 132 44 135" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"></path>
-
-            <!-- Standing Legs -->
-            <path d="M54 148 L50 171 A5 5 0 0 0 60 172 L65 148" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></path>
-            <path d="M80 148 L85 171 A5 5 0 0 0 95 170 L90 148" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></path>
-
-            <!-- Torso -->
-            <ellipse cx="72" cy="126" rx="25" ry="28" fill="#F97316" stroke="#0B192C" stroke-width="3.2"></ellipse>
-            <!-- Cream Chest -->
-            <ellipse cx="76" cy="128" rx="14" ry="19" fill="#FFFDF7"></ellipse>
-
-            <!-- Tabby Side Stripes -->
-            <path d="M49 120 H57" stroke="#9A3412" stroke-width="2.8" stroke-linecap="round"></path>
-            <path d="M48 129 H56" stroke="#9A3412" stroke-width="2.8" stroke-linecap="round"></path>
-
-            <!-- User-provided tabby face, nested inside the animated cat group -->
-            <g transform="translate(44 43) scale(0.25)">
-              <svg viewBox="0 0 240 220" width="240" height="220" role="img" aria-label="Tabby cat face">
-                <polygon points="38,82 22,16 86,54" fill="#e8943a" stroke="#182230" stroke-width="6" stroke-linejoin="round"/>
-                <polygon points="44,72 33,30 74,56" fill="#f7b7a3"/>
-                <polygon points="202,82 218,16 154,54" fill="#e8943a" stroke="#182230" stroke-width="6" stroke-linejoin="round"/>
-                <polygon points="196,72 207,30 166,56" fill="#f7b7a3"/>
-                <ellipse cx="120" cy="126" rx="88" ry="74" fill="#f2a246" stroke="#182230" stroke-width="6"/>
-                <path d="M120 56 L120 84 M104 59 L108 82 M136 59 L132 82" stroke="#b8641c" stroke-width="6" stroke-linecap="round"/>
-                <path d="M36 114 L60 120 M38 132 L62 132 M204 114 L180 120 M202 132 L178 132" stroke="#b8641c" stroke-width="5.5" stroke-linecap="round"/>
-                <ellipse cx="84" cy="116" rx="16" ry="18" fill="#8fd16b" stroke="#182230" stroke-width="5"/>
-                <ellipse cx="84" cy="116" rx="5.5" ry="13" fill="#182230"/>
-                <circle cx="79" cy="110" r="3.5" fill="#ffffff"/>
-                <ellipse cx="156" cy="116" rx="16" ry="18" fill="#8fd16b" stroke="#182230" stroke-width="5"/>
-                <ellipse cx="156" cy="116" rx="5.5" ry="13" fill="#182230"/>
-                <circle cx="151" cy="110" r="3.5" fill="#ffffff"/>
-                <polygon points="110,134 130,134 120,145" fill="#f28c9c" stroke="#182230" stroke-width="4" stroke-linejoin="round"/>
-                <path d="M120 145 Q106 160 94 152 M120 145 Q134 160 146 152" fill="none" stroke="#182230" stroke-width="5" stroke-linecap="round"/>
-                <line x1="22" y1="138" x2="72" y2="144" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
-                <line x1="20" y1="154" x2="72" y2="152" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
-                <line x1="218" y1="138" x2="168" y2="144" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
-                <line x1="220" y1="154" x2="168" y2="152" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
-              </svg>
-            </g>
-
-<!-- Idle Arms (Ready to Spin the Wheel) -->
-            <g class="tabby-arms-idle">
-              <path d="M90 108 Q112 102 128 96" stroke="#0B192C" stroke-width="9" stroke-linecap="round"></path>
-              <path d="M90 108 Q112 102 128 96" stroke="#F97316" stroke-width="4.8" stroke-linecap="round"></path>
-              <circle cx="130" cy="95" r="5.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="2.6"></circle>
-            </g>
-
-            <!-- Cheering Raised Arms (When Wheel Spins & Wins!) -->
-            <g class="tabby-arms-cheer">
-              <path d="M52 108 Q36 86 38 66" stroke="#0B192C" stroke-width="9" stroke-linecap="round"></path>
-              <path d="M52 108 Q36 86 38 66" stroke="#F97316" stroke-width="4.8" stroke-linecap="round"></path>
-              <circle cx="38" cy="64" r="5.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="2.6"></circle>
-
-              <path d="M94 108 Q110 86 112 66" stroke="#0B192C" stroke-width="9" stroke-linecap="round"></path>
-              <path d="M94 108 Q110 86 112 66" stroke="#F97316" stroke-width="4.8" stroke-linecap="round"></path>
-              <circle cx="112" cy="64" r="5.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="2.6"></circle>
-            </g>
-          </g>
-        </svg>
+        <img src="/assets/how-to-give-cat-wheel.png" alt="" width="530" height="374" draggable="false">
       </div>
     </section>
 
