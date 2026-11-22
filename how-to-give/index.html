@@ -545,29 +545,30 @@
             <path d="M49 120 H57" stroke="#9A3412" stroke-width="2.8" stroke-linecap="round"></path>
             <path d="M48 129 H56" stroke="#9A3412" stroke-width="2.8" stroke-linecap="round"></path>
 
-            <!-- Ears -->
-            <polygon points="48,72 50,48 66,63" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></polygon>
-            <polygon points="82,63 98,48 100,72" fill="#F97316" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"></polygon>
-
-            <!-- Head -->
-            <ellipse cx="74" cy="83" rx="27" ry="22" fill="#F97316" stroke="#0B192C" …66 tokens truncated…oke-width="2.4" stroke-linecap="round"></line>
-            <line x1="81" y1="64" x2="80" y2="70" stroke="#9A3412" stroke-width="2.4" stroke-linecap="round"></line>
-
-            <!-- Whiskers -->
-            <line x1="38" y1="83" x2="49" y2="84" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
-            <line x1="38" y1="90" x2="49" y2="89" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
-            <line x1="99" y1="84" x2="110" y2="83" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
-            <line x1="99" y1="89" x2="110" y2="90" stroke="#0B192C" stroke-width="2.2" stroke-linecap="round"></line>
-
-                                    <!-- Clearly visible cat face -->
-            <ellipse cx="69" cy="87" rx="7" ry="4.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="1.2"></ellipse>
-            <ellipse cx="80" cy="87" rx="7" ry="4.5" fill="#FFFDF7" stroke="#0B192C" stroke-width="1.2"></ellipse>
-            <ellipse cx="65" cy="80" rx="4.6" ry="5.2" fill="#0B192C"></ellipse>
-            <ellipse cx="84" cy="80" rx="4.6" ry="5.2" fill="#0B192C"></ellipse>
-            <circle cx="64" cy="78.5" r="1.5" fill="#FFFFFF"></circle>
-            <circle cx="83" cy="78.5" r="1.5" fill="#FFFFFF"></circle>
-            <polygon points="74.5,84 70.5,88 78.5,88" fill="#9F1239" stroke="#0B192C" stroke-width="1"></polygon>
-            <path d="M74.5 88 Q70 93 66 91 M74.5 88 Q79 93 83 91" stroke="#0B192C" stroke-width="2.8" stroke-linecap="round" fill="none"></path>
+            <!-- User-provided tabby face, nested inside the animated cat group -->
+            <g transform="translate(44 43) scale(0.25)">
+              <svg viewBox="0 0 240 220" width="240" height="220" role="img" aria-label="Tabby cat face">
+                <polygon points="38,82 22,16 86,54" fill="#e8943a" stroke="#182230" stroke-width="6" stroke-linejoin="round"/>
+                <polygon points="44,72 33,30 74,56" fill="#f7b7a3"/>
+                <polygon points="202,82 218,16 154,54" fill="#e8943a" stroke="#182230" stroke-width="6" stroke-linejoin="round"/>
+                <polygon points="196,72 207,30 166,56" fill="#f7b7a3"/>
+                <ellipse cx="120" cy="126" rx="88" ry="74" fill="#f2a246" stroke="#182230" stroke-width="6"/>
+                <path d="M120 56 L120 84 M104 59 L108 82 M136 59 L132 82" stroke="#b8641c" stroke-width="6" stroke-linecap="round"/>
+                <path d="M36 114 L60 120 M38 132 L62 132 M204 114 L180 120 M202 132 L178 132" stroke="#b8641c" stroke-width="5.5" stroke-linecap="round"/>
+                <ellipse cx="84" cy="116" rx="16" ry="18" fill="#8fd16b" stroke="#182230" stroke-width="5"/>
+                <ellipse cx="84" cy="116" rx="5.5" ry="13" fill="#182230"/>
+                <circle cx="79" cy="110" r="3.5" fill="#ffffff"/>
+                <ellipse cx="156" cy="116" rx="16" ry="18" fill="#8fd16b" stroke="#182230" stroke-width="5"/>
+                <ellipse cx="156" cy="116" rx="5.5" ry="13" fill="#182230"/>
+                <circle cx="151" cy="110" r="3.5" fill="#ffffff"/>
+                <polygon points="110,134 130,134 120,145" fill="#f28c9c" stroke="#182230" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M120 145 Q106 160 94 152 M120 145 Q134 160 146 152" fill="none" stroke="#182230" stroke-width="5" stroke-linecap="round"/>
+                <line x1="22" y1="138" x2="72" y2="144" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
+                <line x1="20" y1="154" x2="72" y2="152" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
+                <line x1="218" y1="138" x2="168" y2="144" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
+                <line x1="220" y1="154" x2="168" y2="152" stroke="#182230" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </g>
 
 <!-- Idle Arms (Ready to Spin the Wheel) -->
             <g class="tabby-arms-idle">
