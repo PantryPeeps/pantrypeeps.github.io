@@ -109,16 +109,7 @@
 
       const backBtn = document.getElementById("ppBackBtn");
       backBtn.addEventListener("click", () => {
-        if (isPreview) {
-          const heading = document.getElementById("previewPageHeading");
-          if (heading) heading.textContent = "Back → Previous Page or Home (/)";
-          return;
-        }
-        if (window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.origin) === 0) {
-          window.history.back();
-        } else {
-          window.location.href = "/";
-        }
+        window.history.back();
       });
 
       const footer = document.createElement("footer");
