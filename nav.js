@@ -109,7 +109,18 @@
 
       const backBtn = document.getElementById("ppBackBtn");
       backBtn.addEventListener("click", () => {
-        window.history.back();
+        if (window.history.length > 1) {
+          window.history.back();
+          return;
+        }
+        if (document.referrer && document.referrer !== window.location.href) {
+          window.location.assign(document.referrer);
+          return;
+        }
+        const currentPath = window.location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "");
+        const lastSlash = currentPath.lastIndexOf("/");
+        const parentPath = lastSlash > 0 ? currentPath.slice(0, lastSlash + 1) : "/";
+        window.location.assign(parentPath);
       });
 
       const footer = document.createElement("footer");
