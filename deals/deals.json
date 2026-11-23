@@ -2,6 +2,30 @@
   {
     "week": "2026-11-23",
     "retailer": "Walmart",
+    "category": "Household",
+    "title": "Hamilton Beach 6 Qt Slow Cooker – Red",
+    "size": "6-quart · removable stoneware crock",
+    "note": "Online-only Black Friday deal. A practical gift option when sponsoring a family; check current Walmart pricing and availability.",
+    "image": "assets/hamilton-beach-6qt-slow-cooker-red.jpg",
+    "url": "https://walmrt.us/4zzOVJJ",
+    "slug": "hamilton-beach-slow-cooker-6qt",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "slow cooker",
+      "crock pot",
+      "black friday",
+      "online only",
+      "sponsoring a family"
+    ],
+    "deal_type": "sale",
+    "deal_badge": "BLACK FRIDAY • ONLINE ONLY",
+    "deal_info": "Check Walmart for current online pricing and availability."
+  },
+  {
+    "week": "2026-11-23",
+    "retailer": "Walmart",
     "category": "Pantry Food",
     "title": "Great Value Chunk Chicken Breast – 24 Cans",
     "size": "6 four-packs · 24 cans total · 12.5 oz each",
