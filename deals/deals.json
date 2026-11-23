@@ -1,5 +1,22 @@
 [
   {
+    "week": "2026-11-23",
+    "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Mott's No Sugar Added Applesauce Variety Pack",
+    "size": "20 pouches · 3.2 oz each",
+    "note": "No-sugar-added applesauce pouches in apple, strawberry, blueberry and cinnamon varieties. Check current Amazon pricing.",
+    "image": "assets/motts-no-sugar-added-applesauce-20.jpg",
+    "url": "https://link.amazon/B02REAQIr",
+    "slug": "motts-no-sugar-added-applesauce-20",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Check the Amazon listing for coupon and Subscribe & Save eligibility."
+  },
+  {
     "week": "2026-11-16",
     "retailer": "Amazon",
     "category": "Hygiene",
