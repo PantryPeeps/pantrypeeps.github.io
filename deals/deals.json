@@ -1,6 +1,32 @@
 [
   {
     "week": "2026-11-23",
+    "retailer": "Amazon",
+    "category": "Household",
+    "title": "Individually Wrapped Plastic Cutlery Sets – 250 Count",
+    "size": "250 sets · fork, knife, spoon, napkin, salt & pepper",
+    "note": "Prewrapped disposable cutlery sets for meals, events, or care packages. Check current Amazon pricing.",
+    "image": "assets/prewrapped-plastic-cutlery-250.jpg",
+    "url": "https://link.amazon/B0eUP5YLi",
+    "slug": "prewrapped-plastic-cutlery-250-sets",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "cutlery",
+      "silverware",
+      "plastic",
+      "fork",
+      "knife",
+      "spoon",
+      "250"
+    ],
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Check the Amazon listing for current pricing, coupon and Subscribe & Save eligibility."
+  },
+  {
+    "week": "2026-11-23",
     "retailer": "Walmart",
     "category": "Household",
     "title": "Hamilton Beach 6 Qt Slow Cooker – Red",
