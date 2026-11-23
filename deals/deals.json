@@ -1,6 +1,29 @@
 [
   {
     "week": "2026-11-23",
+    "retailer": "Walmart",
+    "category": "Pantry Food",
+    "title": "Lipton Black Tea Bags – 200 Count",
+    "size": "2 boxes · 100 tea bags each",
+    "note": "Walmart clearance listing. Price and stock may vary by location; verify before checkout.",
+    "image": "assets/lipton-black-tea-200.jpg",
+    "url": "https://walmrt.us/4jvCwSi",
+    "slug": "lipton-black-tea-200-bags",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "Lipton",
+      "black tea",
+      "200 count",
+      "clearance"
+    ],
+    "deal_type": "clearance",
+    "deal_badge": "CLEARANCE",
+    "deal_info": "Check Walmart for current clearance pricing and availability."
+  },
+  {
+    "week": "2026-11-23",
     "retailer": "Amazon",
     "category": "Pantry Food",
     "title": "Mott's No Sugar Added Applesauce Variety Pack",
