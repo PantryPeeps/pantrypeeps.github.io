@@ -895,6 +895,22 @@ function registerPart({
     isGlass
   };
 
+  // Show all four vinyl surfaces clearly even behind cabinet geometry.
+  if (partKey === 'K') {
+    const highlight = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.55,
+      depthTest: false,
+      depthWrite: false,
+      side: THREE.DoubleSide
+    }));
+    highlight.renderOrder = 100;
+    highlight.visible = false;
+    mesh.add(highlight);
+    record.vinylHighlight = highlight;
+  }
+
   mesh.userData.partRecord = record;
   allParts.push(record);
   interactiveMeshes.push(mesh);
@@ -1523,6 +1539,14 @@ function animate() {
     const isHighlighted =
       (selectedPartKey && rec.partKey === selectedPartKey) ||
       (hoveredRecord && rec.partKey === hoveredRecord.partKey);
+
+    if (rec.vinylHighlight) {
+      rec.vinylHighlight.visible = Boolean(isHighlighted);
+    }
+    if (rec.partKey === 'K' && rec.edgeLine) {
+      rec.edgeLine.material.depthTest = !isHighlighted;
+      rec.edgeLine.renderOrder = isHighlighted ? 101 : 0;
+    }
 
     if (isHighlighted) {
       rec.material.emissive.setHex(0x38bdf8);
