@@ -771,10 +771,10 @@ const PART_SPECS = {
   },
   K: {
     code: 'Part K',
-    name: 'Peel & Stick Outdoor Vinyl Flooring (Qty 2 Levels)',
+    name: 'Peel & Stick Outdoor Vinyl Flooring (All 4 Levels)',
     material: 'Waterproof Peel-and-Stick Luxury Vinyl Tile (~2mm)',
-    dimensions: '29.5" wide × 13.75" deep (Bottom Floor & Center Deck)',
-    notes: 'Applied directly atop both the bottom floor slab and center deck inside the 1/2" foam lining for easy wipe-down cleaning.'
+    dimensions: '29.5" × 13.75" (2 Floors) & 30.25" × 13.5" (2 Shelves)',
+    notes: 'Applied directly atop all 4 horizontal surfaces: bottom floor, lower adjustable shelf (9"), center deck (19.25"), and upper adjustable shelf (28").'
   },
   L: {
     code: 'Part L',
@@ -803,8 +803,8 @@ const BUILD_STEPS = [
   },
   {
     step: 4,
-    title: 'Step 4: Foam Insulation, Vinyl Flooring & Silicone Seal (Parts J, K & L)',
-    desc: 'Fit 1/2" rigid foam panels (Part J) on interior walls and ceiling, lay peel-and-stick outdoor vinyl flooring (Part K) on both floor levels, and run waterproof silicone beads (Part L) along all floor-to-foam edges and vertical foam corners.'
+    title: 'Step 4: Foam Insulation, Vinyl Flooring (All 4 Levels) & Silicone Seal (Parts J, K & L)',
+    desc: 'Fit 1/2" rigid foam panels (Part J) on interior walls and ceiling, lay peel-and-stick outdoor vinyl flooring (Part K) across all 4 levels (bottom floor, both adjustable shelves, and center deck), and run waterproof silicone beads (Part L) along all floor-to-foam edges and vertical foam corners.'
   },
   {
     step: 5,
@@ -1068,15 +1068,19 @@ registerPart({
 });
 
 // ----------------------------------------------------------------------------
-// E2. PART K: PEEL & STICK OUTDOOR VINYL FLOORING ON BOTH LEVELS (Step 4)
+// E2. PART K: PEEL & STICK OUTDOOR VINYL FLOORING ON ALL 4 LEVELS (Step 4)
 // ----------------------------------------------------------------------------
-// Bottom Floor Top = POST_H + 1.5 (33.5"); Center Deck Top = MID_DECK_Y + 1.5 (52.75")
-// Foam inner clear width = 29.5" (x = -14.75 to +14.75); Foam back inner face = z = -6.75 to front +7.0 -> 13.75" deep
+// 1. Bottom Floor Top = POST_H + 1.5 (33.5")
+// 2. Lower Adjustable Shelf Top = POST_H + 9.0 + T_PLY (41.75")
+// 3. Center Deck Top = MID_DECK_Y + 1.5 (52.75")
+// 4. Upper Adjustable Shelf Top = POST_H + 28.0 + T_PLY (60.75")
 const FLOOR_TOP_Y = POST_H + 1.5;
-const DECK_TOP_Y  = MID_DECK_Y + 1.5;
-const VINYL_Z     = 0.125;
+const LOWER_SHELF_TOP_Y = POST_H + 9.0 + T_PLY;
+const DECK_TOP_Y = MID_DECK_Y + 1.5;
+const UPPER_SHELF_TOP_Y = POST_H + 28.0 + T_PLY;
+const VINYL_Z = 0.125;
 
-// Bottom Level Vinyl Flooring
+// Level 1: Bottom Floor Vinyl Flooring (29.5" W x 13.75" D)
 registerPart({
   geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
   matType: 'vinyl',
@@ -1086,7 +1090,17 @@ registerPart({
   explodeOffset: [0, -0.4, 3.2]
 });
 
-// Upper Level (Center Deck) Vinyl Flooring
+// Level 2: Lower Adjustable Shelf Vinyl Flooring (30.25" W x 13.5" D)
+registerPart({
+  geometry: new THREE.BoxGeometry(30.25, T_VINYL, 13.5),
+  matType: 'vinyl',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0, LOWER_SHELF_TOP_Y + T_VINYL / 2, -0.25],
+  explodeOffset: [0, 2.2, 6.2]
+});
+
+// Level 3: Center Deck Vinyl Flooring (29.5" W x 13.75" D)
 registerPart({
   geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
   matType: 'vinyl',
@@ -1094,6 +1108,16 @@ registerPart({
   stepAdded: 4,
   pos: [0, DECK_TOP_Y + T_VINYL / 2, VINYL_Z],
   explodeOffset: [0, 1.6, 3.8]
+});
+
+// Level 4: Upper Adjustable Shelf Vinyl Flooring (30.25" W x 13.5" D)
+registerPart({
+  geometry: new THREE.BoxGeometry(30.25, T_VINYL, 13.5),
+  matType: 'vinyl',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0, UPPER_SHELF_TOP_Y + T_VINYL / 2, -0.25],
+  explodeOffset: [0, 2.2, 6.2]
 });
 
 // ----------------------------------------------------------------------------
