@@ -2,6 +2,30 @@
   {
     "week": "2026-11-23",
     "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Tic Tac Freshmints – 100 Mini Packs",
+    "size": "100 mini packs · 4 mints each · 6.7 oz bag",
+    "note": "Individually wrapped mini packs of Freshmints. Check Amazon for current coupon and Subscribe & Save eligibility.",
+    "image": "assets/tic-tac-freshmints-100.jpg",
+    "url": "https://link.amazon/B0cngSB2q",
+    "slug": "tic-tac-freshmints-100-mini-packs",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "tic tac",
+      "freshmints",
+      "mints",
+      "mini packs",
+      "bulk"
+    ],
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Check the Amazon listing for coupon, Subscribe & Save eligibility, and current pricing."
+  },
+  {
+    "week": "2026-11-23",
+    "retailer": "Amazon",
     "category": "Household",
     "title": "Individually Wrapped Plastic Cutlery Sets – 250 Count",
     "size": "250 sets · fork, knife, spoon, napkin, salt & pepper",
