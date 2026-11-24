@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3D Woodworking Blueprint — 02. The Double-Decker Community Pantry</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #14171c;
+    color: #eef2f6;
+    overflow: hidden;
+    user-select: none;
+  }
+  #canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  /* Floating Control Panel */
+  #ui-panel {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    background: rgba(20, 24, 31, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    z-index: 10;
+  }
+  #ui-panel::-webkit-scrollbar { width: 5px; }
+  #ui-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #f8fafc;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 3px;
+    margin-bottom: 14px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* View Mode Buttons */
+  .view-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .mode-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 8px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-align: center;
+  }
+  .mode-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    color: #fff;
+  }
+  .mode-btn.active {
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+  }
+
+  /* Stepper Controls */
+  .stepper-box {
+    background: rgba(15, 18, 24, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .step-counter {
+    font-size: 13px;
+    font-weight: 700;
+    color: #38bdf8;
+  }
+  .step-nav {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    width: 28px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.18); }
+  .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: #38bdf8;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .step-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #cbd5e1;
+  }
+
+  /* Selected Part Inspector Card */
+  #part-inspector {
+    background: rgba(30, 41, 59, 0.72);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+  }
+  #part-inspector.empty {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 18, 24, 0.45);
+  }
+  .part-tag {
+    display: inline-block;
+    background: #f59e0b;
+    color: #111827;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-right: 6px;
+  }
+  .part-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .part-meta {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 4px 8px;
+    font-size: 12px;
+  }
+  .part-meta span:nth-child(odd) {
+    color: #94a3b8;
+    font-weight: 600;
+  }
+  .part-meta span:nth-child(even) {
+    color: #e2e8f0;
+  }
+
+  /* Quick Cut-List Legend Pills */
+  .cutlist-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .part-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .part-pill:hover, .part-pill.selected {
+    background: rgba(245, 158, 11, 0.22);
+    border-color: #f59e0b;
+    color: #fef3c7;
+  }
+
+  /* Door Swing Toggle */
+  .door-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+  .toggle-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #f8fafc;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .toggle-btn:hover { background: rgba(255, 255, 255, 0.16); }
+
+  /* Floating Hover Tooltip */
+  #hover-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(15, 23, 42, 0.94);
+    border: 1px solid #38bdf8;
+    border-radius: 8px;
+    padding: 8px 11px;
+    color: #f8fafc;
+    font-size: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    display: none;
+    max-width: 260px;
+  }
+  #hover-tooltip .tt-head {
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 2px;
+  }
+  #hover-tooltip .tt-dim {
+    color: #fbbf24;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  #hover-tooltip .tt-mat {
+    color: #cbd5e1;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* Bottom Controls Hint */
+  #controls-hint {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    background: rgba(20, 24, 31, 0.78);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 11.5px;
+    color: #94a3b8;
+    pointer-events: none;
+  }
+  #controls-hint strong { color: #e2e8f0; }
+
+  @media (max-width: 640px) {
+    #ui-panel {
+      width: calc(100vw - 24px);
+      left: 12px;
+      top: 12px;
+      max-height: 46vh;
+      padding: 14px;
+    }
+    #controls-hint {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<!-- Floating Blueprint UI -->
+<div id="ui-panel">
+  <div class="badge">Scale: 1 Unit = 1 Inch</div>
+  <h1>02. The Double-Decker Community Pantry</h1>
+  <div class="subtitle">32"W &times; 16"D &times; 45.33"H Box on Twin 4&times;4 Posts</div>
+
+  <div class="section-label">View Mode</div>
+  <div class="view-modes">
+    <button class="mode-btn active" data-mode="assembled">Assembled</button>
+    <button class="mode-btn" data-mode="exploded">Exploded</button>
+    <button class="mode-btn" data-mode="xray">X-Ray / Cutaway</button>
+  </div>
+
+  <div class="section-label">
+    <span>Build Sequence</span>
+    <span id="step-badge" style="color:#38bdf8;">Step 7 of 7</span>
+  </div>
+  <div class="stepper-box">
+    <div class="step-header">
+      <span class="step-counter" id="step-num-label">Phase 7 / 7</span>
+      <div class="step-nav">
+        <button class="nav-btn" id="prev-step" title="Previous Step">&lsaquo;</button>
+        <button class="nav-btn" id="next-step" title="Next Step">&rsaquo;</button>
+      </div>
+    </div>
+    <input type="range" id="step-slider" min="1" max="7" value="7" step="1" />
+    <div class="step-title" id="step-title"></div>
+    <div class="step-desc" id="step-desc"></div>
+  </div>
+
+  <div class="section-label">Selected Part Details</div>
+  <div id="part-inspector" class="empty">
+    <div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>
+  </div>
+
+  <div class="section-label">Cut List Index (Parts A–J + Posts)</div>
+  <div class="cutlist-pills" id="cutlist-pills"></div>
+
+  <div class="door-toggle-row">
+    <span>Door Swing Preview</span>
+    <button class="toggle-btn" id="toggle-doors">Open Doors (85&deg;)</button>
+  </div>
+</div>
+
+<!-- Hover Tooltip -->
+<div id="hover-tooltip">
+  <div class="tt-head" id="tt-head"></div>
+  <div class="tt-dim" id="tt-dim"></div>
+  <div class="tt-mat" id="tt-mat"></div>
+</div>
+
+<div id="controls-hint">
+  <strong>Left Drag:</strong> Rotate &nbsp;|&nbsp; <strong>Right Drag:</strong> Pan &nbsp;|&nbsp; <strong>Scroll:</strong> Zoom &nbsp;|&nbsp; <strong>Click Part:</strong> Inspect
+</div>
+
+<!-- Three.js & OrbitControls via ES Module CDN -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================================
+// 1. SCENE, CAMERA, RENDERER & STUDIO/DAYLIGHT LIGHTING
+// ============================================================================
+const container = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x161b22);
+scene.fog = new THREE.FogExp2(0x161b22, 0.0022);
+
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.5, 1000);
+camera.position.set(68, 66, 98);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.08;
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 44, 0);
+controls.minDistance = 20;
+controls.maxDistance = 260;
+controls.maxPolarAngle = Math.PI * 0.495;
+
+// Studio / Outdoor Daylight Rig
+const hemiLight = new THREE.HemisphereLight(0xdbeafe, 0x334155, 0.85);
+scene.add(hemiLight);
+
+const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.55);
+dirLight.position.set(65, 120, 85);
+dirLight.castShadow = true;
+dirLight.shadow.mapSize.width = 2048;
+dirLight.shadow.mapSize.height = 2048;
+dirLight.shadow.camera.near = 10;
+dirLight.shadow.camera.far = 300;
+const d = 75;
+dirLight.shadow.camera.left = -d;
+dirLight.shadow.camera.right = d;
+dirLight.shadow.camera.top = d;
+dirLight.shadow.camera.bottom = -d;
+dirLight.shadow.bias = -0.0005;
+scene.add(dirLight);
+
+const fillLight = new THREE.DirectionalLight(0x93c5fd, 0.45);
+fillLight.position.set(-70, 50, -60);
+scene.add(fillLight);
+
+// Ground Plane & Architectural Blueprint Grid (1 major square = 12" / 1 foot)
+const groundGeo = new THREE.PlaneGeometry(400, 400);
+const groundMat = new THREE.MeshStandardMaterial({
+  color: 0x1e242d,
+  roughness: 0.92,
+  metalness: 0.05
+});
+const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.receiveShadow = true;
+scene.add(groundMesh);
+
+const gridMajor = new THREE.GridHelper(240, 20, 0x38bdf8, 0x2d3748);
+gridMajor.position.y = 0.02;
+gridMajor.material.opacity = 0.35;
+gridMajor.material.transparent = true;
+scene.add(gridMajor);
+
+// ============================================================================
+// 2. PROCEDURAL REALISTIC WOOD, FOAM, SHINGLE & POLYCARBONATE TEXTURES
+// ============================================================================
+function createWoodTexture(baseHex, grainHex, knots = true) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = baseHex;
+  ctx.fillRect(0, 0, 512, 512);
+
+  // Fine wood fibers
+  for (let i = 0; i < 420; i++) {
+    const y = Math.random() * 512;
+    const h = 0.5 + Math.random() * 2.2;
+    ctx.fillStyle = grainHex;
+    ctx.globalAlpha = 0.05 + Math.random() * 0.14;
+    ctx.fillRect(0, y, 512, h);
+  }
+
+  // Wavy growth rings
+  ctx.strokeStyle = grainHex;
+  for (let i = 0; i < 34; i++) {
+    ctx.globalAlpha = 0.08 + Math.random() * 0.14;
+    ctx.lineWidth = 1 + Math.random() * 1.8;
+    ctx.beginPath();
+    let y0 = (i / 34) * 512;
+    ctx.moveTo(0, y0);
+    for (let x = 0; x <= 512; x += 32) {
+      ctx.lineTo(x, y0 + Math.sin(x * 0.02 + i) * 6);
+    }
+    ctx.stroke();
+  }
+
+  if (knots) {
+    for (let k = 0; k < 2; k++) {
+      const kx = 80 + Math.random() * 350;
+      const ky = 80 + Math.random() * 350;
+      ctx.globalAlpha = 0.25;
+      ctx.fillStyle = grainHex;
+      ctx.beginPath();
+      ctx.ellipse(kx, ky, 14, 6, 0.15, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createShingleTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#23272e';
+  ctx.fillRect(0, 0, 512, 512);
+
+  // Asphalt granule noise
+  for (let i = 0; i < 14000; i++) {
+    const x = Math.random() * 512;
+    const y = Math.random() * 512;
+    const shade = 25 + Math.floor(Math.random() * 45);
+    ctx.fillStyle = `rgb(${shade},${shade + 2},${shade + 6})`;
+    ctx.fillRect(x, y, 2, 2);
+  }
+
+  // Architectural shingle courses & tab slots
+  const rows = 8;
+  const rowH = 512 / rows;
+  for (let r = 0; r < rows; r++) {
+    const y = r * rowH;
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.fillRect(0, y, 512, 4);
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillRect(0, y + 4, 512, 2);
+
+    const offset = (r % 2) * 64;
+    for (let x = offset; x < 512; x += 128) {
+      ctx.fillStyle = 'rgba(0,0,0,0.65)';
+      ctx.fillRect(x, y, 4, rowH);
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(2, 2);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createFoamTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#f472b6'; // XPS Rigid Foam Pink
+  ctx.fillRect(0, 0, 256, 256);
+
+  // Subtle closed-cell stipple
+  for (let i = 0; i < 3000; i++) {
+    ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.12)' : 'rgba(190,24,93,0.12)';
+    ctx.fillRect(Math.random() * 256, Math.random() * 256, 2, 2);
+  }
+  // R-value grid lines
+  ctx.strokeStyle = 'rgba(157, 23, 77, 0.25)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 256; i += 32) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 256); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(256, i); ctx.stroke();
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+const texPlywood = createWoodTexture('#cfa36e', '#8c5a2b', true);
+const texCedar   = createWoodTexture('#c27849', '#6e3818', false);
+const texPT      = createWoodTexture('#8a865e', '#4d4a2e', true);
+const texShingle = createShingleTexture();
+const texFoam    = createFoamTexture();
+
+function makeMat(type) {
+  switch (type) {
+    case 'plywood':
+      return new THREE.MeshStandardMaterial({
+        map: texPlywood,
+        roughness: 0.72,
+        metalness: 0.04,
+        transparent: true,
+        opacity: 1
+      });
+    case 'cedar':
+      return new THREE.MeshStandardMaterial({
+        map: texCedar,
+        roughness: 0.65,
+        metalness: 0.05,
+        transparent: true,
+        opacity: 1
+      });
+    case 'pt':
+      return new THREE.MeshStandardMaterial({
+        map: texPT,
+        roughness: 0.85,
+        metalness: 0.03,
+        transparent: true,
+        opacity: 1
+      });
+    case 'foam':
+      return new THREE.MeshStandardMaterial({
+        map: texFoam,
+        roughness: 0.88,
+        metalness: 0.0,
+        transparent: true,
+        opacity: 1
+      });
+    case 'shingle':
+      return new THREE.MeshStandardMaterial({
+        map: texShingle,
+        roughness: 0.92,
+        metalness: 0.08,
+        transparent: true,
+        opacity: 1
+      });
+    case 'polycarbonate':
+      return new THREE.MeshPhysicalMaterial({
+        color: 0xdbeafe,
+        roughness: 0.12,
+        metalness: 0.05,
+        transmission: 0.72,
+        transparent: true,
+        opacity: 0.48,
+        ior: 1.58,
+        side: THREE.DoubleSide
+      });
+  }
+}
+
+// ============================================================================
+// 3. EXACT ARCHITECTURAL DIMENSIONS & CUT-LIST METADATA (1 UNIT = 1 INCH)
+// ============================================================================
+const POST_H = 32.0; // Bottom of cabinet sits 32" above ground level (y = 32)
+const BOX_W  = 32.0; // Total outer box width (30.5" interior + two 0.75" side walls)
+const BOX_H  = 40.0; // Side & back wall height
+const BOX_D  = 16.0; // Side wall depth
+const T_PLY  = 0.75; // 3/4" Exterior Plywood
+const T_FOAM = 0.50; // 1/2" Rigid Closed-Cell Foam Board
+const T_POLY = 0.25; // 1/4" Clear Polycarbonate
+const GABLE_H = 5.3333; // 4:12 pitch over 16" half-span -> 16 * (4/12) = 5.333"
+const SLOPE_ANGLE = Math.atan2(4, 12); // ~18.435 degrees
+
+const PART_SPECS = {
+  POSTS: {
+    code: 'POSTS',
+    name: 'Twin 4×4 Support Posts (Qty 2)',
+    material: 'Pressure-Treated Southern Yellow Pine (4×4 Nominal)',
+    dimensions: '3.5" × 3.5" × 32" above grade (spaced 20" on center)',
+    notes: 'Anchored in concrete footings; top ends support the double-thick cabinet floor at 32" elevation.'
+  },
+  A: {
+    code: 'Part A',
+    name: 'Left & Right Side Walls (Qty 2)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '16" deep × 40" tall × 0.75" thick (90° square cuts)',
+    notes: 'Full-height outer side panels spanning from y = 32" to y = 72" above grade.'
+  },
+  B: {
+    code: 'Part B',
+    name: 'Back Wall Panel (Qty 1)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '30.5" wide × 40" tall × 0.75" thick',
+    notes: 'Fits cleanly between Left & Right Side Walls so total outer box width equals 32".'
+  },
+  C: {
+    code: 'Part C',
+    name: 'Double-Thick Floor & Center Deck (Qty 4 Plies)',
+    material: '3/4" Exterior-Grade Plywood (laminated in pairs)',
+    dimensions: '30.5" wide × 14.5" deep × 1.5" total slab thickness (2 × 0.75")',
+    notes: 'Bottom floor slab sits flush at 0" (32" elevation); middle deck slab sits 19.25" up from cabinet bottom.'
+  },
+  D: {
+    code: 'Part D',
+    name: 'Upper & Lower Adjustable Shelves + Cleats (Qty 2)',
+    material: '3/4" Exterior Plywood + 2×2 Cedar Cleats (13.5" long)',
+    dimensions: '30.25" wide × 13.5" deep × 0.75" thick',
+    notes: 'Rests on 13.5"-long 2×2 cedar cleats mounted to side walls at 9" and 28" up from cabinet floor.'
+  },
+  E: {
+    code: 'Part E',
+    name: 'Front & Back Gable Triangles (Qty 2)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '32" wide base × 5.33" center peak height (4:12 pitch / 18.4°)',
+    notes: 'Mounted flush atop the 40" cabinet walls (front & back) to form the gable roof framing.'
+  },
+  F: {
+    code: 'Part F',
+    name: 'Left & Right Shingled Roof Panels (Qty 2)',
+    material: '3/4" Exterior Plywood + Dark Asphalt Shingles',
+    dimensions: '19.5" slope width × 24" deep × 0.75" thick',
+    notes: 'Provides 4" front & back overhang (24" total depth over 16" box) and ~3" eave overhang on sides.'
+  },
+  G: {
+    code: 'Part G',
+    name: 'Center Vertical Divider Post (Qty 1)',
+    material: '2×2 Cedar / Pine (1.5" × 1.5" actual)',
+    dimensions: '1.5" × 1.5" × 38.5" tall',
+    notes: 'Mounted vertically in dead center of front opening from top of 1.5" floor to top ceiling.'
+  },
+  H: {
+    code: 'Part H',
+    name: 'Door Frame Rails & Stiles (2 Doors)',
+    material: '1×3 Cedar / Pine Trim (0.75" × 2.5" actual)',
+    dimensions: 'Each door 14.75" W × 38.25" H (Stiles: 33.25" L; Rails: 14.75" L)',
+    notes: 'Includes top rail, center cross-rail, and bottom rail per door framing upper & lower window openings.'
+  },
+  I: {
+    code: 'Part I',
+    name: 'Shatterproof Window Panes (Qty 4)',
+    material: '1/4" Clear Polycarbonate Sheet',
+    dimensions: '10.75" wide × 14.5" tall × 0.25" thick',
+    notes: 'Two upper panes and two lower panes rabbeted/glazed into the left and right cedar door frames.'
+  },
+  J: {
+    code: 'Part J',
+    name: 'Rigid Closed-Cell Foam Insulation (Qty 4 Panels)',
+    material: '1/2" Exterior Rigid XPS Foam Board',
+    dimensions: 'Sides (2): 14"×37"; Back (1): 29.5"×37"; Ceiling (1): 29.5"×14"',
+    notes: 'Fitted tightly inside the exterior plywood shell to buffer pantry contents from temperature swings.'
+  }
+};
+
+const BUILD_STEPS = [
+  {
+    step: 1,
+    title: 'Step 1: Laminate Floor & Center Deck (Part C)',
+    desc: 'Glue and screw pairs of 3/4" exterior plywood (30.5" × 14.5") together to create two rigid 1.5"-thick structural slabs for the bottom floor and middle deck.'
+  },
+  {
+    step: 2,
+    title: 'Step 2: Build Outer Cabinet Box (Parts A, B & C)',
+    desc: 'Attach Left & Right Side Walls (Part A, 16" × 40") around the Back Wall (Part B, 30.5" × 40") for a 32" total width. Fasten the bottom slab flush at 0" and the center deck at 19.25" up.'
+  },
+  {
+    step: 3,
+    title: 'Step 3: Center Post, Cleats & Shelves (Parts G & D)',
+    desc: 'Install the 38.5" 2×2 Center Vertical Post (Part G) at the front center, mount 13.5" 2×2 cedar cleats at 9" and 28" heights, and drop in the Adjustable Shelves (Part D, 30.25" × 13.5").'
+  },
+  {
+    step: 4,
+    title: 'Step 4: Install 1/2" Rigid Foam Insulation (Part J)',
+    desc: 'Fit 1/2" closed-cell foam panels inside the shell: two side panels (14" × 37"), one back panel (29.5" × 37"), and one ceiling panel (29.5" × 14").'
+  },
+  {
+    step: 5,
+    title: 'Step 5: Build & Shingle 4:12 Gable Roof (Parts E & F)',
+    desc: 'Mount Front & Back Gable Triangles (Part E, 32" base × 5.33" peak) atop the 40" box, then attach the 19.5" × 24" Roof Panels (Part F) with 4" front/back & 3" eave overhangs, topped with asphalt shingles.'
+  },
+  {
+    step: 6,
+    title: 'Step 6: Build, Glaze & Hang Both Doors (Parts H & I)',
+    desc: 'Assemble two 14.75" × 38.25" doors from 1×3 cedar stiles (33.25") and rails (14.75" + center cross-rail), glaze with four 1/4" polycarbonate panes (10.75" × 14.5"), and hang on hinges.'
+  },
+  {
+    step: 7,
+    title: 'Step 7: Mount Cabinet 32" Above Grade on Twin 4×4 Posts',
+    desc: 'Set two pressure-treated 4×4 posts (3.5" × 3.5") spaced 20" on center extending 32" above ground, and bolt the finished insulated pantry cabinet securely onto the post tops.'
+  }
+];
+
+// ============================================================================
+// 4. BUILD 3D PARAMETRIC ASSEMBLY
+// ============================================================================
+const allParts = [];
+const interactiveMeshes = [];
+
+const leftDoorPivot = new THREE.Group();
+const rightDoorPivot = new THREE.Group();
+leftDoorPivot.position.set(-15.125, POST_H + 1.5, 7.625);
+rightDoorPivot.position.set(15.125, POST_H + 1.5, 7.625);
+scene.add(leftDoorPivot);
+scene.add(rightDoorPivot);
+
+function addEdgeOutline(mesh, color = 0x111827, opacity = 0.32) {
+  const edges = new THREE.EdgesGeometry(mesh.geometry, 25);
+  const line = new THREE.LineSegments(
+    edges,
+    new THREE.LineBasicMaterial({ color, transparent: true, opacity })
+  );
+  mesh.add(line);
+  return line;
+}
+
+function registerPart({
+  geometry,
+  matType,
+  partKey,
+  stepAdded,
+  pos,
+  rot = [0, 0, 0],
+  explodeOffset = [0, 0, 0],
+  parent = scene,
+  isOuterShell = false,
+  isGlass = false
+}) {
+  const material = makeMat(matType);
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(...pos);
+  mesh.rotation.set(...rot);
+  mesh.castShadow = !isGlass;
+  mesh.receiveShadow = true;
+  parent.add(mesh);
+
+  const edgeLine = addEdgeOutline(mesh, isGlass ? 0x38bdf8 : 0x0f172a, isGlass ? 0.55 : 0.28);
+
+  const record = {
+    mesh,
+    material,
+    edgeLine,
+    partKey,
+    spec: PART_SPECS[partKey],
+    stepAdded,
+    assembledPos: new THREE.Vector3(...pos),
+    explodedPos: new THREE.Vector3(
+      pos[0] + explodeOffset[0],
+      pos[1] + explodeOffset[1],
+      pos[2] + explodeOffset[2]
+    ),
+    currentPos: new THREE.Vector3(...pos),
+    baseOpacity: isGlass ? 0.46 : 1.0,
+    isOuterShell,
+    isGlass
+  };
+
+  mesh.userData.partRecord = record;
+  allParts.push(record);
+  interactiveMeshes.push(mesh);
+  return record;
+}
+
+function createGableGeometry(width, height, depth) {
+  const shape = new THREE.Shape();
+  shape.moveTo(-width / 2, 0);
+  shape.lineTo(width / 2, 0);
+  shape.lineTo(0, height);
+  shape.closePath();
+
+  const extrudeSettings = {
+    steps: 1,
+    depth: depth,
+    bevelEnabled: false
+  };
+  const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+  geo.translate(0, 0, -depth / 2);
+  return geo;
+}
+
+// A. Twin 4x4 Support Posts (Step 7)
+[-10, 10].forEach((xPos) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(3.5, POST_H, 3.5),
+    matType: 'pt',
+    partKey: 'POSTS',
+    stepAdded: 7,
+    pos: [xPos, POST_H / 2, 0],
+    explodeOffset: [xPos * 0.45, -10, 0]
+  });
+});
+
+// B. Part C: Double-Thick Floor & Center Deck (Step 1)
+const DECK_Z = 0.0;
+registerPart({
+  geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
+  matType: 'plywood',
+  partKey: 'C',
+  stepAdded: 1,
+  pos: [0, POST_H + 0.375, DECK_Z],
+  explodeOffset: [0, -3.5, 0]
+});
+registerPart({
+  geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
+  matType: 'plywood',
+  partKey: 'C',
+  stepAdded: 1,
+  pos: [0, POST_H + 1.125, DECK_Z],
+  explodeOffset: [0, -1.5, 0]
+});
+
+const MID_DECK_Y = POST_H + 19.25;
+registerPart({
+  geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
+  matType: 'plywood',
+  partKey: 'C',
+  stepAdded: 1,
+  pos: [0, MID_DECK_Y + 0.375, DECK_Z],
+  explodeOffset: [0, -0.8, 2]
+});
+registerPart({
+  geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
+  matType: 'plywood',
+  partKey: 'C',
+  stepAdded: 1,
+  pos: [0, MID_DECK_Y + 1.125, DECK_Z],
+  explodeOffset: [0, 0.8, 2]
+});
+
+// C. Part A & Part B: Left/Right Side Walls & Back Wall (Step 2)
+[-15.625, 15.625].forEach((xPos) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(T_PLY, BOX_H, BOX_D),
+    matType: 'plywood',
+    partKey: 'A',
+    stepAdded: 2,
+    pos: [xPos, POST_H + BOX_H / 2, 0],
+    explodeOffset: [xPos < 0 ? -13 : 13, 0, 0],
+    isOuterShell: true
+  });
+});
+
+registerPart({
+  geometry: new THREE.BoxGeometry(30.5, BOX_H, T_PLY),
+  matType: 'plywood',
+  partKey: 'B',
+  stepAdded: 2,
+  pos: [0, POST_H + BOX_H / 2, -7.625],
+  explodeOffset: [0, 0, -13],
+  isOuterShell: true
+});
+
+// D. Part G & Part D: Center Post, 2x2 Cleats & Adjustable Shelves (Step 3)
+registerPart({
+  geometry: new THREE.BoxGeometry(1.5, 38.5, 1.5),
+  matType: 'cedar',
+  partKey: 'G',
+  stepAdded: 3,
+  pos: [0, POST_H + 1.5 + 38.5 / 2, 6.5],
+  explodeOffset: [0, 0, 9.5]
+});
+
+const CLEAT_HEIGHTS = [9.0, 28.0];
+CLEAT_HEIGHTS.forEach((hOffset) => {
+  const cleatCenterY = POST_H + hOffset - 0.75;
+  [-14.5, 14.5].forEach((xPos) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(1.5, 1.5, 13.5),
+      matType: 'cedar',
+      partKey: 'D',
+      stepAdded: 3,
+      pos: [xPos, cleatCenterY, -0.25],
+      explodeOffset: [xPos < 0 ? -5 : 5, 0, 3]
+    });
+  });
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(30.25, T_PLY, 13.5),
+    matType: 'plywood',
+    partKey: 'D',
+    stepAdded: 3,
+    pos: [0, POST_H + hOffset + T_PLY / 2, -0.25],
+    explodeOffset: [0, 1.5, 6]
+  });
+});
+
+// E. Part J: 1/2" Exterior Rigid Foam Insulation (Step 4)
+[-15.0, 15.0].forEach((xPos) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(T_FOAM, 37.0, 14.0),
+    matType: 'foam',
+    partKey: 'J',
+    stepAdded: 4,
+    pos: [xPos, POST_H + 1.5 + 37.0 / 2, -0.25],
+    explodeOffset: [xPos < 0 ? -8.5 : 8.5, 0, 0]
+  });
+});
+
+registerPart({
+  geometry: new THREE.BoxGeometry(29.5, 37.0, T_FOAM),
+  matType: 'foam',
+  partKey: 'J',
+  stepAdded: 4,
+  pos: [0, POST_H + 1.5 + 37.0 / 2, -7.0],
+  explodeOffset: [0, 0, -8.5]
+});
+
+registerPart({
+  geometry: new THREE.BoxGeometry(29.5, T_FOAM, 14.0),
+  matType: 'foam',
+  partKey: 'J',
+  stepAdded: 4,
+  pos: [0, POST_H + BOX_H - T_FOAM / 2, -0.25],
+  explodeOffset: [0, 5.5, 0]
+});
+
+// F. Part E & Part F: 4:12 Gable Roof + Shingles (Step 5)
+const BOX_TOP_Y = POST_H + BOX_H; // 72.0"
+
+[-7.625, 7.625].forEach((zPos) => {
+  registerPart({
+    geometry: createGableGeometry(BOX_W, GABLE_H, T_PLY),
+    matType: 'plywood',
+    partKey: 'E',
+    stepAdded: 5,
+    pos: [0, BOX_TOP_Y, zPos],
+    explodeOffset: [0, 9, zPos < 0 ? -6 : 6],
+    isOuterShell: true
+  });
+});
+
+const HALF_SLOPE = 19.5 / 2;
+const ROOF_DX = Math.cos(SLOPE_ANGLE) * HALF_SLOPE;
+const ROOF_DY = Math.sin(SLOPE_ANGLE) * HALF_SLOPE;
+
+[-1, 1].forEach((side) => {
+  const angle = -side * SLOPE_ANGLE;
+  const nx = side * Math.sin(SLOPE_ANGLE);
+  const ny = Math.cos(SLOPE_ANGLE);
+
+  const plyX = side * ROOF_DX + nx * (T_PLY / 2);
+  const plyY = (BOX_TOP_Y + GABLE_H) - ROOF_DY + ny * (T_PLY / 2);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(19.5, T_PLY, 24.0),
+    matType: 'plywood',
+    partKey: 'F',
+    stepAdded: 5,
+    pos: [plyX, plyY, 0],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 7.5, 14, 0],
+    isOuterShell: true
+  });
+
+  const T_SHINGLE = 0.22;
+  const shX = side * ROOF_DX + nx * (T_PLY + T_SHINGLE / 2);
+  const shY = (BOX_TOP_Y + GABLE_H) - ROOF_DY + ny * (T_PLY + T_SHINGLE / 2);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(19.7, T_SHINGLE, 24.2),
+    matType: 'shingle',
+    partKey: 'F',
+    stepAdded: 5,
+    pos: [shX, shY, 0],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 9.5, 17.5, 0],
+    isOuterShell: true
+  });
+});
+
+// G. Part H & Part I: Double Glazed Doors (Step 6)
+function buildDoorAssembly(sideSign, pivotGroup) {
+  const doorW = 14.75;
+  const doorH = 38.25;
+  const stileW = 2.5;
+  const railH = 2.5;
+  const stileH = 33.25;
+  const crossRailH = 2.25;
+  const thick = 0.75;
+
+  const dir = sideSign === -1 ? 1 : -1;
+  const centerX = dir * (doorW / 2);
+  const explodeDirX = sideSign * 7.5;
+  const explodeDirZ = 15.0;
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(doorW, railH, thick),
+    matType: 'cedar',
+    partKey: 'H',
+    stepAdded: 6,
+    pos: [centerX, doorH - railH / 2, 0],
+    explodeOffset: [explodeDirX, 2.5, explodeDirZ],
+    parent: pivotGroup,
+    isOuterShell: true
+  });
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(doorW, railH, thick),
+    matType: 'cedar',
+    partKey: 'H',
+    stepAdded: 6,
+    pos: [centerX, railH / 2, 0],
+    explodeOffset: [explodeDirX, -2.5, explodeDirZ],
+    parent: pivotGroup,
+    isOuterShell: true
+  });
+
+  [dir * (stileW / 2), dir * (doorW - stileW / 2)].forEach((sx, idx) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(stileW, stileH, thick),
+      matType: 'cedar',
+      partKey: 'H',
+      stepAdded: 6,
+      pos: [sx, doorH / 2, 0],
+      explodeOffset: [explodeDirX + (idx === 0 ? -1.5 : 1.5), 0, explodeDirZ],
+      parent: pivotGroup,
+      isOuterShell: true
+    });
+  });
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(doorW - stileW * 2, crossRailH, thick),
+    matType: 'cedar',
+    partKey: 'H',
+    stepAdded: 6,
+    pos: [centerX, doorH / 2, 0],
+    explodeOffset: [explodeDirX, 0, explodeDirZ + 1.2],
+    parent: pivotGroup,
+    isOuterShell: true
+  });
+
+  const lowerPaneY = railH + 14.5 / 2 + 0.5;
+  const upperPaneY = doorH - railH - 14.5 / 2 - 0.5;
+  [lowerPaneY, upperPaneY].forEach((py, idx) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(10.75, 14.5, T_POLY),
+      matType: 'polycarbonate',
+      partKey: 'I',
+      stepAdded: 6,
+      pos: [centerX, py, -0.05],
+      explodeOffset: [explodeDirX, idx === 0 ? -1 : 1, explodeDirZ + 3.8],
+      parent: pivotGroup,
+      isGlass: true
+    });
+  });
+}
+
+buildDoorAssembly(-1, leftDoorPivot);
+buildDoorAssembly(1, rightDoorPivot);
+
+// ============================================================================
+// 5. UI STATE, VIEW MODES, STEPPER & INTERACTIVE RAYCASTING
+// ============================================================================
+let currentMode = 'assembled';
+let currentStep = 7;
+let selectedPartKey = null;
+let hoveredRecord = null;
+let doorsOpen = false;
+let targetDoorAngle = 0;
+
+const pillsContainer = document.getElementById('cutlist-pills');
+Object.keys(PART_SPECS).forEach((key) => {
+  const pill = document.createElement('button');
+  pill.className = 'part-pill';
+  pill.dataset.key = key;
+  pill.textContent = PART_SPECS[key].code;
+  pill.addEventListener('click', () => selectPart(key));
+  pillsContainer.appendChild(pill);
+});
+
+function selectPart(key) {
+  selectedPartKey = selectedPartKey === key ? null : key;
+
+  document.querySelectorAll('.part-pill').forEach((p) => {
+    p.classList.toggle('selected', p.dataset.key === selectedPartKey);
+  });
+
+  const inspector = document.getElementById('part-inspector');
+  if (!selectedPartKey) {
+    inspector.classList.add('empty');
+    inspector.innerHTML = `<div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>`;
+    return;
+  }
+
+  const spec = PART_SPECS[selectedPartKey];
+  inspector.classList.remove('empty');
+  inspector.innerHTML = `
+    <div>
+      <span class="part-tag">${spec.code}</span>
+      <span class="part-name">${spec.name}</span>
+    </div>
+    <div class="part-meta">
+      <span>Dimensions:</span><span>${spec.dimensions}</span>
+      <span>Material:</span><span>${spec.material}</span>
+      <span>Detail:</span><span>${spec.notes}</span>
+    </div>
+  `;
+}
+
+document.querySelectorAll('.mode-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.mode-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+  });
+});
+
+const stepSlider = document.getElementById('step-slider');
+const prevStepBtn = document.getElementById('prev-step');
+const nextStepBtn = document.getElementById('next-step');
+
+function updateStepUI(step) {
+  currentStep = Math.max(1, Math.min(7, Number(step)));
+  stepSlider.value = currentStep;
+  prevStepBtn.disabled = currentStep === 1;
+  nextStepBtn.disabled = currentStep === 7;
+
+  const info = BUILD_STEPS[currentStep - 1];
+  document.getElementById('step-badge').textContent = `Step ${currentStep} of 7`;
+  document.getElementById('step-num-label').textContent = `Phase ${currentStep} / 7`;
+  document.getElementById('step-title').textContent = info.title;
+  document.getElementById('step-desc').textContent = info.desc;
+
+  const benchElevationOffset = currentStep < 7 ? -POST_H : 0;
+  allParts.forEach((rec) => {
+    rec.mesh.visible = rec.stepAdded <= currentStep;
+  });
+  leftDoorPivot.visible = currentStep >= 6;
+  rightDoorPivot.visible = currentStep >= 6;
+  scene.userData.benchElevationOffset = benchElevationOffset;
+}
+
+stepSlider.addEventListener('input', (e) => updateStepUI(e.target.value));
+prevStepBtn.addEventListener('click', () => updateStepUI(currentStep - 1));
+nextStepBtn.addEventListener('click', () => updateStepUI(currentStep + 1));
+
+const toggleDoorsBtn = document.getElementById('toggle-doors');
+toggleDoorsBtn.addEventListener('click', () => {
+  doorsOpen = !doorsOpen;
+  targetDoorAngle = doorsOpen ? THREE.MathUtils.degToRad(85) : 0;
+  toggleDoorsBtn.textContent = doorsOpen ? 'Close Doors (0°)' : 'Open Doors (85°)';
+});
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+const tooltip = document.getElementById('hover-tooltip');
+let pointerDownPos = { x: 0, y: 0 };
+
+window.addEventListener('pointerdown', (e) => {
+  pointerDownPos = { x: e.clientX, y: e.clientY };
+});
+
+window.addEventListener('pointermove', (e) => {
+  if (e.target.closest('#ui-panel')) {
+    tooltip.style.display = 'none';
+    hoveredRecord = null;
+    document.body.style.cursor = 'default';
+    return;
+  }
+
+  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  const visibleMeshes = interactiveMeshes.filter((m) => m.visible);
+  const hits = raycaster.intersectObjects(visibleMeshes, false);
+
+  if (hits.length > 0) {
+    const rec = hits[0].object.userData.partRecord;
+    hoveredRecord = rec;
+    document.body.style.cursor = 'pointer';
+
+    document.getElementById('tt-head').textContent = `${rec.spec.code}: ${rec.spec.name}`;
+    document.getElementById('tt-dim').textContent = rec.spec.dimensions;
+    document.getElementById('tt-mat').textContent = rec.spec.material;
+
+    tooltip.style.display = 'block';
+    tooltip.style.left = `${Math.min(window.innerWidth - 275, e.clientX + 14)}px`;
+    tooltip.style.top = `${Math.min(window.innerHeight - 95, e.clientY + 14)}px`;
+  } else {
+    hoveredRecord = null;
+    tooltip.style.display = 'none';
+    document.body.style.cursor = 'default';
+  }
+});
+
+window.addEventListener('pointerup', (e) => {
+  if (e.target.closest('#ui-panel')) return;
+  const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
+  if (dist < 5 && hoveredRecord) {
+    selectPart(hoveredRecord.partKey);
+  }
+});
+
+updateStepUI(7);
+
+// ============================================================================
+// 6. ANIMATION LOOP
+// ============================================================================
+const clock = new THREE.Clock();
+let currentElevationOffset = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const lerpFactor = 1 - Math.exp(-8 * dt);
+
+  const targetElevation = scene.userData.benchElevationOffset || 0;
+  currentElevationOffset += (targetElevation - currentElevationOffset) * lerpFactor;
+
+  leftDoorPivot.position.y = POST_H + 1.5 + currentElevationOffset;
+  rightDoorPivot.position.y = POST_H + 1.5 + currentElevationOffset;
+
+  leftDoorPivot.rotation.y += (-targetDoorAngle - leftDoorPivot.rotation.y) * lerpFactor;
+  rightDoorPivot.rotation.y += (targetDoorAngle - rightDoorPivot.rotation.y) * lerpFactor;
+
+  const targetLookY = currentStep < 7 ? 24 : 44;
+  controls.target.y += (targetLookY - controls.target.y) * lerpFactor;
+
+  allParts.forEach((rec) => {
+    const targetVec = currentMode === 'exploded' ? rec.explodedPos : rec.assembledPos;
+    rec.currentPos.lerp(targetVec, lerpFactor);
+
+    rec.mesh.position.set(
+      rec.currentPos.x,
+      rec.currentPos.y + (rec.mesh.parent === scene ? currentElevationOffset : 0),
+      rec.currentPos.z
+    );
+
+    let targetOpacity = rec.baseOpacity;
+    if (currentMode === 'xray') {
+      if (rec.isOuterShell) {
+        targetOpacity = 0.22;
+      } else if (rec.isGlass) {
+        targetOpacity = 0.16;
+      } else {
+        targetOpacity = 1.0;
+      }
+    }
+    rec.material.opacity += (targetOpacity - rec.material.opacity) * lerpFactor;
+    rec.material.depthWrite = rec.material.opacity > 0.65;
+
+    const isHighlighted =
+      (selectedPartKey && rec.partKey === selectedPartKey) ||
+      (hoveredRecord && rec.partKey === hoveredRecord.partKey);
+
+    if (isHighlighted) {
+      rec.material.emissive.setHex(0x38bdf8);
+      rec.material.emissiveIntensity = 0.28;
+      rec.edgeLine.material.color.setHex(0x38bdf8);
+      rec.edgeLine.material.opacity = 0.9;
+    } else {
+      rec.material.emissive.setHex(0x000000);
+      rec.material.emissiveIntensity = 0;
+      rec.edgeLine.material.color.setHex(rec.isGlass ? 0x38bdf8 : 0x0f172a);
+      rec.edgeLine.material.opacity = rec.isGlass ? 0.55 : 0.28;
+    }
+  });
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+window.onload = function () {
+  animate();
+};
+</script>
+</body>
+</html>
