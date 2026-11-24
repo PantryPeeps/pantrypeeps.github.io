@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3D Woodworking Blueprint — 03. The Compact Wall-Mount Pantry</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #14171c;
+    color: #eef2f6;
+    overflow: hidden;
+    user-select: none;
+  }
+  #canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  /* Floating Control Panel */
+  #ui-panel {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 340px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    background: rgba(20, 24, 31, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    z-index: 10;
+  }
+  #ui-panel::-webkit-scrollbar { width: 5px; }
+  #ui-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #f8fafc;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 3px;
+    margin-bottom: 14px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* View Mode Buttons */
+  .view-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .mode-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 8px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-align: center;
+  }
+  .mode-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    color: #fff;
+  }
+  .mode-btn.active {
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+  }
+
+  /* Stepper Controls */
+  .stepper-box {
+    background: rgba(15, 18, 24, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .step-counter {
+    font-size: 13px;
+    font-weight: 700;
+    color: #38bdf8;
+  }
+  .step-nav {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    width: 28px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.18); }
+  .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: #38bdf8;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .step-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #cbd5e1;
+  }
+
+  /* Selected Part Inspector Card */
+  #part-inspector {
+    background: rgba(30, 41, 59, 0.72);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+  }
+  #part-inspector.empty {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 18, 24, 0.45);
+  }
+  .part-tag {
+    display: inline-block;
+    background: #f59e0b;
+    color: #111827;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-right: 6px;
+  }
+  .part-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .part-meta {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 4px 8px;
+    font-size: 12px;
+  }
+  .part-meta span:nth-child(odd) {
+    color: #94a3b8;
+    font-weight: 600;
+  }
+  .part-meta span:nth-child(even) {
+    color: #e2e8f0;
+  }
+
+  /* Quick Cut-List Legend Pills */
+  .cutlist-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .part-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .part-pill:hover, .part-pill.selected {
+    background: rgba(245, 158, 11, 0.22);
+    border-color: #f59e0b;
+    color: #fef3c7;
+  }
+
+  /* Door Swing Toggle */
+  .door-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+  .toggle-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #f8fafc;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .toggle-btn:hover { background: rgba(255, 255, 255, 0.16); }
+
+  /* Floating Hover Tooltip */
+  #hover-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(15, 23, 42, 0.94);
+    border: 1px solid #38bdf8;
+    border-radius: 8px;
+    padding: 8px 11px;
+    color: #f8fafc;
+    font-size: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    display: none;
+    max-width: 260px;
+  }
+  #hover-tooltip .tt-head {
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 2px;
+  }
+  #hover-tooltip .tt-dim {
+    color: #fbbf24;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  #hover-tooltip .tt-mat {
+    color: #cbd5e1;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* Bottom Controls Hint */
+  #controls-hint {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    background: rgba(20, 24, 31, 0.78);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 11.5px;
+    color: #94a3b8;
+    pointer-events: none;
+  }
+  #controls-hint strong { color: #e2e8f0; }
+
+  /* Upper-Right Brand Watermark */
+  #brand-watermark {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    max-width: calc(100vw - 40px);
+    font-family: "Arial Black", "Segoe UI", Arial, sans-serif;
+    font-size: clamp(18px, 3vw, 36px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+    color: #f8fafc;
+    text-decoration: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    z-index: 11;
+    transition: color 0.15s;
+  }
+  #brand-watermark:hover {
+    color: #38bdf8;
+  }
+</style>
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<!-- Floating Blueprint UI -->
+<div id="ui-panel">
+  <div class="badge">Scale: 1 Unit = 1 Inch</div>
+  <h1>03. The Compact Wall-Mount Pantry</h1>
+  <div class="subtitle">16"W &times; 12"D &times; 26"H Gable Box on Exterior Wall</div>
+
+  <div class="section-label">View Mode</div>
+  <div class="view-modes">
+    <button class="mode-btn active" data-mode="assembled">Assembled</button>
+    <button class="mode-btn" data-mode="exploded">Exploded</button>
+    <button class="mode-btn" data-mode="xray">X-Ray / Cutaway</button>
+  </div>
+
+  <div class="section-label">
+    <span>Build Sequence</span>
+    <span id="step-badge" style="color:#38bdf8;">Step 5 of 5</span>
+  </div>
+  <div class="stepper-box">
+    <div class="step-header">
+      <span class="step-counter" id="step-num-label">Phase 5 / 5</span>
+      <div class="step-nav">
+        <button class="nav-btn" id="prev-step" title="Previous Step">&lsaquo;</button>
+        <button class="nav-btn" id="next-step" title="Next Step">&rsaquo;</button>
+      </div>
+    </div>
+    <input type="range" id="step-slider" min="1" max="5" value="5" step="1" />
+    <div class="step-title" id="step-title"></div>
+    <div class="step-desc" id="step-desc"></div>
+  </div>
+
+  <div class="section-label">Selected Part Details</div>
+  <div id="part-inspector" class="empty">
+    <div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>
+  </div>
+
+  <div class="section-label">Cut List Index (Parts A–N)</div>
+  <div class="cutlist-pills" id="cutlist-pills"></div>
+
+  <div class="door-toggle-row">
+    <span>Door Swing Preview</span>
+    <button class="toggle-btn" id="toggle-doors">Open Door (85&deg;)</button>
+  </div>
+</div>
+
+<!-- Hover Tooltip -->
+<div id="hover-tooltip">
+  <div class="tt-head" id="tt-head"></div>
+  <div class="tt-dim" id="tt-dim"></div>
+  <div class="tt-mat" id="tt-mat"></div>
+</div>
+
+<a id="brand-watermark" href="https://pantrypeeps.org" target="_blank" rel="noopener">pantrypeeps.org</a>
+
+<div id="controls-hint">
+  <strong>Left Drag:</strong> Rotate &nbsp;|&nbsp; <strong>Right Drag:</strong> Pan &nbsp;|&nbsp; <strong>Scroll:</strong> Zoom &nbsp;|&nbsp; <strong>Click Part:</strong> Inspect
+</div>
+
+<!-- Three.js & OrbitControls via ES Module CDN -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================================
+// 1. SCENE, CAMERA, RENDERER & LIGHTING
+// ============================================================================
+const container = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x161b22);
+scene.fog = new THREE.FogExp2(0x161b22, 0.0022);
+
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.5, 1000);
+camera.position.set(52, 52, 72);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.08;
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 42, 0);
+controls.minDistance = 16;
+controls.maxDistance = 240;
+controls.maxPolarAngle = Math.PI * 0.495;
+
+// Studio / Outdoor Daylight Rig
+const hemiLight = new THREE.HemisphereLight(0xdbeafe, 0x334155, 0.85);
+scene.add(hemiLight);
+
+const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.55);
+dirLight.position.set(55, 110, 75);
+dirLight.castShadow = true;
+dirLight.shadow.mapSize.width = 2048;
+dirLight.shadow.mapSize.height = 2048;
+dirLight.shadow.camera.near = 10;
+dirLight.shadow.camera.far = 260;
+const d = 65;
+dirLight.shadow.camera.left = -d;
+dirLight.shadow.camera.right = d;
+dirLight.shadow.camera.top = d;
+dirLight.shadow.camera.bottom = -d;
+dirLight.shadow.bias = -0.0005;
+scene.add(dirLight);
+
+const fillLight = new THREE.DirectionalLight(0x93c5fd, 0.45);
+fillLight.position.set(-55, 45, -50);
+scene.add(fillLight);
+
+// Ground Plane & Architectural Blueprint Grid (1 square = 12" / 1 foot)
+const groundGeo = new THREE.PlaneGeometry(400, 400);
+const groundMat = new THREE.MeshStandardMaterial({
+  color: 0x1e242d,
+  roughness: 0.92,
+  metalness: 0.05
+});
+const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.receiveShadow = true;
+scene.add(groundMesh);
+
+const gridMajor = new THREE.GridHelper(240, 20, 0x38bdf8, 0x2d3748);
+gridMajor.position.y = 0.02;
+gridMajor.material.opacity = 0.35;
+gridMajor.material.transparent = true;
+scene.add(gridMajor);
+
+// ============================================================================
+// 2. PROCEDURAL REALISTIC WOOD, FOAM, VINYL, SILICONE & SHINGLE TEXTURES
+// ============================================================================
+function createWoodTexture(baseHex, grainHex, knots = true) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = baseHex;
+  ctx.fillRect(0, 0, 512, 512);
+
+  for (let i = 0; i < 420; i++) {
+    const y = Math.random() * 512;
+    const h = 0.5 + Math.random() * 2.2;
+    ctx.fillStyle = grainHex;
+    ctx.globalAlpha = 0.05 + Math.random() * 0.14;
+    ctx.fillRect(0, y, 512, h);
+  }
+
+  ctx.strokeStyle = grainHex;
+  for (let i = 0; i < 34; i++) {
+    ctx.globalAlpha = 0.08 + Math.random() * 0.14;
+    ctx.lineWidth = 1 + Math.random() * 1.8;
+    ctx.beginPath();
+    let y0 = (i / 34) * 512;
+    ctx.moveTo(0, y0);
+    for (let x = 0; x <= 512; x += 32) {
+      ctx.lineTo(x, y0 + Math.sin(x * 0.02 + i) * 6);
+    }
+    ctx.stroke();
+  }
+
+  if (knots) {
+    for (let k = 0; k < 2; k++) {
+      const kx = 80 + Math.random() * 350;
+      const ky = 80 + Math.random() * 350;
+      ctx.globalAlpha = 0.25;
+      ctx.fillStyle = grainHex;
+      ctx.beginPath();
+      ctx.ellipse(kx, ky, 14, 6, 0.15, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createShingleTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#23272e';
+  ctx.fillRect(0, 0, 512, 512);
+
+  for (let i = 0; i < 14000; i++) {
+    const x = Math.random() * 512;
+    const y = Math.random() * 512;
+    const shade = 25 + Math.floor(Math.random() * 45);
+    ctx.fillStyle = `rgb(${shade},${shade + 2},${shade + 6})`;
+    ctx.fillRect(x, y, 2, 2);
+  }
+
+  const rows = 8;
+  const rowH = 512 / rows;
+  for (let r = 0; r < rows; r++) {
+    const y = r * rowH;
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.fillRect(0, y, 512, 4);
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillRect(0, y + 4, 512, 2);
+
+    const offset = (r % 2) * 64;
+    for (let x = offset; x < 512; x += 128) {
+      ctx.fillStyle = 'rgba(0,0,0,0.65)';
+      ctx.fillRect(x, y, 4, rowH);
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(2, 2);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createFoamTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#f472b6'; // XPS Rigid Foam Pink
+  ctx.fillRect(0, 0, 256, 256);
+
+  for (let i = 0; i < 3000; i++) {
+    ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.12)' : 'rgba(190,24,93,0.12)';
+    ctx.fillRect(Math.random() * 256, Math.random() * 256, 2, 2);
+  }
+  ctx.strokeStyle = 'rgba(157, 23, 77, 0.25)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 256; i += 32) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 256); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(256, i); ctx.stroke();
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createVinylFloorTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(0, 0, 512, 256);
+
+  for (let i = 0; i < 6000; i++) {
+    const shade = 60 + Math.floor(Math.random() * 45);
+    ctx.fillStyle = `rgba(${shade}, ${shade + 8}, ${shade + 18}, 0.22)`;
+    ctx.fillRect(Math.random() * 512, Math.random() * 256, 3, 2);
+  }
+
+  ctx.strokeStyle = 'rgba(15, 23, 42, 0.55)';
+  ctx.lineWidth = 2;
+  for (let x = 0; x <= 512; x += 128) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 256); ctx.stroke();
+  }
+  for (let y = 0; y <= 256; y += 128) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(512, y); ctx.stroke();
+  }
+
+  ctx.strokeStyle = 'rgba(226, 232, 240, 0.14)';
+  ctx.lineWidth = 1;
+  for (let y = 2; y < 256; y += 128) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(512, y); ctx.stroke();
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+const texPlywood = createWoodTexture('#cfa36e', '#8c5a2b', true);
+const texCedar   = createWoodTexture('#c27849', '#6e3818', false);
+const texPT      = createWoodTexture('#8a865e', '#4d4a2e', true);
+const texShingle = createShingleTexture();
+const texFoam    = createFoamTexture();
+const texVinyl   = createVinylFloorTexture();
+
+function createBrickWallTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+
+  // Mortar background
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(0, 0, 512, 512);
+
+  const rows = 16;
+  const cols = 8;
+  const brickH = 512 / rows;
+  const brickW = 512 / cols;
+  const mortar = 3;
+
+  for (let r = 0; r < rows; r++) {
+    const offset = (r % 2) * (brickW / 2);
+    for (let c = -1; c <= cols; c++) {
+      const bx = c * brickW + offset;
+      const by = r * brickH;
+      const tone = 115 + Math.floor(Math.random() * 35);
+      ctx.fillStyle = `rgb(${tone + 25}, ${Math.floor(tone * 0.56)}, ${Math.floor(tone * 0.46)})`;
+      ctx.fillRect(bx + mortar / 2, by + mortar / 2, brickW - mortar, brickH - mortar);
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(3, 3);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+const texBrick = createBrickWallTexture();
+
+function makeMat(type) {
+  switch (type) {
+    case 'plywood':
+      return new THREE.MeshStandardMaterial({
+        map: texPlywood,
+        roughness: 0.72,
+        metalness: 0.04,
+        transparent: true,
+        opacity: 1
+      });
+    case 'cedar':
+      return new THREE.MeshStandardMaterial({
+        map: texCedar,
+        roughness: 0.65,
+        metalness: 0.05,
+        transparent: true,
+        opacity: 1
+      });
+    case 'pt':
+      return new THREE.MeshStandardMaterial({
+        map: texPT,
+        roughness: 0.85,
+        metalness: 0.03,
+        transparent: true,
+        opacity: 1
+      });
+    case 'brickWall':
+      return new THREE.MeshStandardMaterial({
+        map: texBrick,
+        roughness: 0.9,
+        metalness: 0.04,
+        transparent: true,
+        opacity: 0.92
+      });
+    case 'foam':
+      return new THREE.MeshStandardMaterial({
+        map: texFoam,
+        roughness: 0.88,
+        metalness: 0.0,
+        transparent: true,
+        opacity: 1
+      });
+    case 'vinyl':
+      return new THREE.MeshStandardMaterial({
+        map: texVinyl,
+        roughness: 0.42,
+        metalness: 0.06,
+        transparent: true,
+        opacity: 1
+      });
+    case 'silicone':
+      return new THREE.MeshStandardMaterial({
+        color: 0xf8fafc,
+        roughness: 0.28,
+        metalness: 0.02,
+        transparent: true,
+        opacity: 1
+      });
+    case 'steel':
+      return new THREE.MeshStandardMaterial({
+        color: 0x94a3b8,
+        roughness: 0.35,
+        metalness: 0.82,
+        transparent: true,
+        opacity: 1
+      });
+    case 'brass':
+      return new THREE.MeshStandardMaterial({
+        color: 0xd97706,
+        roughness: 0.28,
+        metalness: 0.85,
+        transparent: true,
+        opacity: 1
+      });
+    case 'tapconBlue':
+      return new THREE.MeshStandardMaterial({
+        color: 0x0284c7,
+        roughness: 0.32,
+        metalness: 0.65,
+        transparent: true,
+        opacity: 1
+      });
+    case 'shingle':
+      return new THREE.MeshStandardMaterial({
+        map: texShingle,
+        roughness: 0.92,
+        metalness: 0.08,
+        transparent: true,
+        opacity: 1
+      });
+    case 'polycarbonate':
+      return new THREE.MeshPhysicalMaterial({
+        color: 0xdbeafe,
+        roughness: 0.12,
+        metalness: 0.05,
+        transmission: 0.72,
+        transparent: true,
+        opacity: 0.48,
+        ior: 1.58,
+        side: THREE.DoubleSide
+      });
+  }
+}
+
+// ============================================================================
+// 3. EXACT ARCHITECTURAL DIMENSIONS & CUT-LIST METADATA (1 UNIT = 1 INCH)
+// ============================================================================
+const FLOOR_ELEV  = 34.0; // Cabinet bottom floor sits 34" off the ground on existing 4x4 post
+const BOX_W       = 16.0; // Total outer box width (14.5" interior + two 0.75" side walls)
+const BOX_H       = 22.5; // Side & back wall height
+const BOX_D       = 12.0; // Side wall depth (Back wall 0.75" + 10.5" floor + 0.75" front door recess)
+const T_PLY       = 0.75; // 3/4" Exterior Plywood
+const T_FOAM      = 0.50; // 1/2" Rigid Closed-Cell Foam Board
+const T_VINYL     = 0.08; // ~2mm Peel-and-Stick Outdoor Vinyl Tile
+const T_POLY      = 0.25; // 1/4" Clear Polycarbonate
+const GABLE_H     = 2.6667; // 4:12 pitch over 8" half-span -> 8 * (4/12) = 2.667"
+const SLOPE_ANGLE = Math.atan2(4, 12); // ~18.435 degrees
+
+const PART_SPECS = {
+  A: {
+    code: 'Part A',
+    name: 'Left & Right Side Walls (Qty 2)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '12" deep × 22.5" tall × 0.75" thick (90° square cuts)',
+    notes: 'Full-height outer side panels spanning from y = 34" to y = 56.5" above ground.'
+  },
+  B: {
+    code: 'Part B',
+    name: 'Back Wall Panel (Qty 1)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '14.5" wide × 22.5" tall × 0.75" thick (90° square cuts)',
+    notes: 'Fits cleanly between Left & Right Side Walls for a 16" overall box width.'
+  },
+  C: {
+    code: 'Part C',
+    name: 'Bottom Floor & 2 Interior Shelves (Qty 3)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '14.5" wide × 10.5" deep × 0.75" thick (90° square cuts)',
+    notes: 'Bottom floor sits flush at 0" (34" elevation); two shelves install at 6.5" and 13.5" up from inside floor.'
+  },
+  D: {
+    code: 'Part D',
+    name: 'Front & Back Gable Triangles (Qty 2)',
+    material: '3/4" Exterior-Grade Plywood',
+    dimensions: '16" wide base × 2.67" center peak height (18.4° / 4:12 pitch)',
+    notes: 'Mounted flush atop the 22.5" front & back walls to form the 4:12 gable roof framing.'
+  },
+  E: {
+    code: 'Part E',
+    name: 'Left & Right Shingled Gable Roof Panels (Qty 2)',
+    material: '3/4" Exterior Plywood + Dark Asphalt Shingles',
+    dimensions: '10.5" wide × 15" deep × 0.75" thick',
+    notes: 'Flush at the back wall against the existing 4×4 post, giving a 3" front overhang and ~2" side eave overhangs.'
+  },
+  F: {
+    code: 'Part F',
+    name: 'Door Frame Rails & Stiles (1 Door)',
+    material: '1×2 Cedar or Pine Trim (0.75" × 1.5" actual)',
+    dimensions: 'Door 14.25" W × 21.5" H (2 Rails: 14.25" L; 2 Stiles: 18.5" L)',
+    notes: '90° square-cut 1×2 cedar/pine frame fitted flush inside the full-height front opening with a 1/8" reveal.'
+  },
+  G: {
+    code: 'Part G',
+    name: 'Shatterproof Window Pane (Qty 1)',
+    material: '1/4" Clear Polycarbonate Sheet',
+    dimensions: '11.25" wide × 18.5" tall × 0.25" thick',
+    notes: 'Silicone-bedded inside the 1×2 door frame; impact- and freeze-thaw-proof.'
+  },
+  H: {
+    code: 'Part H',
+    name: 'Outer Wall Rigid Foam Insulation (Qty 4 Panels)',
+    material: '1/2" Exterior Rigid Closed-Cell XPS Foam Board',
+    dimensions: 'Sides (2): 10"×20.5"; Back (1): 13.5"×20.5"; Ceiling (1): 13.5"×10"',
+    notes: 'Zero fiberglass or paper facing; silicone-bonded inside both sides, back wall, and top ceiling.'
+  },
+  I: {
+    code: 'Part I',
+    name: 'Peel & Stick Outdoor Vinyl Flooring (All 3 Levels)',
+    material: 'Waterproof Peel-and-Stick Luxury Vinyl Tile (~2mm)',
+    dimensions: 'Bottom Floor & 2 Shelves (3): 13.5" wide × 9.75" deep',
+    notes: 'Applied flat and flush atop the bottom floor and both interior shelves inside the 1/2" foam lining.'
+  },
+  J: {
+    code: 'Part J',
+    name: 'Outdoor Waterproof Silicone Sealant Beads (Every Edge & Level)',
+    material: '100% Outdoor Waterproof Silicone Caulk (White)',
+    dimensions: '1/4" perimeter & vertical corner beads (All 3 Levels)',
+    notes: 'Sealed along every edge where foam meets the vinyl flooring on all 3 horizontal levels, plus both back vertical corners.'
+  },
+  K: {
+    code: 'Part K',
+    name: 'Full-Length Continuous Stainless Piano Hinge (Qty 1)',
+    material: 'Heavy-Duty 304 Stainless Steel (1.5" Open Width)',
+    dimensions: '1.5" open width × 21.0" tall × 0.06" leaf thickness',
+    notes: 'Continuous piano hinge mounted along the left door stile to prevent sag.'
+  },
+  L: {
+    code: 'Part L',
+    name: 'Door Pull Handle & 20 lb Magnetic Catch (1 Set)',
+    material: 'Powder-Coated Brass D-Pull + 20 lb Neodymium Magnetic Catch',
+    dimensions: 'Handle: 5.0" tall; Magnetic Catch: 2.5" W × 0.7" D (20 lb pull force)',
+    notes: 'Keeps the door latched tightly in wind while opening smoothly with one hand.'
+  },
+  M: {
+    code: 'Part M',
+    name: 'Galvanized Ridge Cap, Drip Edge & Brick Wall Counter-Flashing',
+    material: '26-Gauge Galvanized Steel Ridge Cap, Drip Edge & 16" Masonry Flashing',
+    dimensions: '15.2" Ridge Cap, 15" Eaves (2), 10.7" Front Rakes (2) & 16" Brick Wall Counter-Flashing',
+    notes: 'Covers the center roof ridge apex completely, sheds rain off side eaves and front gable rakes, and seals the back roof-to-brick joint with masonry sealant.'
+  },
+  N: {
+    code: 'Part N',
+    name: 'Brick Wall, Heavy-Duty Gusseted L-Brackets & Tapcon+ 3/8" × 4" Anchors',
+    material: 'Solid Brick Masonry Wall + (2) Heavy-Duty Steel Gusseted Shelf Brackets & Blue Tapcon+ 3/8" × 4" Screw Anchors',
+    dimensions: '(2) 10" Deep × 8" Tall Gusseted Steel L-Brackets + (4) Blue Tapcon+ 3/8" × 4" Hex Masonry Anchors',
+    notes: 'Mounted directly into solid brick (not mortar joints) 34" above grade using heavy-duty steel gusseted shelf brackets and blue Tapcon+ 3/8" × 4" concrete/masonry screw anchors, with exterior wood screws securing the top bracket arms into the cabinet floor.'
+  }
+};
+
+const BUILD_STEPS = [
+  {
+    step: 1,
+    title: 'Step 1: Assemble Main Box & Shelves (Parts A, B & C)',
+    desc: 'Glue and screw the Back Wall (Part B: 14.5" × 22.5") between the Side Walls (Part A: 12" × 22.5"). Fasten the Bottom Floor (Part C) flush at the bottom, and install the two interior shelves at 6.5" and 13.5" up from the floor.'
+  },
+  {
+    step: 2,
+    title: 'Step 2: Install 1/2" Foam Board, Vinyl Flooring & Silicone Seal (Parts H, I & J)',
+    desc: 'Silicone-bond the 1/2" exterior closed-cell foam panels (Part H) inside both side walls, back wall, and ceiling; lay flat peel-and-stick vinyl flooring (Part I) on all 3 horizontal levels; and seal every edge on every level plus vertical corners with waterproof silicone (Part J).'
+  },
+  {
+    step: 3,
+    title: 'Step 3: Build, Shingle & Flash 4:12 Gable Roof (Parts D, E & M)',
+    desc: 'Screw Front & Back Gable Triangles (Part D: 16" × 2.67") onto the box top, fasten both 10.5" × 15" Roof Panels (Part E) flush at the back for a 3" front overhang, cap the center peak with the Ridge Cap & Drip Edge (Part M), and shingle.'
+  },
+  {
+    step: 4,
+    title: 'Step 4: Build, Glaze & Hang Front Door (Parts F, G, K & L)',
+    desc: 'Assemble the 14.25" × 21.5" 1×2 door frame (Part F), bed the 1/4" Clear Polycarbonate Pane (Part G: 11.25" × 18.5") inside, and hang with the 21" Stainless Piano Hinge (Part K), Door Pull, and 20 lb Magnetic Catch (Part L).'
+  },
+  {
+    step: 5,
+    title: 'Step 5: Anchor to Brick Wall with Gusseted L-Brackets & Tapcon+ Screws (Parts N & M)',
+    desc: 'Hammer-drill pilot holes directly into solid brick 34" above grade, anchor twin Heavy-Duty Steel Gusseted L-Brackets with Blue Tapcon+ 3/8" × 4" Hex Masonry Anchors (Part N), fasten the cabinet floor onto the bracket arms, and seal the rear roof-to-brick seam with 16" counter-flashing (Part M).'
+  }
+];
+
+// ============================================================================
+// 4. BUILD 3D PARAMETRIC ASSEMBLY
+// ============================================================================
+const allParts = [];
+const interactiveMeshes = [];
+
+// Door Pivot Group (Hinged at left inner edge of front opening: x = -7.125, y = 34 + 0.875, z = 5.625)
+const doorPivot = new THREE.Group();
+doorPivot.position.set(-7.125, FLOOR_ELEV + 0.875, 5.625);
+scene.add(doorPivot);
+
+function addEdgeOutline(mesh, color = 0x111827, opacity = 0.32) {
+  const edges = new THREE.EdgesGeometry(mesh.geometry, 25);
+  const line = new THREE.LineSegments(
+    edges,
+    new THREE.LineBasicMaterial({ color, transparent: true, opacity })
+  );
+  mesh.add(line);
+  return line;
+}
+
+function registerPart({
+  geometry,
+  matType,
+  partKey,
+  stepAdded,
+  pos,
+  rot = [0, 0, 0],
+  explodeOffset = [0, 0, 0],
+  parent = scene,
+  isOuterShell = false,
+  isGlass = false,
+  noOutline = false,
+  isEnv = false
+}) {
+  const material = makeMat(matType);
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(...pos);
+  mesh.rotation.set(...rot);
+  mesh.castShadow = !isGlass && !noOutline && !isEnv;
+  mesh.receiveShadow = true;
+  parent.add(mesh);
+
+  const edgeLine = noOutline
+    ? null
+    : addEdgeOutline(mesh, isGlass ? 0x38bdf8 : 0x0f172a, isGlass ? 0.55 : 0.28);
+
+  const record = {
+    mesh,
+    material,
+    edgeLine,
+    partKey,
+    spec: partKey ? PART_SPECS[partKey] : null,
+    stepAdded,
+    assembledPos: new THREE.Vector3(...pos),
+    explodedPos: new THREE.Vector3(
+      pos[0] + explodeOffset[0],
+      pos[1] + explodeOffset[1],
+      pos[2] + explodeOffset[2]
+    ),
+    currentPos: new THREE.Vector3(...pos),
+    baseOpacity: isGlass ? 0.46 : (isEnv ? 0.94 : 1.0),
+    isOuterShell,
+    isGlass,
+    isEnv
+  };
+
+  mesh.userData.partRecord = record;
+  allParts.push(record);
+  if (!isEnv) {
+    interactiveMeshes.push(mesh);
+  }
+  return record;
+}
+
+function createGableGeometry(width, height, depth) {
+  const shape = new THREE.Shape();
+  shape.moveTo(-width / 2, 0);
+  shape.lineTo(width / 2, 0);
+  shape.lineTo(0, height);
+  shape.closePath();
+
+  const geo = new THREE.ExtrudeGeometry(shape, {
+    steps: 1,
+    depth: depth,
+    bevelEnabled: false
+  });
+  geo.translate(0, 0, -depth / 2);
+  return geo;
+}
+
+// ----------------------------------------------------------------------------
+// A. PART N: EXTERIOR BRICK WALL, GUSSETED L-BRACKETS & BLUE TAPCON+ ANCHORS (Step 5)
+// ----------------------------------------------------------------------------
+// Back wall outer face is at z = -6.0. Building brick wall face sits flush at z = -6.0 (non-interactive backdrop)
+const WALL_THICK = 6.0;
+const WALL_Z = -6.0 - WALL_THICK / 2;
+const WALL_W = 52.0;
+const WALL_H = 74.0;
+
+registerPart({
+  geometry: new THREE.BoxGeometry(WALL_W, WALL_H, WALL_THICK),
+  matType: 'brickWall',
+  partKey: null,
+  stepAdded: 5,
+  pos: [0, WALL_H / 2, WALL_Z],
+  explodeOffset: [0, 0, -11.5],
+  isOuterShell: true,
+  isEnv: true
+});
+
+// Twin Heavy-Duty Steel Gusseted Shelf Brackets anchored directly into solid brick with Blue Tapcon+ 3/8" x 4" Screw Anchors
+[-5.2, 5.2].forEach((bx) => {
+  // Vertical Wall Bar (9.0" tall x 1.5" wide x 0.25" thick) flat against brick wall (z = -6.0 to -5.75)
+  registerPart({
+    geometry: new THREE.BoxGeometry(1.5, 9.0, 0.25),
+    matType: 'steel',
+    partKey: 'N',
+    stepAdded: 5,
+    pos: [bx, FLOOR_ELEV - 4.5, -5.875],
+    explodeOffset: [0, -2.5, -5.5]
+  });
+
+  // Horizontal Top Support Arm (10.5" deep x 1.5" wide x 0.25" thick) cradling underside of cabinet floor (z = -6.0 to +4.5)
+  registerPart({
+    geometry: new THREE.BoxGeometry(1.5, 0.25, 10.5),
+    matType: 'steel',
+    partKey: 'N',
+    stepAdded: 5,
+    pos: [bx, FLOOR_ELEV - 0.125, -0.75],
+    explodeOffset: [0, -2.5, -3.5]
+  });
+
+  // Welded 45° Diagonal Gusset Tube connecting lower wall bar (y=34-7.2, z=-5.75) up to front arm (y=34-0.25, z=+1.2)
+  // Vector: dY = +6.95, dZ = +6.95 -> length = 9.83", midpoint = (y=34-3.725, z=-2.275), rotX = +Math.PI/4
+  registerPart({
+    geometry: new THREE.BoxGeometry(0.65, 9.83, 0.65),
+    matType: 'steel',
+    partKey: 'N',
+    stepAdded: 5,
+    pos: [bx, FLOOR_ELEV - 3.725, -2.275],
+    rot: [Math.PI / 4, 0, 0],
+    explodeOffset: [0, -2.5, -4.5]
+  });
+
+  // Top & Bottom Blue Tapcon+ 3/8" x 4" Hex Masonry Screw Anchors (above and below the gusset weld)
+  [-1.25, -8.1].forEach((dy) => {
+    // Blue Tapcon+ Hex Flange Head protruding on front of bracket vertical bar
+    registerPart({
+      geometry: new THREE.CylinderGeometry(0.28, 0.28, 0.28, 6),
+      matType: 'tapconBlue',
+      partKey: 'N',
+      stepAdded: 5,
+      pos: [bx, FLOOR_ELEV + dy, -5.62],
+      rot: [Math.PI / 2, 0, 0],
+      explodeOffset: [0, -2.5, -4.2],
+      noOutline: true
+    });
+
+    // Blue Tapcon+ 3/8" x 4" Threaded Masonry Shaft extending into brick (visible in Exploded & X-Ray views)
+    registerPart({
+      geometry: new THREE.CylinderGeometry(0.16, 0.16, 3.75, 10),
+      matType: 'tapconBlue',
+      partKey: 'N',
+      stepAdded: 5,
+      pos: [bx, FLOOR_ELEV + dy, -7.62],
+      rot: [Math.PI / 2, 0, 0],
+      explodeOffset: [0, -2.5, -4.2],
+      noOutline: true
+    });
+  });
+
+  // 2 Upward Wood Lag Screws through horizontal bracket arm into bottom of cabinet floor
+  [-3.8, 2.8].forEach((dzFloor) => {
+    registerPart({
+      geometry: new THREE.CylinderGeometry(0.2, 0.2, 0.2, 6),
+      matType: 'steel',
+      partKey: 'N',
+      stepAdded: 5,
+      pos: [bx, FLOOR_ELEV - 0.32, dzFloor],
+      explodeOffset: [0, -2.5, -3.5],
+      noOutline: true
+    });
+  });
+});
+
+// ----------------------------------------------------------------------------
+// B. PART A, PART B & PART C: CABINET BOX, BOTTOM FLOOR & 2 SHELVES (Step 1)
+// ----------------------------------------------------------------------------
+// Part A: Left & Right Side Walls (12" deep x 22.5" tall x 0.75" thick, x = ±7.625)
+[-7.625, 7.625].forEach((xPos) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(T_PLY, BOX_H, BOX_D),
+    matType: 'plywood',
+    partKey: 'A',
+    stepAdded: 1,
+    pos: [xPos, FLOOR_ELEV + BOX_H / 2, 0],
+    explodeOffset: [xPos < 0 ? -10 : 10, 0, 0],
+    isOuterShell: true
+  });
+});
+
+// Part B: Back Wall (14.5" wide x 22.5" tall x 0.75" thick, z = -5.625)
+registerPart({
+  geometry: new THREE.BoxGeometry(14.5, BOX_H, T_PLY),
+  matType: 'plywood',
+  partKey: 'B',
+  stepAdded: 1,
+  pos: [0, FLOOR_ELEV + BOX_H / 2, -5.625],
+  explodeOffset: [0, 0, -9.5],
+  isOuterShell: true
+});
+
+// Part C (1): Bottom Floor (14.5" wide x 10.5" deep x 0.75" thick, flush at bottom)
+registerPart({
+  geometry: new THREE.BoxGeometry(14.5, T_PLY, 10.5),
+  matType: 'plywood',
+  partKey: 'C',
+  stepAdded: 1,
+  pos: [0, FLOOR_ELEV + T_PLY / 2, 0.0],
+  explodeOffset: [0, -3.0, 0]
+});
+
+// Part C (2 & 3): Two Interior Shelves at 6.5" and 13.5" up from inside floor
+const SHELF1_BOTTOM_Y = FLOOR_ELEV + T_PLY + 6.5;
+const SHELF2_BOTTOM_Y = FLOOR_ELEV + T_PLY + 13.5;
+
+[SHELF1_BOTTOM_Y, SHELF2_BOTTOM_Y].forEach((sy, idx) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(14.5, T_PLY, 10.5),
+    matType: 'plywood',
+    partKey: 'C',
+    stepAdded: 1,
+    pos: [0, sy + T_PLY / 2, 0.0],
+    explodeOffset: [0, idx === 0 ? 0.5 : 1.5, 4.8]
+  });
+});
+
+// ----------------------------------------------------------------------------
+// C. PART H, PART I & PART J: FOAM INSULATION, VINYL FLOORING & SILICONE (Step 2)
+// ----------------------------------------------------------------------------
+// Part H: 1/2" Exterior Rigid Closed-Cell Foam Board
+// Left & Right Side Foam Panels (10" deep x 20.5" tall x 0.5" thick)
+[-7.0, 7.0].forEach((xPos) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(T_FOAM, 20.5, 10.0),
+    matType: 'foam',
+    partKey: 'H',
+    stepAdded: 2,
+    pos: [xPos, FLOOR_ELEV + T_PLY + 10.25, -0.25],
+    explodeOffset: [xPos < 0 ? -6.8 : 6.8, 0, 0]
+  });
+});
+
+// Back Wall Foam Panel (13.5" wide x 20.5" tall x 0.5" thick)
+registerPart({
+  geometry: new THREE.BoxGeometry(13.5, 20.5, T_FOAM),
+  matType: 'foam',
+  partKey: 'H',
+  stepAdded: 2,
+  pos: [0, FLOOR_ELEV + T_PLY + 10.25, -5.0],
+  explodeOffset: [0, 0, -6.5]
+});
+
+// Ceiling Foam Panel (13.5" wide x 10" deep x 0.5" thick, flush under top ceiling y = FLOOR_ELEV + 22.5)
+registerPart({
+  geometry: new THREE.BoxGeometry(13.5, T_FOAM, 10.0),
+  matType: 'foam',
+  partKey: 'H',
+  stepAdded: 2,
+  pos: [0, FLOOR_ELEV + BOX_H - T_FOAM / 2, -0.25],
+  explodeOffset: [0, 4.8, 0]
+});
+
+// Part I: Peel & Stick Outdoor Vinyl Flooring on ALL 3 Horizontal Levels (flat & flush)
+const FLOOR_TOP_Y  = FLOOR_ELEV + T_PLY;
+const SHELF1_TOP_Y = SHELF1_BOTTOM_Y + T_PLY;
+const SHELF2_TOP_Y = SHELF2_BOTTOM_Y + T_PLY;
+
+[
+  { topY: FLOOR_TOP_Y, expY: -0.4, expZ: 3.2 },
+  { topY: SHELF1_TOP_Y, expY: 0.8, expZ: 5.2 },
+  { topY: SHELF2_TOP_Y, expY: 1.8, expZ: 5.2 }
+].forEach((lvl) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(13.5, T_VINYL, 9.75),
+    matType: 'vinyl',
+    partKey: 'I',
+    stepAdded: 2,
+    pos: [0, lvl.topY + T_VINYL / 2, 0.125],
+    explodeOffset: [0, lvl.expY, lvl.expZ]
+  });
+});
+
+// Part J: Outdoor Waterproof Silicone Sealant Beads along EVERY edge on EVERY level + vertical corners
+const BEAD_R = 0.15;
+
+[
+  { y: FLOOR_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: -0.2, expZ: 3.2 },
+  { y: SHELF1_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: 0.9, expZ: 5.2 },
+  { y: SHELF2_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: 1.9, expZ: 5.2 }
+].forEach((lvl) => {
+  // Back wall horizontal silicone bead
+  registerPart({
+    geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 13.5, 10),
+    matType: 'silicone',
+    partKey: 'J',
+    stepAdded: 2,
+    pos: [0, lvl.y, -4.68],
+    rot: [0, 0, Math.PI / 2],
+    explodeOffset: [0, lvl.expY, -3.8],
+    noOutline: true
+  });
+
+  // Left & Right side wall horizontal silicone beads
+  [-6.68, 6.68].forEach((xSide) => {
+    registerPart({
+      geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 9.75, 10),
+      matType: 'silicone',
+      partKey: 'J',
+      stepAdded: 2,
+      pos: [xSide, lvl.y, 0.125],
+      rot: [Math.PI / 2, 0, 0],
+      explodeOffset: [xSide < 0 ? -4.2 : 4.2, lvl.expY, lvl.expZ * 0.35],
+      noOutline: true
+    });
+  });
+});
+
+// Vertical back corner silicone beads across all 3 shelf compartments
+const CAV1_H = SHELF1_BOTTOM_Y - (FLOOR_TOP_Y + T_VINYL);
+const CAV1_Y = FLOOR_TOP_Y + T_VINYL + CAV1_H / 2;
+
+const CAV2_H = SHELF2_BOTTOM_Y - (SHELF1_TOP_Y + T_VINYL);
+const CAV2_Y = SHELF1_TOP_Y + T_VINYL + CAV2_H / 2;
+
+const CAV3_H = (FLOOR_ELEV + BOX_H - T_FOAM) - (SHELF2_TOP_Y + T_VINYL);
+const CAV3_Y = SHELF2_TOP_Y + T_VINYL + CAV3_H / 2;
+
+[-6.68, 6.68].forEach((xSide) => {
+  [
+    { h: CAV1_H, y: CAV1_Y },
+    { h: CAV2_H, y: CAV2_Y },
+    { h: CAV3_H, y: CAV3_Y }
+  ].forEach((seg) => {
+    registerPart({
+      geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, seg.h, 10),
+      matType: 'silicone',
+      partKey: 'J',
+      stepAdded: 2,
+      pos: [xSide, seg.y, -4.68],
+      explodeOffset: [xSide < 0 ? -4.8 : 4.8, 0, -4.8],
+      noOutline: true
+    });
+  });
+});
+
+// ----------------------------------------------------------------------------
+// D. PART D, PART E & PART M: 4:12 GABLE ROOF, SHINGLES & FLASHING (Step 3)
+// ----------------------------------------------------------------------------
+const BOX_TOP_Y = FLOOR_ELEV + BOX_H; // 56.5"
+
+// Front & Back Gable Triangles (Part D: 16" wide base x 2.67" center peak height)
+[-5.625, 5.625].forEach((zPos) => {
+  registerPart({
+    geometry: createGableGeometry(BOX_W, GABLE_H, T_PLY),
+    matType: 'plywood',
+    partKey: 'D',
+    stepAdded: 3,
+    pos: [0, BOX_TOP_Y, zPos],
+    explodeOffset: [0, 7.5, zPos < 0 ? -4.5 : 4.5],
+    isOuterShell: true
+  });
+});
+
+// Roof Panels (Part E: 10.65" slope width x 15" deep, flush at back z = -6.0 -> center z = +1.5, giving 3" front overhang)
+const ROOF_Z = 1.5;
+const HALF_SLOPE = 10.65 / 2;
+const ROOF_DX = Math.cos(SLOPE_ANGLE) * (HALF_SLOPE - 0.15);
+const ROOF_DY = Math.sin(SLOPE_ANGLE) * (HALF_SLOPE - 0.15);
+
+[-1, 1].forEach((side) => {
+  const angle = -side * SLOPE_ANGLE;
+  const nx = side * Math.sin(SLOPE_ANGLE);
+  const ny = Math.cos(SLOPE_ANGLE);
+
+  const plyX = side * ROOF_DX + nx * (T_PLY / 2);
+  const plyY = (BOX_TOP_Y + GABLE_H) - ROOF_DY + ny * (T_PLY / 2);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(10.65, T_PLY, 15.0),
+    matType: 'plywood',
+    partKey: 'E',
+    stepAdded: 3,
+    pos: [plyX, plyY, ROOF_Z],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 5.8, 11.5, 0],
+    isOuterShell: true
+  });
+
+  const T_SHINGLE = 0.22;
+  const shX = side * ROOF_DX + nx * (T_PLY + T_SHINGLE / 2);
+  const shY = (BOX_TOP_Y + GABLE_H) - ROOF_DY + ny * (T_PLY + T_SHINGLE / 2);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(10.85, T_SHINGLE, 15.2),
+    matType: 'shingle',
+    partKey: 'E',
+    stepAdded: 3,
+    pos: [shX, shY, ROOF_Z],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 7.5, 14.5, 0],
+    isOuterShell: true
+  });
+
+  // Part M: Galvanized Roof Drip Edge Flashing (Side Eaves + Front Gable Rakes)
+  const eaveOffset = 10.75 / 2;
+  const eaveX = side * Math.cos(SLOPE_ANGLE) * (HALF_SLOPE - 0.15 + eaveOffset) + nx * (T_PLY * 0.45);
+  const eaveY = (BOX_TOP_Y + GABLE_H) - Math.sin(SLOPE_ANGLE) * (HALF_SLOPE - 0.15 + eaveOffset) + ny * (T_PLY * 0.45);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(0.16, 1.2, 15.3),
+    matType: 'steel',
+    partKey: 'M',
+    stepAdded: 3,
+    pos: [eaveX, eaveY, ROOF_Z],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 9.2, 12.5, 0],
+    isOuterShell: true
+  });
+
+  // Front Rake Drip Edge (z = 1.5 + 7.6 = +9.1)
+  registerPart({
+    geometry: new THREE.BoxGeometry(10.9, 1.15, 0.16),
+    matType: 'steel',
+    partKey: 'M',
+    stepAdded: 3,
+    pos: [plyX, plyY - 0.12, 9.1],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 7.5, 13.0, 3.8],
+    isOuterShell: true
+  });
+});
+
+// Center Roof Ridge Cap (Part M) sealing the 4:12 gable peak apex cleanly with zero gap line
+const RIDGE_APEX_Y = BOX_TOP_Y + GABLE_H + T_PLY + 0.14;
+[-1, 1].forEach((side) => {
+  const angle = -side * SLOPE_ANGLE;
+  const rx = side * Math.cos(SLOPE_ANGLE) * 1.1;
+  const ry = RIDGE_APEX_Y - Math.sin(SLOPE_ANGLE) * 1.1;
+  registerPart({
+    geometry: new THREE.BoxGeometry(2.3, 0.16, 15.25),
+    matType: 'shingle',
+    partKey: 'M',
+    stepAdded: 3,
+    pos: [rx, ry, ROOF_Z],
+    rot: [0, 0, angle],
+    explodeOffset: [0, 16.0, 0],
+    isOuterShell: true
+  });
+});
+
+// Rear Building Wall Counter-Flashing Strip (16" aluminum flashing sealing back roof seam to brick wall)
+registerPart({
+  geometry: new THREE.BoxGeometry(16.0, 2.4, 0.16),
+  matType: 'steel',
+  partKey: 'M',
+  stepAdded: 5,
+  pos: [0, BOX_TOP_Y + 1.1, -5.92],
+  explodeOffset: [0, 3.5, -4.8],
+  isOuterShell: true
+});
+
+// ----------------------------------------------------------------------------
+// E. PART F, PART G, PART K & PART L: FRONT DOOR & HARDWARE (Step 4)
+// ----------------------------------------------------------------------------
+// Full interior opening is 14.5" W × 21.75" H (from y = 34.75" top of bottom floor to y = 56.5" top of side walls)
+// Door dimensions: 14.25" wide x 21.5" tall x 0.75" thick (1/8" perimeter reveal top, bottom & sides)
+const DOOR_W = 14.25;
+const DOOR_H = 21.5;
+const RAIL_H = 1.5;
+const STILE_W = 1.5;
+const STILE_H = 18.5; // 21.5 - 2*1.5 = 18.5"
+
+// Part F: Top & Bottom Rails (14.25" long x 1.5" wide x 0.75" thick)
+registerPart({
+  geometry: new THREE.BoxGeometry(DOOR_W, RAIL_H, T_PLY),
+  matType: 'cedar',
+  partKey: 'F',
+  stepAdded: 4,
+  pos: [DOOR_W / 2, DOOR_H - RAIL_H / 2, 0],
+  explodeOffset: [0, 2.2, 12.0],
+  parent: doorPivot,
+  isOuterShell: true
+});
+
+registerPart({
+  geometry: new THREE.BoxGeometry(DOOR_W, RAIL_H, T_PLY),
+  matType: 'cedar',
+  partKey: 'F',
+  stepAdded: 4,
+  pos: [DOOR_W / 2, RAIL_H / 2, 0],
+  explodeOffset: [0, -2.2, 12.0],
+  parent: doorPivot,
+  isOuterShell: true
+});
+
+// Part F: Left & Right Stiles (1.5" wide x 17.5" tall x 0.75" thick)
+[STILE_W / 2, DOOR_W - STILE_W / 2].forEach((sx, idx) => {
+  registerPart({
+    geometry: new THREE.BoxGeometry(STILE_W, STILE_H, T_PLY),
+    matType: 'cedar',
+    partKey: 'F',
+    stepAdded: 4,
+    pos: [sx, DOOR_H / 2, 0],
+    explodeOffset: [idx === 0 ? -1.8 : 1.8, 0, 12.0],
+    parent: doorPivot,
+    isOuterShell: true
+  });
+});
+
+// Part G: Shatterproof Clear Polycarbonate Window Pane (11.25" W x 18.5" H x 0.25" T)
+registerPart({
+  geometry: new THREE.BoxGeometry(11.25, 18.5, T_POLY),
+  matType: 'polycarbonate',
+  partKey: 'G',
+  stepAdded: 4,
+  pos: [DOOR_W / 2, DOOR_H / 2, -0.05],
+  explodeOffset: [0, 0, 15.5],
+  parent: doorPivot,
+  isGlass: true
+});
+
+// Part K: Full-Length Continuous 21" Stainless Piano Hinge (left stile)
+registerPart({
+  geometry: new THREE.BoxGeometry(0.6, 21.0, 0.1),
+  matType: 'steel',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0.3, DOOR_H / 2, 0.42],
+  explodeOffset: [-3.2, 0, 10.0],
+  parent: doorPivot,
+  isOuterShell: true
+});
+registerPart({
+  geometry: new THREE.CylinderGeometry(0.13, 0.13, 21.0, 10),
+  matType: 'steel',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0, DOOR_H / 2, 0.44],
+  explodeOffset: [-3.2, 0, 10.0],
+  parent: doorPivot,
+  isOuterShell: true,
+  noOutline: true
+});
+
+// Part L: Outdoor Door Pull Handle + 20 lb Magnetic Catch
+const handleX = DOOR_W - 0.75;
+const handleY = DOOR_H / 2;
+const handleZ = 0.38;
+
+registerPart({
+  geometry: new THREE.CylinderGeometry(0.2, 0.2, 5.0, 12),
+  matType: 'brass',
+  partKey: 'L',
+  stepAdded: 4,
+  pos: [handleX, handleY, handleZ + 1.0],
+  explodeOffset: [2.0, 0, 16.5],
+  parent: doorPivot,
+  isOuterShell: true,
+  noOutline: true
+});
+[-2.0, 2.0].forEach((hy) => {
+  registerPart({
+    geometry: new THREE.CylinderGeometry(0.15, 0.15, 1.0, 10),
+    matType: 'brass',
+    partKey: 'L',
+    stepAdded: 4,
+    pos: [handleX, handleY + hy, handleZ + 0.5],
+    rot: [Math.PI / 2, 0, 0],
+    explodeOffset: [2.0, 0, 16.5],
+    parent: doorPivot,
+    isOuterShell: true,
+    noOutline: true
+  });
+});
+
+// 20 lb Magnetic Catch Housing + Steel Strike Plate
+registerPart({
+  geometry: new THREE.BoxGeometry(0.7, 0.65, 1.0),
+  matType: 'steel',
+  partKey: 'L',
+  stepAdded: 4,
+  pos: [6.88, FLOOR_ELEV + 0.875 + DOOR_H / 2, 4.75],
+  explodeOffset: [3.8, 0, 6.8]
+});
+
+registerPart({
+  geometry: new THREE.BoxGeometry(0.7, 0.65, 0.12),
+  matType: 'steel',
+  partKey: 'L',
+  stepAdded: 4,
+  pos: [DOOR_W - 0.45, DOOR_H / 2, -0.42],
+  explodeOffset: [2.0, 0, 10.2],
+  parent: doorPivot,
+  isOuterShell: true
+});
+
+// ============================================================================
+// 5. UI STATE, VIEW MODES, STEPPER & INTERACTIVE RAYCASTING
+// ============================================================================
+let currentMode = 'assembled';
+let currentStep = 5;
+let selectedPartKey = null;
+let hoveredRecord = null;
+let doorsOpen = false;
+let targetDoorAngle = 0;
+
+const pillsContainer = document.getElementById('cutlist-pills');
+Object.keys(PART_SPECS).forEach((key) => {
+  const pill = document.createElement('button');
+  pill.className = 'part-pill';
+  pill.dataset.key = key;
+  pill.textContent = PART_SPECS[key].code;
+  pill.addEventListener('click', () => selectPart(key));
+  pillsContainer.appendChild(pill);
+});
+
+function selectPart(key) {
+  selectedPartKey = selectedPartKey === key ? null : key;
+
+  document.querySelectorAll('.part-pill').forEach((p) => {
+    p.classList.toggle('selected', p.dataset.key === selectedPartKey);
+  });
+
+  const inspector = document.getElementById('part-inspector');
+  if (!selectedPartKey) {
+    inspector.classList.add('empty');
+    inspector.innerHTML = `<div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>`;
+    return;
+  }
+
+  const spec = PART_SPECS[selectedPartKey];
+  inspector.classList.remove('empty');
+  inspector.innerHTML = `
+    <div>
+      <span class="part-tag">${spec.code}</span>
+      <span class="part-name">${spec.name}</span>
+    </div>
+    <div class="part-meta">
+      <span>Dimensions:</span><span>${spec.dimensions}</span>
+      <span>Material:</span><span>${spec.material}</span>
+      <span>Detail:</span><span>${spec.notes}</span>
+    </div>
+  `;
+}
+
+document.querySelectorAll('.mode-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.mode-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+  });
+});
+
+const stepSlider = document.getElementById('step-slider');
+const prevStepBtn = document.getElementById('prev-step');
+const nextStepBtn = document.getElementById('next-step');
+
+function updateStepUI(step) {
+  currentStep = Math.max(1, Math.min(5, Number(step)));
+  stepSlider.value = currentStep;
+  prevStepBtn.disabled = currentStep === 1;
+  nextStepBtn.disabled = currentStep === 5;
+
+  const info = BUILD_STEPS[currentStep - 1];
+  document.getElementById('step-badge').textContent = `Step ${currentStep} of 5`;
+  document.getElementById('step-num-label').textContent = `Phase ${currentStep} / 5`;
+  document.getElementById('step-title').textContent = info.title;
+  document.getElementById('step-desc').textContent = info.desc;
+
+  const benchElevationOffset = currentStep < 5 ? -FLOOR_ELEV : 0;
+  allParts.forEach((rec) => {
+    rec.mesh.visible = rec.stepAdded <= currentStep;
+  });
+  doorPivot.visible = currentStep >= 4;
+  scene.userData.benchElevationOffset = benchElevationOffset;
+}
+
+stepSlider.addEventListener('input', (e) => updateStepUI(e.target.value));
+prevStepBtn.addEventListener('click', () => updateStepUI(currentStep - 1));
+nextStepBtn.addEventListener('click', () => updateStepUI(currentStep + 1));
+
+const toggleDoorsBtn = document.getElementById('toggle-doors');
+toggleDoorsBtn.addEventListener('click', () => {
+  doorsOpen = !doorsOpen;
+  targetDoorAngle = doorsOpen ? THREE.MathUtils.degToRad(85) : 0;
+  toggleDoorsBtn.textContent = doorsOpen ? 'Close Door (0°)' : 'Open Door (85°)';
+});
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+const tooltip = document.getElementById('hover-tooltip');
+let pointerDownPos = { x: 0, y: 0 };
+
+window.addEventListener('pointerdown', (e) => {
+  pointerDownPos = { x: e.clientX, y: e.clientY };
+});
+
+window.addEventListener('pointermove', (e) => {
+  if (e.target.closest('#ui-panel') || e.target.closest('#brand-watermark')) {
+    tooltip.style.display = 'none';
+    hoveredRecord = null;
+    document.body.style.cursor = 'default';
+    return;
+  }
+
+  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  const visibleMeshes = interactiveMeshes.filter((m) => m.visible);
+  const hits = raycaster.intersectObjects(visibleMeshes, false);
+
+  if (hits.length > 0) {
+    const rec = hits[0].object.userData.partRecord;
+    hoveredRecord = rec;
+    document.body.style.cursor = 'pointer';
+
+    document.getElementById('tt-head').textContent = `${rec.spec.code}: ${rec.spec.name}`;
+    document.getElementById('tt-dim').textContent = rec.spec.dimensions;
+    document.getElementById('tt-mat').textContent = rec.spec.material;
+
+    tooltip.style.display = 'block';
+    tooltip.style.left = `${Math.min(window.innerWidth - 275, e.clientX + 14)}px`;
+    tooltip.style.top = `${Math.min(window.innerHeight - 95, e.clientY + 14)}px`;
+  } else {
+    hoveredRecord = null;
+    tooltip.style.display = 'none';
+    document.body.style.cursor = 'default';
+  }
+});
+
+window.addEventListener('pointerup', (e) => {
+  if (e.target.closest('#ui-panel') || e.target.closest('#brand-watermark')) return;
+  const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
+  if (dist < 5 && hoveredRecord) {
+    selectPart(hoveredRecord.partKey);
+  }
+});
+
+updateStepUI(5);
+
+// ============================================================================
+// 6. ANIMATION LOOP (SMOOTH EXPLODE, X-RAY, DOOR SWING & HIGHLIGHTS)
+// ============================================================================
+const clock = new THREE.Clock();
+let currentElevationOffset = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const lerpFactor = 1 - Math.exp(-8 * dt);
+
+  const targetElevation = scene.userData.benchElevationOffset || 0;
+  currentElevationOffset += (targetElevation - currentElevationOffset) * lerpFactor;
+
+  doorPivot.position.y = FLOOR_ELEV + 0.875 + currentElevationOffset;
+  doorPivot.rotation.y += (-targetDoorAngle - doorPivot.rotation.y) * lerpFactor;
+
+  const targetLookY = currentStep < 5 ? 14 : 42;
+  controls.target.y += (targetLookY - controls.target.y) * lerpFactor;
+
+  allParts.forEach((rec) => {
+    const targetVec = currentMode === 'exploded' ? rec.explodedPos : rec.assembledPos;
+    rec.currentPos.lerp(targetVec, lerpFactor);
+
+    rec.mesh.position.set(
+      rec.currentPos.x,
+      rec.currentPos.y + (rec.mesh.parent === scene ? currentElevationOffset : 0),
+      rec.currentPos.z
+    );
+
+    let targetOpacity = rec.baseOpacity;
+    if (currentMode === 'xray') {
+      if (rec.isOuterShell) {
+        targetOpacity = 0.22;
+      } else if (rec.isGlass) {
+        targetOpacity = 0.16;
+      } else {
+        targetOpacity = 1.0;
+      }
+    }
+    rec.material.opacity += (targetOpacity - rec.material.opacity) * lerpFactor;
+    rec.material.depthWrite = rec.material.opacity > 0.65;
+
+    const isHighlighted =
+      !rec.isEnv &&
+      ((selectedPartKey && rec.partKey === selectedPartKey) ||
+        (hoveredRecord && rec.partKey === hoveredRecord.partKey));
+
+    if (isHighlighted) {
+      rec.material.emissive.setHex(0x38bdf8);
+      rec.material.emissiveIntensity = 0.28;
+      if (rec.edgeLine) {
+        rec.edgeLine.material.color.setHex(0x38bdf8);
+        rec.edgeLine.material.opacity = 0.9;
+      }
+    } else {
+      rec.material.emissive.setHex(0x000000);
+      rec.material.emissiveIntensity = 0;
+      if (rec.edgeLine) {
+        rec.edgeLine.material.color.setHex(rec.isGlass ? 0x38bdf8 : 0x0f172a);
+        rec.edgeLine.material.opacity = rec.isGlass ? 0.55 : 0.28;
+      }
+    }
+  });
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+animate();
+</script>
+</body>
+</html>
