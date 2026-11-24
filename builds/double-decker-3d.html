@@ -300,6 +300,29 @@
     pointer-events: none;
   }
   #controls-hint strong { color: #e2e8f0; }
+
+  /* Bottom Brand Watermark */
+  #brand-watermark {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    background: rgba(20, 24, 31, 0.78);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #f8fafc;
+    text-decoration: none;
+    z-index: 9;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  #brand-watermark:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
 </style>
 </head>
 <body>
@@ -340,7 +363,7 @@
     <div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>
   </div>
 
-  <div class="section-label">Cut List Index (Parts A–L + Posts)</div>
+  <div class="section-label">Cut List Index (Parts A–R + Posts)</div>
   <div class="cutlist-pills" id="cutlist-pills"></div>
 
   <div class="door-toggle-row">
@@ -355,6 +378,8 @@
   <div class="tt-dim" id="tt-dim"></div>
   <div class="tt-mat" id="tt-mat"></div>
 </div>
+
+<a id="brand-watermark" href="https://pantrypeeps.org" target="_blank" rel="noopener">pantrypeeps.org</a>
 
 <div id="controls-hint">
   <strong>Left Drag:</strong> Rotate &nbsp;|&nbsp; <strong>Right Drag:</strong> Pan &nbsp;|&nbsp; <strong>Scroll:</strong> Zoom &nbsp;|&nbsp; <strong>Click Part:</strong> Inspect
@@ -655,6 +680,30 @@ function makeMat(type) {
         transparent: true,
         opacity: 1
       });
+    case 'steel':
+      return new THREE.MeshStandardMaterial({
+        color: 0x94a3b8,
+        roughness: 0.35,
+        metalness: 0.82,
+        transparent: true,
+        opacity: 1
+      });
+    case 'brass':
+      return new THREE.MeshStandardMaterial({
+        color: 0xd97706,
+        roughness: 0.28,
+        metalness: 0.85,
+        transparent: true,
+        opacity: 1
+      });
+    case 'blackSteel':
+      return new THREE.MeshStandardMaterial({
+        color: 0x1e2229,
+        roughness: 0.42,
+        metalness: 0.68,
+        transparent: true,
+        opacity: 1
+      });
     case 'shingle':
       return new THREE.MeshStandardMaterial({
         map: texShingle,
@@ -773,8 +822,8 @@ const PART_SPECS = {
     code: 'Part K',
     name: 'Peel & Stick Outdoor Vinyl Flooring (All 4 Levels)',
     material: 'Waterproof Peel-and-Stick Luxury Vinyl Tile (~2mm)',
-    dimensions: '29.5" × 13.75" (2 Floors) & 30.25" × 13.5" (2 Shelves)',
-    notes: 'Applied directly atop all 4 horizontal surfaces: bottom floor, lower adjustable shelf (9"), center deck (19.25"), and upper adjustable shelf (28").'
+    dimensions: 'Floor & Deck (2): 29.5"×13.75"; Shelves (2): 29.5"×13.25"',
+    notes: 'Applied directly atop all 4 horizontal surfaces (Bottom Floor, Lower Shelf at 9", Center Deck at 19.25", and Upper Shelf at 28") for easy wipe-down cleaning.'
   },
   L: {
     code: 'Part L',
@@ -782,6 +831,48 @@ const PART_SPECS = {
     material: '100% Outdoor Waterproof Silicone Caulk (White)',
     dimensions: '1/4" perimeter & vertical corner beads (Upper & Lower Compartments)',
     notes: 'Sealed along every seam where foam meets the vinyl floor/center deck and in both back vertical corners where side foam meets back foam.'
+  },
+  M: {
+    code: 'Part M',
+    name: 'Heavy-Duty 4×4 Square Sleeve Post Flange Brackets (Qty 2)',
+    material: 'Black Powder-Coated 14-Gauge Steel + 3/8" Hex Lag Bolts',
+    dimensions: '3.6" × 3.6" × 5.5" Deep 4-Sided Sleeve + 6.5" Wide Mounting Flange Base',
+    notes: 'Inverted heavy-duty 4×4 post base sleeves fitted over the top of each 4×4 post, with wide side flanges lag-bolted directly into the underside of the 1.5" laminated cabinet floor for rigid anti-wobble stability.'
+  },
+  N: {
+    code: 'Part N',
+    name: '4×4 Post Stabilizer Cross-Beam (Qty 1)',
+    material: 'Pressure-Treated 4×4 Structural Brace (3.5" × 3.5" × 16.5")',
+    dimensions: '3.5" × 3.5" × 16.5" clear span (20" O.C. between legs) at 14" height',
+    notes: 'Horizontal stretcher beam lag-bolted between the twin 4×4 posts to eliminate lateral sway and racking.'
+  },
+  O: {
+    code: 'Part O',
+    name: 'Full-Length Continuous Piano Hinges (Qty 2)',
+    material: 'Heavy-Duty 304 Stainless Steel (1.5" Open Width)',
+    dimensions: '1.5" open width × 38.0" tall × 0.06" leaf thickness (with barrel)',
+    notes: 'Continuous mortised/surface piano hinges running full height of left and right door stiles to prevent door sag.'
+  },
+  P: {
+    code: 'Part P',
+    name: 'Outdoor Door Pull Handles (Qty 2)',
+    material: 'Powder-Coated Brass / Matte Steel D-Pulls',
+    dimensions: '5.5" tall × 1.25" projection × 0.5" grip diameter',
+    notes: 'Mounted vertically on the inner stiles of both doors at center cross-rail height for easy all-weather opening.'
+  },
+  Q: {
+    code: 'Part Q',
+    name: 'Heavy-Duty Magnetic Door Latches (Qty 2 Sets — 15 lb Pull)',
+    material: 'Outdoor Nickel-Plated Neodymium Magnet Housing + Steel Strike Plates',
+    dimensions: '2.75" W × 0.75" D × 0.65" H (15 lb / 6.8 kg holding force per door)',
+    notes: '15 lb pull rating per door keeps doors sealed tightly against wind gusts and 1/2" foam compression without rattling.'
+  },
+  R: {
+    code: 'Part R',
+    name: 'Galvanized Roof Drip Edge Flashing (Eaves & Rakes)',
+    material: '26-Gauge Galvanized Steel L-Profile Drip Edge (1.5" × 1.5")',
+    dimensions: '24" Eave Strips (Qty 2) + 19.7" Gable Rake Strips (Qty 4)',
+    notes: 'Installed along both side eaves and front/back gable rakes to shed rainwater cleanly past the plywood sheathing.'
   }
 };
 
@@ -803,33 +894,32 @@ const BUILD_STEPS = [
   },
   {
     step: 4,
-    title: 'Step 4: Foam Insulation, Vinyl Flooring (All 4 Levels) & Silicone Seal (Parts J, K & L)',
-    desc: 'Fit 1/2" rigid foam panels (Part J) on interior walls and ceiling, lay peel-and-stick outdoor vinyl flooring (Part K) across all 4 levels (bottom floor, both adjustable shelves, and center deck), and run waterproof silicone beads (Part L) along all floor-to-foam edges and vertical foam corners.'
+    title: 'Step 4: Foam Insulation, Vinyl Flooring & Silicone Seal (Parts J, K & L)',
+    desc: 'Fit 1/2" rigid foam panels (Part J) on interior walls and ceiling, lay peel-and-stick outdoor vinyl flooring (Part K) on all 4 horizontal surfaces (floor, lower shelf, center deck, and upper shelf), and run waterproof silicone beads (Part L) along all floor-to-foam seams and vertical corners.'
   },
   {
     step: 5,
-    title: 'Step 5: Build & Shingle 4:12 Gable Roof (Parts E & F)',
-    desc: 'Mount Front & Back Gable Triangles (Part E, 32" base × 5.33" peak) atop the 40" box, then attach the 19.5" × 24" Roof Panels (Part F) with 4" front/back & 3" eave overhangs, topped with asphalt shingles.'
+    title: 'Step 5: Build, Shingle & Flash 4:12 Gable Roof (Parts E, F & R)',
+    desc: 'Mount Front & Back Gable Triangles (Part E), attach 19.5" × 24" Roof Panels (Part F) with 4" front/back & 3" eave overhangs, install Galvanized Roof Drip Edge Flashing (Part R) along eaves and rakes, and lay asphalt shingles.'
   },
   {
     step: 6,
-    title: 'Step 6: Build, Glaze & Hang Both Doors (Parts H & I)',
-    desc: 'Assemble two 14.75" × 38.25" doors from 1×3 cedar stiles (33.25") and rails (14.75" + center cross-rail), glaze with four 1/4" polycarbonate panes (10.75" × 14.5"), and hang on hinges.'
+    title: 'Step 6: Build, Glaze & Hang Doors + Hardware (Parts H, I, O, P & Q)',
+    desc: 'Assemble both 14.75" × 38.25" doors (Part H), glaze with 1/4" polycarbonate panes (Part I), hang on 38" Continuous Piano Hinges (Part O), mount Pull Handles (Part P), and install 15 lb Magnetic Latches (Part Q) on the center post.'
   },
   {
     step: 7,
-    title: 'Step 7: Mount Cabinet 32" Above Grade on Twin 4×4 Posts',
-    desc: 'Set two pressure-treated 4×4 posts (3.5" × 3.5") spaced 20" on center extending 32" above ground, and bolt the finished insulated pantry cabinet securely onto the post tops.'
+    title: 'Step 7: Mount Cabinet on Braced Twin 4×4 Posts (Parts N & M)',
+    desc: 'Set twin 4×4 posts spaced 20" O.C. with the Horizontal Stabilizer Cross-Beam (Part N) bolted between legs at 14" height, and anchor the cabinet 32" above grade using inverted Black 4×4 Square Sleeve Flange Brackets (Part M) bolted into the cabinet underside.'
   }
 ];
 
 // ============================================================================
 // 4. BUILD 3D PARAMETRIC ASSEMBLY
 // ============================================================================
-const allParts = [];      // Interactive mesh records
+const allParts = [];
 const interactiveMeshes = [];
 
-// Door pivot groups for realistic swinging animation
 const leftDoorPivot = new THREE.Group();
 const rightDoorPivot = new THREE.Group();
 leftDoorPivot.position.set(-15.125, POST_H + 1.5, 7.625);
@@ -847,10 +937,6 @@ function addEdgeOutline(mesh, color = 0x111827, opacity = 0.32) {
   return line;
 }
 
-/**
- * Registers a part mesh with assembled coordinates, exploded offset vector,
- * build step visibility threshold, and X-Ray behavior.
- */
 function registerPart({
   geometry,
   matType,
@@ -895,22 +981,6 @@ function registerPart({
     isGlass
   };
 
-  // Show all four vinyl surfaces clearly even behind cabinet geometry.
-  if (partKey === 'K') {
-    const highlight = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-      color: 0x38bdf8,
-      transparent: true,
-      opacity: 0.55,
-      depthTest: false,
-      depthWrite: false,
-      side: THREE.DoubleSide
-    }));
-    highlight.renderOrder = 100;
-    highlight.visible = false;
-    mesh.add(highlight);
-    record.vinylHighlight = highlight;
-  }
-
   mesh.userData.partRecord = record;
   allParts.push(record);
   interactiveMeshes.push(mesh);
@@ -935,16 +1005,113 @@ function createGableGeometry(width, height, depth) {
 }
 
 // ----------------------------------------------------------------------------
-// A. TWIN 4x4 SUPPORT POSTS (Step 7 — 3.5" x 3.5" x 32", spaced 20" O.C.)
+// A. TWIN 4x4 SUPPORT POSTS, STABILIZER BEAM & TIE BRACKETS (Step 7)
 // ----------------------------------------------------------------------------
 [-10, 10].forEach((xPos) => {
+  const expX = xPos * 0.45;
   registerPart({
     geometry: new THREE.BoxGeometry(3.5, POST_H, 3.5),
     matType: 'pt',
     partKey: 'POSTS',
     stepAdded: 7,
     pos: [xPos, POST_H / 2, 0],
-    explodeOffset: [xPos * 0.45, -10, 0]
+    explodeOffset: [expX, -10, 0]
+  });
+
+  // Part M: Inverted Heavy-Duty Black Powder-Coated 4x4 Square Sleeve Post Bracket
+  // Top Horizontal Flange Plate (6.6" wide x 3.8" deep x 0.18" thick) bolted to cabinet underside
+  registerPart({
+    geometry: new THREE.BoxGeometry(6.6, 0.18, 3.8),
+    matType: 'blackSteel',
+    partKey: 'M',
+    stepAdded: 7,
+    pos: [xPos, POST_H - 0.09, 0],
+    explodeOffset: [expX, -3.5, 0]
+  });
+
+  // 4-Sided Square Tube Sleeve wrapping top 5.5" of the 3.5" x 3.5" post (3.72" outer width)
+  const sleeveH = 5.5;
+  const sleeveY = POST_H - 0.18 - sleeveH / 2;
+  const sleeveThick = 0.12;
+  const sleeveOuter = 3.74;
+
+  // Front & Back Sleeve Walls (with 4 side-bolting holes/lag bolts each)
+  [-1.81, 1.81].forEach((zWall) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(sleeveOuter, sleeveH, sleeveThick),
+      matType: 'blackSteel',
+      partKey: 'M',
+      stepAdded: 7,
+      pos: [xPos, sleeveY, zWall],
+      explodeOffset: [expX, -3.5, 0]
+    });
+
+    // 4 Hex Lag Bolts securing sleeve through the 4x4 post
+    [-1.4, -4.1].forEach((dy) => {
+      [-0.95, 0.95].forEach((dx) => {
+        registerPart({
+          geometry: new THREE.CylinderGeometry(0.18, 0.18, 0.22, 6),
+          matType: 'steel',
+          partKey: 'M',
+          stepAdded: 7,
+          pos: [xPos + dx, POST_H + dy, zWall + (zWall > 0 ? 0.1 : -0.1)],
+          rot: [Math.PI / 2, 0, 0],
+          explodeOffset: [expX, -3.5, 0],
+          noOutline: true
+        });
+      });
+    });
+  });
+
+  // Left & Right Sleeve Walls (completing the full 4-sided square pocket)
+  [-1.81, 1.81].forEach((xWall) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(sleeveThick, sleeveH, 3.5),
+      matType: 'blackSteel',
+      partKey: 'M',
+      stepAdded: 7,
+      pos: [xPos + xWall, sleeveY, 0],
+      explodeOffset: [expX, -3.5, 0]
+    });
+  });
+
+  // 4 Upward Flange Hex Lag Bolts (2 per side wing) fastening bracket flange into cabinet floor
+  [-2.55, 2.55].forEach((dxWing) => {
+    [-1.1, 1.1].forEach((dzWing) => {
+      registerPart({
+        geometry: new THREE.CylinderGeometry(0.2, 0.2, 0.2, 6),
+        matType: 'steel',
+        partKey: 'M',
+        stepAdded: 7,
+        pos: [xPos + dxWing, POST_H - 0.22, dzWing],
+        explodeOffset: [expX, -3.5, 0],
+        noOutline: true
+      });
+    });
+  });
+});
+
+// Part N: Horizontal Stabilizer Cross-Beam between the twin 4x4 legs (at y = 14" above grade)
+const BEAM_Y = 14.0;
+registerPart({
+  geometry: new THREE.BoxGeometry(16.5, 3.5, 3.5),
+  matType: 'pt',
+  partKey: 'N',
+  stepAdded: 7,
+  pos: [0, BEAM_Y, 0],
+  explodeOffset: [0, -7.5, 4.5]
+});
+
+[-8.18, 8.18].forEach((xEnd) => {
+  [-1.82, 1.82].forEach((zSide) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(0.2, 3.2, 0.14),
+      matType: 'steel',
+      partKey: 'N',
+      stepAdded: 7,
+      pos: [xEnd, BEAM_Y, zSide],
+      explodeOffset: [xEnd * 0.35, -7.5, zSide * 2.2]
+    });
   });
 });
 
@@ -953,7 +1120,6 @@ function createGableGeometry(width, height, depth) {
 // ----------------------------------------------------------------------------
 const DECK_Z = 0.0;
 
-// Bottom Floor Slab (Flush at 0" -> y = 32.0 to 33.5)
 registerPart({
   geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
   matType: 'plywood',
@@ -971,7 +1137,6 @@ registerPart({
   explodeOffset: [0, -1.5, 0]
 });
 
-// Middle Deck Slab (19.25" up from cabinet bottom -> y = 32 + 19.25 = 51.25 to 52.75)
 const MID_DECK_Y = POST_H + 19.25;
 registerPart({
   geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
@@ -1086,17 +1251,13 @@ registerPart({
 // ----------------------------------------------------------------------------
 // E2. PART K: PEEL & STICK OUTDOOR VINYL FLOORING ON ALL 4 LEVELS (Step 4)
 // ----------------------------------------------------------------------------
-// 1. Bottom Floor Top = POST_H + 1.5 (33.5")
-// 2. Lower Adjustable Shelf Top = POST_H + 9.0 + T_PLY (41.75")
-// 3. Center Deck Top = MID_DECK_Y + 1.5 (52.75")
-// 4. Upper Adjustable Shelf Top = POST_H + 28.0 + T_PLY (60.75")
-const FLOOR_TOP_Y = POST_H + 1.5;
+const FLOOR_TOP_Y       = POST_H + 1.5;
 const LOWER_SHELF_TOP_Y = POST_H + 9.0 + T_PLY;
-const DECK_TOP_Y = MID_DECK_Y + 1.5;
+const DECK_TOP_Y        = MID_DECK_Y + 1.5;
 const UPPER_SHELF_TOP_Y = POST_H + 28.0 + T_PLY;
-const VINYL_Z = 0.125;
+const VINYL_Z           = 0.125;
 
-// Level 1: Bottom Floor Vinyl Flooring (29.5" W x 13.75" D)
+// 1. Bottom Floor Vinyl Flooring
 registerPart({
   geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
   matType: 'vinyl',
@@ -1106,17 +1267,17 @@ registerPart({
   explodeOffset: [0, -0.4, 3.2]
 });
 
-// Level 2: Lower Adjustable Shelf Vinyl Flooring (30.25" W x 13.5" D)
+// 2. Lower Adjustable Shelf Vinyl Flooring (at 9" height)
 registerPart({
-  geometry: new THREE.BoxGeometry(30.25, T_VINYL, 13.5),
+  geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.25),
   matType: 'vinyl',
   partKey: 'K',
   stepAdded: 4,
-  pos: [0, LOWER_SHELF_TOP_Y + T_VINYL / 2, -0.25],
-  explodeOffset: [0, 2.2, 6.2]
+  pos: [0, LOWER_SHELF_TOP_Y + T_VINYL / 2, -0.125],
+  explodeOffset: [0, 2.2, 6.5]
 });
 
-// Level 3: Center Deck Vinyl Flooring (29.5" W x 13.75" D)
+// 3. Center Deck Vinyl Flooring (at 19.25" height)
 registerPart({
   geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
   matType: 'vinyl',
@@ -1126,29 +1287,25 @@ registerPart({
   explodeOffset: [0, 1.6, 3.8]
 });
 
-// Level 4: Upper Adjustable Shelf Vinyl Flooring (30.25" W x 13.5" D)
+// 4. Upper Adjustable Shelf Vinyl Flooring (at 28" height)
 registerPart({
-  geometry: new THREE.BoxGeometry(30.25, T_VINYL, 13.5),
+  geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.25),
   matType: 'vinyl',
   partKey: 'K',
   stepAdded: 4,
-  pos: [0, UPPER_SHELF_TOP_Y + T_VINYL / 2, -0.25],
-  explodeOffset: [0, 2.2, 6.2]
+  pos: [0, UPPER_SHELF_TOP_Y + T_VINYL / 2, -0.125],
+  explodeOffset: [0, 2.2, 6.5]
 });
 
 // ----------------------------------------------------------------------------
 // E3. PART L: OUTDOOR WATERPROOF SILICONE SEALANT BEADS (Step 4)
 // ----------------------------------------------------------------------------
-// Quarter-round / cylindrical caulk beads (radius 0.18") along:
-// 1. Horizontal seams where Left, Right & Back Foam meet Bottom Floor & Center Deck
-// 2. Vertical corner seams where Left & Right Foam meet Back Foam Wall
 const BEAD_R = 0.18;
 
 [
   { y: FLOOR_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: -0.2 },
   { y: DECK_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: 1.8 }
 ].forEach((lvl) => {
-  // Back wall horizontal silicone bead (x = -14.75 to +14.75 at z = -6.75)
   registerPart({
     geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 29.5, 10),
     matType: 'silicone',
@@ -1160,7 +1317,6 @@ const BEAD_R = 0.18;
     noOutline: true
   });
 
-  // Left & Right side wall horizontal silicone beads (z = -6.75 to +6.75 at x = ±14.75)
   [-14.68, 14.68].forEach((xSide) => {
     registerPart({
       geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 13.5, 10),
@@ -1175,7 +1331,6 @@ const BEAD_R = 0.18;
   });
 });
 
-// Vertical interior corner silicone beads where Side Foam meets Back Foam (both compartments)
 const LOWER_CAVITY_H = MID_DECK_Y - FLOOR_TOP_Y - T_VINYL;
 const LOWER_CAVITY_Y = FLOOR_TOP_Y + T_VINYL + LOWER_CAVITY_H / 2;
 
@@ -1183,7 +1338,6 @@ const UPPER_CAVITY_H = (POST_H + BOX_H - T_FOAM) - (DECK_TOP_Y + T_VINYL);
 const UPPER_CAVITY_Y = DECK_TOP_Y + T_VINYL + UPPER_CAVITY_H / 2;
 
 [-14.68, 14.68].forEach((xCorner) => {
-  // Lower compartment vertical corner bead
   registerPart({
     geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, LOWER_CAVITY_H, 10),
     matType: 'silicone',
@@ -1194,7 +1348,6 @@ const UPPER_CAVITY_Y = DECK_TOP_Y + T_VINYL + UPPER_CAVITY_H / 2;
     noOutline: true
   });
 
-  // Upper compartment vertical corner bead
   registerPart({
     geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, UPPER_CAVITY_H, 10),
     matType: 'silicone',
@@ -1207,7 +1360,7 @@ const UPPER_CAVITY_Y = DECK_TOP_Y + T_VINYL + UPPER_CAVITY_H / 2;
 });
 
 // ----------------------------------------------------------------------------
-// F. PART E & PART F: 4:12 GABLE ROOF + SHINGLES (Step 5)
+// F. PART E, PART F & PART R: 4:12 GABLE ROOF, SHINGLES & DRIP EDGE (Step 5)
 // ----------------------------------------------------------------------------
 const BOX_TOP_Y = POST_H + BOX_H; // 72.0"
 
@@ -1260,11 +1413,53 @@ const ROOF_DY = Math.sin(SLOPE_ANGLE) * HALF_SLOPE;
     explodeOffset: [side * 9.5, 17.5, 0],
     isOuterShell: true
   });
+
+  // Part R: Galvanized Roof Drip Edge Flashing (Side Eaves + Front/Back Gable Rakes)
+  const eaveOffset = 19.65 / 2;
+  const eaveX = side * Math.cos(SLOPE_ANGLE) * (HALF_SLOPE + eaveOffset) + nx * (T_PLY * 0.45);
+  const eaveY = (BOX_TOP_Y + GABLE_H) - Math.sin(SLOPE_ANGLE) * (HALF_SLOPE + eaveOffset) + ny * (T_PLY * 0.45);
+
+  registerPart({
+    geometry: new THREE.BoxGeometry(0.18, 1.35, 24.35),
+    matType: 'steel',
+    partKey: 'R',
+    stepAdded: 5,
+    pos: [eaveX, eaveY, 0],
+    rot: [0, 0, angle],
+    explodeOffset: [side * 11.5, 15.5, 0],
+    isOuterShell: true
+  });
+
+  [-12.12, 12.12].forEach((zRake) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(19.8, 1.25, 0.16),
+      matType: 'steel',
+      partKey: 'R',
+      stepAdded: 5,
+      pos: [plyX, plyY - 0.15, zRake],
+      rot: [0, 0, angle],
+      explodeOffset: [side * 9.5, 16.5, zRake < 0 ? -4.5 : 4.5],
+      isOuterShell: true
+    });
+  });
 });
 
 // ----------------------------------------------------------------------------
-// G. PART H & PART I: DOUBLE GLAZED DOORS (Step 6)
+// G. PART H & PART I: DOUBLE GLAZED DOORS + PIANO HINGES, HANDLES & MAGNETS (Step 6)
 // ----------------------------------------------------------------------------
+[POST_H + 2.3, POST_H + BOX_H - 1.3].forEach((magY, idx) => {
+  [-0.42, 0.42].forEach((magX) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(0.68, 0.65, 0.75),
+      matType: 'steel',
+      partKey: 'Q',
+      stepAdded: 6,
+      pos: [magX, magY, 7.28],
+      explodeOffset: [magX * 2.5, idx === 0 ? -1.5 : 1.5, 11.2]
+    });
+  });
+});
+
 function buildDoorAssembly(sideSign, pivotGroup) {
   const doorW = 14.75;
   const doorH = 38.25;
@@ -1337,6 +1532,75 @@ function buildDoorAssembly(sideSign, pivotGroup) {
       explodeOffset: [explodeDirX, idx === 0 ? -1 : 1, explodeDirZ + 3.8],
       parent: pivotGroup,
       isGlass: true
+    });
+  });
+
+  // Part O: Full-Length Continuous Piano Hinge (38.0" tall stainless leaf + knuckle barrel)
+  registerPart({
+    geometry: new THREE.BoxGeometry(0.65, 38.0, 0.1),
+    matType: 'steel',
+    partKey: 'O',
+    stepAdded: 6,
+    pos: [dir * 0.32, doorH / 2, 0.42],
+    explodeOffset: [sideSign * 9.5, 0, explodeDirZ - 2.2],
+    parent: pivotGroup,
+    isOuterShell: true
+  });
+  registerPart({
+    geometry: new THREE.CylinderGeometry(0.14, 0.14, 38.0, 10),
+    matType: 'steel',
+    partKey: 'O',
+    stepAdded: 6,
+    pos: [0, doorH / 2, 0.44],
+    explodeOffset: [sideSign * 9.5, 0, explodeDirZ - 2.2],
+    parent: pivotGroup,
+    isOuterShell: true,
+    noOutline: true
+  });
+
+  // Part P: Outdoor Door Pull Handle
+  const handleX = dir * (doorW - 1.25);
+  const handleY = doorH / 2;
+  const handleZ = 0.38;
+
+  registerPart({
+    geometry: new THREE.CylinderGeometry(0.22, 0.22, 5.5, 12),
+    matType: 'brass',
+    partKey: 'P',
+    stepAdded: 6,
+    pos: [handleX, handleY, handleZ + 1.05],
+    explodeOffset: [explodeDirX, 0, explodeDirZ + 4.8],
+    parent: pivotGroup,
+    isOuterShell: true,
+    noOutline: true
+  });
+  [-2.2, 2.2].forEach((hy) => {
+    registerPart({
+      geometry: new THREE.CylinderGeometry(0.16, 0.16, 1.05, 10),
+      matType: 'brass',
+      partKey: 'P',
+      stepAdded: 6,
+      pos: [handleX, handleY + hy, handleZ + 0.52],
+      rot: [Math.PI / 2, 0, 0],
+      explodeOffset: [explodeDirX, 0, explodeDirZ + 4.8],
+      parent: pivotGroup,
+      isOuterShell: true,
+      noOutline: true
+    });
+  });
+
+  // Part Q (Door Side): Steel Strike Plates mounted on back of inner door stile
+  const strikeX = dir * (doorW - 0.55);
+  [0.8, doorH - 0.8].forEach((sy, idx) => {
+    registerPart({
+      geometry: new THREE.BoxGeometry(0.7, 0.65, 0.12),
+      matType: 'steel',
+      partKey: 'Q',
+      stepAdded: 6,
+      pos: [strikeX, sy, -0.42],
+      explodeOffset: [explodeDirX, idx === 0 ? -1.5 : 1.5, explodeDirZ - 1.5],
+      parent: pivotGroup,
+      isOuterShell: true
     });
   });
 }
@@ -1539,14 +1803,6 @@ function animate() {
     const isHighlighted =
       (selectedPartKey && rec.partKey === selectedPartKey) ||
       (hoveredRecord && rec.partKey === hoveredRecord.partKey);
-
-    if (rec.vinylHighlight) {
-      rec.vinylHighlight.visible = Boolean(isHighlighted);
-    }
-    if (rec.partKey === 'K' && rec.edgeLine) {
-      rec.edgeLine.material.depthTest = !isHighlighted;
-      rec.edgeLine.renderOrder = isHighlighted ? 101 : 0;
-    }
 
     if (isHighlighted) {
       rec.material.emissive.setHex(0x38bdf8);
