@@ -25,7 +25,6 @@
     top: 16px;
     left: 16px;
     width: 340px;
-    max-width: calc(100vw - 32px);
     max-height: calc(100vh - 32px);
     overflow-y: auto;
     background: rgba(20, 24, 31, 0.88);
@@ -301,19 +300,6 @@
     pointer-events: none;
   }
   #controls-hint strong { color: #e2e8f0; }
-
-  @media (max-width: 640px) {
-    #ui-panel {
-      width: calc(100vw - 24px);
-      left: 12px;
-      top: 12px;
-      max-height: 46vh;
-      padding: 14px;
-    }
-    #controls-hint {
-      display: none;
-    }
-  }
 </style>
 </head>
 <body>
@@ -354,7 +340,7 @@
     <div style="font-size:12px; color:#94a3b8;">Click or hover any component in the 3D model (or select below) to inspect exact cut dimensions.</div>
   </div>
 
-  <div class="section-label">Cut List Index (Parts A–J + Posts)</div>
+  <div class="section-label">Cut List Index (Parts A–L + Posts)</div>
   <div class="cutlist-pills" id="cutlist-pills"></div>
 
   <div class="door-toggle-row">
@@ -389,7 +375,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // ============================================================================
-// 1. SCENE, CAMERA, RENDERER & STUDIO/DAYLIGHT LIGHTING
+// 1. SCENE, CAMERA, RENDERER & LIGHTING
 // ============================================================================
 const container = document.getElementById('canvas-container');
 const scene = new THREE.Scene();
@@ -439,7 +425,7 @@ const fillLight = new THREE.DirectionalLight(0x93c5fd, 0.45);
 fillLight.position.set(-70, 50, -60);
 scene.add(fillLight);
 
-// Ground Plane & Architectural Blueprint Grid (1 major square = 12" / 1 foot)
+// Ground Plane & Architectural Blueprint Grid (1 square = 12" / 1 foot)
 const groundGeo = new THREE.PlaneGeometry(400, 400);
 const groundMat = new THREE.MeshStandardMaterial({
   color: 0x1e242d,
@@ -458,7 +444,7 @@ gridMajor.material.transparent = true;
 scene.add(gridMajor);
 
 // ============================================================================
-// 2. PROCEDURAL REALISTIC WOOD, FOAM, SHINGLE & POLYCARBONATE TEXTURES
+// 2. PROCEDURAL REALISTIC WOOD, FOAM, VINYL, SILICONE & SHINGLE TEXTURES
 // ============================================================================
 function createWoodTexture(baseHex, grainHex, knots = true) {
   const canvas = document.createElement('canvas');
@@ -468,7 +454,6 @@ function createWoodTexture(baseHex, grainHex, knots = true) {
   ctx.fillStyle = baseHex;
   ctx.fillRect(0, 0, 512, 512);
 
-  // Fine wood fibers
   for (let i = 0; i < 420; i++) {
     const y = Math.random() * 512;
     const h = 0.5 + Math.random() * 2.2;
@@ -477,7 +462,6 @@ function createWoodTexture(baseHex, grainHex, knots = true) {
     ctx.fillRect(0, y, 512, h);
   }
 
-  // Wavy growth rings
   ctx.strokeStyle = grainHex;
   for (let i = 0; i < 34; i++) {
     ctx.globalAlpha = 0.08 + Math.random() * 0.14;
@@ -517,7 +501,6 @@ function createShingleTexture() {
   ctx.fillStyle = '#23272e';
   ctx.fillRect(0, 0, 512, 512);
 
-  // Asphalt granule noise
   for (let i = 0; i < 14000; i++) {
     const x = Math.random() * 512;
     const y = Math.random() * 512;
@@ -526,7 +509,6 @@ function createShingleTexture() {
     ctx.fillRect(x, y, 2, 2);
   }
 
-  // Architectural shingle courses & tab slots
   const rows = 8;
   const rowH = 512 / rows;
   for (let r = 0; r < rows; r++) {
@@ -558,12 +540,10 @@ function createFoamTexture() {
   ctx.fillStyle = '#f472b6'; // XPS Rigid Foam Pink
   ctx.fillRect(0, 0, 256, 256);
 
-  // Subtle closed-cell stipple
   for (let i = 0; i < 3000; i++) {
     ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.12)' : 'rgba(190,24,93,0.12)';
     ctx.fillRect(Math.random() * 256, Math.random() * 256, 2, 2);
   }
-  // R-value grid lines
   ctx.strokeStyle = 'rgba(157, 23, 77, 0.25)';
   ctx.lineWidth = 1;
   for (let i = 0; i <= 256; i += 32) {
@@ -577,12 +557,54 @@ function createFoamTexture() {
   return tex;
 }
 
+function createVinylFloorTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+
+  // Durable outdoor slate-grey luxury vinyl tile base
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(0, 0, 512, 256);
+
+  // Subtle textured stone/vinyl grain
+  for (let i = 0; i < 6000; i++) {
+    const shade = 60 + Math.floor(Math.random() * 45);
+    ctx.fillStyle = `rgba(${shade}, ${shade + 8}, ${shade + 18}, 0.22)`;
+    ctx.fillRect(Math.random() * 512, Math.random() * 256, 3, 2);
+  }
+
+  // Peel-and-stick tile seam lines
+  ctx.strokeStyle = 'rgba(15, 23, 42, 0.55)';
+  ctx.lineWidth = 2;
+  for (let x = 0; x <= 512; x += 128) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 256); ctx.stroke();
+  }
+  for (let y = 0; y <= 256; y += 128) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(512, y); ctx.stroke();
+  }
+
+  // Subtle highlight bevel along tile edges
+  ctx.strokeStyle = 'rgba(226, 232, 240, 0.14)';
+  ctx.lineWidth = 1;
+  for (let y = 2; y < 256; y += 128) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(512, y); ctx.stroke();
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
 const texPlywood = createWoodTexture('#cfa36e', '#8c5a2b', true);
 const texCedar   = createWoodTexture('#c27849', '#6e3818', false);
 const texPT      = createWoodTexture('#8a865e', '#4d4a2e', true);
 const texShingle = createShingleTexture();
 const texFoam    = createFoamTexture();
+const texVinyl   = createVinylFloorTexture();
 
+// Material factory (clones per part so individual X-Ray & Highlight states work cleanly)
 function makeMat(type) {
   switch (type) {
     case 'plywood':
@@ -617,6 +639,22 @@ function makeMat(type) {
         transparent: true,
         opacity: 1
       });
+    case 'vinyl':
+      return new THREE.MeshStandardMaterial({
+        map: texVinyl,
+        roughness: 0.42,
+        metalness: 0.06,
+        transparent: true,
+        opacity: 1
+      });
+    case 'silicone':
+      return new THREE.MeshStandardMaterial({
+        color: 0xf8fafc,
+        roughness: 0.28,
+        metalness: 0.02,
+        transparent: true,
+        opacity: 1
+      });
     case 'shingle':
       return new THREE.MeshStandardMaterial({
         map: texShingle,
@@ -645,9 +683,10 @@ function makeMat(type) {
 const POST_H = 32.0; // Bottom of cabinet sits 32" above ground level (y = 32)
 const BOX_W  = 32.0; // Total outer box width (30.5" interior + two 0.75" side walls)
 const BOX_H  = 40.0; // Side & back wall height
-const BOX_D  = 16.0; // Side wall depth
+const BOX_D  = 16.0; // Side wall depth (Back wall 0.75" + 14.5" deck + 0.75" front door recess)
 const T_PLY  = 0.75; // 3/4" Exterior Plywood
 const T_FOAM = 0.50; // 1/2" Rigid Closed-Cell Foam Board
+const T_VINYL = 0.08; // ~2mm Peel-and-Stick Outdoor Vinyl Tile
 const T_POLY = 0.25; // 1/4" Clear Polycarbonate
 const GABLE_H = 5.3333; // 4:12 pitch over 16" half-span -> 16 * (4/12) = 5.333"
 const SLOPE_ANGLE = Math.atan2(4, 12); // ~18.435 degrees
@@ -729,6 +768,20 @@ const PART_SPECS = {
     material: '1/2" Exterior Rigid XPS Foam Board',
     dimensions: 'Sides (2): 14"×37"; Back (1): 29.5"×37"; Ceiling (1): 29.5"×14"',
     notes: 'Fitted tightly inside the exterior plywood shell to buffer pantry contents from temperature swings.'
+  },
+  K: {
+    code: 'Part K',
+    name: 'Peel & Stick Outdoor Vinyl Flooring (Qty 2 Levels)',
+    material: 'Waterproof Peel-and-Stick Luxury Vinyl Tile (~2mm)',
+    dimensions: '29.5" wide × 13.75" deep (Bottom Floor & Center Deck)',
+    notes: 'Applied directly atop both the bottom floor slab and center deck inside the 1/2" foam lining for easy wipe-down cleaning.'
+  },
+  L: {
+    code: 'Part L',
+    name: 'Outdoor Waterproof Silicone Sealant Beads',
+    material: '100% Outdoor Waterproof Silicone Caulk (White)',
+    dimensions: '1/4" perimeter & vertical corner beads (Upper & Lower Compartments)',
+    notes: 'Sealed along every seam where foam meets the vinyl floor/center deck and in both back vertical corners where side foam meets back foam.'
   }
 };
 
@@ -750,8 +803,8 @@ const BUILD_STEPS = [
   },
   {
     step: 4,
-    title: 'Step 4: Install 1/2" Rigid Foam Insulation (Part J)',
-    desc: 'Fit 1/2" closed-cell foam panels inside the shell: two side panels (14" × 37"), one back panel (29.5" × 37"), and one ceiling panel (29.5" × 14").'
+    title: 'Step 4: Foam Insulation, Vinyl Flooring & Silicone Seal (Parts J, K & L)',
+    desc: 'Fit 1/2" rigid foam panels (Part J) on interior walls and ceiling, lay peel-and-stick outdoor vinyl flooring (Part K) on both floor levels, and run waterproof silicone beads (Part L) along all floor-to-foam edges and vertical foam corners.'
   },
   {
     step: 5,
@@ -773,9 +826,10 @@ const BUILD_STEPS = [
 // ============================================================================
 // 4. BUILD 3D PARAMETRIC ASSEMBLY
 // ============================================================================
-const allParts = [];
+const allParts = [];      // Interactive mesh records
 const interactiveMeshes = [];
 
+// Door pivot groups for realistic swinging animation
 const leftDoorPivot = new THREE.Group();
 const rightDoorPivot = new THREE.Group();
 leftDoorPivot.position.set(-15.125, POST_H + 1.5, 7.625);
@@ -793,6 +847,10 @@ function addEdgeOutline(mesh, color = 0x111827, opacity = 0.32) {
   return line;
 }
 
+/**
+ * Registers a part mesh with assembled coordinates, exploded offset vector,
+ * build step visibility threshold, and X-Ray behavior.
+ */
 function registerPart({
   geometry,
   matType,
@@ -803,17 +861,20 @@ function registerPart({
   explodeOffset = [0, 0, 0],
   parent = scene,
   isOuterShell = false,
-  isGlass = false
+  isGlass = false,
+  noOutline = false
 }) {
   const material = makeMat(matType);
   const mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(...pos);
   mesh.rotation.set(...rot);
-  mesh.castShadow = !isGlass;
+  mesh.castShadow = !isGlass && !noOutline;
   mesh.receiveShadow = true;
   parent.add(mesh);
 
-  const edgeLine = addEdgeOutline(mesh, isGlass ? 0x38bdf8 : 0x0f172a, isGlass ? 0.55 : 0.28);
+  const edgeLine = noOutline
+    ? null
+    : addEdgeOutline(mesh, isGlass ? 0x38bdf8 : 0x0f172a, isGlass ? 0.55 : 0.28);
 
   const record = {
     mesh,
@@ -857,7 +918,9 @@ function createGableGeometry(width, height, depth) {
   return geo;
 }
 
-// A. Twin 4x4 Support Posts (Step 7)
+// ----------------------------------------------------------------------------
+// A. TWIN 4x4 SUPPORT POSTS (Step 7 — 3.5" x 3.5" x 32", spaced 20" O.C.)
+// ----------------------------------------------------------------------------
 [-10, 10].forEach((xPos) => {
   registerPart({
     geometry: new THREE.BoxGeometry(3.5, POST_H, 3.5),
@@ -869,8 +932,12 @@ function createGableGeometry(width, height, depth) {
   });
 });
 
-// B. Part C: Double-Thick Floor & Center Deck (Step 1)
+// ----------------------------------------------------------------------------
+// B. PART C: DOUBLE-THICK FLOOR & CENTER DECK (Step 1 — 4 plies of 30.5" x 14.5" x 0.75")
+// ----------------------------------------------------------------------------
 const DECK_Z = 0.0;
+
+// Bottom Floor Slab (Flush at 0" -> y = 32.0 to 33.5)
 registerPart({
   geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
   matType: 'plywood',
@@ -888,6 +955,7 @@ registerPart({
   explodeOffset: [0, -1.5, 0]
 });
 
+// Middle Deck Slab (19.25" up from cabinet bottom -> y = 32 + 19.25 = 51.25 to 52.75)
 const MID_DECK_Y = POST_H + 19.25;
 registerPart({
   geometry: new THREE.BoxGeometry(30.5, T_PLY, 14.5),
@@ -906,7 +974,9 @@ registerPart({
   explodeOffset: [0, 0.8, 2]
 });
 
-// C. Part A & Part B: Left/Right Side Walls & Back Wall (Step 2)
+// ----------------------------------------------------------------------------
+// C. PART A & PART B: LEFT/RIGHT SIDE WALLS & BACK WALL (Step 2)
+// ----------------------------------------------------------------------------
 [-15.625, 15.625].forEach((xPos) => {
   registerPart({
     geometry: new THREE.BoxGeometry(T_PLY, BOX_H, BOX_D),
@@ -929,7 +999,9 @@ registerPart({
   isOuterShell: true
 });
 
-// D. Part G & Part D: Center Post, 2x2 Cleats & Adjustable Shelves (Step 3)
+// ----------------------------------------------------------------------------
+// D. PART G & PART D: CENTER POST, 2x2 CLEATS & ADJUSTABLE SHELVES (Step 3)
+// ----------------------------------------------------------------------------
 registerPart({
   geometry: new THREE.BoxGeometry(1.5, 38.5, 1.5),
   matType: 'cedar',
@@ -963,7 +1035,9 @@ CLEAT_HEIGHTS.forEach((hOffset) => {
   });
 });
 
-// E. Part J: 1/2" Exterior Rigid Foam Insulation (Step 4)
+// ----------------------------------------------------------------------------
+// E. PART J: 1/2" EXTERIOR RIGID FOAM INSULATION (Step 4)
+// ----------------------------------------------------------------------------
 [-15.0, 15.0].forEach((xPos) => {
   registerPart({
     geometry: new THREE.BoxGeometry(T_FOAM, 37.0, 14.0),
@@ -993,7 +1067,108 @@ registerPart({
   explodeOffset: [0, 5.5, 0]
 });
 
-// F. Part E & Part F: 4:12 Gable Roof + Shingles (Step 5)
+// ----------------------------------------------------------------------------
+// E2. PART K: PEEL & STICK OUTDOOR VINYL FLOORING ON BOTH LEVELS (Step 4)
+// ----------------------------------------------------------------------------
+// Bottom Floor Top = POST_H + 1.5 (33.5"); Center Deck Top = MID_DECK_Y + 1.5 (52.75")
+// Foam inner clear width = 29.5" (x = -14.75 to +14.75); Foam back inner face = z = -6.75 to front +7.0 -> 13.75" deep
+const FLOOR_TOP_Y = POST_H + 1.5;
+const DECK_TOP_Y  = MID_DECK_Y + 1.5;
+const VINYL_Z     = 0.125;
+
+// Bottom Level Vinyl Flooring
+registerPart({
+  geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
+  matType: 'vinyl',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0, FLOOR_TOP_Y + T_VINYL / 2, VINYL_Z],
+  explodeOffset: [0, -0.4, 3.2]
+});
+
+// Upper Level (Center Deck) Vinyl Flooring
+registerPart({
+  geometry: new THREE.BoxGeometry(29.5, T_VINYL, 13.75),
+  matType: 'vinyl',
+  partKey: 'K',
+  stepAdded: 4,
+  pos: [0, DECK_TOP_Y + T_VINYL / 2, VINYL_Z],
+  explodeOffset: [0, 1.6, 3.8]
+});
+
+// ----------------------------------------------------------------------------
+// E3. PART L: OUTDOOR WATERPROOF SILICONE SEALANT BEADS (Step 4)
+// ----------------------------------------------------------------------------
+// Quarter-round / cylindrical caulk beads (radius 0.18") along:
+// 1. Horizontal seams where Left, Right & Back Foam meet Bottom Floor & Center Deck
+// 2. Vertical corner seams where Left & Right Foam meet Back Foam Wall
+const BEAD_R = 0.18;
+
+[
+  { y: FLOOR_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: -0.2 },
+  { y: DECK_TOP_Y + T_VINYL + BEAD_R * 0.65, expY: 1.8 }
+].forEach((lvl) => {
+  // Back wall horizontal silicone bead (x = -14.75 to +14.75 at z = -6.75)
+  registerPart({
+    geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 29.5, 10),
+    matType: 'silicone',
+    partKey: 'L',
+    stepAdded: 4,
+    pos: [0, lvl.y, -6.68],
+    rot: [0, 0, Math.PI / 2],
+    explodeOffset: [0, lvl.expY, -4.5],
+    noOutline: true
+  });
+
+  // Left & Right side wall horizontal silicone beads (z = -6.75 to +6.75 at x = ±14.75)
+  [-14.68, 14.68].forEach((xSide) => {
+    registerPart({
+      geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, 13.5, 10),
+      matType: 'silicone',
+      partKey: 'L',
+      stepAdded: 4,
+      pos: [xSide, lvl.y, 0.0],
+      rot: [Math.PI / 2, 0, 0],
+      explodeOffset: [xSide < 0 ? -5.5 : 5.5, lvl.expY, 1.5],
+      noOutline: true
+    });
+  });
+});
+
+// Vertical interior corner silicone beads where Side Foam meets Back Foam (both compartments)
+const LOWER_CAVITY_H = MID_DECK_Y - FLOOR_TOP_Y - T_VINYL;
+const LOWER_CAVITY_Y = FLOOR_TOP_Y + T_VINYL + LOWER_CAVITY_H / 2;
+
+const UPPER_CAVITY_H = (POST_H + BOX_H - T_FOAM) - (DECK_TOP_Y + T_VINYL);
+const UPPER_CAVITY_Y = DECK_TOP_Y + T_VINYL + UPPER_CAVITY_H / 2;
+
+[-14.68, 14.68].forEach((xCorner) => {
+  // Lower compartment vertical corner bead
+  registerPart({
+    geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, LOWER_CAVITY_H, 10),
+    matType: 'silicone',
+    partKey: 'L',
+    stepAdded: 4,
+    pos: [xCorner, LOWER_CAVITY_Y, -6.68],
+    explodeOffset: [xCorner < 0 ? -6.2 : 6.2, 0, -6.2],
+    noOutline: true
+  });
+
+  // Upper compartment vertical corner bead
+  registerPart({
+    geometry: new THREE.CylinderGeometry(BEAD_R, BEAD_R, UPPER_CAVITY_H, 10),
+    matType: 'silicone',
+    partKey: 'L',
+    stepAdded: 4,
+    pos: [xCorner, UPPER_CAVITY_Y, -6.68],
+    explodeOffset: [xCorner < 0 ? -6.2 : 6.2, 0, -6.2],
+    noOutline: true
+  });
+});
+
+// ----------------------------------------------------------------------------
+// F. PART E & PART F: 4:12 GABLE ROOF + SHINGLES (Step 5)
+// ----------------------------------------------------------------------------
 const BOX_TOP_Y = POST_H + BOX_H; // 72.0"
 
 [-7.625, 7.625].forEach((zPos) => {
@@ -1047,7 +1222,9 @@ const ROOF_DY = Math.sin(SLOPE_ANGLE) * HALF_SLOPE;
   });
 });
 
-// G. Part H & Part I: Double Glazed Doors (Step 6)
+// ----------------------------------------------------------------------------
+// G. PART H & PART I: DOUBLE GLAZED DOORS (Step 6)
+// ----------------------------------------------------------------------------
 function buildDoorAssembly(sideSign, pivotGroup) {
   const doorW = 14.75;
   const doorH = 38.25;
@@ -1274,7 +1451,7 @@ window.addEventListener('pointerup', (e) => {
 updateStepUI(7);
 
 // ============================================================================
-// 6. ANIMATION LOOP
+// 6. ANIMATION LOOP (SMOOTH EXPLODE, X-RAY, DOOR SWING & HIGHLIGHTS)
 // ============================================================================
 const clock = new THREE.Clock();
 let currentElevationOffset = 0;
@@ -1326,13 +1503,17 @@ function animate() {
     if (isHighlighted) {
       rec.material.emissive.setHex(0x38bdf8);
       rec.material.emissiveIntensity = 0.28;
-      rec.edgeLine.material.color.setHex(0x38bdf8);
-      rec.edgeLine.material.opacity = 0.9;
+      if (rec.edgeLine) {
+        rec.edgeLine.material.color.setHex(0x38bdf8);
+        rec.edgeLine.material.opacity = 0.9;
+      }
     } else {
       rec.material.emissive.setHex(0x000000);
       rec.material.emissiveIntensity = 0;
-      rec.edgeLine.material.color.setHex(rec.isGlass ? 0x38bdf8 : 0x0f172a);
-      rec.edgeLine.material.opacity = rec.isGlass ? 0.55 : 0.28;
+      if (rec.edgeLine) {
+        rec.edgeLine.material.color.setHex(rec.isGlass ? 0x38bdf8 : 0x0f172a);
+        rec.edgeLine.material.opacity = rec.isGlass ? 0.55 : 0.28;
+      }
     }
   });
 
@@ -1346,9 +1527,7 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-window.onload = function () {
-  animate();
-};
+animate();
 </script>
 </body>
 </html>
