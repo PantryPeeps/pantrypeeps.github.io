@@ -304,24 +304,21 @@
   /* Bottom Brand Watermark */
   #brand-watermark {
     position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20, 24, 31, 0.78);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    top: 16px;
+    right: 20px;
+    max-width: calc(100vw - 40px);
+    font-family: "Arial Black", "Segoe UI", Arial, sans-serif;
+    font-size: clamp(18px, 3vw, 36px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
     color: #f8fafc;
     text-decoration: none;
-    z-index: 9;
-    transition: border-color 0.15s, color 0.15s;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    z-index: 11;
+    transition: color 0.15s;
   }
   #brand-watermark:hover {
-    border-color: #38bdf8;
     color: #38bdf8;
   }
 </style>
