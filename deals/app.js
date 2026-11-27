@@ -134,7 +134,7 @@ function showLinkedDeal() {
   const id = location.hash.slice(1);
   if (!/^[-a-z0-9]+$/.test(id)) return;
   const deal = deals.find(item => item.slug === id);
-  if (!deal) return;
+  if (!deal) { document.documentElement.classList.remove("deal-link-loading"); return; }
   const storeMismatch = store !== "all" && store !== deal.retailer;
   const categoryMismatch = categoryFilter.value && categoryFilter.value !== deal.category;
   if (storeMismatch || categoryMismatch) {
@@ -143,16 +143,16 @@ function showLinkedDeal() {
     render();
   }
   const card = document.getElementById(id);
-  if (!card) return;
-  // The cards are rendered after the browser's initial anchor-scroll pass.
-  // Scroll only after the grid has been inserted and laid out.
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      card.scrollIntoView({ behavior: "instant", block: "start" });
-      card.classList.add("linked-card");
-      setTimeout(() => card.classList.remove("linked-card"), 2500);
-    });
-  });
+  if (!card) { document.documentElement.classList.remove("deal-link-loading"); return; }
+  // Position the linked card immediately, before showing the page.
+  const root = document.documentElement;
+  const priorScrollBehavior = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  card.scrollIntoView({ behavior: "instant", block: "start" });
+  card.classList.add("linked-card");
+  root.classList.remove("deal-link-loading");
+  root.style.scrollBehavior = priorScrollBehavior;
+  setTimeout(() => card.classList.remove("linked-card"), 2500);
 }
 
 async function start() {
@@ -168,10 +168,12 @@ async function start() {
 
   } catch {
     count.textContent = "Deals couldn’t load. Refresh to try again.";
+    document.documentElement.classList.remove("deal-link-loading");
     return;
   }
   render();
   showLinkedDeal();
+  document.documentElement.classList.remove("deal-link-loading");
 }
 
 function applyFilters() {
