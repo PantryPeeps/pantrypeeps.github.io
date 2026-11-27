@@ -160,6 +160,25 @@ async function start() {
       if (!response.ok) throw new Error("Deal data could not be downloaded");
       deals = await response.json();
     }
+    // Preserve this week's promotion if a CDN serves a stale JSON snapshot.
+    const purinaSlug = "purina-select-pet-products-amazon-credit-offer";
+    if (!deals.some(item => item.slug === purinaSlug)) {
+      deals.unshift({
+        week: "2026-11-23",
+        retailer: "Amazon",
+        category: "Pets",
+        title: "Purina Pet Products — Select Items Amazon Credit Offer",
+        size: "Select participating Purina pet foods and treats",
+        note: "Limited-time Amazon credit promotion on eligible items. Check qualifying products and offer terms at Amazon.",
+        image: "assets/purina-select-pet-products.jpg",
+        url: "https://link.amazon/B02xc7nkt",
+        slug: purinaSlug,
+        affiliate: true,
+        deal_type: "promotion",
+        deal_badge: "LIMITED-TIME OFFER",
+        deal_info: "Add qualifying items to your cart and check the offer terms and eligibility at checkout."
+      });
+    }
   } catch {
     count.textContent = "Deals couldn’t load. Refresh to try again.";
     return;
