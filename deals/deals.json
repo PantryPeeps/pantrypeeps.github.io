@@ -1,5 +1,29 @@
 [
   {
+    "week": "2026-11-27",
+    "retailer": "Amazon",
+    "category": "Pet Food",
+    "title": "Purina Friskies Prime Filets Surfin' & Turfin' Variety Pack",
+    "size": "40 cans · 5.5 oz each",
+    "note": "Four flavors of wet cat food in gravy. Check current Amazon pricing and coupon eligibility.",
+    "image": "assets/friskies-prime-filets-40.jpg",
+    "url": "https://link.amazon/B0gbxQIU5",
+    "slug": "friskies-prime-filets-variety-40-cans",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "Purina",
+      "Friskies",
+      "cat food",
+      "40 cans",
+      "Prime Filets"
+    ],
+    "deal_type": "stacked",
+    "deal_badge": "COUPON + SUBSCRIBE & SAVE",
+    "deal_info": "Check current pricing, Subscribe & Save eligibility, and available coupons at Amazon."
+  },
+  {
     "week": "2026-11-23",
     "retailer": "Amazon",
     "category": "Pantry Food",
