@@ -144,6 +144,91 @@
         <p id="result-count" role="status"></p>
       </div>
       <div id="weeks"></div>
+      <script>
+      // Keep the Purina offer inside this week's existing Pets grid even when
+      // an older cached deals.json response is served.
+      (() => {
+        const slug = "purina-select-pet-products-amazon-credit-offer";
+        const weeks = document.getElementById("weeks");
+        let updating = false;
+        function ensurePurina() {
+          if (updating || document.getElementById(slug)) return;
+          const section = [...weeks.querySelectorAll("section.week")].find(node =>
+            node.querySelector(".week-title")?.textContent.includes("November 23, 2026")
+          );
+          if (!section) return;
+          const group = [...section.querySelectorAll("section.group")].find(node =>
+            node.querySelector("h3")?.textContent.trim() === "Pets"
+          );
+          if (!group) return;
+          const grid = group.querySelector(".grid");
+          if (!grid) return;
+          updating = true;
+          const card = document.createElement("article");
+          card.className = "card";
+          card.id = slug;
+          const product = document.createElement("div");
+          product.className = "product";
+          const img = document.createElement("img");
+          img.src = "assets/purina-select-pet-products.jpg";
+          img.alt = "Example Purina products including Beneful, Fancy Feast, Friskies, Purina ONE and DentaLife";
+          img.loading = "lazy";
+          product.append(img);
+          const badge = document.createElement("span");
+          badge.className = "deal-badge deal-badge-promotion";
+          badge.textContent = "LIMITED-TIME OFFER";
+          product.append(badge);
+          card.append(product);
+          const body = document.createElement("div");
+          body.className = "card-content";
+          for (const [tag, cls, value] of [
+            ["span", "store amazon", "Amazon"],
+            ["h4", "", "Purina Pet Products — Select Items Amazon Credit Offer"],
+            ["p", "size", "Select participating Purina pet foods and treats"],
+            ["p", "note", "Limited-time Amazon credit promotion. Check qualifying products and offer terms at Amazon."]
+          ]) {
+            const el = document.createElement(tag);
+            el.className = cls;
+            el.textContent = value;
+            body.append(el);
+          }
+          const callout = document.createElement("div");
+          callout.className = "deal-callout deal-callout-promotion";
+          const calloutTitle = document.createElement("strong");
+          calloutTitle.className = "deal-callout-title";
+          calloutTitle.textContent = "LIMITED-TIME OFFER";
+          const calloutInfo = document.createElement("span");
+          calloutInfo.textContent = "Add qualifying items to your cart and check eligibility at Amazon checkout.";
+          callout.append(calloutTitle, calloutInfo);
+          body.append(callout);
+          const priceText = document.createElement("p");
+          priceText.className = "pricing-label";
+          priceText.textContent = "Check today’s pricing for the item";
+          body.append(priceText);
+          const action = document.createElement("div");
+          action.className = "card-action";
+          const link = document.createElement("a");
+          link.className = "retailer-link";
+          link.textContent = "Check Today’s Price on Amazon";
+          link.href = "https://link.amazon/B02xc7nkt";
+          link.target = "_blank";
+          link.rel = "nofollow sponsored noopener";
+          const ad = document.createElement("span");
+          ad.className = "ad";
+          ad.textContent = "#ad";
+          action.append(link, ad);
+          body.append(action);
+          card.append(body);
+          grid.prepend(card);
+          updating = false;
+          if (location.hash === "#" + slug) {
+            requestAnimationFrame(() => card.scrollIntoView({block:"start"}));
+          }
+        }
+        new MutationObserver(ensurePurina).observe(weeks, {childList:true, subtree:true});
+        ensurePurina();
+      })();
+      </script>
       <noscript>Enable JavaScript to browse weekly deals.</noscript>
     </section>
   </main>
