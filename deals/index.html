@@ -91,7 +91,14 @@
     }
   }
   </style>
-  <script defer src="app.js?v=clean-deep-link-20261127c"></script>
+  <style>html.deal-link-loading body{visibility:hidden}</style>
+  <script>
+    // Hide the initial top-of-page view until the linked deal is positioned.
+    if (/^#[a-z0-9-]+$/.test(location.hash) && location.hash !== "#deals") {
+      document.documentElement.classList.add("deal-link-loading");
+    }
+  </script>
+  <script defer src="app.js?v=instant-deep-link-20261127"></script>
   <script defer src="/nav.js?v=20261121-4"></script>
 </head>
 <body>
