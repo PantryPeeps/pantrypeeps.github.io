@@ -156,7 +156,7 @@ async function start() {
     if (inlineData) {
       deals = JSON.parse(inlineData.textContent);
     } else {
-      const response = await fetch("deals.json?v=week-fix-20261127", { cache: "no-cache" });
+      const response = await fetch("deals.json?v=" + Date.now(), { cache: "no-store" });
       if (!response.ok) throw new Error("Deal data could not be downloaded");
       deals = await response.json();
     }
@@ -166,6 +166,10 @@ async function start() {
   }
   render();
   showLinkedDeal();
+  // Retry after initial layout and images settle for deep links from social posts.
+  if (location.hash && location.hash !== "#deals") {
+    window.addEventListener("load", showLinkedDeal, { once: true });
+  }
 }
 
 function applyFilters() {
