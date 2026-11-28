@@ -2,6 +2,32 @@
   {
     "week": "2026-11-23",
     "retailer": "Amazon",
+    "category": "Pantry Food",
+    "title": "Hormel Compleats Meals Variety Pack",
+    "size": "5 shelf-stable meals · 7.5 oz each",
+    "note": "Great complete meal pantry option. These shelf-stable, ready-to-eat meals are convenient for little free pantries, home pantries, and kindness care packages for displaced neighbors. Check Amazon for current pricing.",
+    "image": "assets/hormel-compleats-variety-5.jpg",
+    "url": "https://link.amazon/B09hmu2BR",
+    "slug": "hormel-compleats-variety-pack-5-meals",
+    "live_price": null,
+    "price_updated_at": null,
+    "affiliate": true,
+    "search_terms": [
+      "Hormel",
+      "Compleats",
+      "meals",
+      "ready to eat",
+      "microwaveable",
+      "pantry meals",
+      "5 pack"
+    ],
+    "deal_type": "subscribe-save",
+    "deal_badge": "SUBSCRIBE & SAVE",
+    "deal_info": "Check Amazon for current pricing, Subscribe & Save eligibility and offer terms."
+  },
+  {
+    "week": "2026-11-23",
+    "retailer": "Amazon",
     "category": "Pets",
     "title": "Purina Pet Products — Select Items Amazon Credit Offer",
     "size": "Select participating Purina pet foods and treats",
