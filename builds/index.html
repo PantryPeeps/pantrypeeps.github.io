@@ -1825,7 +1825,7 @@
       font-weight: 800;
     }
 
-    /* Stacked Solar Lighting Option Blocks (Image First, Full Text Below) */
+    /* Stacked Solar Lighting Option Blocks (Color-Coded to Match Stage 5 Hardware Links) */
     .solar-options-stack {
       display: flex;
       flex-direction: column;
@@ -1841,6 +1841,41 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+    }
+
+    /* Option 1: Sky Blue */
+    .solar-option-block.opt-theme-1 {
+      background: #F0F9FF;
+      border-color: #0284C7;
+      box-shadow: 4px 4px 0 #0284C7;
+    }
+
+    /* Option 2: Mint Green */
+    .solar-option-block.opt-theme-2 {
+      background: #F0FDF4;
+      border-color: #16A34A;
+      box-shadow: 4px 4px 0 #16A34A;
+    }
+
+    /* Option 3: Warm Orange */
+    .solar-option-block.opt-theme-3 {
+      background: #FFF7ED;
+      border-color: #EA580C;
+      box-shadow: 4px 4px 0 #EA580C;
+    }
+
+    /* Option 4: Purple */
+    .solar-option-block.opt-theme-4 {
+      background: #FAF5FF;
+      border-color: #7C3AED;
+      box-shadow: 4px 4px 0 #7C3AED;
+    }
+
+    /* Option 5: Warm Gold */
+    .solar-option-block.opt-theme-5 {
+      background: #FEFCE8;
+      border-color: #CA8A04;
+      box-shadow: 4px 4px 0 #CA8A04;
     }
 
     .solar-option-media {
@@ -1888,7 +1923,7 @@
     .solar-option-note {
       margin-top: 12px;
       padding: 12px 14px;
-      background: var(--pp-cream);
+      background: #FFFFFF;
       border: 2px solid var(--pp-ink);
       border-radius: 12px;
       font-size: 0.86rem;
@@ -1972,6 +2007,104 @@
       padding: 2px 7px;
       border-radius: 999px;
       letter-spacing: 0.03em;
+    }
+
+    /* Full-Width Stage 5 Solar Hardware Card With Color-Coded Uniform Buttons */
+    .stage5-wide-card {
+      grid-column: 1 / -1;
+    }
+
+    .stage5-links-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 720px) {
+      .stage5-links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stage5-links-grid .affiliate-link-item {
+      display: flex;
+    }
+
+    .stage5-links-grid .affiliate-link-item a {
+      width: 100%;
+      min-height: 50px;
+      padding: 9px 12px;
+      border-width: 2.5px;
+      border-radius: 12px;
+    }
+
+    .stage5-item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .stage5-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .opt-pill {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 1px 7px;
+      border-radius: 999px;
+      border: 1.5px solid #0B1F2E;
+      line-height: 1.35;
+    }
+
+    .opt-pill.p1 { background: #BAE6FD; color: #0C4A6E; }
+    .opt-pill.p2 { background: #BBF7D0; color: #14532D; }
+    .opt-pill.p3 { background: #FED7AA; color: #7C2D12; }
+    .opt-pill.p4 { background: #E9D5FF; color: #4C1D95; }
+    .opt-pill.p5 { background: #FEF08A; color: #713F12; }
+    .opt-pill.parmor { background: #FECACA; color: #7F1D1D; }
+
+    /* Matching Card Borders & Tints for Stage 5 Links */
+    .stage5-links-grid .affiliate-link-item a.link-opt-1 {
+      background: #F0F9FF;
+      border-color: #0284C7;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-2 {
+      background: #F0FDF4;
+      border-color: #16A34A;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-3 {
+      background: #FFF7ED;
+      border-color: #EA580C;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-4 {
+      background: #FAF5FF;
+      border-color: #7C3AED;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-5 {
+      background: #FEFCE8;
+      border-color: #CA8A04;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-armor {
+      background: #FEF2F2;
+      border-color: #DC2626;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-multi-35 {
+      background: linear-gradient(90deg, #FFF7ED 0%, #FEFCE8 100%);
+      border-color: #D97706;
+    }
+    .stage5-links-grid .affiliate-link-item a.link-opt-multi-45 {
+      background: linear-gradient(90deg, #FAF5FF 0%, #FEFCE8 100%);
+      border-color: #7C3AED;
     }
 
     .affiliate-disclosure-note {
@@ -3778,15 +3911,15 @@
         <div class="schematic-card" style="margin-bottom: 18px;">
           <div class="solar-options-stack">
             <!-- OPTION 1: TAMPER-PROOF INTERIOR SOLAR LED NEON FLEX ROPE LIGHT -->
-            <article class="solar-option-block" id="solar-opt-1">
+            <article class="solar-option-block" id="solar-opt-1" style="background: #E0F2FE; border-color: #0284C7;">
               <div class="solar-option-media" id="solar-opt-1-media">
-                <figure class="anchoring-figure">
+                <figure class="anchoring-figure" style="border-color: #0284C7;">
                   <img src="https://pantrypeeps.org/assets/builds/upgrade-neon-rope-guide.jpg" alt="6-step installation diagram showing how to install a Tamper-Proof Interior Solar LED Neon Flex Rope Light inside a Little Free Pantry">
                   <figcaption>Option 1 Installation Diagram: Tamper-Proof Interior Solar LED Neon Flex Rope Light (Steps 1–6).</figcaption>
                 </figure>
               </div>
               <div class="solar-option-copy">
-                <span class="mini-card-eyebrow">Option 1 &bull; Even Shelf Diffused Glow</span>
+                <span class="mini-card-eyebrow" style="color: #0369A1; border-bottom-color: rgba(2, 132, 199, 0.45);">Option 1 &bull; Even Shelf Diffused Glow</span>
                 <h4>1. Tamper-Proof Interior Solar LED Neon Flex Rope Light</h4>
                 <p>Flat-backed 6 mm &times; 12 mm solar neon flex sits flush against the wood and gives an even, diffused glow across food labels without harsh LED dots.</p>
                 <ul class="solar-option-steps">
@@ -3794,7 +3927,7 @@
                   <li><strong>Step 2 (Notch Back Shelf Corners):</strong> Cut a small notch (about 1/2" &times; 1/2") in alternating back shelf corners against the rear wall so the neon rope can pass cleanly from one level to the next.</li>
                   <li><strong>Step 3 (Install Shelf Runs Under Lip):</strong> Run the flat-backed neon flex along the roof ceiling and along the underside of each shelf right behind the front face frame facing downward so light shines back into the pantry rather than into visitors' eyes.</li>
                   <li><strong>Step 4 (Zigzag Down Back Corners):</strong> Feed the continuous neon rope down through the alternating rear corner notches from shelf to shelf so all vertical drops stay hidden against the back wall.</li>
-                  <li><strong>Step 5 (Secure &amp; Seal):</strong> Fasten clear polycarbonate or stainless steel mounting clips beside the rope every 6 inches using Torx security screws, press the rope light in, and run a smooth bead of 100% clear silicone over both sides of the tubing, clips, and notches so nobody can peel it off like a zipper.</li>
+                  <li><strong>Step 5 (Secure &amp; Seal):</strong> Fasten stainless steel mounting clips beside the rope every 6 inches using Torx security screws, press the rope light in, and run a smooth bead of 100% clear silicone over both sides of the tubing, clips, and notches so nobody can peel it off like a zipper.</li>
                   <li><strong>Step 6 (Connect Inside Roof Peak):</strong> Inside the upper roof peak, plug the solar panel cord into the neon rope connector, neatly coil any non-trimmable excess slack, and staple it out of sight.</li>
                 </ul>
                 <div class="solar-option-note">
@@ -3804,15 +3937,15 @@
             </article>
 
             <!-- OPTION 2: TAMPER-PROOF SOLAR LED FAIRY LIGHTS (3-ROW CLEAR SHIELD METHOD) -->
-            <article class="solar-option-block" id="solar-opt-2">
+            <article class="solar-option-block" id="solar-opt-2" style="background: #DCFCE7; border-color: #16A34A;">
               <div class="solar-option-media" id="solar-opt-2-media">
-                <figure class="anchoring-figure">
+                <figure class="anchoring-figure" style="border-color: #16A34A;">
                   <img src="https://pantrypeeps.org/assets/builds/upgrade-fairy-lights-guide.jpg" alt="Step-by-step installation diagram for Tamper-Proof Solar LED Fairy Lights using the 3-row clear polycarbonate shield method">
                   <figcaption>Option 2 Installation Diagram: Tamper-Proof Solar LED Fairy Lights (3-Row Clear Shield Method).</figcaption>
                 </figure>
               </div>
               <div class="solar-option-copy">
-                <span class="mini-card-eyebrow mint">Option 2 &bull; 3-Row Clear Polycarbonate Shield</span>
+                <span class="mini-card-eyebrow mint" style="color: #15803D; border-bottom-color: rgba(22, 163, 74, 0.45);">Option 2 &bull; 3-Row Clear Polycarbonate Shield</span>
                 <h4>2. Tamper-Proof Solar LED Fairy Lights (3-Row Clear Shield Method)</h4>
                 <p>A longer outdoor copper or silver micro-LED fairy strand routed in 3 taut parallel rows under each shelf and locked beneath a 1/8-inch clear polycarbonate (Lexan) or acrylic sheet.</p>
                 <ul class="solar-option-steps">
@@ -3826,10 +3959,10 @@
             </article>
 
             <!-- OPTION 3: TAMPER-PROOF SPLIT-PANEL SOLAR BAR LIGHTS -->
-            <article class="solar-option-block" id="solar-opt-3">
+            <article class="solar-option-block" id="solar-opt-3" style="background: #FFEDD5; border-color: #EA580C;">
               <div class="solar-option-media" id="solar-opt-3-media"></div>
               <div class="solar-option-copy">
-                <span class="mini-card-eyebrow orange">Option 3 &bull; Split-Panel LED Bar Kit</span>
+                <span class="mini-card-eyebrow orange" style="color: #C2410C; border-bottom-color: rgba(234, 88, 12, 0.45);">Option 3 &bull; Split-Panel LED Bar Kit</span>
                 <h4>3. Tamper-Proof Split-Panel Solar Bar Lights</h4>
                 <p>Two-piece "Wire-to-Solar" outdoor LED bar kit where the light bar mounts inside the pantry ceiling/shelf lip and a detachable cord connects to a separate roof- or back-mounted solar panel.</p>
                 <ul class="solar-option-steps">
@@ -3842,7 +3975,7 @@
             </article>
 
             <!-- OPTION 4: TAMPER-PROOF EXTERIOR MOTION SOLAR LIGHT -->
-            <article class="solar-option-block" id="solar-opt-4">
+            <article class="solar-option-block" id="solar-opt-4" style="background: #F3E8FF; border: 3px solid #7C3AED;">
               <div class="solar-option-media" id="solar-opt-4-media"></div>
               <div class="solar-option-copy">
                 <span class="mini-card-eyebrow" style="color: #6D28D9; border-bottom-color: rgba(109, 40, 217, 0.45);">Option 4 &bull; Exterior Approach Flood</span>
@@ -3858,12 +3991,12 @@
             </article>
 
             <!-- OPTION 5: REAR-POLE ELEVATED SOLAR MOTION LIGHT -->
-            <article class="solar-option-block" id="solar-opt-5">
+            <article class="solar-option-block" id="solar-opt-5" style="background: #FEFCE8; border: 3px solid #CA8A04;">
               <div class="solar-option-media" id="solar-opt-5-media"></div>
               <div class="solar-option-copy">
-                <span class="mini-card-eyebrow" style="color: #B45309; border-bottom-color: rgba(180, 83, 9, 0.45);">Option 5 &bull; Elevated Rear-Pole Flood</span>
+                <span class="mini-card-eyebrow" style="color: #A16207; border-bottom-color: rgba(161, 98, 7, 0.45);">Option 5 &bull; Elevated Roof-Peak Clearance</span>
                 <h4>5. Rear-Pole Elevated Solar Motion Light</h4>
-                <p>A compact solar motion light mounted atop a 5-to-6-foot rigid steel conduit pole clamped vertically to the exterior back wall, elevating the fixture 1 to 2 feet above the roof peak so it sits out of casual reach, clear of snow buildup, and completely unshaded.</p>
+                <p>A compact solar motion light mounted atop a 5-to-6-foot rigid steel conduit pole clamped vertically to the exterior back wall—elevating the fixture 1 to 2 feet above the roof peak so it sits out of casual reach, clear of snow buildup, and completely unshaded.</p>
                 <ul class="solar-option-steps">
                   <li><strong>Step 1 (Bolt Light &amp; Lock Top Cap on Steel Pole):</strong> Use a rigid 5-ft to 6-ft galvanized steel conduit (3/4" or 1" EMT) or threaded steel pipe. Switch the solar motion light to ON + Motion mode, clamp its U-bolt bracket near the top using nylon-insert locknuts and threadlocker, and lock a flared steel closure cap (or top cross-pin bolt) onto the very top end so the light cannot slide upward off the pole.</li>
                   <li><strong>Step 2 (Clamp Pole Vertically to Back Wall):</strong> Center the pole vertically along the exterior back wall (or rear post) so the light clears the roof peak by 1 to 2 feet. Secure the pipe using 3 heavy-duty two-hole metal conduit straps spaced 12"&ndash;16" apart and fastened with Torx security screws.</li>
@@ -3872,9 +4005,30 @@
                 </ul>
               </div>
             </article>
+
+            <!-- RED BLOCK: OPTIONAL HIGH-VANDALISM & HIGH-THEFT UPGRADE (FOR ALL SOLAR SETUPS) -->
+            <article class="solar-option-block" id="solar-high-vandalism-upgrade" style="background: #FEE2E2; border: 3px solid #DC2626; box-shadow: 4px 4px 0 #0B1F2E;">
+              <div class="solar-option-media">
+                <figure class="anchoring-figure" style="border-color: #DC2626; box-shadow: 6px 6px 0 #991B1B;">
+                  <img src="https://pantrypeeps.org/assets/builds/upgrade-polycase-armor-box.jpg" alt="Optional High-Vandalism Upgrade: Clear Polycarbonate Solar Armor Box with Torx security screws, rear sealed wire pass-through, and silica gel packet">
+                  <figcaption style="background: #FEF2F2; border-top-color: #DC2626; color: #7F1D1D;">Clear-Cover IP65 Screw-Lock Solar Armor Box With Fixed Mounting Ears &amp; Torx Security Screws.</figcaption>
+                </figure>
+              </div>
+              <div class="solar-option-copy">
+                <span style="display: inline-block; background: #DC2626; color: #FFFFFF; font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 999px; border: 2px solid #0B1F2E; margin-bottom: 6px;">High-Vandalism &amp; High-Theft Armor</span>
+                <h4 style="color: #7F1D1D;">Optional High-Vandalism &amp; High-Theft Upgrade (For All Solar Setups)</h4>
+                <p style="color: #7F1D1D;">If your Little Free Pantry is located in a high-theft or high-vandalism area, you can armor any exterior solar panel (or self-contained exterior solar light) inside an <strong>IP65 waterproof screw-cover clear-lid project/junction box with fixed mounting ears</strong> (avoid snap-latch enclosures that anyone can flip open, and pick a size matched to your fixture).</p>
+                <ul class="solar-option-steps" style="color: #7F1D1D;">
+                  <li><strong style="color: #991B1B;">Bolt the box solid:</strong> Fasten the enclosure's fixed exterior mounting ears directly to the pantry roof, back wall, or sunniest side wall using Torx security screws, and fasten the clear screw-down lid tightly (or swap the lid screws for matching tamper-resistant screws).</li>
+                  <li><strong style="color: #991B1B;">Eliminate exposed cords:</strong> For remote/split solar panels, drill a snug pass-through hole straight through the back of the enclosure aligned with your pantry's wall entry hole and seal both with 100% clear silicone so zero wire is exposed outside.</li>
+                  <li><strong style="color: #991B1B;">Prevent interior fogging:</strong> Gasketed waterproof boxes are airtight and can trap humidity during temperature swings. Toss a small silica gel desiccant packet inside the box (or drill a tiny 1/16-inch weep hole along the bottom edge) to keep the clear lid condensation-free.</li>
+                  <li><strong style="color: #991B1B;">Prioritize full sun:</strong> A clear polycarbonate lid filters out roughly 10%&ndash;15% of incoming sunlight, so choose an unshaded mounting spot when enclosing your panel.</li>
+                </ul>
+              </div>
+            </article>
           </div>
 
-          <!-- General Solar Placement & Steward Maintenance Note (Below All 4 Lighting Options) -->
+          <!-- General Solar Placement & Steward Maintenance Note (Below All 5 Lighting Options) -->
           <div style="margin-top: 20px; background: #FFFBEB; border: 2.5px solid var(--pp-ink); border-radius: 14px; padding: 14px 16px; font-size: 0.9rem; font-weight: 600; color: var(--pp-ink);">
             <p style="margin: 0;">
               <strong>☀️ General Solar Placement &amp; Steward Maintenance Note:</strong> All solar panels must be installed with a direct, unobstructed line of sight to the sky and sun (never tucked beneath a deep roof overhang that casts shade). To keep batteries charging at full capacity year-round, the pantry steward should wipe dust, pollen, fallen leaves, and winter snow off the solar panels occasionally.
@@ -4164,29 +4318,31 @@
             </div>
 
             <!-- Card 2: QR Code Signage & Digital Connection -->
-            <div class="spec-box tlc-box">
-              <h4>📱 2. Weatherproof QR Code Signage</h4>
-              <p class="box-lead">
-                Adding a scannable QR code lets visitors and donors connect with your pantry right from their phone in seconds.
-              </p>
-              <ul>
-                <li>
-                  <strong>Lead With Your Social Media Hub First:</strong> Point your main QR code to your pantry's social media page or community link hub first and foremost. Once neighbors land there, they can see restock updates, current needs, and every way to support the pantry, including your PayPal, Venmo, Cash App, or Amazon wish list for purchasing pantry supplies.
-                </li>
-                <li>
-                  <strong>Waterproof Vinyl Stickers:</strong> Print UV-laminated, weatherproof vinyl QR stickers to apply directly onto a smooth painted side wall, inside the window corner, or on the lid of a brochure box.
-                </li>
-                <li>
-                  <strong>Custom Metal or Engraved Acrylic Signs:</strong> Have a small custom aluminum or laser-engraved acrylic QR plaque made and fasten it flush to the pantry wall with Torx security screws so it never fades, peels, or warps in winter weather.
-                </li>
-                <li>
-                  <strong>Wall-Mount Clear QR Holders:</strong> Use a sealed, outdoor-rated clear wall-mount QR code holder or sign frame so you can swap out printed QR inserts anytime your links or campaigns change.
-                </li>
-              </ul>
-              <div style="margin-top: 12px;">
-                <a href="https://www.amazon.com/s?k=qr+code+water+proof+wall+mount&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" class="plan-download-btn" style="font-size: 0.8rem; padding: 7px 14px;">
-                  <span>🔗 Browse Waterproof Wall-Mount QR Code Options <span style="white-space: nowrap;">(Amazon &nearr;)</span></span>
-                </a>
+            <div class="spec-box tlc-box" style="display: flex; flex-direction: column; justify-content: space-between; gap: 14px;">
+              <div>
+                <h4>📱 2. Weatherproof QR Code Signage</h4>
+                <p class="box-lead">
+                  Adding a scannable QR code lets visitors and donors connect with your pantry right from their phone in seconds.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Lead With Your Social Media Hub First:</strong> Point your main QR code to your pantry's social media page or community link hub first and foremost. Once neighbors land there, they can see restock updates, current needs, and every way to support the pantry, including your PayPal, Venmo, Cash App, or Amazon wish list for purchasing pantry supplies.
+                  </li>
+                  <li>
+                    <strong>Waterproof Vinyl Stickers:</strong> Print UV-laminated, weatherproof vinyl QR stickers to apply directly onto a smooth painted side wall, inside the window corner, or on the lid of a brochure box.
+                  </li>
+                  <li>
+                    <strong>Custom Metal or Engraved Acrylic Signs:</strong> Have a small custom aluminum or laser-engraved acrylic QR plaque made and fasten it flush to the pantry wall with Torx security screws so it never fades, peels, or warps in winter weather.
+                  </li>
+                  <li>
+                    <strong>Wall-Mount Clear QR Holders:</strong> Use a sealed, outdoor-rated clear wall-mount QR code holder or sign frame so you can swap out printed QR inserts anytime your links or campaigns change.
+                  </li>
+                </ul>
+                <div style="margin-top: 12px;">
+                  <a href="https://www.amazon.com/s?k=qr+code+water+proof+wall+mount&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" class="plan-download-btn" style="font-size: 0.8rem; padding: 7px 14px;">
+                    <span>🔗 Browse Waterproof Wall-Mount QR Code Options <span style="white-space: nowrap;">(Amazon &nearr;)</span></span>
+                  </a>
+                </div>
               </div>
 
               <!-- Split Lower Half: How to Build a Quality QR Code -->
@@ -4386,40 +4542,133 @@
           </div>
 
           <!-- Stage 5: Finishing Touches — Solar Lighting & Armor Boxes -->
-          <div class="affiliate-gear-card">
+          <div class="affiliate-gear-card" style="grid-column: 1 / -1;">
             <div>
-              <span class="mini-card-eyebrow orange">Stage 5 &bull; Finishing Touches</span>
-              <h4>☀️ Solar Lighting &amp; Armor Enclosures</h4>
-              <p>Add tamper-proof interior or exterior solar lighting and optional polycarbonate armor boxes.</p>
+              <span class="mini-card-eyebrow orange">Stage 5 &bull; Color-Matched to Options 1&ndash;5 Above</span>
+              <h4>☀️ Solar Lighting, Rear-Pole Mounts &amp; Armor Enclosures</h4>
+              <p>Each hardware link below is color-coded to match the exact solar lighting setup(s) above so you can grab only what fits your build.</p>
             </div>
-            <ul class="affiliate-link-list">
-              <li class="affiliate-link-item">
-                <a href="https://www.amazon.com/s?k=outdoor+solar+led+neon+rope+light+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
-                  <span>Solar LED Neon Rope Light</span>
+            <ul class="affiliate-link-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; align-items: stretch;">
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+led+neon+rope+light+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #E0F2FE; border-color: #0284C7;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Solar LED Neon Rope Light</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #BAE6FD; color: #0369A1; border: 1.5px solid #0284C7;">Option 1</span>
+                  </span>
                   <span class="amz-badge">Amazon &nearr;</span>
                 </a>
               </li>
-              <li class="affiliate-link-item">
-                <a href="https://www.amazon.com/s?k=outdoor+solar+copper+fairy+lights+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
-                  <span>Outdoor Solar LED Fairy Lights</span>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=stainless+steel+rope+light+mounting+clips+screws&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #E0F2FE; border-color: #0284C7;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Metal / Stainless Rope Light Clips</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #BAE6FD; color: #0369A1; border: 1.5px solid #0284C7;">Option 1</span>
+                  </span>
                   <span class="amz-badge">Amazon &nearr;</span>
                 </a>
               </li>
-              <li class="affiliate-link-item">
-                <a href="https://www.amazon.com/s?k=split+solar+shed+light+outdoor+motion+sensor+separate+panel&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
-                  <span>Split-Panel Solar Light Kit</span>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+copper+fairy+lights+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #DCFCE7; border-color: #16A34A;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Outdoor Solar LED Fairy Lights</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #BBF7D0; color: #15803D; border: 1.5px solid #16A34A;">Option 2</span>
+                  </span>
                   <span class="amz-badge">Amazon &nearr;</span>
                 </a>
               </li>
-              <li class="affiliate-link-item">
-                <a href="https://www.amazon.com/s?k=Junction+Box+with+Clear+Cover+IP65+Waterproof+ABS+Plastic+Universal+Project+Box+with+Fixed+Ear&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
-                  <span>Clear-Cover IP65 Screw-Lock Project Box</span>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=split+solar+shed+light+outdoor+motion+sensor+separate+panel&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FFEDD5; border-color: #EA580C;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Split-Panel Solar Light Kit</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FED7AA; color: #C2410C; border: 1.5px solid #EA580C;">Option 3</span>
+                  </span>
                   <span class="amz-badge">Amazon &nearr;</span>
                 </a>
               </li>
-              <li class="affiliate-link-item">
-                <a href="https://www.amazon.com/s?k=silica+gel+desiccant+packets+moisture+absorber&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
-                  <span>Silica Gel Anti-Fog Packets</span>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+motion+sensor+wall+light+waterproof+heavy+duty&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #F3E8FF; border-color: #7C3AED;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Outdoor Motion Solar Flood Light</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #E9D5FF; color: #6D28D9; border: 1.5px solid #7C3AED;">Option 4</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+motion+light+pole+mount+u+bracket&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEFCE8; border-color: #CA8A04;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Pole-Mount Solar Light (U-Bracket)</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=3%2F4+inch+or+1+inch+galvanized+steel+pipe+pole+5+ft+6+ft&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEFCE8; border-color: #CA8A04;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Galvanized Steel Mounting Pole (5&ndash;6 ft)</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=galvanized+steel+pipe+end+cap+closure+cap+1+inch&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEFCE8; border-color: #CA8A04;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Steel Pole Top Closure Cap</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=two+hole+metal+conduit+straps+heavy+duty+galvanized&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: linear-gradient(90deg, #FFEDD5 50%, #FEFCE8 50%); border-color: #0B1F2E;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Two-Hole Metal Conduit Straps</span>
+                    <span style="display: flex; flex-wrap: wrap; gap: 4px;">
+                      <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FED7AA; color: #C2410C; border: 1.5px solid #EA580C;">Option 3</span>
+                      <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                    </span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=1%2F4+inch+stainless+carriage+bolts+washers+nylon+locknuts&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: linear-gradient(90deg, #F3E8FF 50%, #FEFCE8 50%); border-color: #0B1F2E;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Carriage Bolts, Washers &amp; Locknuts</span>
+                    <span style="display: flex; flex-wrap: wrap; gap: 4px;">
+                      <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #E9D5FF; color: #6D28D9; border: 1.5px solid #7C3AED;">Option 4</span>
+                      <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                    </span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=blue+threadlocker+medium+strength+removable&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEFCE8; border-color: #CA8A04;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Medium-Strength Blue Threadlocker</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FEF08A; color: #A16207; border: 1.5px solid #CA8A04;">Option 5</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=Junction+Box+with+Clear+Cover+IP65+Waterproof+ABS+Plastic+Universal+Project+Box+with+Fixed+Ear&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEE2E2; border-color: #DC2626;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Clear-Cover IP65 Screw-Lock Project Box</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FECACA; color: #991B1B; border: 1.5px solid #DC2626;">Options 1&ndash;5 Armor</span>
+                  </span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item" style="display: flex;">
+                <a href="https://www.amazon.com/s?k=silica+gel+desiccant+packets+moisture+absorber&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" style="width: 100%; height: 100%; min-height: 68px; background: #FEE2E2; border-color: #DC2626;">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+                    <span>Silica Gel Anti-Fog Packets</span>
+                    <span style="font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #FECACA; color: #991B1B; border: 1.5px solid #DC2626;">Options 1&ndash;5 Armor</span>
+                  </span>
                   <span class="amz-badge">Amazon &nearr;</span>
                 </a>
               </li>
