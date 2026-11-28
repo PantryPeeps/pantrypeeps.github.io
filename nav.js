@@ -109,16 +109,7 @@
 
       const backBtn = document.getElementById("ppBackBtn");
       backBtn.addEventListener("click", () => {
-        const referrer = document.referrer;
-        if (/^https?:\/\//i.test(referrer) && referrer !== window.location.href) {
-          window.location.assign(referrer);
-          return;
-        }
-
-        const currentPath = window.location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "");
-        const lastSlash = currentPath.lastIndexOf("/");
-        const parentPath = lastSlash > 0 ? currentPath.slice(0, lastSlash + 1) : "/";
-        window.location.assign(parentPath);
+        window.history.back();
       });
 
       const footer = document.createElement("footer");
