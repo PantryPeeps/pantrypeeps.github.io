@@ -109,6 +109,33 @@
 
       const backBtn = document.getElementById("ppBackBtn");
       backBtn.addEventListener("click", () => {
+        const referrer = document.referrer;
+        let sameSiteReferrer = null;
+
+        try {
+          const candidate = new URL(referrer);
+          if (candidate.origin === window.location.origin) {
+            sameSiteReferrer = candidate.href;
+          }
+        } catch (_) {
+          // No usable referrer; handle this as a direct visit below.
+        }
+
+        if (sameSiteReferrer && window.history.length > 1) {
+          window.history.back();
+          return;
+        }
+
+        if (sameSiteReferrer) {
+          window.location.replace(sameSiteReferrer);
+          return;
+        }
+
+        if (path === "/seasonal-guide/") {
+          window.location.replace("/how-to-give/");
+          return;
+        }
+
         window.history.back();
       });
 
