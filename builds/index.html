@@ -628,7 +628,7 @@
       margin-top: 4px;
     }
 
-    /* Clean Architectural Figure Framing for Anchoring Section */
+    /* Clean Architectural Figure Framing for Anchoring & Upgrades Sections */
     .anchoring-figure {
       margin: 8px 0 12px;
       background: var(--pp-cream);
@@ -738,10 +738,298 @@
       background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
     }
 
-    .track-banner.upgrades-yellow-theme {
-      background: linear-gradient(135deg, #FEF9C3 0%, #FDE047 100%);
-      border-color: #0B1F2E;
-      box-shadow: 4px 4px 0 #0B1F2E;
+    .track-banner.upgrades-theme {
+      background: linear-gradient(135deg, #F5F3FF 0%, #DDD6FE 100%);
+    }
+
+    /* Interactive Grey Cat + Red Upgrade Button Easter Egg */
+    .upgrade-cat-wrap {
+      flex-shrink: 0;
+      width: 215px;
+      max-width: 100%;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.16s ease;
+    }
+
+    .upgrade-cat-wrap:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .upgrade-cat-wrap:focus-visible {
+      outline: 3px solid var(--pp-ink);
+      outline-offset: 4px;
+      border-radius: 14px;
+    }
+
+    .upgrade-cat-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 #0B1F2E);
+    }
+
+    .upgrade-cat-character {
+      transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-origin: 105px 120px;
+    }
+
+    .upgrade-paw-group {
+      transform-origin: 96px 115px;
+      transition: transform 0.18s ease;
+    }
+
+    .upgrade-red-cap {
+      transition: transform 0.14s ease;
+    }
+
+    .upgrade-transformed-pantry {
+      opacity: 0;
+      transform: scale(0.78) translateY(12px);
+      transform-origin: 105px 115px;
+      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .upgrade-cat-wrap.is-pressing .upgrade-paw-group {
+      transform: translate(12px, 14px) rotate(16deg);
+    }
+
+    .upgrade-cat-wrap.is-pressing .upgrade-red-cap {
+      transform: translateY(5px);
+    }
+
+    .upgrade-cat-wrap.is-transformed .upgrade-cat-character {
+      opacity: 0;
+      transform: scale(0.72) rotate(-8deg);
+      pointer-events: none;
+    }
+
+    .upgrade-cat-wrap.is-transformed .upgrade-transformed-pantry {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    @media (max-width: 760px) {
+      .upgrade-cat-wrap {
+        margin: 4px auto 0;
+        width: 195px;
+      }
+    }
+
+    /* Interactive Compass Cat Easter Egg (Door Orientation Section) */
+    .orientation-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .orientation-header-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .compass-cat-wrap {
+      flex-shrink: 0;
+      width: 180px;
+      max-width: 100%;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      z-index: 20;
+      transition: transform 0.16s ease;
+    }
+
+    .compass-cat-wrap:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .compass-cat-wrap:focus-visible {
+      outline: 3px solid #7C3AED;
+      outline-offset: 4px;
+      border-radius: 999px;
+    }
+
+    .compass-cat-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 #0B1F2E);
+      overflow: visible;
+    }
+
+    .compass-cat-spinner {
+      transform-origin: 95px 95px;
+    }
+
+    .compass-cat-wrap.is-spinning-off .compass-cat-spinner {
+      animation: catCompassSpinOffRight 1.35s cubic-bezier(0.36, 0, 0.66, -0.2) forwards;
+    }
+
+    @keyframes catCompassSpinOffRight {
+      0% {
+        transform: translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      18% {
+        transform: translateX(-14px) rotate(-35deg) scale(1.06);
+        opacity: 1;
+      }
+      85% {
+        transform: translateX(920px) rotate(1080deg) scale(0.95);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(1250px) rotate(1320deg) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .orientation-header-row {
+        flex-direction: column;
+        text-align: center;
+      }
+      .compass-cat-wrap {
+        width: 165px;
+      }
+    }
+
+    /* Interactive Vintage Teal Phone & Yellow Flower Couch Cat Scene (Communication Upgrades) */
+    .comm-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .comm-header-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .comm-phone-cat-wrap {
+      flex-shrink: 0;
+      width: 270px;
+      max-width: 100%;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.16s ease;
+    }
+
+    .comm-phone-cat-wrap:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .comm-phone-cat-wrap:focus-visible {
+      outline: 3px solid var(--pp-ink);
+      outline-offset: 4px;
+      border-radius: 14px;
+    }
+
+    .comm-phone-cat-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0 #0B1F2E);
+      overflow: hidden;
+      border-radius: 14px;
+      border: 2.5px solid var(--pp-ink);
+      background: #FFFDF7;
+    }
+
+    .comm-ring-waves {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .comm-phone-handset-cradle {
+      transition: opacity 0.2s ease, transform 0.22s ease;
+      transform-origin: 54px 104px;
+    }
+
+    .comm-walking-cat {
+      opacity: 0;
+      transform: translateX(135px);
+      pointer-events: none;
+    }
+
+    .comm-lounging-cat {
+      opacity: 0;
+      transform: translateY(8px) scale(0.95);
+      transform-origin: 175px 115px;
+      transition: opacity 0.3s ease, transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    /* Phase 1: Phone Rings & Tuxedo Cat Walks In */
+    .comm-phone-cat-wrap.is-ringing .comm-ring-waves {
+      opacity: 1;
+      animation: phoneRingPulse 0.32s ease-in-out infinite;
+    }
+
+    .comm-phone-cat-wrap.is-ringing .comm-phone-handset-cradle {
+      animation: handsetRattle 0.14s ease-in-out infinite;
+    }
+
+    .comm-phone-cat-wrap.is-walking .comm-walking-cat {
+      opacity: 1;
+      animation: catWalkToCouch 1.15s ease-out forwards;
+    }
+
+    /* Phase 2: Cat Lounges on Yellow Flower Couch Holding Teal Receiver */
+    .comm-phone-cat-wrap.is-lounging .comm-phone-handset-cradle {
+      opacity: 0;
+    }
+
+    .comm-phone-cat-wrap.is-lounging .comm-walking-cat {
+      opacity: 0;
+    }
+
+    .comm-phone-cat-wrap.is-lounging .comm-lounging-cat {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .comm-phone-cat-wrap.is-lounging .comm-lounge-tail {
+      animation: loungeTailWag 1.3s ease-in-out infinite;
+      transform-origin: 230px 116px;
+    }
+
+    @keyframes phoneRingPulse {
+      0%, 100% { transform: scale(0.95); opacity: 0.95; }
+      50% { transform: scale(1.08); opacity: 0.45; }
+    }
+
+    @keyframes handsetRattle {
+      0%, 100% { transform: rotate(-5deg) translateY(-1px); }
+      50% { transform: rotate(5deg) translateY(-2px); }
+    }
+
+    @keyframes catWalkToCouch {
+      0% { transform: translateX(135px) translateY(0); }
+      25% { transform: translateX(95px) translateY(-4px); }
+      50% { transform: translateX(55px) translateY(0); }
+      75% { transform: translateX(20px) translateY(-4px); }
+      100% { transform: translateX(-8px) translateY(0); }
+    }
+
+    @keyframes loungeTailWag {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+    }
+
+    @media (max-width: 720px) {
+      .comm-header-row {
+        flex-direction: column;
+        text-align: center;
+      }
+      .comm-phone-cat-wrap {
+        width: 260px;
+      }
     }
 
     .track-banner-title {
@@ -825,12 +1113,7 @@
       margin: 0 0 4px;
       font-size: clamp(1.25rem, 2.5vw, 1.55rem);
       font-weight: 700;
-      color: #15803D;
-    }
-
-    .pantry-name-green {
-      color: #15803D;
-      font-weight: 800;
+      color: var(--pp-ink);
     }
 
     .schematic-dims-line {
@@ -904,244 +1187,6 @@
       .pp-3d-blueprint-wrap iframe {
         height: 540px;
       }
-    }
-
-    /* Interactive 3D Build 1 Solar Lighting Explorer */
-    .upgrade-3d-shell {
-      border: 3px solid var(--pp-ink);
-      border-radius: 16px;
-      overflow: hidden;
-      background: #0F172A;
-      box-shadow: 4px 4px 0 var(--pp-ink);
-      margin-bottom: 18px;
-    }
-
-    .upgrade-3d-toolbar {
-      background: #1E293B;
-      border-bottom: 2px solid #334155;
-      padding: 12px 14px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .upgrade-3d-option-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .u3d-opt-btn {
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 2px solid #475569;
-      background: #0F172A;
-      color: #E2E8F0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.14s ease;
-    }
-
-    .u3d-opt-btn:hover {
-      border-color: #FFE033;
-      color: #FFE033;
-    }
-
-    .u3d-opt-btn.is-active {
-      background: #FFE033;
-      color: #0B1F2E;
-      border-color: #0B1F2E;
-      box-shadow: 2px 2px 0 #0B1F2E;
-    }
-
-    .upgrade-3d-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .u3d-ctrl-btn {
-      padding: 6px 11px;
-      border-radius: 8px;
-      border: 2px solid #475569;
-      background: #334155;
-      color: #F8FAFC;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.14s ease;
-    }
-
-    .u3d-ctrl-btn:hover {
-      background: #475569;
-    }
-
-    .u3d-ctrl-btn.is-on {
-      background: #0284C7;
-      border-color: #38BDF8;
-      color: #FFFFFF;
-    }
-
-    .upgrade-3d-stage-wrap {
-      position: relative;
-      width: 100%;
-      height: 460px;
-      background: radial-gradient(circle at 50% 35%, #1E293B 0%, #090D16 100%);
-      cursor: grab;
-      user-select: none;
-      touch-action: none;
-    }
-
-    .upgrade-3d-stage-wrap:active {
-      cursor: grabbing;
-    }
-
-    .upgrade-3d-stage-wrap canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .upgrade-3d-hud {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      right: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 2px solid #38BDF8;
-      border-radius: 12px;
-      padding: 11px 14px;
-      color: #F8FAFC;
-      pointer-events: none;
-      backdrop-filter: blur(4px);
-    }
-
-    .upgrade-3d-hud-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #FFE033;
-      margin: 0 0 3px;
-    }
-
-    .upgrade-3d-hud-desc {
-      font-size: 0.81rem;
-      font-weight: 600;
-      color: #E2E8F0;
-      margin: 0;
-      line-height: 1.45;
-    }
-
-    .upgrade-3d-hint-pill {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1.5px solid #475569;
-      border-radius: 999px;
-      padding: 4px 11px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #CBD5E1;
-      pointer-events: none;
-    }
-
-    @media (max-width: 680px) {
-      .upgrade-3d-stage-wrap {
-        height: 410px;
-      }
-    }
-
-    /* Lighting Guide Selector Tabs */
-    .lighting-guide-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 16px 0 12px;
-    }
-
-    .lg-tab-btn {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 2.5px solid var(--pp-ink);
-      background: var(--pp-cream);
-      color: var(--pp-ink);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 3px 3px 0 var(--pp-ink);
-      transition: transform 0.12s ease, background-color 0.12s ease;
-    }
-
-    .lg-tab-btn:hover {
-      transform: translate(-1px, -1px);
-      background: #FEF9C3;
-    }
-
-    .lg-tab-btn.is-active {
-      background: var(--pp-yellow);
-    }
-
-    .lg-panel {
-      display: none;
-      background: var(--pp-cream);
-      border: 2.5px solid var(--pp-ink);
-      border-radius: 14px;
-      padding: 18px 20px;
-      box-shadow: 4px 4px 0 var(--pp-ink);
-    }
-
-    .lg-panel.is-active {
-      display: block;
-    }
-
-    .lg-panel h4 {
-      margin: 0 0 8px;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #15803D;
-    }
-
-    .lg-panel-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .lg-sub-box {
-      background: #FFFFFF;
-      border: 2px solid var(--pp-ink);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
-
-    .lg-sub-box h5 {
-      margin: 0 0 6px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: var(--pp-ink);
-    }
-
-    .lg-sub-box ul,
-    .lg-sub-box ol {
-      margin: 0;
-      padding-left: 19px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: #1E293B;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
     }
 
     .schematic-summary {
@@ -1679,6 +1724,22 @@
     }
 
     /* Multi-Material Upcycled & Solar Cards Grid */
+    .upcycled-expansion-header {
+      margin: 22px 0 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .upcycled-expansion-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--pp-ink);
+    }
+
     .upcycled-ideas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -1686,10 +1747,10 @@
     }
 
     .upcycle-mini-card {
-      background: var(--pp-cream);
-      border: 2.5px solid var(--pp-ink);
+      background: var(--pp-white);
+      border: 3px solid var(--pp-ink);
       box-shadow: 4px 4px 0 var(--pp-ink);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 18px;
       display: flex;
       flex-direction: column;
@@ -1720,40 +1781,219 @@
       color: var(--pp-ink);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
-    /* Weatherproofing & Interactive Checklist */
-    .weather-rules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+    /* Solar Lighting Intro Section Below Yellow Banner */
+    .solar-lighting-intro-box {
+      background: linear-gradient(135deg, #FEF9C3 0%, #FDE047 100%);
+      border: 3px solid var(--pp-ink);
+      box-shadow: 4px 4px 0 var(--pp-ink);
+      border-radius: 16px;
+      padding: 20px 22px;
       margin-bottom: 18px;
     }
 
-    .weather-rule-card {
+    .solar-lighting-intro-box h3 {
+      margin: 0 0 8px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--pp-ink);
+    }
+
+    .solar-lighting-intro-box p {
+      margin: 0 0 12px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--pp-ink);
+    }
+
+    .solar-lighting-intro-box p {
+      margin: 0 0 12px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--pp-muted);
+    }
+
+    .solar-reasons-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--pp-ink);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .solar-reasons-list li strong {
+      font-weight: 800;
+    }
+
+    /* Stacked Solar Lighting Option Blocks (Image First, Full Text Below) */
+    .solar-options-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .solar-option-block {
       background: var(--pp-white);
       border: 3px solid var(--pp-ink);
       box-shadow: 4px 4px 0 var(--pp-ink);
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .weather-rule-card h4 {
-      margin: 0 0 6px;
+    .solar-option-media {
+      width: 100%;
+    }
+
+    .solar-option-media:empty {
+      display: none;
+    }
+
+    .solar-option-media .anchoring-figure {
+      margin: 0;
+    }
+
+    .solar-option-copy h4 {
+      margin: 4px 0 8px;
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--pp-ink);
     }
 
-    .weather-rule-card p {
-      margin: 0;
+    .solar-option-copy p {
+      margin: 0 0 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--pp-muted);
+    }
+
+    .solar-option-steps {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--pp-ink);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .solar-option-steps li strong {
+      font-weight: 800;
+    }
+
+    .solar-option-note {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: var(--pp-cream);
+      border: 2px solid var(--pp-ink);
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--pp-ink);
+      line-height: 1.5;
+    }
+
+    /* Recommended Affiliate Gear Cards & Links */
+    .affiliate-gear-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .affiliate-gear-card {
+      background: var(--pp-white);
+      border: 3px solid var(--pp-ink);
+      box-shadow: 4px 4px 0 var(--pp-ink);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .affiliate-gear-card h4 {
+      margin: 4px 0 6px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--pp-ink);
+    }
+
+    .affiliate-gear-card p {
+      margin: 0 0 10px;
       font-size: 0.84rem;
       font-weight: 600;
       color: var(--pp-muted);
     }
 
+    .affiliate-link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .affiliate-link-item a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--pp-cream);
+      border: 2px solid var(--pp-ink);
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--pp-ink);
+      text-decoration: none;
+      transition: background-color 0.14s ease, transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .affiliate-link-item a:hover {
+      background: var(--pp-yellow);
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--pp-ink);
+    }
+
+    .affiliate-link-item a span.amz-badge {
+      flex-shrink: 0;
+      background: #0B1F2E;
+      color: #FFE033;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
+    .affiliate-disclosure-note {
+      background: #E0F2FE;
+      border: 2.5px solid var(--pp-ink);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--pp-ink);
+      line-height: 1.48;
+    }
+
+    /* Interactive Pre-Launch Steward Build, Weatherproofing & Safety Checklist */
     .checklist-card {
       background: var(--pp-cream);
       border: 3px solid var(--pp-ink);
@@ -1764,7 +2004,7 @@
 
     .checklist-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 12px;
       margin-top: 14px;
     }
@@ -2169,6 +2409,11 @@
         </div>
       </section>
 
+      <!-- Single Page-Wide Affiliate Disclosure + Conversational Welcome Note -->
+      <div class="affiliate-disclosure-note" role="note" style="margin-bottom: 20px;">
+        <strong>Affiliate Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. You will find links throughout this guide to helpful hardware, weatherproofing supplies, solar lighting, and communication add-ons, along with plenty of creative, beyond-the-box ideas to inspire how you build, upcycle, and customize a pantry that truly fits your neighborhood.
+      </div>
+
       <!-- ===================================================================
            JUMP TO: NAVIGATION BAR
            =================================================================== -->
@@ -2177,8 +2422,8 @@
         <button type="button" class="builds-tab-btn" data-jump-target="section-anchoring-options">Anchoring</button>
         <button type="button" class="builds-tab-btn" data-jump-target="section-scratch-builds">Scratch Builds</button>
         <button type="button" class="builds-tab-btn" data-jump-target="section-upcycled-pantries">Upcycled Pantries</button>
-        <button type="button" class="builds-tab-btn" data-jump-target="section-pantry-upgrades">Pantry Upgrades</button>
-        <button type="button" class="builds-tab-btn" data-jump-target="section-weatherproofing-checklist">Weatherproofing Checklist</button>
+        <button type="button" class="builds-tab-btn" data-jump-target="section-pantry-upgrades">Pantry Upgrades?</button>
+        <button type="button" class="builds-tab-btn" data-jump-target="section-recommended-supplies">Supplies &amp; Checklist</button>
       </nav>
 
       <!-- ===================================================================
@@ -2315,8 +2560,132 @@
               <span style="display: block; font-size: clamp(1.18rem, 2.1vw, 1.5rem); color: #6D28D9; margin-top: 3px;">Permanent vs. Removable Anchoring</span>
             </h2>
             <p class="track-banner-sub" style="margin: 0; color: var(--pp-ink); line-height: 1.54;">
-              Before moving forward, figure out whether this pantry will be permanently fixed to the ground with cement, or if it needs a secure, temporary setup that can be cleanly removed later.
+              Before moving forward, figure out which direction the pantry door should face and whether this pantry will be permanently fixed to the ground with cement, or if it needs a secure, temporary setup that can be cleanly removed later.
             </p>
+          </div>
+        </div>
+
+        <!-- Choosing Which Way the Door Faces (Orientation Guide) -->
+        <div style="background: var(--pp-white); border: 3px solid #0B1F2E; border-top: 6px solid #7C3AED; box-shadow: 4px 4px 0 #0B1F2E; border-radius: 16px; padding: 20px 22px; margin-bottom: 18px; overflow: hidden;">
+          <div class="orientation-header-row">
+            <div class="orientation-header-copy">
+              <span class="mini-card-eyebrow" style="color: #6D28D9; border-bottom-color: rgba(109, 40, 217, 0.45);">Door Orientation &amp; Microclimate</span>
+              <h3 style="margin: 4px 0 8px; font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--pp-ink);">When You Have a Choice, Which Way Should the Door Face?</h3>
+              <p style="margin: 0; font-size: 0.92rem; font-weight: 600; line-height: 1.56; color: var(--pp-muted);">
+                If your site gives you room to rotate the pantry, taking five minutes to think through wind, sun, and snow will protect both the food inside and the hardware on your door.
+              </p>
+            </div>
+
+            <!-- Interactive Cat Inside Compass Using Paws as Direction Pointers -->
+            <div class="compass-cat-wrap" id="compassCatEasterEgg" role="button" tabindex="0" aria-label="Pantry Peeps cat inside a N E S W compass pointing directions with its paws. Click to watch the cat spin off the page to the right.">
+              <svg viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Compass Brass/Gold Ring -->
+                <circle cx="95" cy="95" r="84" fill="#FFE033" stroke="#0B1F2E" stroke-width="3.5"></circle>
+                <circle cx="95" cy="95" r="71" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2.8"></circle>
+
+                <!-- Cardinal Degree Tick Marks -->
+                <g stroke="#0B1F2E" stroke-width="2" stroke-linecap="round">
+                  <line x1="95" y1="13" x2="95" y2="21"></line>
+                  <line x1="95" y1="169" x2="95" y2="177"></line>
+                  <line x1="13" y1="95" x2="21" y2="95"></line>
+                  <line x1="169" y1="95" x2="177" y2="95"></line>
+                  <line x1="37" y1="37" x2="43" y2="43"></line>
+                  <line x1="147" y1="147" x2="153" y2="153"></line>
+                  <line x1="153" y1="37" x2="147" y2="43"></line>
+                  <line x1="43" y1="147" x2="37" y2="153"></line>
+                </g>
+
+                <!-- Compass Rose Background Points -->
+                <polygon points="95,28 102,88 95,95 88,88" fill="#EF4444" stroke="#0B1F2E" stroke-width="1.6" stroke-linejoin="round"></polygon>
+                <polygon points="95,162 102,102 95,95 88,102" fill="#00B4E6" stroke="#0B1F2E" stroke-width="1.6" stroke-linejoin="round"></polygon>
+                <polygon points="28,95 88,88 95,95 88,102" fill="#CBD5E1" stroke="#0B1F2E" stroke-width="1.6" stroke-linejoin="round"></polygon>
+                <polygon points="162,95 102,88 95,95 102,102" fill="#CBD5E1" stroke="#0B1F2E" stroke-width="1.6" stroke-linejoin="round"></polygon>
+
+                <!-- Cardinal Direction Letters (N, E, S, W) -->
+                <g font-family="Fredoka, Plus Jakarta Sans, sans-serif" font-weight="700" font-size="14" text-anchor="middle">
+                  <circle cx="95" cy="24" r="11" fill="#EF4444" stroke="#0B1F2E" stroke-width="2"></circle>
+                  <text x="95" y="29" fill="#FFFFFF">N</text>
+
+                  <circle cx="166" cy="95" r="11" fill="#7C3AED" stroke="#0B1F2E" stroke-width="2"></circle>
+                  <text x="166" y="100" fill="#FFFFFF">E</text>
+
+                  <circle cx="95" cy="166" r="11" fill="#00B4E6" stroke="#0B1F2E" stroke-width="2"></circle>
+                  <text x="95" y="171" fill="#0B1F2E">S</text>
+
+                  <circle cx="24" cy="95" r="11" fill="#7C3AED" stroke="#0B1F2E" stroke-width="2"></circle>
+                  <text x="24" y="100" fill="#FFFFFF">W</text>
+                </g>
+
+                <!-- CAT INSIDE COMPASS USING PAWS AS DIRECTION NEEDLES (SPINS OFF RIGHT ON CLICK) -->
+                <g class="compass-cat-spinner">
+                  <!-- Cat Body -->
+                  <ellipse cx="95" cy="112" rx="22" ry="23" fill="#F97316" stroke="#0B1F2E" stroke-width="2.8"></ellipse>
+                  <ellipse cx="95" cy="114" rx="12" ry="15" fill="#FFFDF7"></ellipse>
+
+                  <!-- Left Paw Pointing West/Northwest -->
+                  <path d="M77 104 Q56 96 42 86" stroke="#0B1F2E" stroke-width="8" stroke-linecap="round"></path>
+                  <path d="M77 104 Q56 96 42 86" stroke="#F97316" stroke-width="4.4" stroke-linecap="round"></path>
+                  <polygon points="34,80 46,81 41,91" fill="#EF4444" stroke="#0B1F2E" stroke-width="1.8" stroke-linejoin="round"></polygon>
+                  <circle cx="43" cy="86" r="5.5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2.2"></circle>
+
+                  <!-- Right Paw Pointing East/Northeast -->
+                  <path d="M113 104 Q134 90 148 76" stroke="#0B1F2E" stroke-width="8" stroke-linecap="round"></path>
+                  <path d="M113 104 Q134 90 148 76" stroke="#F97316" stroke-width="4.4" stroke-linecap="round"></path>
+                  <polygon points="155,69 143,72 150,81" fill="#22C55E" stroke="#0B1F2E" stroke-width="1.8" stroke-linejoin="round"></polygon>
+                  <circle cx="147" cy="76" r="5.5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2.2"></circle>
+
+                  <!-- Bottom Paws Pointing South -->
+                  <ellipse cx="86" cy="134" rx="7" ry="5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2.2"></ellipse>
+                  <ellipse cx="104" cy="134" rx="7" ry="5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2.2"></ellipse>
+
+                  <!-- Cat Ears & Head -->
+                  <polygon points="73,68 75,47 89,61" fill="#F97316" stroke="#0B1F2E" stroke-width="2.8" stroke-linejoin="round"></polygon>
+                  <polygon points="101,61 115,47 117,68" fill="#F97316" stroke="#0B1F2E" stroke-width="2.8" stroke-linejoin="round"></polygon>
+                  <ellipse cx="95" cy="77" rx="23" ry="18" fill="#F97316" stroke="#0B1F2E" stroke-width="2.8"></ellipse>
+
+                  <!-- Whiskers & Face -->
+                  <path d="M64 78 L73 79 M64 83 L73 82 M117 79 L126 78 M117 82 L126 83" stroke="#0B1F2E" stroke-width="1.8" stroke-linecap="round"></path>
+                  <ellipse cx="91.2" cy="82" rx="5.2" ry="3.6" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="1.2"></ellipse>
+                  <ellipse cx="98.8" cy="82" rx="5.2" ry="3.6" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="1.2"></ellipse>
+                  <ellipse cx="87.5" cy="74.5" rx="3.8" ry="4.4" fill="#0B1F2E"></ellipse>
+                  <ellipse cx="102.5" cy="74.5" rx="3.8" ry="4.4" fill="#0B1F2E"></ellipse>
+                  <circle cx="86.3" cy="73" r="1.3" fill="#FFFFFF"></circle>
+                  <circle cx="101.3" cy="73" r="1.3" fill="#FFFFFF"></circle>
+                  <polygon points="95,79 92,81.8 98,81.8" fill="#FB7185" stroke="#0B1F2E" stroke-width="1.1" stroke-linejoin="round"></polygon>
+                  <path d="M95 81.8 V83.8 M95 83.8 Q91.8 87 89.2 85.2 M95 83.8 Q98.2 87 100.8 85.2" stroke="#0B1F2E" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="before-build-grid">
+            <div style="background: var(--pp-cream); border: 2px solid #0B1F2E; border-radius: 12px; padding: 14px 16px;">
+              <h4 style="margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--pp-ink);">1. Prevailing Winds &amp; Driven Rain</h4>
+              <p style="margin: 0; font-size: 0.88rem; font-weight: 600; line-height: 1.52; color: var(--pp-muted);">
+                Notice which direction storms and steady breezes usually blow across the property, and turn the solid back wall into the wind whenever you can. Facing the door away from prevailing winds keeps rain from blowing straight onto the shelves when someone opens the box, and prevents sudden gusts from catching an open door and snapping the hinges.
+              </p>
+            </div>
+
+            <div style="background: var(--pp-cream); border: 2px solid #0B1F2E; border-radius: 12px; padding: 14px 16px;">
+              <h4 style="margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--pp-ink);">2. Sun Path, Summer Heat &amp; Solar Charging</h4>
+              <p style="margin: 0; font-size: 0.88rem; font-weight: 600; line-height: 1.52; color: var(--pp-muted);">
+                Watch where the sun rises and sets over the spot. Direct afternoon sun beating straight through a clear front window turns the inside of a pantry into a greenhouse, which can melt or spoil food in summer. Facing the door north or east keeps the interior cooler while still letting a roof or back solar panel soak up south and west sunlight all afternoon.
+              </p>
+            </div>
+
+            <div style="background: var(--pp-cream); border: 2px solid #0B1F2E; border-radius: 12px; padding: 14px 16px;">
+              <h4 style="margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--pp-ink);">3. Winter Snow Drifting &amp; Plow Spray</h4>
+              <p style="margin: 0; font-size: 0.88rem; font-weight: 600; line-height: 1.52; color: var(--pp-muted);">
+                Think about how snow piles up around fences, hedges, and curbs in winter. Wind sweeps snow around the corners of a cabinet and drops deep drifts on the sheltered downwind side, while roadside pantries can get buried by passing snowplows. Give yourself space to shovel a clean path and make sure a heavy drift will not freeze the bottom of the door shut.
+              </p>
+            </div>
+
+            <div style="background: var(--pp-cream); border: 2px solid #0B1F2E; border-radius: 12px; padding: 14px 16px;">
+              <h4 style="margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--pp-ink);">4. Safe Footing &amp; Street Visibility</h4>
+              <p style="margin: 0; font-size: 0.88rem; font-weight: 600; line-height: 1.52; color: var(--pp-muted);">
+                Balance weather protection with safe, welcoming access. Neighbors should be able to stand comfortably on a flat walkway or lawn while browsing, never with their back pressed up against live traffic. Turning the door slightly toward the sidewalk or driveway gives visitors safe footing while keeping the pantry easy to spot from the street.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -2341,7 +2710,7 @@
               <strong>Best For:</strong> Your own yard, a church, or a city-approved permanent spot where the pantry will stay put for many years.
             </p>
             <p>
-              <strong>How It Works:</strong> Dig a post hole 36" to 42" deep (below your local frost line so winter freeze-thaw cycles do not push the post upward), pour a 4" to 6" crushed gravel drainage base at the bottom, and set a pressure-treated 4×4 post in concrete brought cleanly up to the grass layer (or bolt a galvanized post base onto a poured concrete footing). Crown the top of the concrete slightly above grade so rainwater sheds away from the post.
+              <strong>How It Works:</strong> Dig a post hole 36" to 42" deep (below your local frost line so winter freeze-thaw cycles do not push the post upward), pour a 4" to 6" crushed gravel drainage base at the bottom, and set a pressure-treated 4×4 post in concrete, or bolt a galvanized post base onto a poured concrete footing. Crown the top of the concrete slightly above grade so rainwater sheds away from the post.
             </p>
 
             <figure class="anchoring-figure">
@@ -2398,7 +2767,7 @@
               <strong>Best For:</strong> Storefronts, community centers, garages, or sheds where digging or driving stakes into pavement or soil is not possible.
             </p>
             <p>
-              <strong>How It Works:</strong> Fasten heavy-duty galvanized steel angle brackets and a structural top/bottom ledger cleat directly into solid exterior masonry (using Tapcon masonry anchors) or structural wall studs (using exterior structural lag screws). Seal all fastener penetrations with exterior-grade polyurethane caulk and verify building owner authorization beforehand.
+              <strong>How It Works:</strong> Fasten heavy-duty galvanized steel angle brackets and a structural top/bottom ledger cleat directly into solid exterior masonry (using sleeve or wedge anchors) or structural wall studs (using exterior structural lag screws). Seal all fastener penetrations with exterior-grade polyurethane caulk and verify building owner authorization beforehand.
             </p>
             <figure class="anchoring-figure">
               <img src="https://pantrypeeps.org/assets/builds/anchoring-wall-mounted.jpg" alt="Wooden Little Free Pantry mounted to an exterior brick wall with heavy-duty steel brackets">
@@ -2446,8 +2815,8 @@
           <article class="schematic-card" id="plan-card-classic" data-plan-title="01. The Classic Curbside Post Pantry">
             <div class="schematic-header">
               <div class="schematic-title-group">
-                <h3 class="pantry-name-green">01. The Classic Curbside Post Pantry</h3>
-                <div class="schematic-dims-line">30" Total Height × 22" Wide × 14" Deep • Single-Slope Shed Roof (Slopes Front-to-Back) • 6.5" Top Shelf &amp; 7.5" Bottom Shelf</div>
+                <h3>01. The Classic Curbside Post Pantry</h3>
+                <div class="schematic-dims-line">30" Total Height × 22" Wide × 14" Deep • Single-Slope Shed Roof (Slopes Front-to-Back)</div>
               </div>
               <div class="schematic-meta-row">
                 <span class="spec-meta-kicker">Includes:</span>
@@ -2474,7 +2843,7 @@
             </div>
 
             <p class="schematic-summary">
-              Our most popular single-cavity wall/post pantry (30" tall × 22" wide × 14" deep). The single-slope shed roof is tallest at the front (30") so rainwater and snowmelt run cleanly off the back away from visitors opening the door. Built from 3/4" exterior plywood with 1/2" exterior closed-cell foam board insulation, peel-and-stick outdoor laminate shelves (6.5" top shelf, 7.5" bottom shelf), a continuous stainless piano hinge, and rubber D-seal weatherstripping.
+              Our most popular single-post pantry. The single-slope shed roof is tallest at the front (30") so rainwater and snowmelt run cleanly off the back away from visitors opening the door. Every outer wall includes 1/2" exterior-rated rigid closed-cell foam board insulation.
             </p>
 
             <div class="schematic-actions-row">
@@ -2522,7 +2891,7 @@
                       <td>Bottom Floor &amp; Middle Shelf</td>
                       <td>3/4" Exterior Plywood</td>
                       <td>2</td>
-                      <td>20.5" wide &times; 12.5" deep (90&deg; square cuts; bottom floor flush at 0", middle shelf installed 7.5" up from inside floor for 7.5" bottom cavity and 6.5"+ upper shelf).</td>
+                      <td>20.5" wide &times; 12.5" deep (90&deg; square cuts; bottom floor flush at 0", middle shelf installed 8.5" up from inside floor).</td>
                     </tr>
                     <tr>
                       <td><strong>Part D</strong></td>
@@ -2575,8 +2944,8 @@
                     </tr>
                     <tr>
                       <td><strong>Part K</strong></td>
-                      <td>Outdoor Laminate / Vinyl Flooring (Both Levels)</td>
-                      <td>Peel &amp; Stick Waterproof Outdoor Laminate / Vinyl Tile</td>
+                      <td>Outdoor Vinyl Flooring (Both Levels)</td>
+                      <td>Peel &amp; Stick Waterproof Luxury Vinyl Tile</td>
                       <td>2</td>
                       <td>19.5" wide &times; 11.75" deep (applied flat and flush atop both the bottom floor and middle shelf).</td>
                     </tr>
@@ -2610,10 +2979,10 @@
                     </tr>
                     <tr>
                       <td><strong>Part P</strong></td>
-                      <td>Galvanized Roof Drip Edge &amp; Rubber D-Seal</td>
-                      <td>26-Gauge Galvanized Drip Edge + EPDM Rubber D-Seal</td>
-                      <td>1 set</td>
-                      <td>(2) 26.25" front &amp; back drip edges + (2) 19.25" sloped side rake drip edges + adhesive EPDM rubber D-seal weatherstrip around door frame.</td>
+                      <td>Galvanized Roof Drip Edge Flashing</td>
+                      <td>26-Gauge Galvanized Steel L-Profile Drip Edge</td>
+                      <td>4 strips</td>
+                      <td>(2) 26.25" front &amp; back drip edges + (2) 19.25" sloped side rake drip edges around entire roof perimeter.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2623,11 +2992,11 @@
                 <h4>🔨 BEGINNER STEP-BY-STEP ASSEMBLY DIRECTIONS</h4>
                 <ol>
                   <li><strong>Cut &amp; Assemble the Main Cabinet Box (Parts A, B &amp; C):</strong> Stand both tapered Side Walls (Part A: 24" tall at front tapering to 21" at back at a 12.1&deg; slope) upright with the tall 24" ends facing you. Glue and screw the Back Wall (Part B: 20.5" &times; 21") between the sides using 2" exterior screws, then fasten the Bottom Floor (Part C: 20.5" &times; 12.5") flush at the bottom.</li>
-                  <li><strong>Square the Box &amp; Install the Middle Shelf (Part C):</strong> Verify corner-to-corner diagonals match, measure 7.5" up from the inside floor on both side walls (leaving a 7.5" lower shelf and 6.5"+ upper shelf), draw a level line, and fasten the second Part C middle shelf flat and flush from the outside walls.</li>
-                  <li><strong>Install Tapered 1/2" Foam Board, Peel-and-Stick Laminate &amp; Silicone Seal (Parts I, K &amp; L):</strong> Cut and silicone-bond the 1/2" exterior closed-cell foam panels (Part I, zero fiberglass or paper) inside the back wall, sloped ceiling, and both side walls (trimming the side foam panels at the matching 12.1&deg; roof angle from 22.4" front to 19.8" back). Lay peel-and-stick outdoor laminate/vinyl (Part K: 19.5" &times; 11.75") flat across both the bottom floor and middle shelf, and run a continuous bead of 100% outdoor waterproof silicone (Part L) along every edge on both levels plus both back vertical corners.</li>
+                  <li><strong>Square the Box &amp; Install the Middle Shelf (Part C):</strong> Verify corner-to-corner diagonals match, measure 8.5" up from the inside floor on both side walls, draw a level line, and fasten the second Part C middle shelf flat and flush from the outside walls.</li>
+                  <li><strong>Install Tapered 1/2" Foam Board, Vinyl Flooring &amp; Silicone Seal (Parts I, K &amp; L):</strong> Cut and silicone-bond the 1/2" exterior closed-cell foam panels (Part I, zero fiberglass or paper) inside the back wall, sloped ceiling, and both side walls (trimming the side foam panels at the matching 12.1&deg; roof angle from 22.4" front to 19.8" back). Lay peel-and-stick outdoor vinyl flooring (Part K: 19.5" &times; 11.75") flat across both the bottom floor and middle shelf, and run a continuous bead of 100% outdoor waterproof silicone (Part L) along every edge on both levels plus both back vertical corners.</li>
                   <li><strong>Attach the Sloped Shed Roof, Fascia Lip &amp; Drip Edge (Parts D, E &amp; P):</strong> Center the 26" &times; 19" Sloped Roof Panel (Part D) so it overhangs 3" in front, 2" on each side, and 1.5" in back, and fasten with 2" exterior screws. Nail the 1&times;2 Front Fascia Lip (Part E) flush across the front edge, install Galvanized Roof Drip Edge Flashing (Part P) around all four roof edges, and shingle.</li>
                   <li><strong>Assemble &amp; Glaze the Front Door (Parts F, G &amp; H):</strong> Join the two 20.25" rails (Part F) and two 17.25" stiles (Part G) into a 20.25" &times; 22.25" frame, flip face-down, and bed the 1/4" Clear Polycarbonate Window Pane (Part H: 16.25" &times; 18.25") inside with clear exterior silicone.</li>
-                  <li><strong>Hang the Door with Piano Hinge, Rubber D-Seal &amp; 20 lb Catch (Parts N, O &amp; P):</strong> Stick adhesive EPDM rubber D-seal weatherstripping around the front cabinet edge, mount the 20" Stainless Piano Hinge (Part N) along the left stile, and install the exterior D-Pull Handle and 20 lb Magnetic Catch (Part O) on the right side.</li>
+                  <li><strong>Hang the Door with Piano Hinge, Handle &amp; 20 lb Catch (Parts N &amp; O):</strong> Stick adhesive EPDM rubber weatherstrip around the front cabinet edge, mount the 20" Stainless Piano Hinge (Part N) along the left stile, and install the exterior D-Pull Handle and 20 lb Magnetic Catch (Part O) on the right side.</li>
                   <li><strong>Mount Cabinet 34" Above Grade on 4&times;4 Post &amp; Sleeve Bracket (Parts J &amp; M):</strong> Prime and paint all wood surfaces. Call 811 at least 3 business days before digging. Dig a 36"-deep hole below the frost line, set the 4&times;4 PT Post (Part J) plumb in concrete with the top 34" above ground, slide the inverted Black 4&times;4 Square Sleeve Flange Bracket (Part M) over the top of the post with 3/8" hex bolts, and lag-bolt the wide mounting flanges directly into the underside of the cabinet floor.</li>
                 </ol>
               </div>
@@ -2638,7 +3007,7 @@
           <article class="schematic-card" id="plan-card-double" data-plan-title="02. The Double-Decker Community Pantry">
             <div class="schematic-header">
               <div class="schematic-title-group">
-                <h3 class="pantry-name-green">02. The Double-Decker Community Pantry</h3>
+                <h3>02. The Double-Decker Community Pantry</h3>
                 <div class="schematic-dims-line">46" Total Height × 32" Wide × 16" Deep • Pitched Gable Roof (4:12 Peak) &amp; Twin 4×4 Posts</div>
               </div>
               <div class="schematic-meta-row">
@@ -2851,7 +3220,7 @@
           <article class="schematic-card" id="plan-card-compact" data-plan-title="03. The Compact Wall-Mount Pantry">
             <div class="schematic-header">
               <div class="schematic-title-group">
-                <h3 class="pantry-name-green">03. The Compact Wall-Mount Pantry</h3>
+                <h3>03. The Compact Wall-Mount Pantry</h3>
                 <div class="schematic-dims-line">26" Total Height × 16" Wide × 12" Deep • Pitched Gable Roof (4:12 Peak) &amp; Steel Gusseted L-Brackets</div>
               </div>
               <div class="schematic-meta-row">
@@ -2960,7 +3329,7 @@
           <article class="schematic-card" id="plan-card-newspaper" data-plan-title="Old Metal Newspaper Box Upcycle">
             <div class="schematic-header">
               <div class="schematic-title-group">
-                <h3 class="pantry-name-green">1. Old Newspaper Box Upcycle (Metal)</h3>
+                <h3>1. Old Newspaper Box Upcycle (Metal)</h3>
                 <div class="schematic-dims-line">Retired Steel Newsracks &amp; Honor Boxes &bull; Ready-Made Weatherproof Shell + Only TLC Needed</div>
               </div>
               <div class="schematic-meta-row">
@@ -3151,10 +3520,10 @@
           </article>
 
           <!-- UPCYCLED 2: ADAPTING SOLID WOOD CABINETS -->
-          <article class="schematic-card" id="plan-card-hutch" data-plan-title="2. Adapting Solid Wood Cabinets">
+          <article class="schematic-card" id="plan-card-hutch" data-plan-title="Adapting Solid Wood Cabinets">
             <div class="schematic-header">
               <div class="schematic-title-group">
-                <h3 class="pantry-name-green">2. Adapting Solid Wood Cabinets</h3>
+                <h3>2. Adapting Solid Wood Cabinets</h3>
                 <div class="schematic-dims-line">Adapting Solid-Wood Cabinets for Safe, Weatherproof, Year-Round Outdoor Use</div>
               </div>
               <div class="schematic-meta-row">
@@ -3172,16 +3541,15 @@
             </div>
 
             <div class="before-build-grid">
-              <!-- Card 1: Structural Reinforcement & Framing -->
+              <!-- Card 1: Structural Reinforcement & Wall Re-Securing -->
               <div class="spec-box">
-                <h4>🔩 1. Structural Reinforcement &amp; Framing</h4>
+                <h4>🔩 1. Structural Reinforcement &amp; Wall Re-Securing</h4>
                 <ul>
                   <li>
                     <strong>Start With Solid Wood Only:</strong> Choose solid oak, pine, maple, or birch furniture. Avoid pressboard or particleboard sides and shelves that delaminate when exposed to outdoor humidity.
                   </li>
                   <li>
-                    <strong>Resecuring Loose Walls &amp; Joints:</strong><br>
-                    Inspect every corner joint, shelf cleat, and face frame. Re-glue loose joints with waterproof Type III wood glue (such as Titebond III) and reinforce wobbly walls or corners from the inside or back using coated exterior deck screws (pre-drilling pilot holes so older wood won’t split).
+                    <strong>Re-Secure Loose Walls &amp; Joints:</strong> Inspect every corner joint, shelf cleat, and face frame. Re-glue loose joints with waterproof Type III wood glue (such as Titebond III) and reinforce wobbly walls or corners from the inside or back using coated exterior deck screws (pre-drilling pilot holes so older wood won’t split).
                   </li>
                   <li>
                     <strong>Replace Flimsy Cardboard Backs:</strong> Pry off thin stapled cardboard or fiberboard backing and screw on a solid 3/8" or 1/2" exterior-grade plywood back panel every 6" to square up and stiffen the entire cabinet.
@@ -3189,9 +3557,9 @@
                 </ul>
               </div>
 
-              <!-- Card 2: Glass, Hinge & Latch Safety Upgrades -->
+              <!-- Card 2: Safety Upgrades: Glass, Hinges & Heavy-Use Latches -->
               <div class="spec-box">
-                <h4>🛡️ 2. Glass, Hinge &amp; Latch Safety Upgrades</h4>
+                <h4>🛡️ 2. Safety Upgrades: Glass, Hinges &amp; Heavy-Use Latches</h4>
                 <ul>
                   <li>
                     <strong>Remove Real Window Glass Immediately:</strong> Standard cabinet glass cracks in freeze-thaw swings or accidental door slams. Pop out the interior retaining strips, remove every pane of real glass, and replace them with 3/16" or 1/4" shatterproof clear polycarbonate (or cast acrylic) bedded in clear exterior silicone.
@@ -3205,9 +3573,9 @@
                 </ul>
               </div>
 
-              <!-- Card 3: Custom Sloped Roof, Insulation & Interior Sealing -->
+              <!-- Card 3: Custom-Fitting a Sloped Roof & Interior Insulation -->
               <div class="spec-box">
-                <h4>🏠 3. Custom Sloped Roof, Insulation &amp; Interior Sealing</h4>
+                <h4>🏠 3. Custom-Fitting a Sloped Roof &amp; ❄️ Interior Insulation</h4>
                 <ul>
                   <li>
                     <strong>Add a Sloped Roof Overhang (Any Size/Shape):</strong> Never leave a flat furniture top exposed to standing rain or snow. Build a simple sloped shed or pitched gable roof cap tailored to your cabinet’s exact top footprint, extending at least 2"–3" past all sides, finished with galvanized drip edge flashing and asphalt shingles or metal roofing.
@@ -3216,119 +3584,79 @@
                     <strong>Insulate With 1/2" Exterior Foam Board:</strong> Line the inside of the outer walls and ceiling with 1/2" exterior-rated rigid closed-cell foam board (zero fiberglass or paper facings) to buffer summer heat and winter cold swings.
                   </li>
                   <li>
-                    <strong>Seal Interior Seams &amp; Surfaces:</strong> Stick adhesive EPDM rubber weatherstripping around the door frames, apply peel-and-stick outdoor vinyl flooring across all shelves, and run a continuous bead of 100% outdoor-grade waterproof silicone along every interior joint where the floor, shelves, back, and side walls meet so moisture cannot seep into the wood seams.
+                    <strong>Seal Doors &amp; Shelves:</strong> Stick adhesive EPDM rubber weatherstripping around the door frames and cover wooden shelves with peel-and-stick outdoor luxury vinyl tile for easy wipe-downs.
+                  </li>
+                  <li>
+                    <strong>Seal All Interior Connection Points:</strong> Seal all connection points where the floor and side walls or any exterior connected walls meet with outdoor waterproof-grade silicone.
                   </li>
                 </ul>
               </div>
 
-              <!-- Card 4: Exterior Prep & Waterproofing Finishes -->
+              <!-- Card 4: Prepping & Waterproofing the Exterior -->
               <div class="spec-box tlc-box">
-                <h4>🎨 4. Exterior Prep &amp; Waterproofing Finishes</h4>
-                <ol>
+                <h4>🎨 4. Prepping &amp; Waterproofing the Exterior (Options to Consider)</h4>
+                <ul>
                   <li>
-                    <strong>Prep &amp; Caulk Every Exterior Seam:</strong> Scuff-sand existing glossy varnish or paint with 150–180 grit sandpaper, wipe clean, and seal every vertical corner seam, trim joint, and exposed end-grain edge (especially bottom edges) with paintable 100% exterior polyurethane or siliconized acrylic caulk.
+                    <strong>Step 1: Prep &amp; Caulk Every Seam:</strong> Scuff-sand existing glossy varnish or paint with 150–180 grit sandpaper, wipe clean, and seal every vertical corner seam, trim joint, and exposed end-grain edge (especially bottom edges) with paintable 100% exterior polyurethane or siliconized acrylic caulk.
                   </li>
                   <li>
-                    <strong>Choose Your Exterior Waterproofing Finish:</strong><br>
-                    <strong>Option A (Natural Wood With Marine Spar Urethane):</strong> To keep stained or natural wood visible, brush on 3 to 4 thin coats of UV-blocking <strong>Marine Spar Urethane</strong> (sanding lightly with 220-grit between coats), soaking bottom wood edges thoroughly, and refresh every 1–2 years.<br>
-                    <strong>Option B (Painted Finish With Primer + Exterior Enamel):</strong> For maximum weather shielding, apply 1–2 coats of high-build exterior bonding/oil primer followed by 2 coats of <strong>100% Acrylic Exterior House Paint</strong> or <strong>Exterior Porch &amp; Floor Enamel</strong> (satin or semi-gloss sheds water and wipes clean easily).
+                    <strong>Waterproofing Option A (Natural Wood with Marine Spar Urethane):</strong> To keep stained or natural wood visible, brush on 3 to 4 thin coats of UV-blocking <strong>Marine Spar Urethane</strong> (sanding lightly with 220-grit between coats), soaking bottom wood edges thoroughly. Plan to refresh with a maintenance coat every 1–2 years.
                   </li>
-                </ol>
+                  <li>
+                    <strong>Waterproofing Option B (Painted Finish with Primer + Exterior Enamel):</strong> For maximum weather shielding, apply 1–2 coats of high-build exterior bonding/oil primer followed by 2 coats of <strong>100% Acrylic Exterior House Paint</strong> or <strong>Exterior Porch &amp; Floor Enamel</strong> (satin or semi-gloss sheds water and wipes clean easily).
+                  </li>
+                  <li>
+                    <strong>Elevate Off Wet Ground:</strong> Never set wood directly on soil or grass. Mount the cabinet onto pressure-treated 4×4 skids or posts anchored against wind.
+                  </li>
+                </ul>
               </div>
-            </div>
-
-            <!-- Standalone Red Block: Elevate Off Wet Ground, Concrete, Blacktop, or Pavers -->
-            <div role="region" aria-label="Elevate Off Wet Ground, Concrete, Blacktop, or Pavers" style="margin-top: 16px; background: #FEF2F2; border: 2px solid #DC2626; box-shadow: 4px 4px 0 #0B1F2E; border-radius: 14px; padding: 16px 18px; color: #0B1F2E;">
-              <h4 style="margin: 0 0 8px; font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 700; color: #991B1B;">
-                🚨 Elevate Off Wet Ground, Concrete, Blacktop, or Pavers
-              </h4>
-              <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600; line-height: 1.55;">
-                Never set a wood cabinet directly on bare soil, grass, concrete, blacktop, or pavers without lifting it off the surface. Even hard surfaces hold standing water, splash-back rain, and snow buildup that wick upward into wood bases and cause swelling or rot.
-              </p>
-              <p style="margin: 0 0 6px; font-size: 0.9rem; font-weight: 800; color: #991B1B;">
-                Before placing a pantry at ground level, check two key site conditions:
-              </p>
-              <ul style="margin: 0 0 10px; padding-left: 20px; font-size: 0.88rem; font-weight: 600; line-height: 1.55; display: flex; flex-direction: column; gap: 6px;">
-                <li>
-                  <strong>Snow &amp; Door Clearance:</strong> Can the doors swing completely open after a snowfall without scraping or jamming against packed snow or ice?
-                </li>
-                <li>
-                  <strong>Drainage &amp; Pooling:</strong> Is the pantry seated in a low spot where rainwater or snowmelt will pool or puddle underneath?
-                </li>
-              </ul>
-              <p style="margin: 0; font-size: 0.9rem; font-weight: 600; line-height: 1.55;">
-                <strong>Best Practice:</strong> Truly elevate the pantry in a solid, secure way even when installing on concrete, blacktop, or pavers. Fasten pressure-treated 4×4 beams directly to the bottom frame of the pantry using structural exterior lag screws or heavy-duty corner brackets (never simply rest the cabinet loose on top of them), or bolt the base onto solid metal post risers to create a clean air gap, keep the wood out of puddles, and give the doors unobstructed swing clearance year-round.
-              </p>
             </div>
           </article>
 
-          <!-- UPCYCLED 3: PLASTIC, METAL & "OUTSIDE THE BOX" CONVERSIONS (MATCHING FULL-WIDTH FRAME) -->
-          <article class="schematic-card" id="plan-card-multimaterial" data-plan-title="3. Plastic, Metal &amp; Outside the Box Conversions">
-            <div class="schematic-header">
-              <div class="schematic-title-group">
-                <h3 class="pantry-name-green">3. Plastic, Metal &amp; "Outside the Box" Conversions</h3>
-                <div class="schematic-dims-line">Creative Upcycled Pantry Candidates • Framed, Ballasted &amp; Weather-Tightened for Year-Round Service</div>
-              </div>
-              <div class="schematic-meta-row">
-                <span class="spec-meta-kicker">Includes:</span>
-                <span class="spec-meta-item">Plastic &amp; Resin Lockers</span>
-                <span class="spec-meta-item">Metal Cabinets &amp; Milk Boxes</span>
-                <span class="spec-meta-item">Appliances &amp; Coolers</span>
-              </div>
-            </div>
+        </div>
 
-            <div style="background: #E0F2FE; border: 2.5px solid var(--pp-ink); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; font-size: 0.92rem; font-weight: 600; color: var(--pp-ink);">
-              <p style="margin: 0;">
-                Beyond wood cabinets and street newsracks, many everyday weather-resistant containers can be framed, anchored, and adapted into reliable neighborhood pantries. Just like solid-wood cabinet conversions, build lightweight plastic units, coolers, and appliances inside or onto a solid frame so wind, theft, and moisture never compromise your setup.
-              </p>
-            </div>
+        <!-- Multi-Material Conversion Cards (Plastic, Metal & Wood) -->
+        <div class="upcycled-expansion-header">
+          <h3>➕ More Multi-Material Conversions (Plastic, Metal &amp; Wood)</h3>
+          <span class="track-meta-line">Material-Specific Prep Notes</span>
+        </div>
 
-            <div class="upcycled-ideas-grid">
-              <div class="upcycle-mini-card">
-                <div>
-                  <span class="mini-card-eyebrow">Plastic Conversion</span>
-                  <h4 class="pantry-name-green">Heavy-Duty Plastic Resin Deck Boxes &amp; Storage Lockers</h4>
-                  <p>UV-stabilized resin patio storage cabinets and upright deck boxes never rot or rust and handle wet snow and rain easily.</p>
-                  <ul class="upcycle-mini-steps">
-                    <li><strong class="pantry-name-green">Heavy-Duty Resin Deck Box (Vertical or Horizontal):</strong> Pre-drill oversized pilot holes and use wide fender washers and stainless bolts so freezing temps don't stress-crack the plastic shell.</li>
-                    <li><strong class="pantry-name-green">Commercial Plastic Storage Shed:</strong> Use 100% neutral-cure exterior silicone or Lexel around cut window openings and roof seams (standard caulk peels off slick HDPE/resin).</li>
-                    <li><strong class="pantry-name-green">Weatherproof Outdoor Utility Locker:</strong> Add 1/2" exterior closed-cell foam board on outer walls plus 1/2" PVC or sealed wood shelf cleats so heavy cans won't bow plastic shelf tabs.</li>
-                  </ul>
-
-                  <div role="note" style="margin-top: 12px; padding: 11px 13px; background: #FEF2F2; border: 2px solid #DC2626; border-radius: 10px; font-size: 0.82rem; font-weight: 600; color: #0B1F2E; line-height: 1.5;">
-                    <strong style="display: block; color: #991B1B; font-weight: 800; margin-bottom: 4px;">⚠️ Important Warnings for Plastic &amp; Resin Pantries:</strong>
-                    <ul style="margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 5px;">
-                      <li><strong>Wind &amp; Extreme Weather Ballast:</strong> Hollow plastic cabinets are lightweight and will tip or blow over in high winds or storms unless weighted down inside the base with heavy contractor sandbags, patio pavers, or an anchored frame.</li>
-                      <li><strong>Theft Prevention:</strong> Because plastic units are light enough for one person to carry off, bolt the cabinet directly to a wall, post, or anchored timber frame so it cannot be easily stolen.</li>
-                      <li><strong>Rodent &amp; Pest Protection:</strong> Rodents can chew through plastic and resin walls much more easily than metal or solid wood if they smell food. Keep the interior swept clean, tidy, and free of crumbs or open packaging.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="upcycle-mini-card">
-                <div>
-                  <span class="mini-card-eyebrow orange">Metal Conversion</span>
-                  <h4 class="pantry-name-green">Vintage Steel Cabinets &amp; Porch Milk Boxes</h4>
-                  <p>Two-door metal office lockers, lateral filing cabinets, and galvanized or powder-coated steel porch milk boxes offer rodent-proof metal shells.</p>
-                  <ul class="upcycle-mini-steps">
-                    <li><strong class="pantry-name-green">Galvanized or Powder-Coated Steel Porch Milk Box:</strong> Ideal for small-batch pantries; verify the hinged lid or door opens smoothly with zero locks, sand any rusted edges, and mount securely to a post or wall bracket.</li>
-                    <li><strong class="pantry-name-green">Retired Steel Locker or School Cube:</strong> Sand scratched corners, coat bare steel with rust-inhibiting primer, spray with exterior DTM enamel, and add a sloped roof hood plus 1/4" corner floor weep holes.</li>
-                    <li><strong class="pantry-name-green">Heavy-Gauge Filing Cabinet (2- or 3-Drawer):</strong> Line outer metal walls with 1/2" exterior closed-cell foam board and use heavy-duty neodymium magnets to keep doors shut in wind.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="upcycle-mini-card">
+        <div class="upcycled-ideas-grid">
+          <div class="upcycle-mini-card">
             <div>
-              <span class="mini-card-eyebrow mint">"Outside the Box" Upcycles</span>
-              <h4 class="pantry-name-green">Appliances, Coolers &amp; More</h4>
-              <p>Give retired household appliances, insulated coolers, and even things like vintage milk boxes a second life as weather-tight neighborhood pantries.</p>
+              <span class="mini-card-eyebrow">Plastic Conversion</span>
+              <h4>Heavy-Duty Plastic Resin Deck Boxes &amp; Storage Lockers</h4>
+              <p>UV-stabilized resin patio storage cabinets and upright deck boxes never rot or rust and handle wet snow and rain easily.</p>
               <ul class="upcycle-mini-steps">
-                <li><strong class="pantry-name-green">Non-Functional Dishwasher:</strong> Strip the power cord, drain hose, and water line, keep the existing rollout racks in place as convenient slide-out food shelves, and verify the door latch opens freely without locking.</li>
-                <li><strong class="pantry-name-green">Igloo-Style Cooler Enclosed in Scrap Wood:</strong> Built-in thick foam insulation protects food from summer heat and winter freezes. Framing the cooler inside a raised scrap-wood stand on four legs (like a patio deck cooler box) shields the plastic shell from UV rays, sun, and freeze-thaw cracking 365 days a year while bringing the pantry up to a comfortable, accessible standing height so neighbors do not have to bend down. Keep the cooler's original lightweight hinged lid unobstructed and easy to lift open (using a slim wood lid trim or fixed overhead awning rather than attaching a heavy roof onto the lid).</li>
-                <li><strong class="pantry-name-green">Old Non-Working Fridge or Mini-Fridge:</strong> Have refrigerant safely evacuated by a certified technician, remove the power cord, and ensure doors use magnetic gaskets only with zero mechanical latches so nothing can ever trap a child.</li>
-                <li><strong class="pantry-name-green">Galvanized or Powder-Coated Steel Porch Milk Box:</strong> Ideal for small-batch pantries; verify the hinged lid or door opens smoothly with zero locks, sand any rusted edges, and mount securely to a post or wall bracket.</li>
+                <li><strong>Non-Cracking Mounting:</strong> Pre-drill oversized pilot holes and use wide fender washers + stainless bolts so freezing temps don't stress-crack the plastic shell.</li>
+                <li><strong>UV-Stable Sealing:</strong> Use 100% neutral-cure exterior silicone or Lexel around cut window openings and roof seams (standard caulk peels off slick HDPE/resin).</li>
+                <li><strong>Interior Reinforcement:</strong> Add 1/2" exterior closed-cell foam board on outer walls plus 1/2" PVC or sealed wood shelf cleats so heavy cans won't bow plastic shelf tabs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="upcycle-mini-card">
+            <div>
+              <span class="mini-card-eyebrow orange">Metal Conversion</span>
+              <h4>Vintage Steel Filing &amp; Office Supply Cabinets</h4>
+              <p>Two-door metal storage lockers and lateral cabinets offer rodent-proof steel walls and adjustable shelves for high-volume sites.</p>
+              <ul class="upcycle-mini-steps">
+                <li><strong>Rust Sealing:</strong> Sand scratched corners, coat bare steel with rust-inhibiting primer, and spray with exterior DTM enamel.</li>
+                <li><strong>Magnetic / Self-Tapping Mounts:</strong> Use heavy-duty neodymium bar magnets or stainless self-tapping sheet-metal screws to mount door catches and shelf brackets.</li>
+                <li><strong>Sloped Roof Hood &amp; Drainage:</strong> Add a pitched metal or shingled roof cap, line outer walls with 1/2" exterior closed-cell foam board, and drill 1/4" corner floor weep holes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="upcycle-mini-card">
+            <div>
+              <span class="mini-card-eyebrow mint">Wood Conversion</span>
+              <h4>Repurposed Solid-Wood Kitchen Wall Cabinets</h4>
+              <p>Upper 30" or 36" solid-wood kitchen cabinets from salvage stores make instant double-door pantries once capped with a sloped roof.</p>
+              <ul class="upcycle-mini-steps">
+                <li><strong>Exterior Sealing:</strong> Seal all exposed end grain, screw holes, and butt joints with exterior caulk and 3 coats of marine spar urethane or exterior porch paint.</li>
+                <li><strong>Sloped Roof Overhang:</strong> Build a 4:12 pitched gable or shed roof cap with aluminum drip edge over the flat cabinet top.</li>
+                <li><strong>Shatterproof Doors &amp; Insulation:</strong> Line outer walls with 1/2" exterior closed-cell foam board, swap glass for 1/4" polycarbonate, and mount onto twin 4×4 posts.</li>
               </ul>
             </div>
           </div>
@@ -3336,187 +3664,835 @@
       </section>
 
       <!-- ===================================================================
-           SECTION 3: PANTRY UPGRADES? & INTERACTIVE 3D SOLAR LIGHTING EXPLORER
+           SECTION 3: PANTRY UPGRADES?
            =================================================================== -->
       <section class="track-section" id="section-pantry-upgrades" data-track="lighting" aria-labelledby="solarLightingHeading">
-        <div class="track-banner" style="background: #FEF9C3; border-color: #FACC15; box-shadow: 4px 4px 0 #0B1F2E;">
-          <div>
-            <h2 class="track-banner-title" id="solarLightingHeading" style="color: #713F12;">☀️ Pantry Upgrades?</h2>
-            <p class="track-banner-sub" style="color: #854D0E;">Some upgrades should be considered just quality design. Building better up front can save you time, money, frustration and waste down the line.</p>
+        <div class="track-banner upgrades-theme">
+          <div style="flex: 1; min-width: 0;">
+            <h2 class="track-banner-title" id="solarLightingHeading">Pantry Upgrades?</h2>
+            <p class="track-banner-sub">Upgrades are really just smart, durable design that protects both the community and the steward. Building stronger up front saves time, money, stress, and food waste down the road, because nothing is more frustrating than dealing with snapped doors and hinges, missing screws or bins, damaged lights, rust, leaking walls or roofs, and cracked glass.</p>
+            <span class="track-meta-line" style="margin-top: 8px;">Solar Lighting • Walkway Path • Hardware • Other</span>
           </div>
-          <span class="track-meta-line" style="color: #713F12; border-bottom-color: rgba(113, 63, 18, 0.35);">4 Theft-Resistant Setups &amp; Walkway Upgrades</span>
+
+          <!-- Interactive Grey Cat With Red "UPGRADE" Button -->
+          <div class="upgrade-cat-wrap" id="upgradeCatEasterEgg" role="button" tabindex="0" aria-label="Grey cat standing next to a red Upgrade button. Click to watch the cat press the button and transform into an upgraded pantry.">
+            <svg viewBox="0 0 220 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="110" cy="164" rx="84" ry="7" fill="#0B1F2E" fill-opacity="0.18"></ellipse>
+
+              <!-- STATE 1: GREY CAT STANDING BY RED UPGRADE BUTTON -->
+              <g class="upgrade-cat-character">
+                <!-- Grey Tail -->
+                <path d="M42 138 C20 130 18 106 30 98 C36 94 42 100 36 106 C32 112 35 123 48 128" fill="#94A3B8" stroke="#0B1F2E" stroke-width="3" stroke-linecap="round"></path>
+                <!-- Grey Body -->
+                <ellipse cx="74" cy="122" rx="25" ry="30" fill="#94A3B8" stroke="#0B1F2E" stroke-width="3"></ellipse>
+                <ellipse cx="76" cy="125" rx="13" ry="19" fill="#F1F5F9"></ellipse>
+                <!-- Grey Paws / Feet -->
+                <ellipse cx="64" cy="151" rx="9" ry="5.5" fill="#F1F5F9" stroke="#0B1F2E" stroke-width="2.6"></ellipse>
+                <ellipse cx="86" cy="151" rx="9" ry="5.5" fill="#F1F5F9" stroke="#0B1F2E" stroke-width="2.6"></ellipse>
+
+                <!-- Ears & Head -->
+                <polygon points="50,64 52,38 69,55" fill="#94A3B8" stroke="#0B1F2E" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="54,60 56,45 66,55" fill="#FDA4AF"></polygon>
+                <polygon points="81,55 98,38 100,64" fill="#94A3B8" stroke="#0B1F2E" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="84,55 94,45 96,60" fill="#FDA4AF"></polygon>
+                <ellipse cx="75" cy="75" rx="26" ry="21" fill="#94A3B8" stroke="#0B1F2E" stroke-width="3"></ellipse>
+
+                <!-- Whiskers & Face -->
+                <path d="M40 76 L51 77 M40 82 L51 81 M99 77 L110 76 M99 81 L110 82" stroke="#0B1F2E" stroke-width="2" stroke-linecap="round"></path>
+                <ellipse cx="70.5" cy="81" rx="6" ry="4.2" fill="#F8FAFC" stroke="#0B1F2E" stroke-width="1.3"></ellipse>
+                <ellipse cx="79.5" cy="81" rx="6" ry="4.2" fill="#F8FAFC" stroke="#0B1F2E" stroke-width="1.3"></ellipse>
+                <ellipse cx="66.5" cy="72" rx="4.2" ry="4.8" fill="#0B1F2E"></ellipse>
+                <ellipse cx="83.5" cy="72" rx="4.2" ry="4.8" fill="#0B1F2E"></ellipse>
+                <circle cx="65.2" cy="70.4" r="1.4" fill="#FFFFFF"></circle>
+                <circle cx="82.2" cy="70.4" r="1.4" fill="#FFFFFF"></circle>
+                <polygon points="75,77.5 71.8,80.6 78.2,80.6" fill="#FB7185" stroke="#0B1F2E" stroke-width="1.2" stroke-linejoin="round"></polygon>
+                <path d="M75 80.6 V83 M75 83 Q71.5 86.5 68.5 84.5 M75 83 Q78.5 86.5 81.5 84.5" stroke="#0B1F2E" stroke-width="2" stroke-linecap="round" fill="none"></path>
+
+                <!-- Red UPGRADE Button Pedestal -->
+                <rect x="122" y="116" width="76" height="40" rx="8" fill="#334155" stroke="#0B1F2E" stroke-width="3"></rect>
+                <rect x="130" y="124" width="60" height="24" rx="5" fill="#1E293B" stroke="#0B1F2E" stroke-width="2"></rect>
+                <text x="160" y="140" text-anchor="middle" font-family="Fredoka, Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="700" fill="#FFE033" letter-spacing="0.03em">UPGRADE</text>
+
+                <!-- Red Button Dome Cap -->
+                <g class="upgrade-red-cap">
+                  <ellipse cx="160" cy="115" rx="24" ry="7" fill="#991B1B" stroke="#0B1F2E" stroke-width="2.6"></ellipse>
+                  <path d="M138 115 C138 99 182 99 182 115 Z" fill="#EF4444" stroke="#0B1F2E" stroke-width="2.8"></path>
+                  <ellipse cx="154" cy="105" rx="7" ry="2.5" transform="rotate(-15 154 105)" fill="#FCA5A5"></ellipse>
+                </g>
+
+                <!-- Grey Cat Arm & Paw Poised Over Red Button -->
+                <g class="upgrade-paw-group">
+                  <path d="M94 110 Q114 98 134 100" stroke="#0B1F2E" stroke-width="9" stroke-linecap="round"></path>
+                  <path d="M94 110 Q114 98 134 100" stroke="#94A3B8" stroke-width="5" stroke-linecap="round"></path>
+                  <circle cx="136" cy="100" r="6.5" fill="#F1F5F9" stroke="#0B1F2E" stroke-width="2.6"></circle>
+                </g>
+              </g>
+
+              <!-- STATE 2: TRANSFORMED UPGRADED PANTRY -->
+              <g class="upgrade-transformed-pantry">
+                <!-- Paver Walkway Pad -->
+                <polygon points="62,162 158,162 170,152 50,152" fill="#CBD5E1" stroke="#0B1F2E" stroke-width="2.6" stroke-linejoin="round"></polygon>
+                <!-- 4x4 Post -->
+                <rect x="101" y="122" width="18" height="34" fill="#92400E" stroke="#0B1F2E" stroke-width="2.8"></rect>
+                <!-- Cabinet Body -->
+                <rect x="66" y="54" width="88" height="68" rx="5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="3"></rect>
+                <!-- Warm Lit Polycarbonate Window -->
+                <rect x="76" y="64" width="68" height="48" rx="3" fill="#FEF08A" stroke="#0B1F2E" stroke-width="2.4"></rect>
+                <!-- Interior LED Strip Glow -->
+                <rect x="79" y="67" width="62" height="4" rx="2" fill="#F59E0B"></rect>
+                <line x1="76" y1="88" x2="144" y2="88" stroke="#0B1F2E" stroke-width="2.4"></line>
+                <rect x="79" y="90" width="62" height="4" rx="2" fill="#F59E0B"></rect>
+                <!-- Stocked Food Items -->
+                <rect x="83" y="73" width="11" height="14" rx="1.5" fill="#EF4444" stroke="#0B1F2E" stroke-width="1.6"></rect>
+                <rect x="98" y="75" width="13" height="12" rx="1.5" fill="#00B4E6" stroke="#0B1F2E" stroke-width="1.6"></rect>
+                <rect x="116" y="72" width="18" height="15" rx="1.5" fill="#2E5A44" stroke="#0B1F2E" stroke-width="1.6"></rect>
+                <rect x="84" y="96" width="15" height="14" rx="1.5" fill="#F97316" stroke="#0B1F2E" stroke-width="1.6"></rect>
+                <rect x="104" y="97" width="14" height="13" rx="1.5" fill="#3B82F6" stroke="#0B1F2E" stroke-width="1.6"></rect>
+                <rect x="123" y="95" width="13" height="15" rx="1.5" fill="#22C55E" stroke="#0B1F2E" stroke-width="1.6"></rect>
+
+                <!-- Shingled Sloped Roof + Skyward Solar Panel -->
+                <polygon points="54,56 110,28 166,56" fill="#00B4E6" stroke="#0B1F2E" stroke-width="3" stroke-linejoin="round"></polygon>
+                <polygon points="82,36 106,24 114,32 90,44" fill="#0F294A" stroke="#0B1F2E" stroke-width="2.2" stroke-linejoin="round"></polygon>
+                <line x1="86" y1="40" x2="110" y2="28" stroke="#38BDF8" stroke-width="1.4"></line>
+
+                <!-- Exterior Motion Light Under Overhang -->
+                <rect x="102" y="55" width="16" height="6" rx="2" fill="#FFE033" stroke="#0B1F2E" stroke-width="2"></rect>
+
+                <!-- Sparkles & Upgraded Badge -->
+                <path d="M40 44 L43 51 L50 54 L43 57 L40 64 L37 57 L30 54 L37 51 Z" fill="#FFE033" stroke="#0B1F2E" stroke-width="1.8"></path>
+                <path d="M178 36 L181 43 L188 46 L181 49 L178 56 L175 49 L168 46 L175 43 Z" fill="#22C55E" stroke="#0B1F2E" stroke-width="1.8"></path>
+                <rect x="64" y="6" width="92" height="20" rx="9" fill="#22C55E" stroke="#0B1F2E" stroke-width="2.4"></rect>
+                <text x="110" y="20" text-anchor="middle" font-family="Fredoka, Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="#0B1F2E">UPGRADED!</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- SOLAR LIGHTING HEADER & OVERVIEW -->
+        <div class="solar-lighting-intro-box">
+          <h3>SOLAR LIGHTING</h3>
+          <p>
+            Adding light inside and around the exterior of the pantry does a few important things for both visitors and the neighborhood:
+          </p>
+          <ul class="solar-reasons-list">
+            <li><strong>1. Light Is Security:</strong> No one can hide in the shadows when a pantry is well lit, making the area far less attractive to vandalism, tampering, or other negative activity.</li>
+            <li><strong>2. Added Safety:</strong> People walking up are much less likely to trip, slip, or fall when they can clearly see their footing and the pantry door, especially during rain, snow, ice, or uneven ground conditions.</li>
+            <li><strong>3. Hands-Free Ease of Use:</strong> Neighbors use Little Free Pantries 24 hours a day. Some visit after dark for extra privacy and anonymity, and winter brings darkness early. Being able to use both hands to open the door, read labels, and load or unload items is far easier and safer than juggling a phone light or flashlight.</li>
+            <li><strong>4. Welcoming Curb Appeal &amp; Visibility:</strong> A warm, softly lit pantry lets passersby see at a glance that the box is active, cared for, and stocked with items ready to share.</li>
+          </ul>
         </div>
 
         <div class="schematic-card" style="margin-bottom: 18px;">
-          <!-- General Solar Placement & Steward Maintenance Note -->
-          <div role="note" style="background: #FEF9C3; border: 2.5px solid #0B1F2E; box-shadow: 4px 4px 0 #0B1F2E; border-radius: 14px; padding: 14px 16px; margin-bottom: 18px; font-size: 0.9rem; font-weight: 600; color: #0B1F2E;">
-            <strong style="display: block; font-size: 0.96rem; font-weight: 800; color: #713F12; margin-bottom: 4px;">☀️ General Solar Placement &amp; Steward Maintenance Note</strong>
+          <div class="solar-options-stack">
+            <!-- OPTION 1: TAMPER-PROOF INTERIOR SOLAR LED NEON FLEX ROPE LIGHT -->
+            <article class="solar-option-block" id="solar-opt-1">
+              <div class="solar-option-media" id="solar-opt-1-media">
+                <figure class="anchoring-figure">
+                  <img src="https://pantrypeeps.org/assets/builds/upgrade-neon-rope-guide.jpg" alt="6-step installation diagram showing how to install a Tamper-Proof Interior Solar LED Neon Flex Rope Light inside a Little Free Pantry">
+                  <figcaption>Option 1 Installation Diagram: Tamper-Proof Interior Solar LED Neon Flex Rope Light (Steps 1–6).</figcaption>
+                </figure>
+              </div>
+              <div class="solar-option-copy">
+                <span class="mini-card-eyebrow">Option 1 &bull; Even Shelf Diffused Glow</span>
+                <h4>1. Tamper-Proof Interior Solar LED Neon Flex Rope Light</h4>
+                <p>Flat-backed 6 mm &times; 12 mm solar neon flex sits flush against the wood and gives an even, diffused glow across food labels without harsh LED dots.</p>
+                <ul class="solar-option-steps">
+                  <li><strong>Step 1 (Drill the Wire Pass-Through):</strong> Bolt the solar panel to the exterior roof with Torx security screws. Route the wire tightly around the rear roof lip into a snug 1/4"&ndash;3/8" hole drilled in the upper back wall, then seal the hole with 100% clear silicone.</li>
+                  <li><strong>Step 2 (Notch Back Shelf Corners):</strong> Cut a small notch (about 1/2" &times; 1/2") in alternating back shelf corners against the rear wall so the neon rope can pass cleanly from one level to the next.</li>
+                  <li><strong>Step 3 (Install Shelf Runs Under Lip):</strong> Run the flat-backed neon flex along the roof ceiling and along the underside of each shelf right behind the front face frame facing downward so light shines back into the pantry rather than into visitors' eyes.</li>
+                  <li><strong>Step 4 (Zigzag Down Back Corners):</strong> Feed the continuous neon rope down through the alternating rear corner notches from shelf to shelf so all vertical drops stay hidden against the back wall.</li>
+                  <li><strong>Step 5 (Secure &amp; Seal):</strong> Fasten clear polycarbonate or stainless steel mounting clips beside the rope every 6 inches using Torx security screws, press the rope light in, and run a smooth bead of 100% clear silicone over both sides of the tubing, clips, and notches so nobody can peel it off like a zipper.</li>
+                  <li><strong>Step 6 (Connect Inside Roof Peak):</strong> Inside the upper roof peak, plug the solar panel cord into the neon rope connector, neatly coil any non-trimmable excess slack, and staple it out of sight.</li>
+                </ul>
+                <div class="solar-option-note">
+                  <strong>Key Notes:</strong> Pre-made solar neon rope cannot be cut to length (snake a single continuous strand or coil excess slack inside the roof peak), and dusk-to-dawn steady operation requires a larger monocrystalline panel (kept on low/steady mode) to hold a charge through short, overcast winter days.
+                </div>
+              </div>
+            </article>
+
+            <!-- OPTION 2: TAMPER-PROOF SOLAR LED FAIRY LIGHTS (3-ROW CLEAR SHIELD METHOD) -->
+            <article class="solar-option-block" id="solar-opt-2">
+              <div class="solar-option-media" id="solar-opt-2-media">
+                <figure class="anchoring-figure">
+                  <img src="https://pantrypeeps.org/assets/builds/upgrade-fairy-lights-guide.jpg" alt="Step-by-step installation diagram for Tamper-Proof Solar LED Fairy Lights using the 3-row clear polycarbonate shield method">
+                  <figcaption>Option 2 Installation Diagram: Tamper-Proof Solar LED Fairy Lights (3-Row Clear Shield Method).</figcaption>
+                </figure>
+              </div>
+              <div class="solar-option-copy">
+                <span class="mini-card-eyebrow mint">Option 2 &bull; 3-Row Clear Polycarbonate Shield</span>
+                <h4>2. Tamper-Proof Solar LED Fairy Lights (3-Row Clear Shield Method)</h4>
+                <p>A longer outdoor copper or silver micro-LED fairy strand routed in 3 taut parallel rows under each shelf and locked beneath a 1/8-inch clear polycarbonate (Lexan) or acrylic sheet.</p>
+                <ul class="solar-option-steps">
+                  <li><strong>Step 1 (Mount Solar Panel for Best Sun):</strong> Remove the ground stake from the small solar panel unit, switch it to ON + Steady mode, and bolt its mounting bracket high on the sunniest exterior spot (roof, back wall, or side wall) using Torx security screws. Drill a snug 3/8-inch hole right behind the panel, feed the lead wire inside, and seal the hole with 100% clear silicone.</li>
+                  <li><strong>Step 2 (Cut &amp; Pre-Drill Poly Sheets):</strong> Cut 1/8-inch clear polycarbonate (Plexiglas) sheets to match each shelf underside and pre-drill 4 corner screw holes.</li>
+                  <li><strong>Step 3 (Lay 3 Taut Rows &amp; Tuck Into Back Corner):</strong> Pull the fairy wire tight in 3 taut parallel rows across the roof ceiling and shelf undersides (tacking with small dabs of hot glue). Tuck the wire straight down into the very back interior corner seam between the roof and each shelf to reach the next level, and coil any leftover slack neatly in the interior roof peak.</li>
+                  <li><strong>Step 4 (Glue &amp; Screw Polycarbonate Tight):</strong> Route the wire out the back edge into the rear corner seam, run a thin bead of clear adhesive along the wood perimeter, press the poly flat over the 3 taut rows, and fasten with 4 Torx security screws and thin corner washers.</li>
+                  <li><strong>Step 5 (Seal Exposed Back-Corner Wire Drops):</strong> Bead outdoor waterproof clear silicone over the fairy lights that are exposed along the back interior corner going level to level so every vertical wire transition is protected from moisture, snags, and tampering.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- OPTION 3: TAMPER-PROOF SPLIT-PANEL SOLAR BAR LIGHTS -->
+            <article class="solar-option-block" id="solar-opt-3">
+              <div class="solar-option-media" id="solar-opt-3-media"></div>
+              <div class="solar-option-copy">
+                <span class="mini-card-eyebrow orange">Option 3 &bull; Split-Panel LED Bar Kit</span>
+                <h4>3. Tamper-Proof Split-Panel Solar Bar Lights</h4>
+                <p>Two-piece "Wire-to-Solar" outdoor LED bar kit where the light bar mounts inside the pantry ceiling/shelf lip and a detachable cord connects to a separate roof- or back-mounted solar panel.</p>
+                <ul class="solar-option-steps">
+                  <li><strong>Step 1 (Eliminate Snap-Off Brackets):</strong> Remove any plastic snap-in wall clips; set the light to ON + Steady (or Motion) mode, apply a zigzag bead of 100% clear silicone to the back of the bar, and fasten directly into wood framing with Torx security screws and metal two-hole conduit straps.</li>
+                  <li><strong>Step 2 (Tuck Behind Front Trim &amp; Seal):</strong> Tuck the bar immediately behind the upper front roof trim angled slightly inward across both shelves so it cannot be grabbed, and run a smooth continuous bead of clear silicone around the entire perimeter.</li>
+                  <li><strong>Step 3 (Snug Connector Pass-Through):</strong> Drill a 1/2"&ndash;5/8" hole in the upper rear corner just big enough for the waterproof barrel connector to pass through, coil excess slack inside, and pack the hole tightly on both sides with clear silicone.</li>
+                  <li><strong>Step 4 (Bolt Separate Solar Panel Skyward):</strong> Bolt the separate monocrystalline solar panel bracket onto the roof or sunny upper back wall using Torx security screws, keeping the exterior cord pulled completely taut with zero grab loops.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- OPTION 4: TAMPER-PROOF EXTERIOR MOTION SOLAR LIGHT -->
+            <article class="solar-option-block" id="solar-opt-4">
+              <div class="solar-option-media" id="solar-opt-4-media"></div>
+              <div class="solar-option-copy">
+                <span class="mini-card-eyebrow" style="color: #6D28D9; border-bottom-color: rgba(109, 40, 217, 0.45);">Option 4 &bull; Exterior Approach Flood</span>
+                <h4>4. Tamper-Proof Exterior Motion Solar Light</h4>
+                <p>Low-profile, heavy-duty flat-backed aluminum or thick ABS motion solar light mounted flush at the highest point on the front fascia directly under the roof overhang, with zero swivel arms or slide-off keyhole clips.</p>
+                <ul class="solar-option-steps">
+                  <li><strong>Step 1 (Mount High Under Overhang in Clear Sun):</strong> Position the light high on the front fascia directly beneath the roof overhang (out of easy reach and shielded from rain/snow) while confirming the overhang does not shade its solar cell during midday sun hours.</li>
+                  <li><strong>Step 2 (Set Mode &amp; Bypass Keyhole Slots):</strong> Switch to ON + Motion-Activated mode before mounting, and drill pilot holes directly through the solid outer mounting flanges of the fixture housing rather than using slide-off wall clips.</li>
+                  <li><strong>Step 3 (Adhesive Backing + Torx / Carriage Through-Bolts):</strong> Run a thick zigzag bead of 100% clear silicone or polyurethane construction adhesive across the back of the housing, press flush to the wood, and fasten with Torx security screws (or carriage bolts with locknuts on thin siding).</li>
+                  <li><strong>Step 4 (Perimeter Silicone &amp; Optional Lexan Guard):</strong> Caulk the entire outer perimeter where the housing meets the wood to block pry tools; in high-vandalism spots, mount a 1/8" clear polycarbonate (Lexan) shield over the LEDs on 1/2" spacers, leaving the PIR motion sensor dome uncovered.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- RED BLOCK: OPTIONAL HIGH-VANDALISM & HIGH-THEFT UPGRADE (FOR ALL SOLAR SETUPS) -->
+            <article class="solar-option-block" id="solar-high-vandalism-upgrade" style="background: #FEE2E2; border: 3px solid #DC2626; box-shadow: 4px 4px 0 #0B1F2E;">
+              <div class="solar-option-media">
+                <figure class="anchoring-figure" style="border-color: #DC2626; box-shadow: 6px 6px 0 #991B1B;">
+                  <img src="https://pantrypeeps.org/assets/builds/upgrade-polycase-armor-box.jpg" alt="Optional High-Vandalism Upgrade: Clear Polycarbonate Solar Armor Box with Torx security screws, rear sealed wire pass-through, and silica gel packet">
+                  <figcaption style="background: #FEF2F2; border-top-color: #DC2626; color: #7F1D1D;">Clear-Cover IP65 Screw-Lock Solar Armor Box With Fixed Mounting Ears &amp; Torx Security Screws.</figcaption>
+                </figure>
+              </div>
+              <div class="solar-option-copy">
+                <span style="display: inline-block; background: #DC2626; color: #FFFFFF; font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 999px; border: 2px solid #0B1F2E; margin-bottom: 6px;">High-Vandalism &amp; High-Theft Armor</span>
+                <h4 style="color: #7F1D1D;">Optional High-Vandalism &amp; High-Theft Upgrade (For All Solar Setups)</h4>
+                <p style="color: #7F1D1D;">If your Little Free Pantry is located in a high-theft or high-vandalism area, you can armor any exterior solar panel (or self-contained exterior solar light) inside an <strong>IP65 waterproof screw-cover clear-lid project/junction box with fixed mounting ears</strong> (avoid snap-latch enclosures that anyone can flip open, and pick a size matched to your fixture).</p>
+                <ul class="solar-option-steps" style="color: #7F1D1D;">
+                  <li><strong style="color: #991B1B;">Bolt the box solid:</strong> Fasten the enclosure's fixed exterior mounting ears directly to the pantry roof, back wall, or sunniest side wall using Torx security screws, and fasten the clear screw-down lid tightly (or swap the lid screws for matching tamper-resistant screws).</li>
+                  <li><strong style="color: #991B1B;">Eliminate exposed cords:</strong> For remote/split solar panels, drill a snug pass-through hole straight through the back of the enclosure aligned with your pantry's wall entry hole and seal both with 100% clear silicone so zero wire is exposed outside.</li>
+                  <li><strong style="color: #991B1B;">Prevent interior fogging:</strong> Gasketed waterproof boxes are airtight and can trap humidity during temperature swings. Toss a small silica gel desiccant packet inside the box (or drill a tiny 1/16-inch weep hole along the bottom edge) to keep the clear lid condensation-free.</li>
+                  <li><strong style="color: #991B1B;">Prioritize full sun:</strong> A clear polycarbonate lid filters out roughly 10%&ndash;15% of incoming sunlight, so choose an unshaded mounting spot when enclosing your panel.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- General Solar Placement & Steward Maintenance Note (Below All 4 Lighting Options) -->
+          <div style="margin-top: 20px; background: #FFFBEB; border: 2.5px solid var(--pp-ink); border-radius: 14px; padding: 14px 16px; font-size: 0.9rem; font-weight: 600; color: var(--pp-ink);">
             <p style="margin: 0;">
-              <strong>Direct Sun Is Required:</strong> Solar lighting only works reliably when the solar panel is placed in unobstructed, direct view of the sun (avoiding heavy tree canopy, north-facing walls, or deep roof eave shadows).<br>
-              <strong>Routine Panel Cleaning:</strong> The pantry steward should wipe dust, pollen, leaves, bird droppings, and snow off the solar panel occasionally with a damp cloth so the cells charge at full capacity year-round.
+              <strong>☀️ General Solar Placement &amp; Steward Maintenance Note:</strong> All solar panels must be installed with a direct, unobstructed line of sight to the sky and sun (never tucked beneath a deep roof overhang that casts shade). To keep batteries charging at full capacity year-round, the pantry steward should wipe dust, pollen, fallen leaves, and winter snow off the solar panels occasionally.
             </p>
           </div>
+        </div>
 
-          <!-- Detailed Installation Cards for All 4 Lighting Options -->
-          <div class="before-build-grid" style="margin-bottom: 18px;">
-            <!-- Option 1 -->
-            <div class="spec-box">
-              <h4>1. Interior Solar LED Neon Flex Rope Light</h4>
-              <p class="box-lead">Flat-backed 6 mm &times; 12 mm solar neon flex gives an even, diffused glow across food labels without harsh LED dots.</p>
-              <ul>
-                <li><strong>Mount Behind Front Shelf Lips:</strong> Run the flat-backed rope light along the underside of each shelf just behind the front face frame so light shines back into the pantry rather than into visitors' eyes.</li>
-                <li><strong>Lock Down With Clips + Silicone:</strong> Screw clear polycarbonate or stainless steel clips every 6", press the neon tubing in, and run a smooth bead of 100% clear silicone over both sides so nobody can peel it off like a zipper.</li>
-                <li><strong>Rear Pass-Through &amp; Roof Panel:</strong> Drill a snug hole at each shelf run to feed the wire behind the back wall up to a Torx-bolted monocrystalline solar panel on the roof, sealing holes with silicone.</li>
-                <li><strong>Limitations to Keep in Mind:</strong> Pre-made solar neon rope cannot be cut to length (snake a continuous strand or coil excess slack inside the roof peak), and dusk-to-dawn steady operation requires a larger monocrystalline panel for short overcast winter days.</li>
-              </ul>
+        <!-- All-Weather Walkway & Approach Upgrades Block -->
+        <div class="schematic-card">
+          <div class="schematic-header">
+            <div class="schematic-title-group">
+              <h3>🥾 All-Weather Walkway &amp; Approach Upgrades</h3>
+              <div class="schematic-dims-line">Theft-Proof, Permanently Set Access From the Sidewalk or Curb to the Pantry Door</div>
             </div>
-
-            <!-- Option 2 -->
-            <div class="spec-box">
-              <h4>2. Theft-Resistant Solar LED Fairy Lights</h4>
-              <p class="box-lead">10–16 ft outdoor copper or silver wire strand set to Steady On mode, stapled and encased smooth in clear silicone.</p>
-              <ul>
-                <li><strong>Step 1 (Bolt Solar Panel High on Back):</strong> Remove snap-in stakes, switch the panel to ON + Steady mode, and bolt it high on the exterior back wall or roof overhang with 4&times; Torx security screws.</li>
-                <li><strong>Step 2 (Drill Pass-Through &amp; Corner Drops):</strong> Drill a 3/8" top entry hole right behind the panel and 1/4" rear corner holes at each shelf so the wire drops cleanly inside without wrapping around shelf fronts.</li>
-                <li><strong>Step 3 (Route, Staple &amp; Coil Slack):</strong> Run wire across the roof underside behind the front trim and behind each shelf lip, tacking every 6"–8" with insulated staples (without pinching wire) and coiling any un-cuttable slack neatly at the interior roof peak.</li>
-                <li><strong>Step 4 (Encase in Clear Silicone):</strong> Run a continuous bead of 100% clear exterior silicone over the entire wire, staples, and peak coil, smooth flat with a soapy gloved finger, seal the 3/8" entry hole, and cure 12–24 hours before stocking.</li>
-              </ul>
-            </div>
-
-            <!-- Option 3 -->
-            <div class="spec-box">
-              <h4>3. Theft-Resistant Split-Panel Solar Bar Lights</h4>
-              <p class="box-lead">"Wire-to-Solar" 1-bar or 2-bar LED kit with a separate cord-connected solar panel mounted out of reach.</p>
-              <ul>
-                <li><strong>Step 1 (Bolt Solar Panel to Exterior):</strong> Switch panel to ON (Motion Sensor or Steady On) and fasten flush high on the back wall or roof peak using Torx security screws.</li>
-                <li><strong>Step 2 (Snug Rear Wall Pass-Through):</strong> Drill a single 3/8"–1/2" hole sized just for the connector plug, pull all exterior slack inside so zero loops hang outside, and pack the hole with 100% clear silicone.</li>
-                <li><strong>Step 3 (Mount Bar Flush Behind Front Lip):</strong> Tuck the LED bar immediately behind the front wood face frame and fasten with Torx screws (plus two metal two-hole conduit straps wrapped over the bar body if it uses snap-in brackets).</li>
-                <li><strong>Step 4 (Staple Cord &amp; Caulk Perimeter):</strong> Staple the interior cord tight along the rear shelf corner every 6" and run a thin bead of 100% clear silicone around the bar perimeter and plug connection.</li>
-              </ul>
-            </div>
-
-            <!-- Option 4 -->
-            <div class="spec-box">
-              <h4>4. Theft- &amp; Vandal-Resistant Exterior Motion Light</h4>
-              <p class="box-lead">Low-profile, heavy-duty aluminum or thick ABS solar motion light mounted flush on the high front fascia.</p>
-              <ul>
-                <li><strong>Step 1 (Highest, Tightest Spot):</strong> Mount high on the front fascia/gable peak directly beneath the roof overhang in clear midday sun, avoiding swivel arms or projecting necks.</li>
-                <li><strong>Step 2 (Bypass Slide-Off Brackets):</strong> Switch to ON + Motion-Activated mode first, then drill pilot holes directly through the solid outer mounting flanges of the housing rather than using flimsy keyhole wall clips.</li>
-                <li><strong>Step 3 (Adhesive + Torx or Through-Bolts):</strong> Apply a thick zigzag bead of 100% clear silicone or polyurethane construction adhesive to the back and drive Torx security screws into framing (or carriage through-bolts with washers and nylon locknuts on thin siding).</li>
-                <li><strong>Step 4 (Perimeter Seal &amp; Optional Lexan Guard):</strong> Caulk the entire outer perimeter with 100% clear silicone against pry tools, and optionally screw a 1/8" clear polycarbonate (Lexan) impact shield on 1/2" spacers over the LED face while leaving the PIR motion sensor dome uncovered.</li>
-              </ul>
+            <div class="schematic-meta-row">
+              <span class="spec-meta-kicker">Includes:</span>
+              <span class="spec-meta-item">Mortared Paver Pad</span>
+              <span class="spec-meta-item">Framed Crushed Gravel</span>
+              <span class="spec-meta-item">Poured Concrete Landing</span>
             </div>
           </div>
 
-          <!-- Non-Solar Upgrade: All-Weather Walkway & Approach Upgrades -->
-          <div style="background: #F0FDF4; border: 2.5px solid #0B1F2E; box-shadow: 4px 4px 0 #0B1F2E; border-radius: 14px; padding: 18px 20px;">
-            <h3 style="margin: 0 0 8px; font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 700; color: #15803D;">
-              🚶 All-Weather Walkway &amp; Approach Upgrades
-            </h3>
-            <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600; color: #0B1F2E; line-height: 1.56;">
-              If your pantry sits on grass or dirt, foot traffic will quickly wear down the path. Over time, repeated visits pack down the soil and create uneven footing, divots, muddy ruts, gullies, and standing puddles. Leaving the path untreated turns into a constant maintenance chore just to fill in ruts and fix tripping hazards on a regular basis, leaving an eyesore for the property and a messy trek in wet weather.
-            </p>
-            <p style="margin: 0 0 10px; font-size: 0.9rem; font-weight: 600; color: #0B1F2E; line-height: 1.56;">
-              Installing a solid, level walkway from the sidewalk or driveway directly to the front of the pantry keeps the approach safe, dry, accessible for strollers and mobility aids, and much easier to clear of snow in the winter:
-            </p>
-            <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; font-weight: 600; color: #1E293B; line-height: 1.55; display: flex; flex-direction: column; gap: 6px;">
-              <li><strong>Concrete Pour:</strong> A permanent, smooth, and slip-resistant surface that handles heavy foot traffic, snow shoveling, and freeze-thaw cycles without shifting.</li>
-              <li><strong>Blacktop (Asphalt):</strong> A durable, dark surface that sheds water cleanly and helps melt light frost and snow faster in sunny spots.</li>
-              <li><strong>Interlocking Block Pavers:</strong> Attractive, modular concrete or stone pavers set over a compacted gravel base so individual blocks can be leveled if the ground settles. Note that loose or unbordered pavers are the easiest material for someone to pick up and walk off with, so edging or adhesive helps keep them in place.</li>
-              <li><strong>Brick Walkway:</strong> Classic clay or concrete paving bricks laid tight on a sand-and-gravel bed for a clean, neighborhood-friendly look.</li>
-              <li><strong>Compacted Crushed Stone (or Pea Gravel with Edging):</strong> A budget-friendly, fast-draining option when bordered with sturdy landscape edging so gravel stays contained and does not scatter into the lawn.</li>
-            </ul>
+          <p class="schematic-summary">
+            Even the best-built pantry is hard to visit if neighbors have to step through soggy grass, mud ruts, or icy puddles. Never use loose mats or unmortared stepping stones that can be picked up and stolen. Instead, build a permanent, theft-proof landing pad that stays put in every season.
+          </p>
+
+          <div class="upcycled-ideas-grid">
+            <div class="upcycle-mini-card">
+              <div>
+                <span class="mini-card-eyebrow mint">Permanent &amp; Theft-Proof</span>
+                <h4>1. Mortared Concrete Paver or Brick Landing Pad</h4>
+                <p>Set heavy 16"&times;16" or 24"&times;24" textured concrete pavers over a compacted gravel base and lock the joints with polymeric sand or mortar so individual stones cannot be lifted.</p>
+                <ul class="upcycle-mini-steps">
+                  <li><strong>Flush &amp; Locked In:</strong> Excavate 4" of sod, tamp 2"&ndash;3" of crushed paver base, set pavers flush with the turf, and lock edges with spiked paver edging and polymeric joint sand.</li>
+                  <li><strong>Easy Snow Shoveling:</strong> Gives a hard, flat surface that can be quickly shoveled and salted in winter.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upcycle-mini-card">
+              <div>
+                <span class="mini-card-eyebrow">Fast Drainage</span>
+                <h4>2. Timber-Framed Crushed Angular Gravel Approach</h4>
+                <p>Ideal for grassy parkways and uneven yards where water pools after rainstorms, using heavy pinned timbers so nothing walks away.</p>
+                <ul class="upcycle-mini-steps">
+                  <li><strong>Rebar-Pinned Border:</strong> Frame the landing zone with pressure-treated 4&times;4 timbers pinned 24" into the ground with flush rebar stakes over heavy-duty landscape fabric.</li>
+                  <li><strong>Compacted Angular Stone:</strong> Fill and tamp 2"&ndash;3" of 3/8" crushed angular gravel (locks tightly underfoot and resists washing or scattering).</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upcycle-mini-card">
+              <div>
+                <span class="mini-card-eyebrow orange">Zero-Theft Option</span>
+                <h4>3. Poured Concrete Walk Pad</h4>
+                <p>For high-traffic sites, churches, or permanent yard installs where zero maintenance and wheelchair-smooth access are top priorities.</p>
+                <ul class="upcycle-mini-steps">
+                  <li><strong>Single Solid Slab:</strong> Pour a 3.5"-thick 36"&times;36" (or wider) broom-finished concrete pad directly in front of the pantry post so there are zero loose pieces to steal.</li>
+                  <li><strong>Accessible Reach:</strong> Keeps a level, non-slip approach zone so strollers, walkers, and wheelchairs can pull right up to the door.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Communication Upgrades Block -->
+        <div class="schematic-card" style="margin-top: 22px;">
+          <div class="schematic-header">
+            <div class="comm-header-row">
+              <div class="comm-header-copy">
+                <div class="schematic-title-group">
+                  <h3>📣 Communication Upgrades</h3>
+                  <div class="schematic-dims-line">Waterproof Exterior Brochure Boxes &amp; Weatherproof QR Code Signage</div>
+                </div>
+                <div class="schematic-meta-row" style="margin-top: 8px;">
+                  <span class="spec-meta-kicker">Includes:</span>
+                  <span class="spec-meta-item">Waterproof Brochure Boxes</span>
+                  <span class="spec-meta-item">Resource &amp; Activity Sheets</span>
+                  <span class="spec-meta-item">QR Code Signage Options</span>
+                </div>
+              </div>
+
+              <!-- Interactive Vintage Teal Phone on Table + Yellow Flower Couch + Black & White Cat -->
+              <div class="comm-phone-cat-wrap" id="commPhoneCatEasterEgg" role="button" tabindex="0" aria-label="Vintage teal-blue rotary phone on a side table next to a yellow flower couch. Click to watch a black-and-white cat walk in, answer the ringing phone, and lounge on the couch with the receiver up to its ear.">
+                <svg viewBox="0 0 280 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Soft Wall & Floor Backdrop -->
+                  <rect x="0" y="0" width="280" height="145" fill="#FEF9E7"></rect>
+                  <rect x="0" y="145" width="280" height="30" fill="#E7D0B5"></rect>
+                  <line x1="0" y1="145" x2="280" y2="145" stroke="#0B1F2E" stroke-width="2.5"></line>
+
+                  <!-- YELLOW FLOWER COUCH (RIGHT SIDE) -->
+                  <g class="comm-yellow-couch">
+                    <!-- Couch Wooden Legs -->
+                    <rect x="116" y="142" width="8" height="14" rx="2" fill="#92400E" stroke="#0B1F2E" stroke-width="2.2"></rect>
+                    <rect x="244" y="142" width="8" height="14" rx="2" fill="#92400E" stroke="#0B1F2E" stroke-width="2.2"></rect>
+
+                    <!-- Couch Backrest -->
+                    <rect x="112" y="64" width="144" height="52" rx="14" fill="#FFE033" stroke="#0B1F2E" stroke-width="2.8"></rect>
+                    <line x1="184" y1="66" x2="184" y2="112" stroke="#0B1F2E" stroke-width="2"></line>
+
+                    <!-- Flower Print Pattern on Backrest -->
+                    <g fill="#FB7185" stroke="#0B1F2E" stroke-width="1.2">
+                      <circle cx="134" cy="82" r="4.5"></circle>
+                      <circle cx="164" cy="92" r="4.5"></circle>
+                      <circle cx="204" cy="80" r="4.5"></circle>
+                      <circle cx="234" cy="90" r="4.5"></circle>
+                    </g>
+                    <g fill="#FFFFFF">
+                      <circle cx="134" cy="82" r="1.8"></circle>
+                      <circle cx="164" cy="92" r="1.8"></circle>
+                      <circle cx="204" cy="80" r="1.8"></circle>
+                      <circle cx="234" cy="90" r="1.8"></circle>
+                    </g>
+                    <g fill="#38BDF8" stroke="#0B1F2E" stroke-width="1.1">
+                      <circle cx="148" cy="98" r="3.6"></circle>
+                      <circle cx="220" cy="98" r="3.6"></circle>
+                    </g>
+
+                    <!-- Couch Seat Cushions -->
+                    <rect x="114" y="110" width="140" height="22" rx="8" fill="#FACC15" stroke="#0B1F2E" stroke-width="2.6"></rect>
+                    <line x1="184" y1="110" x2="184" y2="132" stroke="#0B1F2E" stroke-width="2"></line>
+
+                    <!-- Couch Base Apron -->
+                    <rect x="112" y="128" width="144" height="16" rx="5" fill="#EAB308" stroke="#0B1F2E" stroke-width="2.6"></rect>
+
+                    <!-- Rolled Armrests (Left & Right) -->
+                    <rect x="102" y="92" width="18" height="50" rx="9" fill="#FFE033" stroke="#0B1F2E" stroke-width="2.8"></rect>
+                    <circle cx="111" cy="103" r="4" fill="#FB7185" stroke="#0B1F2E" stroke-width="1.2"></circle>
+                    <circle cx="111" cy="103" r="1.5" fill="#FFFFFF"></circle>
+
+                    <rect x="248" y="92" width="18" height="50" rx="9" fill="#FFE033" stroke="#0B1F2E" stroke-width="2.8"></rect>
+                    <circle cx="257" cy="103" r="4" fill="#FB7185" stroke="#0B1F2E" stroke-width="1.2"></circle>
+                    <circle cx="257" cy="103" r="1.5" fill="#FFFFFF"></circle>
+                  </g>
+
+                  <!-- SIDE TABLE (LEFT SIDE) -->
+                  <g class="comm-side-table">
+                    <rect x="20" y="118" width="6" height="40" rx="2" fill="#92400E" stroke="#0B1F2E" stroke-width="2.2"></rect>
+                    <rect x="74" y="118" width="6" height="40" rx="2" fill="#92400E" stroke="#0B1F2E" stroke-width="2.2"></rect>
+                    <rect x="18" y="136" width="64" height="5" rx="2" fill="#B45309" stroke="#0B1F2E" stroke-width="2"></rect>
+                    <rect x="12" y="112" width="76" height="8" rx="3" fill="#D97736" stroke="#0B1F2E" stroke-width="2.5"></rect>
+                  </g>
+
+                  <!-- VINTAGE TEAL-BLUE ROTARY PHONE BASE -->
+                  <g class="comm-teal-phone-base">
+                    <!-- Phone Body -->
+                    <path d="M26 112 L32 92 C34 88 38 86 43 86 H57 C62 86 66 88 68 92 L74 112 Z" fill="#0D9488" stroke="#0B1F2E" stroke-width="2.6" stroke-linejoin="round"></path>
+                    <!-- Plunger Cradle Forks -->
+                    <rect x="37" y="81" width="5" height="6" rx="1.5" fill="#0F766E" stroke="#0B1F2E" stroke-width="1.8"></rect>
+                    <rect x="58" y="81" width="5" height="6" rx="1.5" fill="#0F766E" stroke="#0B1F2E" stroke-width="1.8"></rect>
+                    <!-- Rotary Dial Wheel -->
+                    <circle cx="50" cy="101" r="8.5" fill="#FFFDF7" stroke="#0B1F2E" stroke-width="2"></circle>
+                    <circle cx="50" cy="101" r="3.5" fill="#14B8A6" stroke="#0B1F2E" stroke-width="1.4"></circle>
+                    <circle cx="45" cy="96" r="1.1" fill="#0B1F2E"></circle>
+                    <circle cx="55" cy="96" r="1.1" fill="#0B1F2E"></circle>
+                    <circle cx="44" cy="102" r="1.1" fill="#0B1F2E"></circle>
+                    <circle cx="56" cy="102" r="1.1" fill="#0B1F2E"></circle>
+                    <circle cx="47" cy="107" r="1.1" fill="#0B1F2E"></circle>
+                    <circle cx="53" cy="107" r="1.1" fill="#0B1F2E"></circle>
+                  </g>
+
+                  <!-- HANDSET ON CRADLE (IDLE & RINGING STATE) -->
+                  <g class="comm-phone-handset-cradle">
+                    <!-- Short Coiled Cord on Table -->
+                    <path d="M28 106 C20 112 22 120 28 117 C33 114 23 124 31 122" stroke="#0D9488" stroke-width="3" stroke-linecap="round" fill="none"></path>
+                    <!-- Vintage Teal Handset -->
+                    <path d="M27 82 C27 74 73 74 73 82 L75 87 C75 90 67 90 65 86 L62 82 H38 L35 86 C33 90 25 90 25 87 Z" fill="#14B8A6" stroke="#0B1F2E" stroke-width="2.5" stroke-linejoin="round"></path>
+                  </g>
+
+                  <!-- RINGING SOUND WAVES -->
+                  <g class="comm-ring-waves" stroke="#EF4444" stroke-width="2.4" stroke-linecap="round" fill="none">
+                    <path d="M18 72 Q14 64 22 58"></path>
+                    <path d="M12 75 Q6 63 17 53"></path>
+                    <path d="M82 72 Q86 64 78 58"></path>
+                    <path d="M88 75 Q94 63 83 53"></path>
+                  </g>
+
+                  <!-- WALKING BLACK & WHITE TUXEDO CAT (ENTERS FROM RIGHT) -->
+                  <g class="comm-walking-cat">
+                    <!-- Tail -->
+                    <path d="M214 128 C228 122 232 106 224 100" stroke="#0B1F2E" stroke-width="6" stroke-linecap="round" fill="none"></path>
+                    <!-- Legs -->
+                    <rect x="164" y="138" width="7" height="18" rx="3" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.2"></rect>
+                    <ellipse cx="166" cy="156" rx="5" ry="3" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="1.8"></ellipse>
+                    <rect x="196" y="138" width="7" height="18" rx="3" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.2"></rect>
+                    <ellipse cx="198" cy="156" rx="5" ry="3" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="1.8"></ellipse>
+                    <!-- Body -->
+                    <ellipse cx="184" cy="128" rx="26" ry="15" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.6"></ellipse>
+                    <path d="M162 132 Q174 140 186 132" fill="#FFFFFF"></path>
+                    <!-- Head -->
+                    <polygon points="145,103 147,86 159,97" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.5" stroke-linejoin="round"></polygon>
+                    <polygon points="168,97 180,86 182,103" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.5" stroke-linejoin="round"></polygon>
+                    <ellipse cx="163" cy="110" rx="19" ry="15" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.6"></ellipse>
+                    <!-- White Tuxedo Muzzle -->
+                    <path d="M152 116 Q163 107 174 116 Q172 124 163 124 Q154 124 152 116 Z" fill="#FFFFFF"></path>
+                    <circle cx="156" cy="108" r="2.8" fill="#FFE033"></circle>
+                    <circle cx="170" cy="108" r="2.8" fill="#FFE033"></circle>
+                    <circle cx="156" cy="108" r="1.4" fill="#0B1F2E"></circle>
+                    <circle cx="170" cy="108" r="1.4" fill="#0B1F2E"></circle>
+                    <polygon points="163,112 160.5,114.5 165.5,114.5" fill="#FB7185"></polygon>
+                  </g>
+
+                  <!-- LOUNGING BLACK & WHITE TUXEDO CAT ON YELLOW FLOWER COUCH WITH PHONE UP TO EAR -->
+                  <g class="comm-lounging-cat">
+                    <!-- Stretched Curly Teal Cord From Table Phone Base to Handset at Cat's Ear -->
+                    <path d="M30 106 C42 122 52 96 62 114 C72 130 82 100 92 116 C102 130 112 96 122 106 C130 114 134 94 137 86" stroke="#0B1F2E" stroke-width="4.4" stroke-linecap="round" fill="none"></path>
+                    <path d="M30 106 C42 122 52 96 62 114 C72 130 82 100 92 116 C102 130 112 96 122 106 C130 114 134 94 137 86" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" fill="none"></path>
+
+                    <!-- Wagging Black Tail With White Tip -->
+                    <g class="comm-lounge-tail">
+                      <path d="M224 114 C240 108 246 92 238 84" stroke="#0B1F2E" stroke-width="7.5" stroke-linecap="round" fill="none"></path>
+                      <path d="M224 114 C240 108 246 92 238 84" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" fill="none"></path>
+                      <circle cx="238" cy="84" r="3.4" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="1.6"></circle>
+                    </g>
+
+                    <!-- Lounging Tuxedo Body Reclined Across Yellow Couch Cushions -->
+                    <ellipse cx="192" cy="112" rx="36" ry="14" transform="rotate(-6 192 112)" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.8"></ellipse>
+                    <!-- White Tuxedo Chest Patch -->
+                    <path d="M158 106 Q172 122 190 116 Q176 102 158 106 Z" fill="#FFFFFF"></path>
+
+                    <!-- Relaxed Back Paws With White Socks -->
+                    <ellipse cx="226" cy="118" rx="9" ry="5" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="2.2"></ellipse>
+                    <ellipse cx="216" cy="123" rx="9" ry="5" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="2.2"></ellipse>
+
+                    <!-- Cat Head Propped Up on Left Couch Armrest -->
+                    <polygon points="134,82 136,63 150,76" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.6" stroke-linejoin="round"></polygon>
+                    <polygon points="160,76 174,63 176,82" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.6" stroke-linejoin="round"></polygon>
+                    <ellipse cx="155" cy="91" rx="21" ry="16.5" fill="#1E293B" stroke="#0B1F2E" stroke-width="2.8"></ellipse>
+
+                    <!-- White Tuxedo Muzzle & Whiskers -->
+                    <path d="M143 97 Q155 87 167 97 Q164 106 155 106 Q146 106 143 97 Z" fill="#FFFFFF"></path>
+                    <path d="M126 92 L136 93 M126 97 L136 96 M174 93 L184 92 M174 96 L184 97" stroke="#0B1F2E" stroke-width="1.7" stroke-linecap="round"></path>
+
+                    <!-- Happy Eyes, Pink Nose & Chatting Smile -->
+                    <ellipse cx="148" cy="89" rx="3.4" ry="4" fill="#FFE033" stroke="#0B1F2E" stroke-width="1.2"></ellipse>
+                    <ellipse cx="162" cy="89" rx="3.4" ry="4" fill="#FFE033" stroke="#0B1F2E" stroke-width="1.2"></ellipse>
+                    <circle cx="148" cy="89" r="1.8" fill="#0B1F2E"></circle>
+                    <circle cx="162" cy="89" r="1.8" fill="#0B1F2E"></circle>
+                    <polygon points="155,93.5 152.3,96.2 157.7,96.2" fill="#FB7185" stroke="#0B1F2E" stroke-width="1" stroke-linejoin="round"></polygon>
+                    <path d="M155 96.2 V98 M155 98 Q152 101 149.5 99.5 M155 98 Q158 101 160.5 99.5" stroke="#0B1F2E" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+
+                    <!-- Vintage Teal Handset Held Up to Cat's Left Ear -->
+                    <g transform="rotate(-38 134 86)">
+                      <path d="M116 83 C116 76 152 76 152 83 L154 88 C154 91 147 91 145 87 L142 83 H126 L123 87 C121 91 114 91 114 88 Z" fill="#14B8A6" stroke="#0B1F2E" stroke-width="2.4" stroke-linejoin="round"></path>
+                    </g>
+
+                    <!-- White Paw Holding the Teal Receiver Up to Ear -->
+                    <path d="M148 108 Q138 102 135 92" stroke="#0B1F2E" stroke-width="7.5" stroke-linecap="round"></path>
+                    <path d="M148 108 Q138 102 135 92" stroke="#1E293B" stroke-width="4.2" stroke-linecap="round"></path>
+                    <circle cx="135" cy="91" r="5.5" fill="#FFFFFF" stroke="#0B1F2E" stroke-width="2.3"></circle>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <p class="schematic-summary">
+            A Little Free Pantry does more than hold groceries. Adding simple, weatherproof ways to share local help numbers, community updates, and a direct link to your pantry's online home keeps neighbors informed and makes it easy for supporters to stay connected.
+          </p>
+
+          <div class="before-build-grid">
+            <!-- Card 1: Exterior Waterproof Brochure Boxes -->
+            <div class="spec-box">
+              <h4>📄 1. Exterior Waterproof Brochure Boxes</h4>
+              <p class="box-lead">
+                Not everyone owns a smartphone or has reliable mobile data, so printed paper is still vital for clear, accessible communication. Mount a clear, self-closing outdoor brochure or flyer box to an exterior side wall of the pantry using Torx security screws and a dab of 100% clear silicone behind the screw holes so water never wicks into the wood.
+              </p>
+              <ul>
+                <li>
+                  <strong>Local Resource &amp; Emergency Info Sheets:</strong> Stock printed copies of important community phone numbers and addresses, including 211 helplines, local soup kitchens, larger regional food banks, SNAP and WIC offices, and utility or housing assistance programs.
+                </li>
+                <li>
+                  <strong>Nearby Little Free Pantry Maps:</strong> Keep a small stack of paper sheets listing the closest neighboring Little Free Pantries so visitors know where else to check if your shelves are running low.
+                </li>
+                <li>
+                  <strong>Pantry Drives &amp; Fundraiser Flyers:</strong> Promote upcoming bottle and can drives, basket raffles, neighborhood food drives, or seasonal wish lists right on the side of the box.
+                </li>
+                <li>
+                  <strong>Seasonal Coloring Pages &amp; Community Fun:</strong> Around holidays or school breaks, tuck in folded coloring pages for kids or adults along with a few small packs of crayons to brighten someone's day.
+                </li>
+              </ul>
+              <div style="margin-top: 12px;">
+                <a href="https://www.amazon.com/s?k=outdoor+waterproof+brochure+box+flyer+holder+wall+mount&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" class="plan-download-btn" style="font-size: 0.8rem; padding: 7px 14px;">
+                  <span>🔗 Browse Waterproof Brochure Box Options <span style="white-space: nowrap;">(Amazon &nearr;)</span></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card 2: QR Code Signage & Digital Connection -->
+            <div class="spec-box tlc-box">
+              <h4>📱 2. Weatherproof QR Code Signage</h4>
+              <p class="box-lead">
+                Adding a scannable QR code lets visitors and donors connect with your pantry right from their phone in seconds.
+              </p>
+              <ul>
+                <li>
+                  <strong>Lead With Your Social Media Hub First:</strong> Point your main QR code to your pantry's social media page or community link hub first and foremost. Once neighbors land there, they can see restock updates, current needs, and every way to support the pantry, including your PayPal, Venmo, Cash App, or Amazon wish list for purchasing pantry supplies.
+                </li>
+                <li>
+                  <strong>Waterproof Vinyl Stickers:</strong> Print UV-laminated, weatherproof vinyl QR stickers to apply directly onto a smooth painted side wall, inside the window corner, or on the lid of a brochure box.
+                </li>
+                <li>
+                  <strong>Custom Metal or Engraved Acrylic Signs:</strong> Have a small custom aluminum or laser-engraved acrylic QR plaque made and fasten it flush to the pantry wall with Torx security screws so it never fades, peels, or warps in winter weather.
+                </li>
+                <li>
+                  <strong>Wall-Mount Clear QR Holders:</strong> Use a sealed, outdoor-rated clear wall-mount QR code holder or sign frame so you can swap out printed QR inserts anytime your links or campaigns change.
+                </li>
+              </ul>
+              <div style="margin-top: 12px;">
+                <a href="https://www.amazon.com/s?k=qr+code+water+proof+wall+mount&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer" class="plan-download-btn" style="font-size: 0.8rem; padding: 7px 14px;">
+                  <span>🔗 Browse Waterproof Wall-Mount QR Code Options <span style="white-space: nowrap;">(Amazon &nearr;)</span></span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ===================================================================
-           SECTION 4: WEATHERPROOFING STANDARDS & LAUNCH CHECKLIST
+           SECTION 4: RECOMMENDED BUILD SUPPLIES & PRE-LAUNCH CHECKLIST
            =================================================================== -->
-      <section class="track-section" id="section-weatherproofing-checklist" data-track="weather" aria-labelledby="weatherStandardsHeading">
+      <section class="track-section" id="section-recommended-supplies" data-track="weather" aria-labelledby="recommendedSuppliesHeading">
         <div class="track-banner">
           <div>
-            <h2 class="track-banner-title" id="weatherStandardsHeading">❄️ Weatherproofing &amp; Launch Readiness Checklist</h2>
+            <h2 class="track-banner-title" id="recommendedSuppliesHeading">🛒 Build Hardware, Weatherproofing &amp; Lighting Supplies</h2>
+            <p class="track-banner-sub">Organized in the order you build, from ground anchoring and framing to roof flashing, door hardware, and solar lighting. Lumber, concrete, and pavers are best picked up locally, and always verify exact sizes for your build before ordering hardware.</p>
+          </div>
+          <span class="track-meta-line">5 Build Stages &bull; 8-Point Pre-Launch Checklist</span>
+        </div>
+
+        <div class="affiliate-gear-grid">
+          <!-- Stage 1: Ground & Wall Anchoring -->
+          <div class="affiliate-gear-card">
+            <div>
+              <span class="mini-card-eyebrow" style="color: #6D28D9; border-bottom-color: rgba(109, 40, 217, 0.45);">Stage 1 &bull; Start Here</span>
+              <h4>⚓ Ground &amp; Wall Anchoring</h4>
+              <p>Secure your post, skids, or wall-mount cabinet first so wind and frost heave never tip it.</p>
+            </div>
+            <ul class="affiliate-link-list">
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=4x4+post+base+flange+sleeve+bracket+heavy+duty+black&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>4&times;4 Post Flange Sleeve Bracket</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=4x4+ground+anchor+auger+post+spike+heavy+duty&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>4&times;4 Screw-In Post Auger Spike</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=24+inch+rebar+stakes+1%2F2+inch+steel+ground+anchor&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>24" Steel Rebar Ground Stakes (1/2")</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=heavy+duty+steel+gusseted+L+shelf+brackets+wall+mount&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Gusseted Steel L-Brackets</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=tapcon+3%2F8+x+4+inch+concrete+masonry+hex+anchors&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Tapcon+ 3/8"&times;4" Masonry Bolts</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Stage 2: Framing Fasteners, Glue & Driver Bits -->
+          <div class="affiliate-gear-card">
+            <div>
+              <span class="mini-card-eyebrow">Stage 2 &bull; Box Assembly</span>
+              <h4>🔩 Structural Screws, Glue &amp; Bits</h4>
+              <p>Assemble your cabinet box, reinforce upcycled wood joints, and drive tamper-proof fasteners.</p>
+            </div>
+            <ul class="affiliate-link-list">
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=titebond+iii+ultimate+wood+glue+waterproof+exterior&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Titebond III Waterproof Wood Glue</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=coated+exterior+wood+deck+screws+2+inch+star+drive&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Coated Exterior Deck Screws (2")</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=stainless+steel+torx+security+wood+screws+exterior&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Tamper-Proof Torx Exterior Screws</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=security+torx+bit+set+tamper+proof+star+driver&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Security Torx Driver Bit Set</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Stage 3: Roof Flashing, Insulation & Weather Sealing -->
+          <div class="affiliate-gear-card">
+            <div>
+              <span class="mini-card-eyebrow mint">Stage 3 &bull; Weatherproofing</span>
+              <h4>🏠 Flashing, Sealants &amp; Shelf Liners</h4>
+              <p>Shed rain off the roof, seal every interior seam, and protect wood or metal from rust and rot.</p>
+            </div>
+            <ul class="affiliate-link-list">
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=galvanized+steel+roof+drip+edge+flashing+trim&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Galvanized Roof Drip Edge Flashing</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=100+percent+clear+silicone+waterproof+outdoor+caulk&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>100% Clear Outdoor Silicone</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=dripless+caulk+gun+smooth+rod&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Dripless Smooth-Rod Caulk Gun</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=marine+spar+urethane+clear+gloss+uv+exterior+wood&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>UV Marine Spar Urethane Sealer</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=peel+and+stick+waterproof+vinyl+floor+tile&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Peel &amp; Stick Vinyl Shelf Tiles</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Stage 4: Doors, Glazing & Heavy-Use Hardware -->
+          <div class="affiliate-gear-card">
+            <div>
+              <span class="mini-card-eyebrow">Stage 4 &bull; Doors &amp; Windows</span>
+              <h4>🚪 Polycarbonate, Hinges &amp; Catches</h4>
+              <p>Replace breakable glass and weak indoor latches with shatterproof glazing and stainless hardware.</p>
+            </div>
+            <ul class="affiliate-link-list">
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=clear+polycarbonate+sheet+1%2F4+inch+shatterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>1/4" &amp; 1/8" Clear Polycarbonate</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=304+stainless+steel+continuous+piano+hinge+1.5+inch&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>304 Stainless Piano Hinge</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=heavy+duty+20+lb+neodymium+magnetic+cabinet+catch+outdoor&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>20 lb Neodymium Door Catches</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=outdoor+brass+or+stainless+door+pull+handle+5+inch&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Exterior D-Pull Door Handle</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=epdm+rubber+weather+stripping+self+adhesive+d+seal&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>EPDM Rubber Door Weatherstrip</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Stage 5: Finishing Touches — Solar Lighting & Armor Boxes -->
+          <div class="affiliate-gear-card">
+            <div>
+              <span class="mini-card-eyebrow orange">Stage 5 &bull; Finishing Touches</span>
+              <h4>☀️ Solar Lighting &amp; Armor Enclosures</h4>
+              <p>Add tamper-proof interior or exterior solar lighting and optional polycarbonate armor boxes.</p>
+            </div>
+            <ul class="affiliate-link-list">
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+led+neon+rope+light+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Solar LED Neon Rope Light</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=outdoor+solar+copper+fairy+lights+waterproof&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Outdoor Solar LED Fairy Lights</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=split+solar+shed+light+outdoor+motion+sensor+separate+panel&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Split-Panel Solar Light Kit</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=Junction+Box+with+Clear+Cover+IP65+Waterproof+ABS+Plastic+Universal+Project+Box+with+Fixed+Ear&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Clear-Cover IP65 Screw-Lock Project Box</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+              <li class="affiliate-link-item">
+                <a href="https://www.amazon.com/s?k=silica+gel+desiccant+packets+moisture+absorber&tag=lfpdeals-20" target="_blank" rel="nofollow sponsored noopener noreferrer">
+                  <span>Silica Gel Anti-Fog Packets</span>
+                  <span class="amz-badge">Amazon &nearr;</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="weather-rules-grid">
-          <div class="weather-rule-card">
-            <h4>🏠 Sloped Roofs &amp; Drip Edges</h4>
-            <p>Never leave a flat horizontal top exposed to standing rain or snow. Add a 3:12 to 4:12 pitched roof (or sealed dome hood), overhang, and aluminum drip edge.</p>
-          </div>
-          <div class="weather-rule-card">
-            <h4>🧱 1/2" Exterior Closed-Cell Foam Board</h4>
-            <p>Line all outer walls and ceilings with 1/2" exterior-rated rigid closed-cell foam board (zero fiberglass or paper facings) to temper summer heat and winter cold swings.</p>
-          </div>
-          <div class="weather-rule-card">
-            <h4>🪟 Polycarbonate Over Glass</h4>
-            <p>Always use shatterproof 1/4" polycarbonate or cast acrylic for viewing windows. Real window glass cracks in freeze-thaw cycles and creates safety hazards.</p>
-          </div>
-          <div class="weather-rule-card">
-            <h4>☀️ Back-Mounted Solar &amp; 811 Anchoring</h4>
-            <p>Add Torx-secured solar lighting for dark winter evenings, set posts 36"–42" deep below frost line, and call 811 at least 3 business days before digging.</p>
-          </div>
-        </div>
-
-        <div class="checklist-card">
-          <h3 style="margin:0 0 4px;font-size:1.35rem;font-weight:700;">✅ Pre-Launch Steward Build &amp; Safety Checklist</h3>
+        <!-- Expanded Pre-Launch Steward Build, Weatherproofing & Safety Checklist -->
+        <div class="checklist-card" id="pre-launch-checklist">
+          <h3 style="margin:0 0 4px;font-size:1.38rem;font-weight:700;">✅ Pre-Launch Steward Build, Weatherproofing &amp; Safety Checklist</h3>
           <p style="margin:0;font-size:0.9rem;font-weight:600;color:var(--pp-muted);">
-            Verify every item before stocking your custom or upcycled pantry for the neighborhood.
+            Verify every structural, weatherproofing, and safety requirement below before stocking your custom or upcycled pantry for the neighborhood.
           </p>
 
           <div class="checklist-grid" id="stewardChecklist">
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>Written Property &amp; Host Permission</strong>
-                <span>Confirmed approval from homeowner, business/landlord, or city/town host and clear of sidewalk right-of-way.</span>
+                <strong>1. Written Host &amp; Location Permission</strong>
+                <span>Confirmed approval from homeowner, business/landlord, or city/town host and placed clear of sidewalk right-of-way.</span>
               </div>
             </label>
 
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>811 Utility Check &amp; Frost-Line Anchor</strong>
-                <span>Dig-Safe 811 cleared and post/skids anchored against 60 mph winds and winter frost heave.</span>
+                <strong>2. Dig-Safe 811 Cleared &amp; Wind/Frost Anchored</strong>
+                <span>Called 811 at least 3 business days before digging; posts set 36"&ndash;42" below frost line, skids/augers pinned flush (rebar removed!), or 100&ndash;150 lb sandbag ballast enclosed.</span>
               </div>
             </label>
 
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>Material-Specific Weather Sealing &amp; 1/2" Foam</strong>
-                <span>Rust-sealed metal, washer-mounted UV-sealed plastic, or spar-urethaned wood lined with 1/2" exterior closed-cell foam board.</span>
+                <strong>3. Sloped Roof Overhang &amp; Drip Edge Flashing</strong>
+                <span>Never leave a flat horizontal top: install a 3:12 to 4:12 pitched gable or shed roof with 2"&ndash;3" overhangs and galvanized drip edge flashing so rain and snowmelt shed cleanly.</span>
               </div>
             </label>
 
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>Shatterproof Window &amp; Sloped Roof</strong>
-                <span>Polycarbonate glazing installed (zero glass) with sloped roof overhang, drip edge, and silicone-sealed seams.</span>
+                <strong>4. 1/2" Exterior Closed-Cell Foam Board Lining</strong>
+                <span>All outer walls and ceilings lined with 1/2" exterior rigid closed-cell foam board (zero fiberglass or paper facings) to buffer summer heat and winter freeze swings.</span>
               </div>
             </label>
 
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>After-Dark Solar Lighting &amp; Safe Walkway Tested</strong>
-                <span>Torx-secured solar lighting mounted in clear sun with sealed pass-throughs, plus level, mud-free approach path.</span>
+                <strong>5. Shatterproof Polycarbonate Glazing (Zero Glass)</strong>
+                <span>Real window glass removed and replaced with 1/4" or 3/16" shatterproof clear polycarbonate bedded in 100% exterior silicone so freeze-thaw cycles never crack panes.</span>
               </div>
             </label>
 
             <label class="check-pill">
               <input type="checkbox" class="steward-check">
               <div class="check-pill-text">
-                <strong>Easy-Open Magnetic Catches &amp; Guide Posted</strong>
-                <span>Doors open effortlessly with one hand (zero locks) and laminated Pantry Peeps donation guide mounted inside.</span>
+                <strong>6. Exterior Weather Sealing &amp; Interior Corner Caulk</strong>
+                <span>All exterior wood seams, end grain, or metal rust spots primed/sealed, vinyl shelf flooring laid flat, and all interior floor-to-wall joints sealed with waterproof silicone.</span>
+              </div>
+            </label>
+
+            <label class="check-pill">
+              <input type="checkbox" class="steward-check">
+              <div class="check-pill-text">
+                <strong>7. Skyward Solar Lighting &amp; Mud-Free Walkway Tested</strong>
+                <span>Solar panels bolted with Torx security screws in unobstructed sun, wire pass-throughs packed with clear silicone, and a level, slip-resistant landing pad installed at the door.</span>
+              </div>
+            </label>
+
+            <label class="check-pill">
+              <input type="checkbox" class="steward-check">
+              <div class="check-pill-text">
+                <strong>8. Easy-Open Magnetic Catches &amp; Guide Mounted</strong>
+                <span>Stainless piano hinges installed, doors open effortlessly with one hand via 15&ndash;20 lb magnetic catches (zero locks), and laminated Pantry Peeps donation guide mounted inside.</span>
               </div>
             </label>
           </div>
 
           <div class="checklist-status-bar">
-            <span id="checklistProgressText">0 of 6 build launch items verified</span>
+            <span id="checklistProgressText">0 of 8 build &amp; weatherproofing items verified</span>
             <button type="button" class="checklist-reset-btn" id="resetChecklistBtn">Reset Checklist</button>
           </div>
         </div>
@@ -3666,6 +4642,129 @@
       }
 
       /* =====================================================================
+         3B. INTERACTIVE GREY CAT + RED "UPGRADE" BUTTON EASTER EGG
+         ===================================================================== */
+      const upgradeCat = document.getElementById("upgradeCatEasterEgg");
+      let upgradeBusy = false;
+      let upgradeTimers = [];
+
+      function triggerUpgradeCatTransform() {
+        if (!upgradeCat || upgradeBusy) return;
+        upgradeBusy = true;
+        upgradeTimers.forEach((t) => clearTimeout(t));
+        upgradeTimers = [];
+
+        upgradeCat.classList.remove("is-transformed");
+        upgradeCat.classList.add("is-pressing");
+
+        upgradeTimers.push(
+          setTimeout(() => {
+            upgradeCat.classList.remove("is-pressing");
+            upgradeCat.classList.add("is-transformed");
+          }, 260)
+        );
+
+        upgradeTimers.push(
+          setTimeout(() => {
+            upgradeCat.classList.remove("is-transformed");
+            upgradeBusy = false;
+          }, 3400)
+        );
+      }
+
+      if (upgradeCat) {
+        upgradeCat.addEventListener("click", triggerUpgradeCatTransform);
+        upgradeCat.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            triggerUpgradeCatTransform();
+          }
+        });
+      }
+
+      /* =====================================================================
+         3C. INTERACTIVE COMPASS CAT SPIN-OFF EASTER EGG (DOOR ORIENTATION)
+         ===================================================================== */
+      const compassCat = document.getElementById("compassCatEasterEgg");
+      let compassBusy = false;
+      let compassTimer = null;
+
+      function triggerCompassCatSpinOff() {
+        if (!compassCat || compassBusy) return;
+        compassBusy = true;
+        if (compassTimer) {
+          clearTimeout(compassTimer);
+          compassTimer = null;
+        }
+
+        compassCat.classList.remove("is-spinning-off");
+        void compassCat.offsetWidth;
+        compassCat.classList.add("is-spinning-off");
+
+        compassTimer = setTimeout(() => {
+          compassCat.classList.remove("is-spinning-off");
+          compassBusy = false;
+          compassTimer = null;
+        }, 1650);
+      }
+
+      if (compassCat) {
+        compassCat.addEventListener("click", triggerCompassCatSpinOff);
+        compassCat.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            triggerCompassCatSpinOff();
+          }
+        });
+      }
+
+      /* =====================================================================
+         3D. INTERACTIVE VINTAGE TEAL PHONE & YELLOW FLOWER COUCH CAT SCENE
+         ===================================================================== */
+      const commPhoneCat = document.getElementById("commPhoneCatEasterEgg");
+      let commPhoneBusy = false;
+      let commPhoneTimers = [];
+
+      function triggerCommPhoneCatScene() {
+        if (!commPhoneCat || commPhoneBusy) return;
+        commPhoneBusy = true;
+        commPhoneTimers.forEach((t) => clearTimeout(t));
+        commPhoneTimers = [];
+
+        commPhoneCat.classList.remove("is-ringing", "is-walking", "is-lounging");
+        void commPhoneCat.offsetWidth;
+
+        // Step 1: Phone rings and black-and-white cat walks in from the right
+        commPhoneCat.classList.add("is-ringing", "is-walking");
+
+        // Step 2: Cat answers the phone and lounges on the yellow flower couch with receiver to ear
+        commPhoneTimers.push(
+          setTimeout(() => {
+            commPhoneCat.classList.remove("is-ringing", "is-walking");
+            commPhoneCat.classList.add("is-lounging");
+          }, 1150)
+        );
+
+        // Step 3: Reset cleanly after lounging call
+        commPhoneTimers.push(
+          setTimeout(() => {
+            commPhoneCat.classList.remove("is-lounging");
+            commPhoneBusy = false;
+          }, 4800)
+        );
+      }
+
+      if (commPhoneCat) {
+        commPhoneCat.addEventListener("click", triggerCommPhoneCatScene);
+        commPhoneCat.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            triggerCommPhoneCatScene();
+          }
+        });
+      }
+
+      /* =====================================================================
          4. JUMP TO: SECTION NAVIGATION BUTTONS
          ===================================================================== */
       const jumpButtons = document.querySelectorAll("[data-jump-target]");
@@ -3697,658 +4796,7 @@
       });
 
       /* =====================================================================
-         6. SELF-CONTAINED 3D BUILD 1 SOLAR LIGHTING UPGRADE EXPLORER
-         ===================================================================== */
-      (function initBuild1LightingExplorer() {
-        const canvas = document.getElementById("u3dCanvas");
-        const stageWrap = document.getElementById("u3dStageWrap");
-        if (!canvas || !stageWrap) return;
-        const ctx = canvas.getContext("2d");
-
-        const LIGHT_CONFIGS = {
-          neon: {
-            title: "1. Interior Flat-Backed LED Neon Flex Rope (6 mm × 12 mm)",
-            desc: "Flat-backed neon flex mounted right behind front shelf lips with polycarbonate/stainless clips every 6\" + 100% clear silicone bead. Wire routes through silicone-sealed rear holes up to a Torx-bolted monocrystalline roof solar panel.",
-            guideTab: "guide-neon"
-          },
-          fairy: {
-            title: "2. Theft-Resistant Solar LED Fairy Lights (Steady-On Mode)",
-            desc: "Copper/silver fairy strand routed across roof ceiling and behind front shelf lips with excess slack coiled at roof peak, tacked every 6–8\" with insulated staples, and fully encased in smoothed 100% clear silicone to a Torx-bolted back solar panel.",
-            guideTab: "guide-fairy"
-          },
-          bar: {
-            title: "3. Theft-Resistant Split-Panel (\"Wire-to-Solar\") LED Bar Lights",
-            desc: "Rigid LED bar(s) tucked directly behind front wood face frame with Torx screws + metal two-hole conduit straps + silicone perimeter seal. Snug rear connector pass-through hole sealed with silicone leads to a high back-mounted solar panel.",
-            guideTab: "guide-bar"
-          },
-          motion: {
-            title: "4. Theft- & Vandal-Resistant Exterior Motion Solar Light",
-            desc: "Low-profile heavy-duty motion light mounted flush high on the front fascia under the roof overhang with adhesive + Torx security screws (or carriage through-bolts), full perimeter silicone seal, and optional 1/8\" Lexan shield leaving the PIR dome clear.",
-            guideTab: "guide-motion"
-          }
-        };
-
-        const state = {
-          mode: "neon",
-          night: true,
-          doorOpen: true,
-          doorAngle: 1.35,
-          targetDoorAngle: 1.35,
-          yaw: -0.52,
-          pitch: 0.24,
-          zoom: 1.0,
-          dragging: false,
-          lastX: 0,
-          lastY: 0
-        };
-
-        const hudTitle = document.getElementById("u3dHudTitle");
-        const hudDesc = document.getElementById("u3dHudDesc");
-        const optButtons = document.querySelectorAll("[data-light-mode]");
-        const guideTabBtns = document.querySelectorAll("[data-guide-tab]");
-        const guidePanels = document.querySelectorAll(".lg-panel");
-        const nightBtn = document.getElementById("u3dToggleNightBtn");
-        const doorBtn = document.getElementById("u3dToggleDoorBtn");
-        const frontBtn = document.getElementById("u3dPresetFrontBtn");
-        const rearBtn = document.getElementById("u3dPresetRearBtn");
-
-        function syncGuideTab(tabId) {
-          guideTabBtns.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-guide-tab") === tabId));
-          guidePanels.forEach((p) => p.classList.toggle("is-active", p.id === tabId));
-        }
-
-        guideTabBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const tabId = btn.getAttribute("data-guide-tab");
-            if (tabId) syncGuideTab(tabId);
-          });
-        });
-
-        optButtons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const mode = btn.getAttribute("data-light-mode");
-            if (!mode || !LIGHT_CONFIGS[mode]) return;
-            state.mode = mode;
-            optButtons.forEach((b) => {
-              const active = b === btn;
-              b.classList.toggle("is-active", active);
-              b.setAttribute("aria-selected", String(active));
-            });
-            if (hudTitle) hudTitle.textContent = LIGHT_CONFIGS[mode].title;
-            if (hudDesc) hudDesc.textContent = LIGHT_CONFIGS[mode].desc;
-            syncGuideTab(LIGHT_CONFIGS[mode].guideTab);
-
-            if (mode === "motion") {
-              state.yaw = -0.35;
-              state.pitch = 0.20;
-            } else {
-              state.doorOpen = true;
-              state.targetDoorAngle = 1.35;
-              if (doorBtn) {
-                doorBtn.classList.add("is-on");
-                doorBtn.textContent = "🚪 Door: OPEN";
-              }
-            }
-          });
-        });
-
-        if (nightBtn) {
-          nightBtn.addEventListener("click", () => {
-            state.night = !state.night;
-            nightBtn.classList.toggle("is-on", state.night);
-            nightBtn.textContent = state.night ? "🌙 Night Beam: ON" : "☀️ Day View: ON";
-          });
-        }
-
-        if (doorBtn) {
-          doorBtn.addEventListener("click", () => {
-            state.doorOpen = !state.doorOpen;
-            state.targetDoorAngle = state.doorOpen ? 1.35 : 0.0;
-            doorBtn.classList.toggle("is-on", state.doorOpen);
-            doorBtn.textContent = state.doorOpen ? "🚪 Door: OPEN" : "🚪 Door: CLOSED";
-          });
-        }
-
-        if (frontBtn) {
-          frontBtn.addEventListener("click", () => {
-            state.yaw = -0.45;
-            state.pitch = 0.22;
-            state.zoom = 1.0;
-          });
-        }
-
-        if (rearBtn) {
-          rearBtn.addEventListener("click", () => {
-            state.yaw = 2.48;
-            state.pitch = 0.28;
-            state.zoom = 1.04;
-          });
-        }
-
-        stageWrap.addEventListener("pointerdown", (e) => {
-          state.dragging = true;
-          state.lastX = e.clientX;
-          state.lastY = e.clientY;
-          stageWrap.setPointerCapture(e.pointerId);
-        });
-
-        stageWrap.addEventListener("pointermove", (e) => {
-          if (!state.dragging) return;
-          const dx = e.clientX - state.lastX;
-          const dy = e.clientY - state.lastY;
-          state.lastX = e.clientX;
-          state.lastY = e.clientY;
-          state.yaw += dx * 0.011;
-          state.pitch = Math.max(-0.55, Math.min(0.85, state.pitch + dy * 0.009));
-        });
-
-        stageWrap.addEventListener("pointerup", () => {
-          state.dragging = false;
-        });
-
-        stageWrap.addEventListener("wheel", (e) => {
-          e.preventDefault();
-          const factor = e.deltaY > 0 ? 0.93 : 1.07;
-          state.zoom = Math.max(0.68, Math.min(1.65, state.zoom * factor));
-        }, { passive: false });
-
-        function resizeCanvas() {
-          const rect = stageWrap.getBoundingClientRect();
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          canvas.width = Math.max(320, Math.floor(rect.width * dpr));
-          canvas.height = Math.max(320, Math.floor(rect.height * dpr));
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        }
-
-        window.addEventListener("resize", resizeCanvas);
-        resizeCanvas();
-
-        // 3D Projection Helper (Build 1 dims in inches: W=22, H_front=24, H_back=21, D=14)
-        function projectPoint(x, y, z, w, h) {
-          const cy = Math.cos(state.yaw);
-          const sy = Math.sin(state.yaw);
-          const cp = Math.cos(state.pitch);
-          const sp = Math.sin(state.pitch);
-
-          // Rotate around Y (yaw)
-          const rx = x * cy - z * sy;
-          const rz1 = x * sy + z * cy;
-          // Rotate around X (pitch)
-          const ry = y * cp - rz1 * sp;
-          const rz = y * sp + rz1 * cp;
-
-          const baseScale = Math.min(w, h) * 0.0195 * state.zoom;
-          const fov = 78;
-          const persp = fov / (fov + rz + 28);
-          return {
-            sx: w * 0.5 + rx * baseScale * persp,
-            sy: h * 0.46 - ry * baseScale * persp,
-            depth: rz
-          };
-        }
-
-        function drawQuad(pts, fill, stroke, lineWidth) {
-          ctx.beginPath();
-          ctx.moveTo(pts[0].sx, pts[0].sy);
-          for (let i = 1; i < pts.length; i++) {
-            ctx.lineTo(pts[i].sx, pts[i].sy);
-          }
-          ctx.closePath();
-          if (fill) {
-            ctx.fillStyle = fill;
-            ctx.fill();
-          }
-          if (stroke) {
-            ctx.strokeStyle = stroke;
-            ctx.lineWidth = lineWidth || 1.6;
-            ctx.stroke();
-          }
-        }
-
-        function drawBox3D(x0, y0, z0, x1, y1Front, y1Back, z1, colors, strokeColor) {
-          const v = [
-            projectPoint(x0, y0, z0, viewW, viewH),         // 0: bottom-left-back
-            projectPoint(x1, y0, z0, viewW, viewH),         // 1: bottom-right-back
-            projectPoint(x1, y0, z1, viewW, viewH),         // 2: bottom-right-front
-            projectPoint(x0, y0, z1, viewW, viewH),         // 3: bottom-left-front
-            projectPoint(x0, y1Back, z0, viewW, viewH),     // 4: top-left-back
-            projectPoint(x1, y1Back, z0, viewW, viewH),     // 5: top-right-back
-            projectPoint(x1, y1Front, z1, viewW, viewH),    // 6: top-right-front
-            projectPoint(x0, y1Front, z1, viewW, viewH)     // 7: top-left-front
-          ];
-
-          const faces = [
-            { idx: [0, 1, 5, 4], color: colors.back || colors.side },
-            { idx: [0, 3, 7, 4], color: colors.side },
-            { idx: [1, 2, 6, 5], color: colors.sideAlt || colors.side },
-            { idx: [0, 1, 2, 3], color: colors.bottom || colors.side },
-            { idx: [4, 5, 6, 7], color: colors.top || colors.side },
-            { idx: [3, 2, 6, 7], color: colors.front || colors.side }
-          ];
-
-          faces.sort((a, b) => {
-            const da = a.idx.reduce((acc, k) => acc + v[k].depth, 0) / 4;
-            const db = b.idx.reduce((acc, k) => acc + v[k].depth, 0) / 4;
-            return db - da;
-          });
-
-          faces.forEach((f) => {
-            if (!f.color) return;
-            drawQuad(f.idx.map((k) => v[k]), f.color, strokeColor || "#0B1F2E", 1.5);
-          });
-        }
-
-        let viewW = 800;
-        let viewH = 460;
-
-        function renderScene(timeMs) {
-          const rect = stageWrap.getBoundingClientRect();
-          viewW = rect.width || 800;
-          viewH = rect.height || 460;
-
-          // Smooth door animation
-          state.doorAngle += (state.targetDoorAngle - state.doorAngle) * 0.14;
-
-          // Sky / Backdrop
-          ctx.clearRect(0, 0, viewW, viewH);
-          const bgGrad = ctx.createRadialGradient(viewW * 0.5, viewH * 0.35, 20, viewW * 0.5, viewH * 0.5, viewW * 0.7);
-          if (state.night) {
-            bgGrad.addColorStop(0, "#1E293B");
-            bgGrad.addColorStop(1, "#070B14");
-          } else {
-            bgGrad.addColorStop(0, "#E0F2FE");
-            bgGrad.addColorStop(1, "#BAE6FD");
-          }
-          ctx.fillStyle = bgGrad;
-          ctx.fillRect(0, 0, viewW, viewH);
-
-          // Subtle ground grid
-          ctx.strokeStyle = state.night ? "rgba(56, 189, 248, 0.12)" : "rgba(11, 31, 46, 0.12)";
-          ctx.lineWidth = 1;
-          for (let gx = -24; gx <= 24; gx += 6) {
-            const p1 = projectPoint(gx, -18, -22, viewW, viewH);
-            const p2 = projectPoint(gx, -18, 22, viewW, viewH);
-            ctx.beginPath();
-            ctx.moveTo(p1.sx, p1.sy);
-            ctx.lineTo(p2.sx, p2.sy);
-            ctx.stroke();
-          }
-          for (let gz = -22; gz <= 22; gz += 6) {
-            const p1 = projectPoint(-24, -18, gz, viewW, viewH);
-            const p2 = projectPoint(24, -18, gz, viewW, viewH);
-            ctx.beginPath();
-            ctx.moveTo(p1.sx, p1.sy);
-            ctx.lineTo(p2.sx, p2.sy);
-            ctx.stroke();
-          }
-
-          // 4x4 Support Post & Steel Sleeve Flange Bracket
-          drawBox3D(-1.75, -18, -1.75, 1.75, -9, -9, 1.75, {
-            side: "#854D0E",
-            sideAlt: "#713F12",
-            front: "#92400E",
-            back: "#713F12"
-          });
-          drawBox3D(-2.0, -11.5, -2.0, 2.0, -8.8, -8.8, 2.0, {
-            side: "#1E293B",
-            front: "#334155",
-            top: "#0F172A"
-          });
-
-          // Build 1 Cabinet Box (centered around y=3, total H=24 front / 21 back, W=22, D=14)
-          const yBot = -8.8;
-          const yTopF = 15.2;
-          const yTopB = 12.2;
-          const xL = -11;
-          const xR = 11;
-          const zB = -7;
-          const zF = 7;
-          const tWall = 0.75;
-
-          const extPaint = state.night ? "#CBD5E1" : "#F8FAFC";
-          const extShade = state.night ? "#94A3B8" : "#E2E8F0";
-          const foamTint = state.night ? "#0284C7" : "#38BDF8";
-          const woodShelf = state.night ? "#B45309" : "#D97706";
-
-          // Back Wall
-          drawBox3D(xL, yBot, zB, xR, yTopB, yTopB, zB + tWall, {
-            back: extShade,
-            front: foamTint,
-            side: extPaint,
-            top: extShade
-          });
-
-          // Left & Right Tapered Side Walls
-          drawBox3D(xL, yBot, zB, xL + tWall, yTopF, yTopB, zF, {
-            side: extPaint,
-            sideAlt: foamTint,
-            front: extPaint,
-            top: extShade
-          });
-          drawBox3D(xR - tWall, yBot, zB, xR, yTopF, yTopB, zF, {
-            side: foamTint,
-            sideAlt: extShade,
-            front: extPaint,
-            top: extShade
-          });
-
-          // Bottom Floor & Middle Shelf (6.5" top shelf, 7.5" bottom shelf)
-          const yMidShelf = yBot + 8.25;
-          drawBox3D(xL + tWall, yBot, zB + tWall, xR - tWall, yBot + tWall, yBot + tWall, zF - 0.3, {
-            top: woodShelf,
-            front: "#92400E",
-            bottom: extShade
-          });
-          drawBox3D(xL + tWall, yMidShelf, zB + tWall, xR - tWall, yMidShelf + tWall, yMidShelf + tWall, zF - 0.5, {
-            top: woodShelf,
-            front: "#78350F",
-            bottom: "#92400E"
-          });
-
-          // Sample Pantry Cans & Boxes inside shelves so lighting illumination is clearly visible
-          drawBox3D(-7.5, yBot + tWall, -2, -4.5, yBot + tWall + 4.5, yBot + tWall + 4.5, 1.5, {
-            front: "#EF4444",
-            side: "#DC2626",
-            top: "#FCA5A5"
-          });
-          drawBox3D(-2.5, yBot + tWall, -2.5, 2.5, yBot + tWall + 5.5, yBot + tWall + 5.5, 1.8, {
-            front: "#F59E0B",
-            side: "#D97706",
-            top: "#FDE68A"
-          });
-          drawBox3D(4.0, yBot + tWall, -1.5, 7.2, yBot + tWall + 4.2, yBot + tWall + 4.2, 1.6, {
-            front: "#10B981",
-            side: "#059669",
-            top: "#A7F3D0"
-          });
-
-          drawBox3D(-6.8, yMidShelf + tWall, -2.0, -3.2, yMidShelf + tWall + 4.0, yMidShelf + tWall + 4.0, 1.4, {
-            front: "#3B82F6",
-            side: "#2563EB",
-            top: "#93C5FD"
-          });
-          drawBox3D(1.5, yMidShelf + tWall, -2.2, 6.5, yMidShelf + tWall + 4.4, yMidShelf + tWall + 4.4, 1.6, {
-            front: "#F97316",
-            side: "#EA580C",
-            top: "#FED7AA"
-          });
-
-          // Sloped Shed Roof + Front Fascia Lip
-          drawBox3D(-13, yTopF, -8.5, 13, yTopF + 0.85, yTopB + 0.85, 10.0, {
-            top: "#334155",
-            side: "#1E293B",
-            sideAlt: "#1E293B",
-            front: "#0F172A",
-            bottom: foamTint
-          });
-          drawBox3D(-13, yTopF - 1.2, 9.2, 13, yTopF + 0.85, yTopF + 0.85, 10.0, {
-            front: "#FFE033",
-            side: "#EAB308",
-            bottom: "#CA8A04"
-          });
-
-          // Rubber D-Seal Weatherstripping around front opening
-          const sealPts = [
-            projectPoint(xL + 0.35, yBot + 0.35, zF + 0.05, viewW, viewH),
-            projectPoint(xR - 0.35, yBot + 0.35, zF + 0.05, viewW, viewH),
-            projectPoint(xR - 0.35, yTopF - 0.35, zF + 0.05, viewW, viewH),
-            projectPoint(xL + 0.35, yTopF - 0.35, zF + 0.05, viewW, viewH)
-          ];
-          drawQuad(sealPts, null, "#0F172A", 3.0);
-
-          // =================================================================
-          // RENDER SELECTED SOLAR LIGHTING UPGRADE + HARDWARE CALLOUTS
-          // =================================================================
-          const pulse = 0.82 + 0.18 * Math.sin(timeMs * 0.006);
-
-          if (state.mode === "neon") {
-            // Roof-mounted Monocrystalline Solar Panel with 4 Torx Screws
-            drawBox3D(-4.8, yTopF + 0.8, -4.5, 4.8, yTopF + 1.4, yTopB + 1.4, 3.5, {
-              top: "#0369A1",
-              side: "#0F172A",
-              front: "#0F172A"
-            }, "#38BDF8");
-
-            // Rear wire routing from roof panel through back wall holes
-            const wTop = projectPoint(0, yTopB + 0.6, zB - 0.3, viewW, viewH);
-            const wMid = projectPoint(8.8, yMidShelf + 0.2, zB - 0.3, viewW, viewH);
-            const wBot = projectPoint(8.8, yBot + 1.2, zB - 0.3, viewW, viewH);
-            ctx.strokeStyle = "#0F172A";
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(wTop.sx, wTop.sy);
-            ctx.lineTo(wMid.sx, wMid.sy);
-            ctx.lineTo(wBot.sx, wBot.sy);
-            ctx.stroke();
-
-            // Flat-backed Neon Flex Rope behind front shelf lips + clear silicone glow
-            const topRunL = projectPoint(xL + 1.2, yTopF - 0.9, zF - 1.2, viewW, viewH);
-            const topRunR = projectPoint(xR - 1.2, yTopF - 0.9, zF - 1.2, viewW, viewH);
-            const midRunL = projectPoint(xL + 1.2, yMidShelf - 0.35, zF - 1.2, viewW, viewH);
-            const midRunR = projectPoint(xR - 1.2, yMidShelf - 0.35, zF - 1.2, viewW, viewH);
-
-            if (state.night) {
-              ctx.save();
-              ctx.globalAlpha = 0.34 * pulse;
-              const g1 = ctx.createLinearGradient(0, topRunL.sy, 0, midRunL.sy);
-              g1.addColorStop(0, "#FEF08A");
-              g1.addColorStop(1, "rgba(254, 240, 138, 0)");
-              ctx.fillStyle = g1;
-              ctx.fillRect(Math.min(topRunL.sx, topRunR.sx), topRunL.sy, Math.abs(topRunR.sx - topRunL.sx), Math.abs(midRunL.sy - topRunL.sy));
-              ctx.restore();
-            }
-
-            // Silicone bead + Neon Flex strip
-            [ [topRunL, topRunR], [midRunL, midRunR] ].forEach(([pA, pB]) => {
-              ctx.strokeStyle = "rgba(186, 230, 253, 0.75)";
-              ctx.lineWidth = 8;
-              ctx.lineCap = "round";
-              ctx.beginPath();
-              ctx.moveTo(pA.sx, pA.sy);
-              ctx.lineTo(pB.sx, pB.sy);
-              ctx.stroke();
-
-              ctx.strokeStyle = state.night ? "#FEF08A" : "#FACC15";
-              ctx.lineWidth = 4.5;
-              ctx.beginPath();
-              ctx.moveTo(pA.sx, pA.sy);
-              ctx.lineTo(pB.sx, pB.sy);
-              ctx.stroke();
-
-              // Mounting clips every 6"
-              for (let t = 0.15; t <= 0.85; t += 0.35) {
-                const cx = pA.sx + (pB.sx - pA.sx) * t;
-                const cy = pA.sy + (pB.sy - pA.sy) * t;
-                ctx.fillStyle = "#334155";
-                ctx.fillRect(cx - 3, cy - 4, 6, 8);
-              }
-            });
-          } else if (state.mode === "fairy") {
-            // High rear-wall mounted Solar Panel with Torx screws
-            drawBox3D(-3.2, yTopB - 4.8, zB - 1.1, 3.2, yTopB - 0.5, yTopB - 0.5, zB, {
-              back: "#0369A1",
-              side: "#0F172A",
-              top: "#0F172A"
-            }, "#38BDF8");
-
-            // Coiled slack at roof peak + fairy light nodes along ceiling & shelf lips
-            const nodes = [];
-            for (let fx = -8.5; fx <= 8.5; fx += 2.4) {
-              nodes.push(projectPoint(fx, yTopF - 0.8, zF - 1.5, viewW, viewH));
-              nodes.push(projectPoint(fx, yMidShelf - 0.3, zF - 1.4, viewW, viewH));
-            }
-            // Peak coil cluster
-            for (let c = -3; c <= 3; c += 1.5) {
-              nodes.push(projectPoint(c, yTopF - 0.5, 1.5, viewW, viewH));
-            }
-
-            // Silicone-encased copper wire path
-            ctx.strokeStyle = "rgba(186, 230, 253, 0.7)";
-            ctx.lineWidth = 5;
-            ctx.beginPath();
-            nodes.forEach((n, idx) => {
-              if (idx === 0) ctx.moveTo(n.sx, n.sy);
-              else ctx.lineTo(n.sx, n.sy);
-            });
-            ctx.stroke();
-
-            nodes.forEach((n) => {
-              if (state.night) {
-                ctx.fillStyle = `rgba(253, 224, 71, ${0.28 * pulse})`;
-                ctx.beginPath();
-                ctx.arc(n.sx, n.sy, 11, 0, Math.PI * 2);
-                ctx.fill();
-              }
-              ctx.fillStyle = state.night ? "#FEF9C3" : "#F59E0B";
-              ctx.beginPath();
-              ctx.arc(n.sx, n.sy, 3.2, 0, Math.PI * 2);
-              ctx.fill();
-            });
-          } else if (state.mode === "bar") {
-            // High rear-wall Split-Panel Solar Collector
-            drawBox3D(-3.6, yTopB - 5.2, zB - 1.2, 3.6, yTopB - 0.4, yTopB - 0.4, zB, {
-              back: "#0369A1",
-              side: "#0F172A",
-              top: "#0F172A"
-            }, "#38BDF8");
-
-            // Rigid Split-Panel LED Bar tucked behind front ceiling trim with metal conduit straps
-            drawBox3D(-7.5, yTopF - 1.4, zF - 2.2, 7.5, yTopF - 0.5, yTopF - 0.5, zF - 0.9, {
-              bottom: state.night ? "#FEF9C3" : "#E2E8F0",
-              front: "#475569",
-              side: "#1E293B"
-            });
-            // Two metal conduit straps locking the bar
-            drawBox3D(-4.8, yTopF - 1.55, zF - 2.35, -3.9, yTopF - 0.45, yTopF - 0.45, zF - 0.8, {
-              front: "#94A3B8",
-              bottom: "#CBD5E1"
-            });
-            drawBox3D(3.9, yTopF - 1.55, zF - 2.35, 4.8, yTopF - 0.45, yTopF - 0.45, zF - 0.8, {
-              front: "#94A3B8",
-              bottom: "#CBD5E1"
-            });
-
-            if (state.night) {
-              const bL = projectPoint(-7.2, yTopF - 1.4, zF - 1.5, viewW, viewH);
-              const bR = projectPoint(7.2, yTopF - 1.4, zF - 1.5, viewW, viewH);
-              const fL = projectPoint(-9.5, yBot + 1, zF - 1.5, viewW, viewH);
-              const fR = projectPoint(9.5, yBot + 1, zF - 1.5, viewW, viewH);
-              const cone = ctx.createLinearGradient(0, bL.sy, 0, fL.sy);
-              cone.addColorStop(0, `rgba(254, 249, 195, ${0.42 * pulse})`);
-              cone.addColorStop(1, "rgba(254, 249, 195, 0.03)");
-              ctx.fillStyle = cone;
-              ctx.beginPath();
-              ctx.moveTo(bL.sx, bL.sy);
-              ctx.lineTo(bR.sx, bR.sy);
-              ctx.lineTo(fR.sx, fR.sy);
-              ctx.lineTo(fL.sx, fL.sy);
-              ctx.closePath();
-              ctx.fill();
-            }
-          } else if (state.mode === "motion") {
-            // Low-profile heavy-duty Exterior Motion Solar Light bolted flush high on front fascia under roof overhang
-            drawBox3D(-3.4, yTopF - 2.5, zF, 3.4, yTopF - 0.3, yTopF - 0.3, zF + 1.5, {
-              front: "#1E293B",
-              side: "#0F172A",
-              top: "#0369A1",
-              bottom: state.night ? "#FEF9C3" : "#CBD5E1"
-            }, "#38BDF8");
-
-            // Optional 1/8" clear polycarbonate impact shield with PIR dome cutout
-            const lexPts = [
-              projectPoint(-3.8, yTopF - 2.7, zF + 1.85, viewW, viewH),
-              projectPoint(3.8, yTopF - 2.7, zF + 1.85, viewW, viewH),
-              projectPoint(3.8, yTopF - 0.1, zF + 1.85, viewW, viewH),
-              projectPoint(-3.8, yTopF - 0.1, zF + 1.85, viewW, viewH)
-            ];
-            drawQuad(lexPts, "rgba(186, 230, 253, 0.22)", "#38BDF8", 1.5);
-
-            // PIR Sensor Dome
-            const pir = projectPoint(0, yTopF - 2.0, zF + 1.75, viewW, viewH);
-            ctx.fillStyle = "#F8FAFC";
-            ctx.beginPath();
-            ctx.arc(pir.sx, pir.sy, 4.2, 0, Math.PI * 2);
-            ctx.fill();
-
-            if (state.night) {
-              const mTop = projectPoint(0, yTopF - 2.4, zF + 1.2, viewW, viewH);
-              const mBotL = projectPoint(-13, yBot - 6, zF + 10, viewW, viewH);
-              const mBotR = projectPoint(13, yBot - 6, zF + 10, viewW, viewH);
-              const flood = ctx.createLinearGradient(mTop.sx, mTop.sy, mTop.sx, mBotL.sy);
-              flood.addColorStop(0, `rgba(254, 249, 195, ${0.46 * pulse})`);
-              flood.addColorStop(1, "rgba(254, 249, 195, 0.02)");
-              ctx.fillStyle = flood;
-              ctx.beginPath();
-              ctx.moveTo(mTop.sx - 18, mTop.sy);
-              ctx.lineTo(mTop.sx + 18, mTop.sy);
-              ctx.lineTo(mBotR.sx, mBotR.sy);
-              ctx.lineTo(mBotL.sx, mBotL.sy);
-              ctx.closePath();
-              ctx.fill();
-            }
-          }
-
-          // Hinged Front Door (rotates around left piano hinge at x = -10.1, z = 7.2)
-          const doorW = 20.2;
-          const doorH = 22.2;
-          const hingeX = -10.1;
-          const hingeZ = 7.2;
-          const cosD = Math.cos(state.doorAngle);
-          const sinD = Math.sin(state.doorAngle);
-
-          function doorPt(localX, localY, localZ) {
-            return projectPoint(
-              hingeX + localX * cosD - localZ * sinD,
-              yBot + 0.8 + localY,
-              hingeZ + localX * sinD + localZ * cosD,
-              viewW,
-              viewH
-            );
-          }
-
-          const d0 = doorPt(0, 0, 0);
-          const d1 = doorPt(doorW, 0, 0);
-          const d2 = doorPt(doorW, doorH, 0);
-          const d3 = doorPt(0, doorH, 0);
-
-          const w0 = doorPt(2.5, 2.5, 0.05);
-          const w1 = doorPt(doorW - 2.5, 2.5, 0.05);
-          const w2 = doorPt(doorW - 2.5, doorH - 2.5, 0.05);
-          const w3 = doorPt(2.5, doorH - 2.5, 0.05);
-
-          // Door wood stiles/rails around polycarbonate window
-          drawQuad([d0, d1, w1, w0], "#F8FAFC", "#0B1F2E", 1.5);
-          drawQuad([d1, d2, w2, w1], "#F8FAFC", "#0B1F2E", 1.5);
-          drawQuad([w3, w2, d2, d3], "#F8FAFC", "#0B1F2E", 1.5);
-          drawQuad([d0, w0, w3, d3], "#F8FAFC", "#0B1F2E", 1.5);
-          // Clear polycarbonate pane
-          drawQuad([w0, w1, w2, w3], "rgba(186, 230, 253, 0.24)", "#38BDF8", 1.2);
-
-          // Stainless piano hinge strip + Brass D-Pull
-          ctx.strokeStyle = "#94A3B8";
-          ctx.lineWidth = 3.5;
-          ctx.beginPath();
-          ctx.moveTo(d0.sx, d0.sy);
-          ctx.lineTo(d3.sx, d3.sy);
-          ctx.stroke();
-
-          const handleTop = doorPt(doorW - 1.3, doorH * 0.62, 0.9);
-          const handleBot = doorPt(doorW - 1.3, doorH * 0.42, 0.9);
-          ctx.strokeStyle = "#F59E0B";
-          ctx.lineWidth = 4;
-          ctx.beginPath();
-          ctx.moveTo(handleTop.sx, handleTop.sy);
-          ctx.lineTo(handleBot.sx, handleBot.sy);
-          ctx.stroke();
-
-          requestAnimationFrame(renderScene);
-        }
-
-        requestAnimationFrame(renderScene);
-      })();
-
-      /* =====================================================================
-         7. ISO NEWSPAPER BOX FLYER EXPAND MODAL, PRINT (COLOR / B&W) & PNG
+         6. ISO NEWSPAPER BOX FLYER EXPAND MODAL, PRINT (COLOR / B&W) & PNG
          ===================================================================== */
       const isoFlyerThumbImg = document.getElementById("isoFlyerThumbImg");
       const isoFlyerModal = document.getElementById("isoFlyerModal");
@@ -4509,7 +4957,7 @@
       if (isoModalDownloadPngBtn) isoModalDownloadPngBtn.addEventListener("click", downloadIsoFlyerPng);
 
       /* =====================================================================
-         8. INTERACTIVE PRE-LAUNCH BUILD CHECKLIST
+         7. INTERACTIVE PRE-LAUNCH BUILD, WEATHERPROOFING & SAFETY CHECKLIST
          ===================================================================== */
       const checkboxes = document.querySelectorAll(".steward-check");
       const progressText = document.getElementById("checklistProgressText");
@@ -4525,8 +4973,8 @@
         if (progressText) {
           progressText.textContent =
             checkedCount === checkboxes.length
-              ? `All ${checkboxes.length} build launch items verified! Ready for neighborhood stocking.`
-              : `${checkedCount} of ${checkboxes.length} build launch items verified`;
+              ? `All ${checkboxes.length} build & weatherproofing items verified! Ready for neighborhood stocking.`
+              : `${checkedCount} of ${checkboxes.length} build & weatherproofing items verified`;
         }
       }
 
@@ -4542,7 +4990,7 @@
       }
 
       /* =====================================================================
-         9. DOWNLOADABLE & PRINTABLE PLANS + STEP-BY-STEP DIRECTIONS
+         8. DOWNLOADABLE & PRINTABLE PLANS + STEP-BY-STEP DIRECTIONS
          ===================================================================== */
       function buildStandalonePlanDocument(title, bodyHtml) {
         return `<!doctype html>
